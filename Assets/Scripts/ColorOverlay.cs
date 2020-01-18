@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ColorOverlay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
     }
