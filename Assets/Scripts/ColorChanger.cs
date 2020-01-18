@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Color_changer : MonoBehaviour
+public class ColorChanger : MonoBehaviour
 {
     //Настройки цветов. Текущие - для теплого периода.
     private float absCold = 11f;
@@ -13,7 +13,7 @@ public class Color_changer : MonoBehaviour
     private float absHeat = 38f;
 
     public float temp = 23f;
-    private Material material = null; //Устанавливается не префабной связью а в авейке ввиду того что иначе изменяется глобальный материал
+    private Material material = null; //Устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
    
     Color TempToColor(float _temp)
     {
@@ -79,27 +79,50 @@ public class Color_changer : MonoBehaviour
 
     public void SetTempCold()
     {
-        SetTemp(15f);
+        SetTemp(15f, 1f);
     }
 
     public void SetTempWarm()
     {
-        SetTemp(30f);
+        SetTemp(30f, 10f);
     }
 
     public void SetTempOK()
     {
-        SetTemp(24f);
+        SetTemp(24f, 5f);
     }
 
     public void SetTemp(float _temp, float _time)
     {
-        if (_time == 0)
+        if (_time <= 0)
             SetTemp(_temp);
+        else
+        {
+            StartCoroutine(SmoothChange(_temp, _time));
+        }
+    }
+
+    IEnumerator SmoothChange(float _temp, float _time)
+    {
+        //Вроде работает, но мне не нравится.
+        //Debug.Log("In a Coroutine");
+        float delta = 0;
+        float initialTemp = temp;
+        while (Mathf.Abs(temp - _temp) >= 0.1)
+        {
+            //Debug.Log("In a cycle");
+            delta = Time.deltaTime * (_temp - initialTemp) / _time;
+            //Debug.Log(delta);
+            temp += delta;
+            SetTemp(temp);
+            yield return null;
+        }
+
     }
 
     private void Awake()
     {
-        material = this.GetComponent<MeshRenderer>().material;
+        material = this.GetComponent<Renderer>().material;
     }
+
 }
