@@ -12,6 +12,8 @@ public class CubeCreator : MonoBehaviour
     [SerializeField]
     private Vector3 density;
 
+
+
     /*
     private float densityX = 1;
     [SerializeField]

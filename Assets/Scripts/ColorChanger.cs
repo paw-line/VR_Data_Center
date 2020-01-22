@@ -5,17 +5,17 @@ using UnityEngine;
 public class ColorChanger : MonoBehaviour
 {
     //Настройки цветов. Текущие - для теплого периода.
-    private float absCold = 11f;
-    private float allowedStart = 21f;
-    private float optimalStart = 23f;
-    private float optimalFinish = 25f;
-    private float allowedFinish = 28f;
-    private float absHeat = 38f;
+    static private float absCold = 11f;
+    static private float allowedStart = 21f;
+    static private float optimalStart = 23f;
+    static private float optimalFinish = 25f;
+    static private float allowedFinish = 28f;
+    static private float absHeat = 38f;
 
     public float temp = 23f;
     private Material material = null; //Устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
    
-    Color TempToColor(float _temp)
+    public static Color TempToColor(float _temp)
     {
         Color newColor = new Color();
 
