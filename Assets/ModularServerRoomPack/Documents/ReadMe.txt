@@ -1,0 +1,4 @@
+First of all thank you very much for purchasing my asset pack. This is a modular server room asset pack with high quality textures. Good for VR games and simulations.Please use the prefabs so that you will not miss any shader. I have used a postprocessing to record video. I could not attach in to this pack. It is free in Asset store. Please download it and apply to your main camera.and tweak the values like how you want it .You might have to write a script for blinking the server LED lights randomly. All texture maps are in 2k resolution you can bring the size down as per your game performence.If you are in Demo scene 1 and  you wanna see the actual lighting then please turn ON "Auto Generate" in lighting settings.
+
+Thank you
+SanuRenuArt   
