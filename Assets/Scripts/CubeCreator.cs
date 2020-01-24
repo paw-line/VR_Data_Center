@@ -13,15 +13,6 @@ public class CubeCreator : MonoBehaviour
     private Vector3 density;
 
 
-
-    /*
-    private float densityX = 1;
-    [SerializeField]
-    private float densityY = 1;
-    [SerializeField]
-    private float densityZ = 1;
-    */
-
     private GameObject[,,] nodes = null;
     int xn, yn, zn = 0;
 
@@ -37,7 +28,7 @@ public class CubeCreator : MonoBehaviour
         
     }
 
-    private void GenerateCubes()
+    public void GenerateCubes()
     {
         //Vector3 zoneSize = this.transform.localScale;
 
@@ -70,6 +61,20 @@ public class CubeCreator : MonoBehaviour
             //currentCoord = new Vector3(offset + i * density.x, offset, offset);
         }
 
+    }
+
+    public void DestroyCubes()
+    {
+        for (int i = 0; i < xn; i++)
+        {
+            for (int j = 0; j < yn; j++)
+            {
+                for (int k = 0; k < zn; k++)
+                {
+                    DestroyImmediate(nodes[i, j, k]);
+                }
+            }
+        }
     }
 
     void OnDrawGizmosSelected()
