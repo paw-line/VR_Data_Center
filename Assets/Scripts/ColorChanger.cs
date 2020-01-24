@@ -123,6 +123,7 @@ public class ColorChanger : MonoBehaviour
     private void Awake()
     {
         material = this.GetComponent<Renderer>().material;
+        SetTemp(temp); //Временный костыль для демонстрации
     }
 
 }
