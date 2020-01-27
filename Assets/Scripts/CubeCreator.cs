@@ -19,7 +19,7 @@ public class CubeCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateCubes();
+        //GenerateCubes();
     }
 
     // Update is called once per frame

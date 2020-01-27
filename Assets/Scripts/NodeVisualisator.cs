@@ -24,7 +24,7 @@ public class NodeVisualisator : MonoBehaviour
         distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
         sources = distributor.sources;
 
-        //Debug.Log("Goin into coroutine");
+        Debug.Log(sources[0].GetData());
         StartCoroutine(DelayedRefresh());
     }
 

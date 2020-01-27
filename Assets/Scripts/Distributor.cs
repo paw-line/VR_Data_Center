@@ -8,7 +8,7 @@ public class Distributor : MonoBehaviour
     //public List<Point> sources;
     //public List<DataSource> sources;
 
-    public Dictionary<string, DataSource> countries;   
+    //public Dictionary<string, DataSource> countries;   
 }
 /*
 [System.Serializable]
