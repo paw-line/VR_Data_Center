@@ -32,6 +32,11 @@ public class DataSource : MonoBehaviour
         return type;
     }
 
+    private void Awake()
+    {
+        this.gameObject.name = Distributor.rootTopic + "/" + transform.parent.gameObject.name + "/" + this.name;
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
