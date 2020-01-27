@@ -22,12 +22,7 @@ public class NodeVisualisator : MonoBehaviour
 
     void Awake()
     {
-        material = this.GetComponent<Renderer>().material;
-        distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
-        sources = distributor.sources;
-
-        Debug.Log(sources[0].GetData());
-        StartCoroutine(DelayedRefresh());
+        StartCoroutine(DelayedInit());
     }
 
     private void Init()
@@ -104,6 +99,18 @@ public class NodeVisualisator : MonoBehaviour
             //Debug.Log("Init Complete. Waiting");
             yield return new WaitForSeconds(refreshTime);
         }
+
+    }
+
+    IEnumerator DelayedInit() //Без этой задержки дистрибутор не успевает найти сурсы
+    {
+        yield return new WaitForSeconds(3f);
+        material = this.GetComponent<Renderer>().material;
+        distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
+        sources = distributor.sources;
+
+        //Debug.Log(sources[0].GetData());
+        StartCoroutine(DelayedRefresh());
 
     }
 
