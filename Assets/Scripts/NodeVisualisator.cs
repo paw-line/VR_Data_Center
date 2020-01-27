@@ -16,6 +16,8 @@ public class NodeVisualisator : MonoBehaviour
     [SerializeField]
     private float curData = 0;
 
+    public string dataType = null;
+
     private Material material = null; //Устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
 
     void Awake()
@@ -49,7 +51,7 @@ public class NodeVisualisator : MonoBehaviour
                 //Debug.Log("Source.Radius= " + source.GetRadius().ToString());
                 //Debug.Log("Distance= " + Vector3.Distance(source.transform.position, myCoord));
                 //Debug.Log("Node " + this.gameObject.name.ToString() + " : pos= " + source.transform.position.magnitude.ToString());
-                if (source.GetRadius() >= Vector3.Distance(source.transform.position, myCoord))
+                if ((source.GetRadius() >= Vector3.Distance(source.transform.position, myCoord))&&(source.GetType() == dataType))
                 {//valid source
                     validSources.Add(v);
                 }

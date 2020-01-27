@@ -13,6 +13,8 @@ public class ColorChanger : MonoBehaviour
     static private float absHeat = 38f;
 
     public float temp = 23f;
+    public DataSource source;
+
     private Material material = null; //Устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
    
     public static Color TempToColor(float _temp)
@@ -120,10 +122,23 @@ public class ColorChanger : MonoBehaviour
 
     }
 
+
+    IEnumerator DelayedUpdate(float _time)
+    {
+        while (true) {
+            SetTemp(source.GetData(), _time / 2);
+            yield return new WaitForSeconds(_time);
+        }
+
+    }
+
+
+
     private void Awake()
     {
         material = this.GetComponent<Renderer>().material;
-        SetTemp(temp); //Временный костыль для демонстрации
+        //SetTemp(temp); //Временный костыль для демонстрации
+        StartCoroutine(DelayedUpdate(5f));
     }
 
 }

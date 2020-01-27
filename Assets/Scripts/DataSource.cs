@@ -11,6 +11,12 @@ public class DataSource : MonoBehaviour
     [SerializeField]
     private string type = null;
 
+    public void Set(float _data, string _type)
+    {
+        data = _data;
+        type = _type;
+    }
+
     public float GetData()
     {
         return data;
@@ -19,6 +25,11 @@ public class DataSource : MonoBehaviour
     public float GetRadius()
     {
         return radius;
+    }
+
+    public string GetType()
+    {
+        return type;
     }
 
     void OnDrawGizmosSelected()

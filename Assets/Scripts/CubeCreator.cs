@@ -11,7 +11,8 @@ public class CubeCreator : MonoBehaviour
     private Vector3 zoneSize;
     [SerializeField]
     private Vector3 density;
-
+    [SerializeField]
+    private string dataType = null;
 
     private GameObject[,,] nodes = null;
     int xn, yn, zn = 0;
@@ -52,6 +53,7 @@ public class CubeCreator : MonoBehaviour
                     nodes[i, j, k].name = "Node[" + i.ToString() + "," + j.ToString() + "," + k.ToString() + "]";
 
                     nodes[i, j, k].transform.localPosition =  new Vector3(offset + i * density.x, offset + j * density.y, offset + k * density.z);
+                    nodes[i, j, k].GetComponent<NodeVisualisator>().dataType = dataType;
 
                     //nodes[i, j, k].transform.position = currentCoord + localoffset;
                     //currentCoord += new Vector3(0, 0, density.z);

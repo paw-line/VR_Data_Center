@@ -6,17 +6,25 @@ using UnityEngine;
 
 public class Callout : MonoBehaviour
 {
-
     [SerializeField]
     private Transform start = null;
     [SerializeField]
     private Transform finish = null;
     [SerializeField]
     private GameObject cylinder = null;
+    [SerializeField]
+    private GameObject model = null;
+    [SerializeField]
+    private DataSource source = null;
+
 
     void Update()
     {
         UpdateCylinderPosition(cylinder, start.position, finish.position);
+        if (source.GetData() == 0)
+            model.SetActive(false);
+        else
+            model.SetActive(true);
     }
 
     
