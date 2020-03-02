@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703601658270632183}
   - component: {fileID: 703601658270632182}
+  - component: {fileID: 9169295718842938502}
   m_Layer: 0
   m_Name: Distributor
   m_TagString: Untagged
@@ -44,3 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sources: []
+--- !u!114 &9169295718842938502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703601658270632181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a698b34fcf2d84ba1051311c1a78f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brocker_ip: 134.209.224.248
+  topic: test
+  clientId: qwerty
