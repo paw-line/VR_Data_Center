@@ -8,9 +8,12 @@ public class ColorChanger : MonoBehaviour
     static private float absCold = 11f;
     static private float allowedStart = 21f;
     static private float optimalStart = 23f;
+    //---------------------MIDDLE LINE = 24--
     static private float optimalFinish = 25f;
     static private float allowedFinish = 28f;
     static private float absHeat = 38f;
+
+    static private float maxTransp = 0.4f;
 
     public float temp = 23f;
     public DataSource source;
@@ -26,42 +29,59 @@ public class ColorChanger : MonoBehaviour
             newColor.r = 0;
             newColor.g = 0;
             newColor.b = 1;
+            newColor.a = maxTransp;
         }
         else if ((_temp > absCold) && (_temp <= allowedStart)) //Недопустимо холодно.
         {
             newColor.r = 0;
             newColor.g = (_temp - absCold) / (allowedStart - absCold); //Рост
             newColor.b = 1;
+            newColor.a = maxTransp;
         }
         else if ((_temp > allowedStart) && (_temp <= optimalStart)) // допустимо холодно.
         {
+            ///*
             newColor.r = 0;
             newColor.g = 1;
             newColor.b = (_temp - optimalStart) / (allowedStart - optimalStart); //Падение
+            newColor.a = (_temp - optimalStart) / (allowedStart - optimalStart)* maxTransp;
+            //*/
+
         }
         else if ((_temp > optimalStart) && (_temp <= optimalFinish)) //Ок температура. Зеленый?
         {
+            ///*
             newColor.r = 0;
             newColor.g = 1;
             newColor.b = 0;
+            newColor.a = 0;
+            //*/
+
         }
         else if ((_temp > optimalFinish) && (_temp <= allowedFinish)) //Допустимо тепло. Красные
         {
+            ///*
             newColor.r = (_temp - optimalFinish) / (allowedFinish - optimalFinish); //Рост
             newColor.g = 1;
             newColor.b = 0;
+            newColor.a = (_temp - optimalFinish) / (allowedFinish - optimalFinish)*maxTransp;
+            //*/
+
         }
         else if ((_temp > allowedFinish) && (_temp <= absHeat)) // Недопустимо жарко. Оранжевый
         {
+
             newColor.r = 1;
             newColor.g = (_temp - absHeat) / (allowedFinish - absHeat); //Падение
             newColor.b = 0;
+            newColor.a = maxTransp;
         }
         else if (_temp > absHeat)//Выше предела
         {
             newColor.r = 1;
             newColor.g = 0;
             newColor.b = 0;
+            newColor.a = maxTransp;
         }
 
         return (newColor);
@@ -76,6 +96,9 @@ public class ColorChanger : MonoBehaviour
         oldColor.r = newColor.r;
         oldColor.g = newColor.g;
         oldColor.b = newColor.b;
+
+        oldColor.a = newColor.a;
+
         material.SetColor("_Color", oldColor);
     }
 
@@ -137,6 +160,7 @@ public class ColorChanger : MonoBehaviour
     private void Awake()
     {
         material = this.GetComponent<Renderer>().material;
+        
         //SetTemp(temp); //Временный костыль для демонстрации
         StartCoroutine(DelayedUpdate(5f));
     }
