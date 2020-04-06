@@ -1,0 +1,366 @@
+\hypertarget{class_color_changer}{}\doxysection{Класс Color\+Changer}
+\label{class_color_changer}\index{ColorChanger@{ColorChanger}}
+
+
+Класс для изменения цвета кубов-\/индикаторов  
+
+
+Граф наследования\+:Color\+Changer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_color_changer}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_color_changer_acae732286af1cd2b0840e5f7403fc73f}{Set\+Temp}} (float \+\_\+temp)
+\begin{DoxyCompactList}\small\item\em Метод, устанавливающий температуру и, соотвественно, цвет на объекте \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_color_changer_acdd3e4dc6d96f03837ef116523d3a1a0}{Set\+Temp\+Cold}} ()
+\begin{DoxyCompactList}\small\item\em Метод, быстро устанавливающий недопустимо холодную температуру. Для тестов. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_color_changer_a92eda5a41e15ff6d7cc1bae3b9996e75}{Set\+Temp\+Warm}} ()
+\begin{DoxyCompactList}\small\item\em Метод, медленно устанавливающий недопустимо холодную температуру. Для тестов. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_color_changer_a700457b266f6ff03fe8da489f6ca0719}{Set\+Temp\+OK}} ()
+\begin{DoxyCompactList}\small\item\em Метод, со средней скоростью устанавливающий оптимальную температуру. Для тестов. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_color_changer_a775e4039e8a3206e81bc391fa5b89b91}{Set\+Temp}} (float \+\_\+temp, float \+\_\+time)
+\begin{DoxyCompactList}\small\item\em Метод, устанавливающий температуру и, соотвественно, цвет на объекте за указанное время. Интерфейс для корутины Smooth\+Change. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static Color \mbox{\hyperlink{class_color_changer_a833ec8538965116fd92bec4d9213cfef}{Temp\+To\+Color}} (float \+\_\+temp)
+\begin{DoxyCompactList}\small\item\em Метод-\/конвертер значения температуры в цвет. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_color_changer_aa70d66c96b5fb76ec563253130576f9c}{temp}} = 23f
+\begin{DoxyCompactList}\small\item\em Текущее значение температуры объекта \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_source}{Data\+Source}} \mbox{\hyperlink{class_color_changer_ab38119c9ac52c901f1d9a7f45aa983df}{source}}
+\begin{DoxyCompactList}\small\item\em Источник данных, контролирующий цвет. Присваевается в сцене до начала работы скрипта. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+I\+Enumerator \mbox{\hyperlink{class_color_changer_a2ba1f7abbf152f8bfc49bd793a4bbfec}{Smooth\+Change}} (float \+\_\+temp, float \+\_\+time)
+\begin{DoxyCompactList}\small\item\em Сопрограмма, для плавного изменения цвета объекта. ~\newline
+ \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_color_changer_a060a8cf6ab82d465d8f8412f1de126da}{Delayed\+Update}} (float \+\_\+time)
+\begin{DoxyCompactList}\small\item\em Сопрограмма-\/таймер, отвечающая за регулярное обновление температуры и цвета объекта в соотвествии с данными источника. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_color_changer_aacfae4b89b66709f7a2a5b1e4cee8433}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Установочная функция, вызываемая в момент активации объекта на сцене. В первую очередь в ней устанавливается ссылка на материал ренерера родительского объекта. Если это делать более традиционным путем -\/ префабной связью -\/ скриптом изменяется глобальный материал всех визуализаторов данного типа. ~\newline
+После установки материала начинается исполнение сопрограммы Delayed\+Update с частотой обновлений в update\+Time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_color_changer_a6d527de79d9e7890e303455c9d59c7b2}{update\+Time}} = 5f
+\begin{DoxyCompactList}\small\item\em Время обновления объекта \end{DoxyCompactList}\item 
+Material \mbox{\hyperlink{class_color_changer_a2f537bdbafed5e12d76a1b6e65a22ced}{material}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые статические данные}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{class_color_changer_a5d49b7cb96bf9f0fe562f9b95c189b6b}{abs\+Cold}} = 11f
+\begin{DoxyCompactList}\small\item\em Температура, ниже которой не отслеживается \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{class_color_changer_a783bf72d4a8d2159067ee959dddb6d98}{allowed\+Start}} = 21f
+\begin{DoxyCompactList}\small\item\em Граница нижней недопустимой температуры \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{class_color_changer_ab6707543084b537f0131aec0b2d55c73}{optimal\+Start}} = 23f
+\begin{DoxyCompactList}\small\item\em Нижняя граница оптимальной температуры \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{class_color_changer_a9ed922522df2e2e889a98a7f6a464699}{optimal\+Finish}} = 25f
+\begin{DoxyCompactList}\small\item\em Верхняя граница оптимальной температуры \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{class_color_changer_a22728685f78e31db4db19628b5517623}{allowed\+Finish}} = 28f
+\begin{DoxyCompactList}\small\item\em Граница верхней недопустимой температуры \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{class_color_changer_a256096df3cc58ea4e4eabd7e7dfe1f73}{abs\+Heat}} = 38f
+\begin{DoxyCompactList}\small\item\em Температура, выше которой не отслеживается \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be965}{max\+Transp}} = 0.\+4f
+\begin{DoxyCompactList}\small\item\em Максимальное значение прозрачности объекта \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для изменения цвета кубов-\/индикаторов 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+6.\+04.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+Если source не присвоить в сцене, объект не будет функционировать! 
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Необходимо сделать}
+\item[\mbox{\hyperlink{todo__todo000001}{Необходимо сделать}}]Сделать универсальный конвертер отдельным классом. С настройками из интерфейса юнити. \end{DoxyRefDesc}
+
+
+Этот класс занимается динамическим изменением цвета родительского объекта в соотвествии с данными из источника данных \mbox{\hyperlink{class_data_source}{Data\+Source}} source и настроек конвертации температуры из данного файла. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_color_changer_aacfae4b89b66709f7a2a5b1e4cee8433}\label{class_color_changer_aacfae4b89b66709f7a2a5b1e4cee8433}} 
+\index{ColorChanger@{ColorChanger}!Awake@{Awake}}
+\index{Awake@{Awake}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Color\+Changer.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установочная функция, вызываемая в момент активации объекта на сцене. В первую очередь в ней устанавливается ссылка на материал ренерера родительского объекта. Если это делать более традиционным путем -\/ префабной связью -\/ скриптом изменяется глобальный материал всех визуализаторов данного типа. ~\newline
+После установки материала начинается исполнение сопрограммы Delayed\+Update с частотой обновлений в update\+Time. 
+
+\mbox{\Hypertarget{class_color_changer_a060a8cf6ab82d465d8f8412f1de126da}\label{class_color_changer_a060a8cf6ab82d465d8f8412f1de126da}} 
+\index{ColorChanger@{ColorChanger}!DelayedUpdate@{DelayedUpdate}}
+\index{DelayedUpdate@{DelayedUpdate}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{DelayedUpdate()}{DelayedUpdate()}}
+{\footnotesize\ttfamily I\+Enumerator Color\+Changer.\+Delayed\+Update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сопрограмма-\/таймер, отвечающая за регулярное обновление температуры и цвета объекта в соотвествии с данными источника. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время обновления\\
+\hline
+\end{DoxyParams}
+В бесконечном цикле внутри сопрограммы из источника данных source берется значение температуры, после чего вызываетася метод Set\+Temp на время равное половине времени обновления. После этого производится ожидание на время обновление до повторения цикла. \mbox{\Hypertarget{class_color_changer_acae732286af1cd2b0840e5f7403fc73f}\label{class_color_changer_acae732286af1cd2b0840e5f7403fc73f}} 
+\index{ColorChanger@{ColorChanger}!SetTemp@{SetTemp}}
+\index{SetTemp@{SetTemp}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{SetTemp()}{SetTemp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Color\+Changer.\+Set\+Temp (\begin{DoxyParamCaption}\item[{float}]{\+\_\+temp }\end{DoxyParamCaption})}
+
+
+
+Метод, устанавливающий температуру и, соотвественно, цвет на объекте 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Устанавливаемая температура \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_color_changer_a775e4039e8a3206e81bc391fa5b89b91}\label{class_color_changer_a775e4039e8a3206e81bc391fa5b89b91}} 
+\index{ColorChanger@{ColorChanger}!SetTemp@{SetTemp}}
+\index{SetTemp@{SetTemp}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{SetTemp()}{SetTemp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Color\+Changer.\+Set\+Temp (\begin{DoxyParamCaption}\item[{float}]{\+\_\+temp,  }\item[{float}]{\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Метод, устанавливающий температуру и, соотвественно, цвет на объекте за указанное время. Интерфейс для корутины Smooth\+Change. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Устанавливаемая температура \\
+\hline
+\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время изменения \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_color_changer_acdd3e4dc6d96f03837ef116523d3a1a0}\label{class_color_changer_acdd3e4dc6d96f03837ef116523d3a1a0}} 
+\index{ColorChanger@{ColorChanger}!SetTempCold@{SetTempCold}}
+\index{SetTempCold@{SetTempCold}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{SetTempCold()}{SetTempCold()}}
+{\footnotesize\ttfamily void Color\+Changer.\+Set\+Temp\+Cold (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод, быстро устанавливающий недопустимо холодную температуру. Для тестов. 
+
+\mbox{\Hypertarget{class_color_changer_a700457b266f6ff03fe8da489f6ca0719}\label{class_color_changer_a700457b266f6ff03fe8da489f6ca0719}} 
+\index{ColorChanger@{ColorChanger}!SetTempOK@{SetTempOK}}
+\index{SetTempOK@{SetTempOK}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{SetTempOK()}{SetTempOK()}}
+{\footnotesize\ttfamily void Color\+Changer.\+Set\+Temp\+OK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод, со средней скоростью устанавливающий оптимальную температуру. Для тестов. 
+
+\mbox{\Hypertarget{class_color_changer_a92eda5a41e15ff6d7cc1bae3b9996e75}\label{class_color_changer_a92eda5a41e15ff6d7cc1bae3b9996e75}} 
+\index{ColorChanger@{ColorChanger}!SetTempWarm@{SetTempWarm}}
+\index{SetTempWarm@{SetTempWarm}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{SetTempWarm()}{SetTempWarm()}}
+{\footnotesize\ttfamily void Color\+Changer.\+Set\+Temp\+Warm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод, медленно устанавливающий недопустимо холодную температуру. Для тестов. 
+
+\mbox{\Hypertarget{class_color_changer_a2ba1f7abbf152f8bfc49bd793a4bbfec}\label{class_color_changer_a2ba1f7abbf152f8bfc49bd793a4bbfec}} 
+\index{ColorChanger@{ColorChanger}!SmoothChange@{SmoothChange}}
+\index{SmoothChange@{SmoothChange}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{SmoothChange()}{SmoothChange()}}
+{\footnotesize\ttfamily I\+Enumerator Color\+Changer.\+Smooth\+Change (\begin{DoxyParamCaption}\item[{float}]{\+\_\+temp,  }\item[{float}]{\+\_\+time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сопрограмма, для плавного изменения цвета объекта. ~\newline
+ 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Устанавливаемая температура \\
+\hline
+\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время изменения\\
+\hline
+\end{DoxyParams}
+Что у нас есть\+:~\newline
+ • Целевой R\+GB цвет ~\newline
+ • Время смены ~\newline
+ • Изначальный R\+GB цвет ~\newline
+ • Delta\+Time – время смены кадра в Unity ~\newline
+ R\+GB цвет состоит из трёх компонент, собственно R G и B (ещё есть альфа-\/канал, но в данном случае он не важен). ~\newline
+ Для плавной смены цвета нужно чтобы каждый кадр значение цвета менялось в сторону целевого цвета на величину пропорциональную Delta\+Time. Должна соблюдаться пропорция\+: ~\newline
+ Delta\+Color/(ЦелевойЦвет-\/ИзначальныйЦвет) = Delta\+Time / ВремяСмены ~\newline
+ Где Delta\+Color – изменение цвета за кадр ~\newline
+ Таким образом ~\newline
+ Delta\+Color = Delta\+Time $\ast$ (ЦелевойЦвет-\/ИзначальныйЦвет) / ВремяСмены ~\newline
+ При линейной плавной смене цвета таких дельты будет 3\+: для каждого из каналов R\+GB. Если же смена нелинейная, а идет как, например, в нашем случае через зеленый, то дельтировать нужно контролирующий параметр, то есть температуру. \mbox{\Hypertarget{class_color_changer_a833ec8538965116fd92bec4d9213cfef}\label{class_color_changer_a833ec8538965116fd92bec4d9213cfef}} 
+\index{ColorChanger@{ColorChanger}!TempToColor@{TempToColor}}
+\index{TempToColor@{TempToColor}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{TempToColor()}{TempToColor()}}
+{\footnotesize\ttfamily static Color Color\+Changer.\+Temp\+To\+Color (\begin{DoxyParamCaption}\item[{float}]{\+\_\+temp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Метод-\/конвертер значения температуры в цвет. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Конвертируемая температура \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Конвертированный в соответствии с температурой цвет Метод доступен извне класса, так как им так же пользуется для изменения цветов Node\+Visualiser. ~\newline
+На самом деле это костыль и надо сделать универсальный конвертер отдельным классом. ~\newline
+ ~\newline
+Метод использует значения настроек цветов из этого файла как границы перехода цветов\+: ~\newline
+ • Если температура $<$= abs\+Cold, то цвет будет чистым синим с обычной прозрачностью ~\newline
+ • Если abs\+Cold $<$= температура $<$ allowed\+Start, то цвет будет голубым и приблежаться к бирюзовому с ростом температуры. Прозрачность нормальная ~\newline
+ • Если allowed\+Start $<$= температура $<$ optimal\+Start, то цвет будет бирюзовым и приблежаться к зеленому с ростом температуры. Прозрачность тоже будет расти до полного исчезновения ~\newline
+ • Если optimal\+Start $<$= температура $<$ optimal\+Finish, Объект полностью прозрачен~\newline
+ • Если optimal\+Finish $<$= температура $<$ allowed\+Finish, то цвет будет желтым и приблежаться к оранжевому с ростом температуры. Прозрачность тоже будет падать до нормального значения ~\newline
+ • Если allowed\+Finish $<$= температура $<$ abs\+Heat, то цвет будет оранжевым и приблежаться к красному с ростом температуры. Прозрачность нормальная ~\newline
+ • Если температура $>$ abs\+Cold, то цвет будет чистым красным с обычной прозрачностью ~\newline
+ 
+\end{DoxyReturn}
+
+\begin{DoxyItemize}
+\item 
+\item 
+\item 
+\end{DoxyItemize}
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_color_changer_a5d49b7cb96bf9f0fe562f9b95c189b6b}\label{class_color_changer_a5d49b7cb96bf9f0fe562f9b95c189b6b}} 
+\index{ColorChanger@{ColorChanger}!absCold@{absCold}}
+\index{absCold@{absCold}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{absCold}{absCold}}
+{\footnotesize\ttfamily float Color\+Changer.\+abs\+Cold = 11f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Температура, ниже которой не отслеживается 
+
+\mbox{\Hypertarget{class_color_changer_a256096df3cc58ea4e4eabd7e7dfe1f73}\label{class_color_changer_a256096df3cc58ea4e4eabd7e7dfe1f73}} 
+\index{ColorChanger@{ColorChanger}!absHeat@{absHeat}}
+\index{absHeat@{absHeat}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{absHeat}{absHeat}}
+{\footnotesize\ttfamily float Color\+Changer.\+abs\+Heat = 38f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Температура, выше которой не отслеживается 
+
+\mbox{\Hypertarget{class_color_changer_a22728685f78e31db4db19628b5517623}\label{class_color_changer_a22728685f78e31db4db19628b5517623}} 
+\index{ColorChanger@{ColorChanger}!allowedFinish@{allowedFinish}}
+\index{allowedFinish@{allowedFinish}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{allowedFinish}{allowedFinish}}
+{\footnotesize\ttfamily float Color\+Changer.\+allowed\+Finish = 28f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Граница верхней недопустимой температуры 
+
+\mbox{\Hypertarget{class_color_changer_a783bf72d4a8d2159067ee959dddb6d98}\label{class_color_changer_a783bf72d4a8d2159067ee959dddb6d98}} 
+\index{ColorChanger@{ColorChanger}!allowedStart@{allowedStart}}
+\index{allowedStart@{allowedStart}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{allowedStart}{allowedStart}}
+{\footnotesize\ttfamily float Color\+Changer.\+allowed\+Start = 21f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Граница нижней недопустимой температуры 
+
+\mbox{\Hypertarget{class_color_changer_a2f537bdbafed5e12d76a1b6e65a22ced}\label{class_color_changer_a2f537bdbafed5e12d76a1b6e65a22ced}} 
+\index{ColorChanger@{ColorChanger}!material@{material}}
+\index{material@{material}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{material}{material}}
+{\footnotesize\ttfamily Material Color\+Changer.\+material = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал 
+
+\mbox{\Hypertarget{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be965}\label{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be965}} 
+\index{ColorChanger@{ColorChanger}!maxTransp@{maxTransp}}
+\index{maxTransp@{maxTransp}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{maxTransp}{maxTransp}}
+{\footnotesize\ttfamily float Color\+Changer.\+max\+Transp = 0.\+4f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Максимальное значение прозрачности объекта 
+
+\mbox{\Hypertarget{class_color_changer_a9ed922522df2e2e889a98a7f6a464699}\label{class_color_changer_a9ed922522df2e2e889a98a7f6a464699}} 
+\index{ColorChanger@{ColorChanger}!optimalFinish@{optimalFinish}}
+\index{optimalFinish@{optimalFinish}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{optimalFinish}{optimalFinish}}
+{\footnotesize\ttfamily float Color\+Changer.\+optimal\+Finish = 25f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Верхняя граница оптимальной температуры 
+
+\mbox{\Hypertarget{class_color_changer_ab6707543084b537f0131aec0b2d55c73}\label{class_color_changer_ab6707543084b537f0131aec0b2d55c73}} 
+\index{ColorChanger@{ColorChanger}!optimalStart@{optimalStart}}
+\index{optimalStart@{optimalStart}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{optimalStart}{optimalStart}}
+{\footnotesize\ttfamily float Color\+Changer.\+optimal\+Start = 23f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Нижняя граница оптимальной температуры 
+
+\mbox{\Hypertarget{class_color_changer_ab38119c9ac52c901f1d9a7f45aa983df}\label{class_color_changer_ab38119c9ac52c901f1d9a7f45aa983df}} 
+\index{ColorChanger@{ColorChanger}!source@{source}}
+\index{source@{source}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{source}{source}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_source}{Data\+Source}} Color\+Changer.\+source}
+
+
+
+Источник данных, контролирующий цвет. Присваевается в сцене до начала работы скрипта. 
+
+\mbox{\Hypertarget{class_color_changer_aa70d66c96b5fb76ec563253130576f9c}\label{class_color_changer_aa70d66c96b5fb76ec563253130576f9c}} 
+\index{ColorChanger@{ColorChanger}!temp@{temp}}
+\index{temp@{temp}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{temp}{temp}}
+{\footnotesize\ttfamily float Color\+Changer.\+temp = 23f}
+
+
+
+Текущее значение температуры объекта 
+
+\mbox{\Hypertarget{class_color_changer_a6d527de79d9e7890e303455c9d59c7b2}\label{class_color_changer_a6d527de79d9e7890e303455c9d59c7b2}} 
+\index{ColorChanger@{ColorChanger}!updateTime@{updateTime}}
+\index{updateTime@{updateTime}!ColorChanger@{ColorChanger}}
+\doxysubsubsection{\texorpdfstring{updateTime}{updateTime}}
+{\footnotesize\ttfamily float Color\+Changer.\+update\+Time = 5f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время обновления объекта 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_color_changer_8cs}{Color\+Changer.\+cs}}\end{DoxyCompactItemize}
