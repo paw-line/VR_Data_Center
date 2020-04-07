@@ -2,34 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * \brief Класс экземпляров объемных визуализаторов
+ * \authors Пивко Артём
+ * \version 1.0
+ * \date 7.04.20
+ * \warning В случае если на сцене будет отсутствовать дистрибутор данных, объект не будет функционировать. 
+ * \todo Разделить Init на получение списка валидных источников и обновление данных. 
+ *  
+ * Этот класс занимается динамическим изменением цвета родительского объекта 
+ * в соотвествии с данными из источника данных DataSource source и 
+ * настроек конвертации температуры из данного файла.
+ * 
+ */
 public class NodeVisualisator : MonoBehaviour
 {
     //[SerializeField]
-    private Distributor distributor = null;
+    private Distributor distributor = null;         ///< Ссылка на объект-дистрибутор источников данных
 
     //[SerializeField]
-    private List<DataSource> sources;
+    private List<DataSource> sources;               ///< Актуальный список источников, влияющих на данный визуализатор
 
     [SerializeField]
-    private float refreshTime = 10f;
+    private float refreshTime = 10f;                ///< Время обновления визуализатора
 
     [SerializeField]
-    private float curData = 0;
+    private float curData = 0;                      ///< Текущее значение визуализируемой информации на этом визуализаторе
 
-    public string dataType = null;
+    public string dataType = null;                  ///< Тип данных, визуализируемых данным объектов (какой параметр запрашивать у источника)
 
-    private Material material = null; //Устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
+    /** \brief Ссылка на текущий материал данного визуализатора. 
+     * Устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал.
+    */
+    private Material material = null;
 
+    /** \brief Установочная функция, вызываемая в момент активации объекта на сцене.
+     * Вызывает сопрограмму DelayedInit ввиду необходимости инициализации с задержкой. Подробнее в описании DelayedInit. 
+    */
     void Awake()
     {
         StartCoroutine(DelayedInit());
     }
 
+
+    /** \brief Функция, обновляющая значение визуализируемой информации по данным из источников. 
+    * 
+    */
     private void Init()
     {
         if (sources.Count == 0)
         {
-            Debug.Log("Node " + this.gameObject.name.ToString() +  ": No sources detected");
+            Debug.Log("Node " + this.gameObject.name.ToString() +  ": No sources detected at all");
             material.color = Color.gray;
             return;
         }else /*if (sources.Count == 1)
@@ -89,6 +112,11 @@ public class NodeVisualisator : MonoBehaviour
 
     }
 
+    /** \brief Сопрограмма-таймер основного цикла.
+     * Отвечает за регулярное обновление отображаемых данных в соотвествии с данными источника. \n
+     * В бесконечном цикле внутри сопрограммы вызывается функция Init, 
+     * после чего производится ожидание на время обновления до повторения цикла. 
+    */
     IEnumerator DelayedRefresh()
     {
         //Debug.Log("In coroutine");
@@ -102,11 +130,18 @@ public class NodeVisualisator : MonoBehaviour
 
     }
 
-    IEnumerator DelayedInit() //Без этой задержки дистрибутор не успевает найти сурсы
+    /** \brief Установочная сопрограмма.
+     * Выполняет получение ссылки на материал данного объекта, получает ссылку на экземпляр глобального дистрибутора данных
+     * и запускает бесконечную сопрограмму DelayedRefresh. Перед выполнением всех вышеописанных действий ожидает 3 секунды 
+     * для того чтобы дистрибутор успел собрать сведения об источниках на сцене. 
+    */
+    IEnumerator DelayedInit() 
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f); //Без этой задержки дистрибутор не успевает найти сурсы
         material = this.GetComponent<Renderer>().material;
         distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
+        if (distributor == null)
+            Debug.LogError("Node " + gameObject.name.ToString() + ": No distributor found in the scene");
         sources = distributor.sources;
 
         //Debug.Log(sources[0].GetData());
