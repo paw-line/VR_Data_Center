@@ -5,14 +5,14 @@ using UnityEngine;
 /**
  * \brief Класс для изменения цвета кубов-индикаторов
  * \authors Пивко Артём
- * \version 1.0
- * \date 6.04.20
+ * \version 1.1
+ * \date 8.04.20
  * \warning Если source не присвоить в сцене, объект не будет функционировать!
- * \todo Сделать универсальный конвертер отдельным классом. С настройками из интерфейса юнити. 
+ * \todo ???
  *  
  * Этот класс занимается динамическим изменением цвета родительского объекта 
- * в соотвествии с данными из источника данных DataSource source и 
- * настроек конвертации температуры из данного файла.
+ * в соотвествии с данными из источника данных DataSource source.
+ * Для конверсии используется синглтон UniversalController
  * 
  */
 
@@ -39,89 +39,7 @@ public class ColorChanger : MonoBehaviour
 
     private Material material = null; ///< Ссылка на устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
 
-    /** \brief Метод-конвертер значения температуры в цвет. 
-     * \param [in] _temp Конвертируемая температура
-     * \return Конвертированный в соответствии с температурой цвет
-     * Метод доступен извне класса, так как им так же пользуется для изменения цветов NodeVisualiser. \n
-     * На самом деле это костыль и надо сделать универсальный конвертер отдельным классом. \n 
-     * \n
-     * Метод использует значения настроек цветов из этого файла как границы перехода цветов: \n 
-     * • Если температура <= absCold, то цвет будет чистым синим с обычной прозрачностью \n 
-     * • Если absCold <= температура < allowedStart, то цвет будет голубым и приблежаться к бирюзовому с ростом температуры. Прозрачность нормальная \n 
-     * • Если allowedStart <= температура < optimalStart, то цвет будет бирюзовым и приблежаться к зеленому с ростом температуры. Прозрачность тоже будет расти до полного исчезновения \n 
-     * • Если optimalStart <= температура < optimalFinish, Объект полностью прозрачен\n 
-     * • Если optimalFinish <= температура < allowedFinish, то цвет будет желтым и приблежаться к оранжевому с ростом температуры. Прозрачность тоже будет падать до нормального значения \n 
-     * • Если allowedFinish <= температура < absHeat, то цвет будет оранжевым и приблежаться к красному с ростом температуры. Прозрачность нормальная \n 
-     * • Если температура > absCold, то цвет будет чистым красным с обычной прозрачностью \n 
-     * 
-     * */
-    public static Color TempToColor(float _temp)
-    {
-        Color newColor = new Color();
-
-        if (_temp <= absCold) //Ниже предела
-        {
-            newColor.r = 0;
-            newColor.g = 0;
-            newColor.b = 1;
-            newColor.a = maxTransp;
-        }
-        else if ((_temp > absCold) && (_temp <= allowedStart)) //Недопустимо холодно.
-        {
-            newColor.r = 0;
-            newColor.g = (_temp - absCold) / (allowedStart - absCold); //Рост
-            newColor.b = 1;
-            newColor.a = maxTransp;
-        }
-        else if ((_temp > allowedStart) && (_temp <= optimalStart)) // допустимо холодно.
-        {
-            ///*
-            newColor.r = 0;
-            newColor.g = 1;
-            newColor.b = (_temp - optimalStart) / (allowedStart - optimalStart); //Падение
-            newColor.a = (_temp - optimalStart) / (allowedStart - optimalStart)* maxTransp;
-            //*/
-
-        }
-        else if ((_temp > optimalStart) && (_temp <= optimalFinish)) //Ок температура. Прозрачный
-        {
-            ///*
-            newColor.r = 0;
-            newColor.g = 1;
-            newColor.b = 0;
-            newColor.a = 0;
-            //*/
-
-        }
-        else if ((_temp > optimalFinish) && (_temp <= allowedFinish)) //Допустимо тепло. Красные
-        {
-            ///*
-            newColor.r = (_temp - optimalFinish) / (allowedFinish - optimalFinish); //Рост
-            newColor.g = 1;
-            newColor.b = 0;
-            newColor.a = (_temp - optimalFinish) / (allowedFinish - optimalFinish)*maxTransp;
-            //*/
-
-        }
-        else if ((_temp > allowedFinish) && (_temp <= absHeat)) // Недопустимо жарко. Оранжевый
-        {
-
-            newColor.r = 1;
-            newColor.g = (_temp - absHeat) / (allowedFinish - absHeat); //Падение
-            newColor.b = 0;
-            newColor.a = maxTransp;
-        }
-        else if (_temp > absHeat)//Выше предела
-        {
-            newColor.r = 1;
-            newColor.g = 0;
-            newColor.b = 0;
-            newColor.a = maxTransp;
-        }
-
-        return (newColor);
-    }
-
+    
     /** \brief Метод, устанавливающий температуру и, соотвественно, цвет на объекте
      * \param [in] _temp Устанавливаемая температура
      */
@@ -130,7 +48,8 @@ public class ColorChanger : MonoBehaviour
         temp = _temp;
         Color newColor;
         Color oldColor = material.color;
-        newColor = TempToColor(temp);
+        //newColor = TempToColor(temp);
+        newColor = UniversalConverter.GetInstance().TempToColor(temp);
         oldColor.r = newColor.r;
         oldColor.g = newColor.g;
         oldColor.b = newColor.b;

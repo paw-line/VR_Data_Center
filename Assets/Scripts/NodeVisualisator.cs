@@ -117,7 +117,8 @@ public class NodeVisualisator : MonoBehaviour
         else if (validSources.Count == 1)
         {//Найден один подходящий источник. Берем значение тупо из него. 
          //Debug.Log("Node " + this.gameObject.name.ToString() + ": Found one valid source");
-            material.color = ColorChanger.TempToColor(validSources[0].GetData());
+         //material.color = ColorChanger.TempToColor(validSources[0].GetData()); //Старый код
+            material.color = UniversalConverter.GetInstance().TempToColor(validSources[0].GetData());
         }
         else
         {
@@ -138,7 +139,9 @@ public class NodeVisualisator : MonoBehaviour
             sum *= k;
 
             //Debug.Log("Overall sum:" + sum.ToString());
-            material.color = ColorChanger.TempToColor(sum);
+            //material.color = ColorChanger.TempToColor(sum); //Старый код
+
+            material.color = UniversalConverter.GetInstance().TempToColor(sum);
             curData = sum;
         }
     }
