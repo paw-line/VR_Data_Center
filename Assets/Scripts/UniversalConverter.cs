@@ -36,6 +36,33 @@ public class UniversalConverter : MonoBehaviour
         return instance;
     }
 
+    /** \brief Функция, инициализурующая статическую ссылку на данный объект. 
+     * Если ссылка ещё не была инициализированна, то инициализирует её этим объектом. 
+     * Если же она уже не пуста, то это значит что синглтор уже иницализирован. 
+     * Тогда функция уничтожает данный объект и выводит предупреждение.
+     */
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Debug.LogWarning("Object " + this.gameObject.name + "tried to create another instance of " + this.GetType().ToString() + "singleton. " +
+                "It will be destroyed. Try using singleton from gameObject" + instance.gameObject.name);
+            Destroy(this);
+        }
+    }
+
+    /** \brief Функция, возвращающая строку с локацией синглтона. 
+     * Требуется для обнаружения несанкционированных экземпляров синглтона в случае если самоуничтожился неправильный синглтон. 
+     */
+    public string GetLocation()
+    {
+        Debug.Log("Singleton is located at " + instance.gameObject.name + "on coordinates: " + instance.transform.position.ToString());
+        return ("Singleton is located at " + instance.gameObject.name + "on coordinates: " + instance.transform.position.ToString());
+    }
+
+
     //Настройки цветов. Текущие - для теплого периода.
     [SerializeField]
     private float absCold = 11f;         ///< Температура, ниже которой не отслеживается
@@ -135,33 +162,7 @@ public class UniversalConverter : MonoBehaviour
         return (newColor);
     }
 
-    /** \brief Функция, инициализурующая статическую ссылку на данный объект. 
-     * Если ссылка ещё не была инициализированна, то инициализирует её этим объектом. 
-     * Если же она уже не пуста, то это значит что синглтор уже иницализирован. 
-     * Тогда функция уничтожает данный объект и выводит предупреждение.
-     */
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Debug.LogWarning("Object " + this.gameObject.name + "tried to create another instance of UniversalConverter singleton. " +
-                "It will be destroyed. Try using singleton from gameObject" + instance.gameObject.name);
-            Destroy(this);
-        }
-            
-
-    }
-
-    /** \brief Функция, возвращающая строку с локацией синглтона. 
-     * Требуется для обнаружения несанкционированных экземпляров синглтона в случае если самоуничтожился неправильный синглтон. 
-     */
-    public string GetLocation()
-    {
-        Debug.Log("Singleton is located at " + instance.gameObject.name + "on coordinates: " + instance.transform.position.ToString());
-        return ("Singleton is located at " + instance.gameObject.name + "on coordinates: " + instance.transform.position.ToString() );
-    }
+    
 
 
 }

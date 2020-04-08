@@ -18,7 +18,7 @@ using UnityEngine;
 public class NodeVisualisator : MonoBehaviour
 {
     //[SerializeField]
-    private Distributor distributor = null;         ///< Ссылка на объект-дистрибутор источников данных
+    //private Distributor distributor = null;         ///< Ссылка на объект-дистрибутор источников данных
 
     //[SerializeField]
     //private List<DataSource> sources;               // Актуальный список всех источников
@@ -47,7 +47,8 @@ public class NodeVisualisator : MonoBehaviour
     */
     private void UpdateValidSources()
     {
-        List<DataSource> sources = distributor.sources;
+        //List<DataSource> sources = distributor.sources;
+        List<DataSource> sources = Distributor.GetInstance().GetSources();
         validSources = new List<DataSource>();
 
 
@@ -163,10 +164,13 @@ public class NodeVisualisator : MonoBehaviour
     {
         yield return new WaitForSeconds(3f); //Без этой задержки дистрибутор не успевает найти сурсы
         material = this.GetComponent<Renderer>().material;
-        distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
+        //distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
+        /*
+        distributor = Distributor.GetInstance();
         if (distributor == null)
             Debug.LogError("Node " + gameObject.name.ToString() + ": No distributor found in the scene");
         //sources = distributor.sources;
+        */
         UpdateValidSources();
 
         //Debug.Log(sources[0].GetData());

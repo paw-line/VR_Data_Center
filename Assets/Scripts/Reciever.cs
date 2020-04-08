@@ -26,7 +26,7 @@ public class Reciever : MonoBehaviour
 
 
     //[SerializeField]
-    private Distributor distributor = null;
+    //private Distributor distributor = null;
     //[SerializeField]
     private List<DataSource> sources;
     private List<string> sourcesnames = new List<string>();
@@ -43,8 +43,10 @@ public class Reciever : MonoBehaviour
     IEnumerator DelayedInit() //Без этой задержки дистрибутор не успевает найти сурсы
     {
         yield return new WaitForSeconds(3f);
-        distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
-        sources = distributor.sources;
+        //distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
+        //distributor = Distributor.GetInstance();
+        //sources = distributor.sources;
+        sources = Distributor.GetInstance().GetSources();
 
         int c = 0;
         foreach (DataSource i in sources)
