@@ -99,7 +99,7 @@ public class Reciever : MonoBehaviour
             
             if (i == topc)
             {
-                Debug.Log(topc + " ?=" + i);
+                //Debug.Log(topc + " ?=" + i);
                 //gotcha = c;
                 sources[c].Set(data, name);
                 break;

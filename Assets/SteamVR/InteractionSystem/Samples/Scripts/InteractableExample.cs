@@ -6,6 +6,8 @@
 
 using UnityEngine;
 using System.Collections;
+//using TMPro;
+using UnityEngine.UI;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
@@ -13,23 +15,25 @@ namespace Valve.VR.InteractionSystem.Sample
 	[RequireComponent( typeof( Interactable ) )]
 	public class InteractableExample : MonoBehaviour
     {
-        private TextMesh generalText;
-        private TextMesh hoveringText;
+        [SerializeField]
+        private Text generalText;
+        [SerializeField]
+        private Text hoveringText;
         private Vector3 oldPosition;
 		private Quaternion oldRotation;
 
 		private float attachTime;
 
-		private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags & ( ~Hand.AttachmentFlags.SnapOnAttach ) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
+        private Hand.AttachmentFlags attachmentFlags = Hand.defaultAttachmentFlags;// & ( ~Hand.AttachmentFlags.SnapOnAttach ) & (~Hand.AttachmentFlags.DetachOthers) & (~Hand.AttachmentFlags.VelocityMovement);
 
         private Interactable interactable;
 
 		//-------------------------------------------------
 		void Awake()
 		{
-			var textMeshs = GetComponentsInChildren<TextMesh>();
-            generalText = textMeshs[0];
-            hoveringText = textMeshs[1];
+			//var textMeshs = GetComponentsInChildren<TextMesh>();
+            //generalText = textMeshs[0];
+            //hoveringText = textMeshs[1];
 
             generalText.text = "No Hand Hovering";
             hoveringText.text = "Hovering: False";
@@ -66,6 +70,8 @@ namespace Valve.VR.InteractionSystem.Sample
 
             if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
             {
+                generalText.text = "Grabbed object";
+                /*
                 // Save our position/rotation so that we can restore it when we detach
                 oldPosition = transform.position;
                 oldRotation = transform.rotation;
@@ -76,9 +82,12 @@ namespace Valve.VR.InteractionSystem.Sample
 
                 // Attach this object to the hand
                 hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
+                */
             }
             else if (isGrabEnding)
             {
+                generalText.text = "Grab ended";
+                /*
                 // Detach this object from the hand
                 hand.DetachObject(gameObject);
 
@@ -88,6 +97,7 @@ namespace Valve.VR.InteractionSystem.Sample
                 // Restore position/rotation
                 transform.position = oldPosition;
                 transform.rotation = oldRotation;
+                */
             }
 		}
 
