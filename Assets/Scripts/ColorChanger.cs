@@ -16,7 +16,7 @@ using UnityEngine;
  * 
  */
 
-public class ColorChanger : MonoBehaviour
+public class ColorChanger : Visualiser//MonoBehaviour
 {
     //Настройки цветов. Текущие - для теплого периода.
     static private float absCold = 11f;         ///< Температура, ниже которой не отслеживается
@@ -33,13 +33,17 @@ public class ColorChanger : MonoBehaviour
 
     public float temp = 23f;                    ///< Текущее значение температуры объекта
     public DataSource source;                   ///< Источник данных, контролирующий цвет. Присваевается в сцене до начала работы скрипта.
-    
-    
-
 
     private Material material = null; ///< Ссылка на устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
 
-    
+    public override float Scan(out string visType, out string dataType, out string topic)
+    {
+        visType = this.GetType().ToString();
+        dataType = source.GetType();
+        topic = source.name;
+        return temp;
+    }
+
     /** \brief Метод, устанавливающий температуру и, соотвественно, цвет на объекте
      * \param [in] _temp Устанавливаемая температура
      */
@@ -140,6 +144,7 @@ public class ColorChanger : MonoBehaviour
      */
     IEnumerator DelayedUpdate(float _time)
     {
+        yield return new WaitForSeconds(_time);
         while (true) {
             SetTemp(source.GetData(), _time / 2);
             yield return new WaitForSeconds(_time);

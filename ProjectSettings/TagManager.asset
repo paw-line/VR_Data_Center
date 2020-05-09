@@ -13,16 +13,16 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Floor&Ceiling
+  - Walls
+  - Racks
+  - Equipment
+  - Alarms
+  - World Interfaces
+  - 3D Visualisers
+  - Box Visualisers
+  - Bar Visualisers
+  - Stream Visualisers
   - 
   - 
   - 

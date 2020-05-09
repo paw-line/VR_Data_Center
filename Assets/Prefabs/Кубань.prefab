@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1687271138305347557}
   - component: {fileID: 1687271138305347561}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: "\u041A\u0443\u0431\u0430\u043D\u044C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,3 +46,4 @@ MonoBehaviour:
   node: {fileID: 8247118054845999489, guid: 203479d192f78c4419bb34a00b30e45e, type: 3}
   zoneSize: {x: 2, y: 2, z: 2}
   density: {x: 1, y: 1, z: 1}
+  dataType: 

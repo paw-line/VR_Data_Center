@@ -18,8 +18,13 @@ public class Billboard : MonoBehaviour
         }
         else
         {
-            Vector3 targetPosition = new Vector3(Camera.current.transform.position.x, transform.position.y, Camera.current.transform.position.z);
-            transform.LookAt(targetPosition);
+            //Debug.Log(Camera.allCamerasCount);
+            //Debug.Log(Camera.current.name);
+            if (Camera.current != null)
+            {
+                Vector3 targetPosition = new Vector3(Camera.current.transform.position.x, transform.position.y, Camera.current.transform.position.z);
+                transform.LookAt(targetPosition);
+            }
         }
     }
 }

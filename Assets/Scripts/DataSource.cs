@@ -34,6 +34,16 @@ public class DataSource : MonoBehaviour
 
     private void Awake()
     {
+        if (transform.parent != null)
+        {
+            this.gameObject.name = Distributor.rootTopic + "/" + transform.parent.gameObject.name + "/" + this.name;
+        }
+        //StartCoroutine(DelayedInit(3f));
+    }
+
+    IEnumerator DelayedInit(float _time)
+    {
+        yield return new WaitForSeconds(_time);
         this.gameObject.name = Distributor.rootTopic + "/" + transform.parent.gameObject.name + "/" + this.name;
     }
 
