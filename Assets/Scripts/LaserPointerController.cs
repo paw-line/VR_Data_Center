@@ -33,7 +33,7 @@ public class LaserPointerController : MonoBehaviour
         if (hand == null)
             Debug.LogError("На объекте не обнаружено Руки O_o");
         handType = hand.handType;
-        /*
+        
         if (targetCanvas.transform.childCount < n)
         {
             Debug.LogError("Наручный канвас не имеет достаточного количества текстовых блоков");
@@ -42,7 +42,8 @@ public class LaserPointerController : MonoBehaviour
         else
         {
             text = new TextMeshProUGUI[n];
-            for (int i = 0; i < n; n++)
+            
+            for (int i = 0; i < n; i++)
             {
                 text[i] = targetCanvas.transform.GetChild(i).GetComponent<TextMeshProUGUI>();
                 if (text[i] == null)
@@ -53,37 +54,44 @@ public class LaserPointerController : MonoBehaviour
                 }
                 text[i].text = "";
             }
+            
         }
 
         targetCanvas.gameObject.SetActive(false);
 
-    */
-
-        
-        
     }
 
     private void Scan()
-    {
+        {
         Ray raycast = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         bool bHit = Physics.Raycast(raycast, out hit);
         //string visType, dataType, topic;
-        if (hit.transform.gameObject.GetComponent<Visualiser>() == null)
+
+        Visualiser targetedVis = hit.transform.gameObject.GetComponent<Visualiser>();
+        if (targetedVis == null)
+        {
+            targetedVis = hit.transform.GetComponentInParent<Visualiser>();
+        }
+
+
+        if (targetedVis == null)
         {
             Debug.Log("Сканируется не визуализатор");
+            for (int i = 0; i < n; i++)
+            {
+               text[i].text = "";
+            }
             return;
         }
         else
         {
-            data = hit.transform.gameObject.GetComponent<Visualiser>().Scan(out visType, out dataType, out topic);
+            data = targetedVis.Scan(out visType, out dataType, out topic);
             text[0].text = visType;
             text[1].text = dataType;
             text[2].text = data.ToString();
             text[3].text = topic;
         }
-        
-        //ПРОДОЛЖИТЬ ТУТ
 
     }
 
@@ -101,7 +109,7 @@ public class LaserPointerController : MonoBehaviour
         else
         {
             target.active = false;
-            targetCanvas.gameObject.SetActive(false);
+            //targetCanvas.gameObject.SetActive(false);
             //Debug.Log("Выключаю лазер");
         }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarVisualiser : MonoBehaviour
+public class BarVisualiser : Visualiser
 {
     /*
     Визуализатор-столбец, меняющий свою высоту (и мб цвет) в зависимости от значения данных
@@ -28,11 +28,19 @@ public class BarVisualiser : MonoBehaviour
     [SerializeField]
     private float maxData = 100f;
 
+    private float curData;
     private Color defColor;
     private Material material = null;
     private float updateTime = 1f;              ///< Время обновления объекта
     public DataSource source;                   ///< Источник данных, контролирующий цвет. Присваевается в сцене до начала работы скрипта.
-    
+
+    public override float Scan(out string visType, out string dataType, out string topic)
+    {
+        visType = this.GetType().ToString();
+        dataType = source.GetType();
+        topic = source.name;
+        return curData;
+    }
 
     private void SetHardHeight(float h)
     {
@@ -64,6 +72,7 @@ public class BarVisualiser : MonoBehaviour
             Color high = new Color(1, 0, 0);
             material.SetColor("_Color", high);
         }
+        curData = data;
 
     }
 

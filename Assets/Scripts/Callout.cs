@@ -4,7 +4,7 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 
-public class Callout : MonoBehaviour
+public class Callout : Visualiser
 {
     [SerializeField]
     private Transform start = null;
@@ -17,6 +17,17 @@ public class Callout : MonoBehaviour
     [SerializeField]
     private DataSource source = null;
 
+    public override float Scan(out string visType, out string dataType, out string topic)
+    {
+        visType = this.GetType().ToString();
+        dataType = source.GetType();
+        topic = source.name;
+        if (model.active)
+            return 1;
+        else
+            return 0;
+
+    }
 
     void Update()
     {

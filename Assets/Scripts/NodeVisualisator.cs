@@ -8,14 +8,13 @@ using UnityEngine;
  * \version 1.0
  * \date 7.04.20
  * \warning В случае если на сцене будет отсутствовать дистрибутор данных, объект не будет функционировать. 
- * \todo Разделить Init на получение списка валидных источников и обновление данных. 
  *  
  * Этот класс занимается динамическим изменением цвета родительского объекта 
  * в соотвествии с данными из источника данных DataSource source и 
  * настроек конвертации температуры из данного файла.
  * 
  */
-public class NodeVisualisator : MonoBehaviour
+public class NodeVisualisator : Visualiser
 {
     //[SerializeField]
     //private Distributor distributor = null;         ///< Ссылка на объект-дистрибутор источников данных
@@ -39,6 +38,27 @@ public class NodeVisualisator : MonoBehaviour
     */
     private Material material = null;
 
+    public override float Scan(out string visType, out string dataType1, out string topic)
+    {
+        visType = this.GetType().ToString();
+        if (validSources.Count == 0)
+        {
+            dataType1 = "ERROR: No data source is connected to this visualiser";
+            topic = "";
+        }
+        else
+        {
+            dataType1 = dataType;
+            if (validSources.Count == 1)
+                topic = validSources[0].name;
+            else
+                topic = "Mixed topic";
+        }
+
+         
+
+        return curData;
+    }
 
     /** \brief Функция обновления списка актуальных источников
      * Обнуляет текущий список актуальных источников, получает из дистрибутора список из ВСЕХ источников.

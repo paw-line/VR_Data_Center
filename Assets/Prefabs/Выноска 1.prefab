@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5265371560507875621}
   - component: {fileID: 5265371560507875624}
   - component: {fileID: 5265371560507875627}
+  - component: {fileID: 2303419148005816738}
   m_Layer: 12
   m_Name: "\u041A\u043E\u043D\u0435\u0446"
   m_TagString: Untagged
@@ -112,6 +113,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &2303419148005816738
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265371560507875620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5265371561722271788
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +264,7 @@ GameObject:
   - component: {fileID: 5265371562500118550}
   - component: {fileID: 5265371562500118551}
   - component: {fileID: 5265371562500118548}
+  - component: {fileID: 4782760088172925250}
   m_Layer: 12
   m_Name: "\u0418\u043A\u043E\u043D\u043A\u0430"
   m_TagString: Untagged
@@ -333,6 +348,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRotating3D: 0
+--- !u!65 &4782760088172925250
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265371562500118545}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.64, y: 1.55, z: 0.1}
+  m_Center: {x: -0.00000047683716, y: -0.18, z: 0}
 --- !u!1 &5462555273815004982
 GameObject:
   m_ObjectHideFlags: 0

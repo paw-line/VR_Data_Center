@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class StreamVisualiser : MonoBehaviour
+public class StreamVisualiser : Visualiser
 {
     [SerializeField]
     private ParticleSystem ps;
@@ -14,11 +14,17 @@ public class StreamVisualiser : MonoBehaviour
     [SerializeField]
     private Transform finish = null;
 
+    private GameObject collObj = null;
+
+    private float speedData;
+    private float colorData;
+    private float dencData;
     public float speed = 5f;
     public Color color;
     public float particleDencityMultiplier = 2f;
     public float radius = 2f;
     public bool trails = false;
+
 
     public bool isControlledBySources = true;
     public float refreshTime = 1f;
@@ -28,8 +34,40 @@ public class StreamVisualiser : MonoBehaviour
     private DataSource colorSource = null;
     [SerializeField]
     private DataSource dencitySource = null;
-    
 
+    public override float Scan(out string visType, out string dataType, out string topic)
+    {
+        //Очень костыльный метод, так как у нас сразу 3 сурса.
+        if (speedSource != null)
+        {
+            visType = speedSource.GetType() + ":" + speedData;
+        }
+        else
+        {
+            visType = "";
+        }
+
+        if (dencitySource != null)
+        {
+            topic = dencitySource.GetType() + ":" + dencData; ;
+        }
+        else
+        {
+            topic = "";
+        }
+
+        if (colorSource != null)
+        {
+            dataType = colorSource.GetType() + ":";
+            return colorData;
+        }
+        else
+        {
+            dataType = "";
+            return 0;
+        }
+        
+    }
 
     private float DataToSpeed(float data)
     {
@@ -54,15 +92,18 @@ public class StreamVisualiser : MonoBehaviour
         {
             if (speedSource != null)
             {
-                speed = DataToSpeed(speedSource.GetData());
+                speedData = speedSource.GetData();
+                speed = DataToSpeed(speedData);
             }
             if (colorSource != null)
             {
-                color = DataToColor(colorSource.GetData());
+                colorData = colorSource.GetData();
+                color = DataToColor(colorData);
             }
             if (dencitySource != null)
             {
-                particleDencityMultiplier = DataToDencity(dencitySource.GetData());
+                dencData = dencitySource.GetData();
+                particleDencityMultiplier = DataToDencity(dencData);
             }
         }
     }
@@ -71,7 +112,7 @@ public class StreamVisualiser : MonoBehaviour
     {
         //Координаты начала и конца
         ps.transform.position = start.position;
-        ps.transform.LookAt(finish);
+        ps.transform.LookAt(finish);      
 
         //Длинна
         float L = Vector3.Distance(start.position, finish.position);
@@ -96,6 +137,15 @@ public class StreamVisualiser : MonoBehaviour
         var tr = ps.trails;
         tr.enabled = trails;
 
+        //Коллайдер
+        //Vector3 centre = new Vector3()
+        collObj.transform.position = (finish.position + start.position)/2;
+        collObj.transform.LookAt(finish);
+        Vector3 sc = collObj.transform.localScale;
+        sc.z = L;
+        sc.y = radius * ps.transform.localScale.x;
+        sc.x = radius * ps.transform.localScale.z;
+        collObj.transform.localScale = sc;
 
     }
 
@@ -113,6 +163,9 @@ public class StreamVisualiser : MonoBehaviour
     void Awake()
     {
         ps = this.GetComponentInChildren<ParticleSystem>();
+        collObj = this.GetComponentInChildren<Collider>().gameObject;
+        if (collObj == null)
+            Debug.LogError("В потоковом визуализаторе не обнаружен коллайдер.");
         StartCoroutine(DelayedUpdate(refreshTime));
     }
 
