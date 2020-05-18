@@ -23,11 +23,41 @@ using System;
  * 
  */
 
-public class MqttData
+[Serializable]
+public class Data
 {
-    public string result { get; set; }
-    public string hostName { get; set; }
-    public string hostId { get; set; }
+    public Result[] result;
+}
+
+[Serializable]
+public class Result
+{
+    public string hostname;
+    public string hostid;
+    public Items[] items;
+}
+
+[Serializable]
+public class Items
+{
+    public string itemid;
+    public string itemname;
+    public string value;
+    public string value_type;
+    public string time;
+    public Trigger trigger;
+}
+
+[Serializable]
+public class Trigger
+{
+    public string host;
+    public string item;
+    public int value;
+    public string upper;
+    public string lower;
+    public string equal;
+    public string unknown;
 }
 
 public class RecieverJR : MonoBehaviour
@@ -98,15 +128,11 @@ public class RecieverJR : MonoBehaviour
         //Debug.Log("Received Data: [" + System.Text.Encoding.UTF8.GetString(e.Message) + "]");
         string mes = System.Text.Encoding.UTF8.GetString(e.Message);
 
-        JArray mqttDataArray = JArray.Parse(mes);
-
-        IList<MqttData> data = mqttDataArray.Select(p => new MqttData
+        Data data = JsonUtility.FromJson<Data>(mes);
+        Debug.Log(data.result[0].hostname);
+        /*for(int i=0;i<items.Values.Length;i++)
         {
-            result = (string)p["result"],
-            hostName = (string)p["result"]["hostname"],
-            hostId = (string)p["result"]["hostid"]
-        }).ToList();
-
-        Debug.Log(data[0].hostName);
+            Debug.Log(items.Values[i].Text);
+        }*/
     }
 }
