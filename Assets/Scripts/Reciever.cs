@@ -9,6 +9,65 @@ using uPLibrary.Networking.M2Mqtt.Utility;
 using uPLibrary.Networking.M2Mqtt.Exceptions;
 using System;
 
+
+/**
+ * \brief Класс Data для хранения полученных JSON данных
+ * \authors Пивко Артём, Стрельцов Григорий
+ *  
+ * Данный класс предназначен для хранения после получения пакета данных
+ * в формате JSON. Она является верхним в иерархии пакета JSON
+ * и содержит параметр типа класса Result, класса ниже по иерархии.
+ * 
+ */
+[Serializable]
+public class Data
+{
+    public Result[] result;         ///< Парметр, предназанченный для хранения тела сообщения
+}
+
+/**
+ * \brief Класс Result для хранения полученных JSON данных
+ * \authors Пивко Артём, Стрельцов Григорий
+ */
+[Serializable]
+public class Result
+{
+    public string hostname;         ///< Парметр, предназанченный для хранения имени устройства
+    public string hostid;           ///< Парметр, предназанченный для хранения ID устройства
+    public Items[] items;           ///< Парметр, предназанченный для хранения датчиков устройства
+}
+
+/**
+ * \brief Класс Items для хранения полученных JSON данных
+ * \authors Пивко Артём, Стрельцов Григорий
+ */
+[Serializable]
+public class Items
+{
+    public string itemid;           ///< Парметр, предназанченный для хранения ID датчика
+    public string itemname;         ///< Парметр, предназанченный для хранения имени датчика
+    public string value;            ///< Парметр, предназанченный для хранения последнего значения, полученного с датчика
+    public string value_type;       ///< Парметр, предназанченный для хранения типа присылаемого значения
+    public string time;             ///< Парметр, предназанченный для хранения метки времени
+    public Trigger trigger;         ///< Парметр, предназанченный для хранения триггера датчика
+}
+
+/**
+ * \brief Класс Trigger для хранения полученных JSON данных
+ * \authors Пивко Артём, Стрельцов Григорий
+ */
+[Serializable]
+public class Trigger
+{
+    public string host;             ///< Парметр, предназанченный для хранения устройства, к которому привязан триггер
+    public string item;             ///< Парметр, предназанченный для хранения датчика, к которому привязан триггер
+    public int value;               ///< Парметр, предназанченный для хранения значения триггера
+    public string upper;            ///< Парметр, предназанченный для хранения верхнего порога разрешенных значений
+    public string lower;            ///< Парметр, предназанченный для хранения нижнего порога разрешенных значений
+    public string equal;            ///< Парметр, предназанченный для хранения неразрешенного значения
+    public string unknown;          ///< Парметр, предназанченный для хранения неизвестных значений
+}
+
 /**
  * \brief Класс для получения данных с сервера через MQTT
  * \authors Пивко Артём, Стрельцов Григорий
@@ -21,20 +80,19 @@ using System;
  * Для конверсии используется синглтон UniversalController
  * 
  */
-
 public class Reciever : MonoBehaviour
 {
 
-    private MqttClient client1;
+    private MqttClient client1;                     ///< Объект клиента MQTT
 
     public string brocker_ip = "134.209.224.248";   ///< IP-адрес MQTT брокера. Может задаваться через редактор.
-    private string topic1 = "/dc/serv1/+";          ///< ???
-    private string topic2 = "/dc/serv2/+";          ///< ???
-    private string topic = "/dc/serv";              ///< Корневой топик MQTT
+    private string topic = "/analyzer_data";        ///< Топик данных, поступающих в реальном времени
     public string clientId = "qwerty";              ///< ID MQTT клиента.  Может задаваться через редактор.
+    public string username = "collector";           ///< Логин MQTT клиента.  Может задаваться через редактор.
+    public string password = "qwerty123456";        ///< Пароль MQTT клиента.  Может задаваться через редактор.
+    public string keyword = "Python";               ///< Ключевое слово, которое идентифицирует датчики, которые необходимо визуализировать. Может задаваться через редактор.
 
     private string name;                            ///< Переменная для временного хранения типа данных???
-    private float data;                             ///< Переменная для временного хранения данных
 
     private List<DataSource> sources;               ///< Список источников на сцене
     private List<string> sourcesnames = new List<string>(); ///< Список топиков источников на сцене
@@ -46,6 +104,7 @@ public class Reciever : MonoBehaviour
     void Awake()
     {
         StartCoroutine(DelayedInit());
+        Connect();
     }
 
 
@@ -73,48 +132,54 @@ public class Reciever : MonoBehaviour
         Connect();
     }
 
+    /** \brief Функция создания клиента MQTT и подключения его к брокеру
+     * Задает такие параметры подключения, как IP адрес MQTT брокера, порт, ID клиента, его догин и пароль, а также топик, на которых необходимо подписаться. 
+     * Далее по заданным параметрам создает MQTT клиента, привязывает Callback функцию получения сообщений к функции OnMessage, затем 
+     * производит подключение клиента к брокеру и подписывается на необходимый топик.
+     */
     private void Connect()
     {
         client1 = new MqttClient(IPAddress.Parse(brocker_ip), 1883, false, null);
-        client1.MqttMsgPublishReceived += client_MqttMsgPublishReceivedData;
-        clientId = "qwerty";
-        client1.Connect(clientId);
-        for (int i = 1; i <= 10; i++)
-        {
-            client1.Subscribe(new string[] { topic + i.ToString() + "/+" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
-        }
+        client1.MqttMsgPublishReceived += OnMessage;                               //привязка Callback функции
+        client1.Connect(clientId, username, password);
+        client1.Subscribe(new string[] { topic }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
     }
 
-    /** \brief Метод-обработчик события получения
-    *  \param [object] sender ???
-    *  \param [MqttMsgPublishEventArgs] e ???
-    *  ???
-    */
-    void client_MqttMsgPublishReceivedData(object sender, MqttMsgPublishEventArgs e)
+    /** \brief Функция обработки полученных сообщений
+     * По приходу нового JSON сообщения парсит его, а затем производит поиск по датчикам, имена которых содержат специальное ключевое слово, 
+     * которое позволяет идентифицировать те датчики, которые необходимо визуализировать. Если имя датчика содержит данное слово, то, значение с 
+     * этого датчика, имя устроства, на котором стоит датчик, а также имя самого датчика передаются в функцию SourceSet(). Затем происходит 
+     * проверка наличия триггера у датчика и, при наличии триггера, передает в функцию SourceSet() значение триггера, а также его имя и имя устройства, 
+     * на котором возникла ошибка.
+     */
+    void OnMessage(object sender, MqttMsgPublishEventArgs e)
     {
         //Debug.Log("Received Data: [" + System.Text.Encoding.UTF8.GetString(e.Message) + "]");
         string mes = System.Text.Encoding.UTF8.GetString(e.Message);
-        string topc = e.Topic;
-        
-        //data = mes;
-        string[] temp = topc.Split('/');
-        name = temp[3];
-        switch (name)
+        Data data = JsonUtility.FromJson<Data>(mes);
+
+        foreach (string device in data.result)
         {
-            case "servt":
-                data = float.Parse(mes, CultureInfo.InvariantCulture.NumberFormat);
-                break;
-            case "hum":
-                data = float.Parse(mes, CultureInfo.InvariantCulture.NumberFormat);
-                data = data / 10 * 3 + 10;
-                break;
-            case "overallAlarm":
-                data = float.Parse(mes, CultureInfo.InvariantCulture.NumberFormat);
-                break;
+            foreach (string sensor in device.items)
+            {
+                if (sensor.itemname.Contains(keyword))                            /// Если имя датчика содержит ключевое слово
+                {
+                    int valType = int.Parse(sensor.value_type);
+
+                    if ((valType == 0) || (valType == 3))                       /// Если тип сообщения цифровой
+                    {
+                        float floatVal = float.Parse(sensor.value);
+                        SourceSet(device.hostname, floatVal, sensor.itemname);
+                    }
+                    if (sensor.trigger != null)                                  /// Если к датчику привязан триггер
+                    {
+                        float floatVal = float.Parse(sensor.trigger.value);
+                        string alarmName = sensor.itemname + "_alarm"
+                        SourceSet(device.hostname, floatVal, alarmName);
+                    }
+                }
+            }
         }
-
-
-        SourceSet(topc, data, name);
     }
 
     private void SourceSet(string topic, float data, string name)
