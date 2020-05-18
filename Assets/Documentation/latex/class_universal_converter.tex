@@ -1,0 +1,105 @@
+\hypertarget{class_universal_converter}{}\doxysection{Universal\+Converter Class Reference}
+\label{class_universal_converter}\index{UniversalConverter@{UniversalConverter}}
+
+
+Синглтон-\/конвертер входных данных в настройки визуализаторов  
+
+
+Inheritance diagram for Universal\+Converter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_universal_converter}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_universal_converter_a426d6b8c85f0678a1c8d00b873712dd3}{Get\+Location}} ()
+\begin{DoxyCompactList}\small\item\em Функция, возвращающая строку с локацией синглтона. Требуется для обнаружения несанкционированных экземпляров синглтона в случае если самоуничтожился неправильный синглтон. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_universal_converter_a061d2607647652674e88bcc63511d6c3}{Temp\+To\+Color}} (float \+\_\+temp)
+\begin{DoxyCompactList}\small\item\em Конвертер значения температуры в цвет. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{\hyperlink{class_universal_converter_abd9f2db7717febd54c1396f65022fa4e}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Функция-\/интерфейс для получения синглтона Возвращает ссылку на синглтон. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Синглтон-\/конвертер входных данных в настройки визуализаторов 
+
+\begin{DoxyAuthor}{Authors}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+8.\+04.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Warning}
+Этот скрипт должен быть размещен на сцене в ЕДИНСТВЕННОМ экземпляре. Если его не будет, не будут работать никакие визуализаторы. Если их будет много, останется только один. 
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]Добавить другие температурные режимы\end{DoxyRefDesc}
+
+
+Этот класс занимается превращением цифровых данных с источников (температуры, влажности и т. д.) в параметры для визуализатров в Unity (Материалы различных цветов, ... ). 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_universal_converter_abd9f2db7717febd54c1396f65022fa4e}\label{class_universal_converter_abd9f2db7717febd54c1396f65022fa4e}} 
+\index{UniversalConverter@{UniversalConverter}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!UniversalConverter@{UniversalConverter}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} Universal\+Converter.\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Функция-\/интерфейс для получения синглтона Возвращает ссылку на синглтон. 
+
+\mbox{\Hypertarget{class_universal_converter_a426d6b8c85f0678a1c8d00b873712dd3}\label{class_universal_converter_a426d6b8c85f0678a1c8d00b873712dd3}} 
+\index{UniversalConverter@{UniversalConverter}!GetLocation@{GetLocation}}
+\index{GetLocation@{GetLocation}!UniversalConverter@{UniversalConverter}}
+\doxysubsubsection{\texorpdfstring{GetLocation()}{GetLocation()}}
+{\footnotesize\ttfamily string Universal\+Converter.\+Get\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Функция, возвращающая строку с локацией синглтона. Требуется для обнаружения несанкционированных экземпляров синглтона в случае если самоуничтожился неправильный синглтон. 
+
+\mbox{\Hypertarget{class_universal_converter_a061d2607647652674e88bcc63511d6c3}\label{class_universal_converter_a061d2607647652674e88bcc63511d6c3}} 
+\index{UniversalConverter@{UniversalConverter}!TempToColor@{TempToColor}}
+\index{TempToColor@{TempToColor}!UniversalConverter@{UniversalConverter}}
+\doxysubsubsection{\texorpdfstring{TempToColor()}{TempToColor()}}
+{\footnotesize\ttfamily Color Universal\+Converter.\+Temp\+To\+Color (\begin{DoxyParamCaption}\item[{float}]{\+\_\+temp }\end{DoxyParamCaption})}
+
+
+
+Конвертер значения температуры в цвет. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Конвертируемая температура \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Конвертированный в соответствии с температурой цвет Метод использует значения настроек цветов из интерфейса Unity как границы перехода цветов\+: ~\newline
+ • Если температура $<$= abs\+Cold, то цвет будет чистым синим с обычной прозрачностью ~\newline
+ • Если abs\+Cold $<$= температура $<$ allowed\+Start, то цвет будет голубым и приблежаться к бирюзовому с ростом температуры. Прозрачность нормальная ~\newline
+ • Если allowed\+Start $<$= температура $<$ optimal\+Start, то цвет будет бирюзовым и приблежаться к зеленому с ростом температуры. Прозрачность тоже будет расти до полного исчезновения ~\newline
+ • Если optimal\+Start $<$= температура $<$ optimal\+Finish, Объект полностью прозрачен~\newline
+ • Если optimal\+Finish $<$= температура $<$ allowed\+Finish, то цвет будет желтым и приблежаться к оранжевому с ростом температуры. Прозрачность тоже будет падать до нормального значения ~\newline
+ • Если allowed\+Finish $<$= температура $<$ abs\+Heat, то цвет будет оранжевым и приблежаться к красному с ростом температуры. Прозрачность нормальная ~\newline
+ • Если температура $>$ abs\+Cold, то цвет будет чистым красным с обычной прозрачностью ~\newline
+ 
+\end{DoxyReturn}
+
+\begin{DoxyItemize}
+\item 
+\item 
+\item 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_universal_converter_8cs}{Universal\+Converter.\+cs}}\end{DoxyCompactItemize}

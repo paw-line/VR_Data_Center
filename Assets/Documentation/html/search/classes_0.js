@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['billboard_79',['Billboard',['../class_billboard.html',1,'']]]
+  ['barvisualiser_114',['BarVisualiser',['../class_bar_visualiser.html',1,'']]],
+  ['billboard_115',['Billboard',['../class_billboard.html',1,'']]]
 ];

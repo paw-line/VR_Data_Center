@@ -3,13 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//[ExecuteInEditMode]
+/**
+ * \brief Класс, направляющий объект, которому привязан в сторону основной камеры
+ * \authors Пивко Артём
+ * \version 1.0
+ * \date 13.05.20
+ *
+ *  Используется для направления иконок тревоги в сторону пользователя. 
+ */
 public class Billboard : MonoBehaviour
 {
 
     [SerializeField]
-    private bool isRotating3D = false;
+    private bool isRotating3D = false; ///< Если этот параметр отмечен, вращение будет происходить по всем трём осям. Иначе только по оси Y.
 
+    /** \brief Функция основного цикла.
+     * 
+     * В зависимости от параметра isRotating3D каждый кадр вращает объект либо по оси Y, либо по всем осям. 
+     */
     void Update()
     {
         if (isRotating3D)

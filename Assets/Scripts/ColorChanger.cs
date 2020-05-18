@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * \brief Класс для изменения цвета кубов-индикаторов
+ * \brief Класс для контроля цветовых визуализаторов
  * \authors Пивко Артём
- * \version 1.1
- * \date 8.04.20
+ * \version 1.2
+ * \date 13.05.20
  * \warning Если source не присвоить в сцене, объект не будет функционировать!
  * \todo ???
  *  
- * Этот класс занимается динамическим изменением цвета родительского объекта 
+ * Этот визуализатор занимается динамическим изменением цвета родительского объекта 
  * в соотвествии с данными из источника данных DataSource source.
  * Для конверсии используется синглтон UniversalController
  * 
@@ -36,6 +36,13 @@ public class ColorChanger : Visualiser//MonoBehaviour
 
     private Material material = null; ///< Ссылка на устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
 
+    /** \brief Метод снятия показаний с визуализатора сканером
+     * \param [string] visType Тип визуализатора
+     * \param [string] dataType Тип данных
+     * \param [string] topic MQTT-топик данных
+     * \return Визуализируемые данные в формате float
+     * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
+     */
     public override float Scan(out string visType, out string dataType, out string topic)
     {
         visType = this.GetType().ToString();

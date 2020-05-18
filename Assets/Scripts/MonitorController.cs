@@ -3,34 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * \brief Класс для контроля интерфейса монитора оборудования
+ * \authors Пивко Артём
+ * \version 1.0
+ * \date 14.05.20
+ *  
+ * Этот класс занимается контролем текстового интерфейса, отображающего все данные, имеющиеся о единице оборудования. \n
+ * Для включения/выключения интерфейса используйте метод TurnTV через кнопки на оборудовании. 
+ */
+
 public class MonitorController : MonoBehaviour
 {
     [SerializeField]
-    private Canvas tv = null;
+    private Canvas tv = null;                       ///< Ссылка на канвас монитора. Должна быть задана в редакторе.
     [SerializeField]
-    private GameObject element = null;
+    private GameObject element = null;              ///< Ссылка на префаб элемента интерфейса. Должна быть задана в редакторе. 
 
-    private ScrollRect target  = null;
+    private ScrollRect target  = null;              ///< Ссылка ScrollRect, в котором размещены элементы интерфейса. Должна быть задана в редакторе. 
 
-    private List<DataSource> sources;
-    private List<ElementController> elements;
+    private List<DataSource> sources;               ///< Список источников в поддереве этого объекта
+    private List<ElementController> elements;       ///< Список элементов интерфейса, подконтрольных объекту.
+    private List<Callout> alarms;                   ///< Список сигналов тревоги, которые могут перекрывать монитор 
 
-    private List<Callout> alarms;
+    [SerializeField]
+    private bool isChild = false;                   ///< Отметка является ли данный монитор подчиненным другому монитору
 
-    /**
-     * Контролировать закрытие
-     * Открываться по команде с контроллера на сервере. 
-     * Собрать все ссылки на привязанные к стойке датасурсы
-     * Отключать иконки тревоги при вызове экрана. 
-     * 
-     * Генерироватц список
-     * 
-     * ...
-     * type
-     * name
-     * data
-     */
-
+    /** \brief Метод получения списка источников в поддереве  */
     private void CollectSources()
     {
         DataSource[] temp = this.gameObject.transform.GetComponentsInChildren<DataSource>();
@@ -38,6 +37,7 @@ public class MonitorController : MonoBehaviour
         //Debug.Log(sources.Count);
     }
 
+    /** \brief Метод получения списка тревог в поддереве  */
     private void CollectAlarms()
     {
         Callout[] temp = this.gameObject.transform.GetComponentsInChildren<Callout>(true);
@@ -45,6 +45,9 @@ public class MonitorController : MonoBehaviour
         //Debug.Log(alarms.Count);
     }
 
+    /** \brief Метод включения/выключения тревог в поддереве 
+     *  \param [bool] on Включить (True) или выключить (False)
+     */
     public void TurnAlarms(bool on)
     {
         foreach (Callout i in alarms)
@@ -53,12 +56,21 @@ public class MonitorController : MonoBehaviour
         }
     }
 
+    /** \brief Метод включения/выключения экрана монитора оборудования
+     *  \param [bool] on Включить (True) или выключить (False) 
+     */
     public void TurnTV(bool on)
     {
         tv.gameObject.SetActive(on);
         TurnAlarms(!on);
     }
 
+    /** \brief Метод создания и начальной инициализации элемента интерфейса на экране
+     * \param [string] type Начальный отображаемый тип данных
+     * \param [string] name Начальное отображаемое название измерения
+     * \param [string] data Начальные отображаемые данные
+     * Создает элемент интерфейса на экране, установка его полей переданными в функцию параметрами и регулировка высоты зоны, в которой элемент размещается.
+     */
     private void CreateElement(string type, string name, string data)
     {
         //Создание нужного элемента там где нужно
@@ -89,11 +101,13 @@ public class MonitorController : MonoBehaviour
         }
     }
 
+    /** \brief Метод создания и инициализации элемента интерфейса заданными данными */
     public void CreateElement()
     {
         CreateElement("default", "Some Name", "Some cool data");
     }
 
+    /** \brief Метод очистки всех подъобъектов списка элементов интерфейса.*/
     private void ClearElements()
     {
         int c = target.content.gameObject.transform.childCount;
@@ -104,6 +118,11 @@ public class MonitorController : MonoBehaviour
         elements = new List<ElementController>();
     }
 
+    /** \brief Метод полного обновления элементов интерфейса.
+     * Полностью уничтожает и реинициализирует все элементы интерфейса монитора.
+     * Применяется для инициализации монитора.
+     * Не рекомендуется использовать во время работы программы из-за медлительности, используйте RefreshUI()
+     */
     private void UpdateList()
     {
         ClearElements();
@@ -117,6 +136,11 @@ public class MonitorController : MonoBehaviour
         }
     }
 
+    /** \brief Метод обновления элементов интерфейса.
+     * В отличии UpdateList() не уничтожает элементы перед реинициализацией, а только обновляет их значения.
+     * Осторожно, не добавляет новых элементов, но может удалять старые. 
+     * Можно использовать в процессе работы программы. 
+     */
     private void RefreshUI()
     {
         string type, name, data;
@@ -150,6 +174,39 @@ public class MonitorController : MonoBehaviour
 
     }
 
+    /** \brief Метод получения списка визуализаторов тревог данного объекта
+     * Используется дочерними мониторами. 
+     */
+    public List<Callout> GetAlarms()
+    {
+        return alarms;
+    }
+
+    /** \brief Сопрограмма отложенного сбора списка тревог
+     * Используется дочерними мониторами для получения полного списка тревог, перекрывающих монитор. 
+     * Задержка нужна для того чтобы вышестоящий объект успел собрать свой список тревог.
+     */
+    IEnumerator DelayedAlarmCollect()
+    {
+        yield return new WaitForSeconds(3f);
+        MonitorController parent = transform.parent.GetComponentInParent<MonitorController>();
+        if (parent == null)
+        {
+            Debug.LogError("No parent found for server monitor controller. " + this.name + " cannot deactivate alarms");
+        }
+        else
+        {
+            alarms = parent.GetAlarms();
+        }
+        //Debug.Log(parent.gameObject.name);
+        tv.transform.position = parent.tv.transform.position;
+
+    }
+
+    /** \brief Метод инициализации объекта. 
+     * Собирает списки источников и тревог, ищет в поддереве подконтрольный ScrollRect и запоминает ссылку на него, затем запускает метод обновления интерфеса.
+     * В случае если объект дочерний, запускает сопрограмму отложенного сбора списка тревог.
+     */
     private void Awake()
     {
         CollectSources();
@@ -167,8 +224,16 @@ public class MonitorController : MonoBehaviour
 
         UpdateList();
         //RefreshUI();
+
+        if (isChild)
+        {
+            StartCoroutine(DelayedAlarmCollect());
+        }
     }
 
+    /** \brief Метод основного цикла.
+     * Каждый кадр обновляет значения элементов интерфейса. 
+     */
     private void Update()
     {
         RefreshUI();

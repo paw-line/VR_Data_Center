@@ -7,32 +7,42 @@ using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using uPLibrary.Networking.M2Mqtt.Utility;
 using uPLibrary.Networking.M2Mqtt.Exceptions;
-
 using System;
+
+/**
+ * \brief Класс для получения данных с сервера через MQTT
+ * \authors Пивко Артём, Стрельцов Григорий
+ * \version 1.0
+ * \date 14.05.20
+ * \warning  ???
+ *  
+ * Этот визуализатор занимается динамическим изменением цвета родительского объекта 
+ * в соотвествии с данными из источника данных DataSource source.
+ * Для конверсии используется синглтон UniversalController
+ * 
+ */
 
 public class Reciever : MonoBehaviour
 {
 
     private MqttClient client1;
 
-    public string brocker_ip = "134.209.224.248";
-    private string topic1 = "/dc/serv1/+";
-    private string topic2 = "/dc/serv2/+";
-    private string topic = "/dc/serv";
-    public string clientId = "qwerty";
+    public string brocker_ip = "134.209.224.248";   ///< IP-адрес MQTT брокера. Может задаваться через редактор.
+    private string topic1 = "/dc/serv1/+";          ///< ???
+    private string topic2 = "/dc/serv2/+";          ///< ???
+    private string topic = "/dc/serv";              ///< Корневой топик MQTT
+    public string clientId = "qwerty";              ///< ID MQTT клиента.  Может задаваться через редактор.
 
-    private string name;
-    private float data;
+    private string name;                            ///< Переменная для временного хранения типа данных???
+    private float data;                             ///< Переменная для временного хранения данных
 
-
-    //[SerializeField]
-    //private Distributor distributor = null;
-    //[SerializeField]
-    private List<DataSource> sources;
-    private List<string> sourcesnames = new List<string>();
+    private List<DataSource> sources;               ///< Список источников на сцене
+    private List<string> sourcesnames = new List<string>(); ///< Список топиков источников на сцене
 
 
-    // Start is called before the first frame update
+    /** \brief Метод инициализаии объекта
+     * Вызывает сопрограмму отложенной инициализации. 
+     */
     void Awake()
     {
         StartCoroutine(DelayedInit());
@@ -40,9 +50,14 @@ public class Reciever : MonoBehaviour
 
 
 
-    IEnumerator DelayedInit() //Без этой задержки дистрибутор не успевает найти сурсы
+    /** \brief Сопрограмма отложенной инициализаии объекта
+     * Получает от глобального дистрибутора список источников и по нему формирует список MQTT-топиков этих источников. MQTT-топик источника это его имя. 
+     * После этого подключается к MQTT брокеру по заданному в объекте IP-адресу с заданным в объекте идентификатором. Привязывает событие получения данных к обработчику. Затем подписывается на топики. \n
+     * Задержка в инициализации требуется для дистрибутора чтобы тот успел собрать все источники на сцене. 
+     */
+    IEnumerator DelayedInit()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f); //Без этой задержки дистрибутор не успевает найти сурсы
         //distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
         //distributor = Distributor.GetInstance();
         //sources = distributor.sources;
@@ -55,9 +70,6 @@ public class Reciever : MonoBehaviour
             c++;
         }
 
-
-
-
         client1 = new MqttClient(IPAddress.Parse(brocker_ip), 1883, false, null);
         client1.MqttMsgPublishReceived += client_MqttMsgPublishReceivedData;
         clientId = "qwerty";
@@ -69,6 +81,11 @@ public class Reciever : MonoBehaviour
         
     }
 
+    /** \brief Метод-обработчик события получения
+    *  \param [object] sender ???
+    *  \param [MqttMsgPublishEventArgs] e ???
+    *  ???
+    */
     void client_MqttMsgPublishReceivedData(object sender, MqttMsgPublishEventArgs e)
     {
         //Debug.Log("Received Data: [" + System.Text.Encoding.UTF8.GetString(e.Message) + "]");

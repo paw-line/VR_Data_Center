@@ -1,0 +1,66 @@
+\hypertarget{class_visualiser}{}\doxysection{Visualiser Class Reference}
+\label{class_visualiser}\index{Visualiser@{Visualiser}}
+
+
+Родительский класс всех объектов для визуализации  
+
+
+Inheritance diagram for Visualiser\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.896552cm]{class_visualiser}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract float \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{Scan}} (out string vis\+Type, out string data\+Type, out string topic)
+\begin{DoxyCompactList}\small\item\em Универсальный метод снятия показаний с визуализатора \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Родительский класс всех объектов для визуализации 
+
+\begin{DoxyAuthor}{Authors}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+13.\+05.\+20
+\end{DoxyDate}
+От этого абстрактного класса наследуются все объекты визуализации. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_visualiser_aee71a2277423aae47e6608f6cb125f48}\label{class_visualiser_aee71a2277423aae47e6608f6cb125f48}} 
+\index{Visualiser@{Visualiser}!Scan@{Scan}}
+\index{Scan@{Scan}!Visualiser@{Visualiser}}
+\doxysubsubsection{\texorpdfstring{Scan()}{Scan()}}
+{\footnotesize\ttfamily abstract float Visualiser.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Универсальный метод снятия показаний с визуализатора 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
+\hline
+{\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
+\hline
+{\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Визуализируемые данные в формате float
+\end{DoxyReturn}
+Унаследованные реализации функции обязаны будут возвращать 4 параметра\+: опорные данные визуализатора, тип визуализатора, тип данных, M\+Q\+T\+T-\/топик данных. 
+
+Implemented in \mbox{\hyperlink{class_node_visualisator_a832d6f7331895c320059a21ac1cf081b}{Node\+Visualisator}}, \mbox{\hyperlink{class_color_changer_acf85912fea4b15646b4cb8461206ea6b}{Color\+Changer}}, \mbox{\hyperlink{class_stream_visualiser_af3eda84abc96a8952e0484d968ff5f52}{Stream\+Visualiser}}, \mbox{\hyperlink{class_bar_visualiser_a7f142503c8bd1a6ddd773c64528b53d9}{Bar\+Visualiser}}, and \mbox{\hyperlink{class_callout_abebf4830ba123c04299126135ff957e9}{Callout}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_visualiser_8cs}{Visualiser.\+cs}}\end{DoxyCompactItemize}

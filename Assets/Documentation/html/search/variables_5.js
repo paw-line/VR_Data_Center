@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['isrotating3d_133',['isRotating3D',['../class_billboard.html#a8ea3db24472a6339b009f533086d81ec',1,'Billboard']]]
+  ['iscontrolledbysources_211',['isControlledBySources',['../class_stream_visualiser.html#ace34e10739448f79b89084a42f399e5c',1,'StreamVisualiser']]],
+  ['isscrollingdown_212',['isScrollingDown',['../class_scroll_bar_button.html#a73d0430406e3d490db3423caf687a156',1,'ScrollBarButton']]]
 ];

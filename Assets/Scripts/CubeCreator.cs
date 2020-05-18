@@ -2,37 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * \brief Класс-конструктор элементов объемного визуализатора. 
+ * \authors Пивко Артём
+ * \version 1.0
+ * \date 13.05.20
+ * \warning Методы этого класса очень медленные и не предназначены для исполнения во время работы программы. Только в режиме редактирования. 
+ *  
+ * Скрипт занимается созданием и размещением объектов node на ребрах объемной сетки размера zoneSize и плотности density. \n
+ * Рассчётное применение класса - создание элементов объемного визуализатора и задание им общего типа данных. 
+ * 
+ */
 public class CubeCreator : MonoBehaviour
 {
     [SerializeField]
-    private GameObject node = null;
+    private GameObject node = null;         ///< Размножаемый объект. Предпочтительно префаб. Задается из редактора.
 
     [SerializeField]
-    private Vector3 zoneSize;
+    private Vector3 zoneSize;               ///< Размер зоны по трём измерениям. Задается из редактора.
     [SerializeField]
-    private Vector3 density;
+    private Vector3 density;                ///< Плотность размещения объектов по трём измерениям. Задается из редактора.
     [SerializeField]
-    private string dataType = null;
+    private string dataType = null;         ///< Тип данных, которые будут слушать размещаемые элементы объемного визуализатора. 
 
-    private GameObject[,,] nodes = null;
-    int xn, yn, zn = 0;
+    private GameObject[,,] nodes = null;    ///< Трёхмерная матрица, хранящая ссылки на созданные объекты. 
+    private int xn, yn, zn = 0;             ///< Текущие размеры матрицы объектов. 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //GenerateCubes();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /** \brief Метод создания объемной сетки объектов
+     * Метод рассчитывает количество генерируемых объектов по каждой оси на основании размеров зоны и плотности. 
+     * После этого вычисляется смещение offset, необходимое чтобы объекты находились внутри зоны, не пересекая её границ. 
+     * Далее объекты инициируются на узлах 3D сетки и становятся по иерархии детьми данного объекта. 
+     * Их названия меняются на Node[x,y,z], где x,y,z - его номер в объемной матрице. 
+     * Если объект - элемент объемного визуализатора с компонентом NodeVisualisator, то его тип слушаемых данных устанавливается равным dataType.
+     */
     public void GenerateCubes()
     {
-        //Vector3 zoneSize = this.transform.localScale;
-
         xn = (int)Mathf.Floor(zoneSize.x / density.x)+1;
         yn = (int)Mathf.Floor(zoneSize.y / density.y)+1;
         zn = (int)Mathf.Floor(zoneSize.z / density.z)+1;
@@ -65,6 +69,9 @@ public class CubeCreator : MonoBehaviour
 
     }
 
+    /** \brief Метод уничтожения объемной сетки объектов
+     * Метод уничтожает уже созданную в текущем выполнении программы сетку. 
+     */
     public void DestroyCubes()
     {
         for (int i = 0; i < xn; i++)
@@ -78,7 +85,7 @@ public class CubeCreator : MonoBehaviour
             }
         }
     }
-
+    /** \brief Служебная функция, отображающая размеры границы в редакторе. */
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

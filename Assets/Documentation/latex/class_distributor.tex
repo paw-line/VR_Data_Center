@@ -1,52 +1,102 @@
-\hypertarget{class_distributor}{}\doxysection{Класс Distributor}
+\hypertarget{class_distributor}{}\doxysection{Distributor Class Reference}
 \label{class_distributor}\index{Distributor@{Distributor}}
-Граф наследования\+:Distributor\+:\begin{figure}[H]
+
+
+Синглтон-\/дистрибутор данных  
+
+
+Inheritance diagram for Distributor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_distributor}
 \end{center}
 \end{figure}
-\doxysubsection*{Открытые атрибуты}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-List$<$ \mbox{\hyperlink{class_data_source}{Data\+Source}} $>$ \mbox{\hyperlink{class_distributor_a20ad1da9c20a9dd274e07288079d1da4}{sources}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Статические открытые данные}
+List$<$ \mbox{\hyperlink{class_data_source}{Data\+Source}} $>$ \mbox{\hyperlink{class_distributor_af0d4d0c40e6881afc733381f541fb7c4}{Get\+Sources}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает список источников в сцене. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_distributor_a4cdb2bb213b00359a039ef958177bf11}{Refresh\+Sources}} ()
+\begin{DoxyCompactList}\small\item\em Функция, обновляющая список источников на сцене. Возвращает разницу в длинне старого и нового списка. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_distributor}{Distributor}} \mbox{\hyperlink{class_distributor_ab544af7702e1048b6b0cd90059d938ac}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Функция-\/интерфейс для получения синглтона Возвращает ссылку на синглтон. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static string \mbox{\hyperlink{class_distributor_afc686a50bc59cd56d793ec5cad76533d}{root\+Topic}} = \char`\"{}/dc\char`\"{}
-\end{DoxyCompactItemize}
-\doxysubsection*{Закрытые члены}
-\begin{DoxyCompactItemize}
-\item 
-void \mbox{\hyperlink{class_distributor_ab771154901afb2ddbc6cf064b67d80c6}{Awake}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Название корня в M\+Q\+TT теме \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Методы}
-\mbox{\Hypertarget{class_distributor_ab771154901afb2ddbc6cf064b67d80c6}\label{class_distributor_ab771154901afb2ddbc6cf064b67d80c6}} 
-\index{Distributor@{Distributor}!Awake@{Awake}}
-\index{Awake@{Awake}!Distributor@{Distributor}}
-\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
-{\footnotesize\ttfamily void Distributor.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\doxysubsection{Detailed Description}
+Синглтон-\/дистрибутор данных 
+
+\begin{DoxyAuthor}{Authors}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+8.\+04.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Warning}
+Этот скрипт должен быть размещен на сцене в ЕДИНСТВЕННОМ экземпляре. Если его не будет, не будут работать никакие визуализаторы. Если их будет много, останется только один. 
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]???\end{DoxyRefDesc}
+
+
+Этот класс составляет список всех источников данных на сцене и хранит её для передачи визуализаторам. Преимущественно объемным. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_distributor_ab544af7702e1048b6b0cd90059d938ac}\label{class_distributor_ab544af7702e1048b6b0cd90059d938ac}} 
+\index{Distributor@{Distributor}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_distributor}{Distributor}} Distributor.\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-\doxysubsection{Данные класса}
+Функция-\/интерфейс для получения синглтона Возвращает ссылку на синглтон. 
+
+\mbox{\Hypertarget{class_distributor_af0d4d0c40e6881afc733381f541fb7c4}\label{class_distributor_af0d4d0c40e6881afc733381f541fb7c4}} 
+\index{Distributor@{Distributor}!GetSources@{GetSources}}
+\index{GetSources@{GetSources}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{GetSources()}{GetSources()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_data_source}{Data\+Source}}$>$ Distributor.\+Get\+Sources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Возвращает список источников в сцене. 
+
+\mbox{\Hypertarget{class_distributor_a4cdb2bb213b00359a039ef958177bf11}\label{class_distributor_a4cdb2bb213b00359a039ef958177bf11}} 
+\index{Distributor@{Distributor}!RefreshSources@{RefreshSources}}
+\index{RefreshSources@{RefreshSources}!Distributor@{Distributor}}
+\doxysubsubsection{\texorpdfstring{RefreshSources()}{RefreshSources()}}
+{\footnotesize\ttfamily int Distributor.\+Refresh\+Sources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Функция, обновляющая список источников на сцене. Возвращает разницу в длинне старого и нового списка. 
+
+
+
+\doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{class_distributor_afc686a50bc59cd56d793ec5cad76533d}\label{class_distributor_afc686a50bc59cd56d793ec5cad76533d}} 
 \index{Distributor@{Distributor}!rootTopic@{rootTopic}}
 \index{rootTopic@{rootTopic}!Distributor@{Distributor}}
 \doxysubsubsection{\texorpdfstring{rootTopic}{rootTopic}}
 {\footnotesize\ttfamily string Distributor.\+root\+Topic = \char`\"{}/dc\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
 
-\mbox{\Hypertarget{class_distributor_a20ad1da9c20a9dd274e07288079d1da4}\label{class_distributor_a20ad1da9c20a9dd274e07288079d1da4}} 
-\index{Distributor@{Distributor}!sources@{sources}}
-\index{sources@{sources}!Distributor@{Distributor}}
-\doxysubsubsection{\texorpdfstring{sources}{sources}}
-{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_data_source}{Data\+Source}}$>$ Distributor.\+sources}
+
+
+Название корня в M\+Q\+TT теме 
 
 
 
-Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
 D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_distributor_8cs}{Distributor.\+cs}}\end{DoxyCompactItemize}

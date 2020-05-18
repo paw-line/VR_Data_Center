@@ -5,8 +5,8 @@ using UnityEngine;
 /**
  * \brief Класс экземпляров объемных визуализаторов
  * \authors Пивко Артём
- * \version 1.0
- * \date 7.04.20
+ * \version 1.1
+ * \date 14.05.20
  * \warning В случае если на сцене будет отсутствовать дистрибутор данных, объект не будет функционировать. 
  *  
  * Этот класс занимается динамическим изменением цвета родительского объекта 
@@ -38,6 +38,15 @@ public class NodeVisualisator : Visualiser
     */
     private Material material = null;
 
+    /** \brief Метод снятия показаний с визуализатора сканером
+     * \param [string] visType Тип визуализатора
+     * \param [string] dataType Тип данных
+     * \param [string] topic MQTT-топик данных
+     * \return Визуализируемые данные в формате float
+     * В случае если визуализатор находится вне зоны дейстия источников, в качестве типа данных будет передано сообщение об этом, а топик передан не будет.
+     * В случае если визуализатор слушает только один источник, будет передан его топик. В случае если несколько, будет передано сообщение о смешанных топиках.\n
+     * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
+     */
     public override float Scan(out string visType, out string dataType1, out string topic)
     {
         visType = this.GetType().ToString();
@@ -139,7 +148,8 @@ public class NodeVisualisator : Visualiser
         {//Найден один подходящий источник. Берем значение тупо из него. 
          //Debug.Log("Node " + this.gameObject.name.ToString() + ": Found one valid source");
          //material.color = ColorChanger.TempToColor(validSources[0].GetData()); //Старый код
-            material.color = UniversalConverter.GetInstance().TempToColor(validSources[0].GetData());
+            curData = validSources[0].GetData();
+            material.color = UniversalConverter.GetInstance().TempToColor(curData);
         }
         else
         {

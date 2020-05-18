@@ -45,7 +45,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: 93, y: 20}
   m_Pivot: {x: -0.000000033146733, y: 1.0000001}
 --- !u!222 &3854161269550385828
 CanvasRenderer:
@@ -68,12 +68,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_Color: {r: 0, g: 0.21568628, b: 0.24705882, a: 0.7529412}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2245954ce3c63274688bd3564762ca86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ee250dda3bd7ee478ab26d11eaeb745, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -221,7 +221,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0, y: 20, z: 0}
+  m_Size: {x: 93, y: 20, z: 0}
   m_Center: {x: 45, y: -10, z: 0}
 --- !u!114 &3854161269550385837
 MonoBehaviour:
@@ -292,8 +292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10.000001, y: -10}
-  m_SizeDelta: {x: 20, y: 20}
+  m_AnchoredPosition: {x: 10, y: -10}
+  m_SizeDelta: {x: 18, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3854161269704046682
 CanvasRenderer:
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7529412}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -385,7 +385,6 @@ GameObject:
   - component: {fileID: 3854161270310634666}
   - component: {fileID: 3854161270310634668}
   - component: {fileID: 3854161270310634667}
-  - component: {fileID: 4064552401594772677}
   m_Layer: 5
   m_Name: Bot Text
   m_TagString: Untagged
@@ -410,7 +409,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -70.015, y: -10.000002}
-  m_SizeDelta: {x: 70.015, y: 10}
+  m_SizeDelta: {x: 68, y: 10}
   m_Pivot: {x: -0.00000004377216, y: 0.9999995}
 --- !u!222 &3854161270310634668
 CanvasRenderer:
@@ -440,15 +439,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da8b21e4839e6b1479c98c941e72ff48, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: da8b21e4839e6b1479c98c941e72ff48, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967040
+  m_fontColor: {r: 0, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -530,19 +529,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4064552401594772677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3854161270310634665}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de02bb9f587e4641ad8f5db28fb0659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disptext: Wololo
 --- !u!1 &3854161270555217512
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +540,6 @@ GameObject:
   - component: {fileID: 3854161270555217513}
   - component: {fileID: 3854161270555217515}
   - component: {fileID: 3854161270555217514}
-  - component: {fileID: 3889847236985429509}
   m_Layer: 5
   m_Name: Top Text
   m_TagString: Untagged
@@ -579,7 +564,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -70.01499, y: 0}
-  m_SizeDelta: {x: 70.015, y: 10}
+  m_SizeDelta: {x: 68, y: 10}
   m_Pivot: {x: -0.00000004377216, y: 0.9999995}
 --- !u!222 &3854161270555217515
 CanvasRenderer:
@@ -609,15 +594,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da8b21e4839e6b1479c98c941e72ff48, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: da8b21e4839e6b1479c98c941e72ff48, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967040
+  m_fontColor: {r: 0, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -699,16 +684,3 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3889847236985429509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3854161270555217512}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de02bb9f587e4641ad8f5db28fb0659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disptext: Wololo

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['reciever_86',['Reciever',['../class_reciever.html',1,'']]]
+  ['flymode_123',['Flymode',['../class_flymode.html',1,'']]],
+  ['fontfitter_124',['FontFitter',['../class_font_fitter.html',1,'']]]
 ];

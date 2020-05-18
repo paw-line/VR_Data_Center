@@ -7,21 +7,42 @@ using Valve.VR.InteractionSystem;
 using UnityEngine.UI;
 using TMPro;
 
+/**
+ * \brief Класс для контроля лазерного указателя, сканера и меню.
+ * \authors Пивко Артём
+ * \version 1.0
+ * \date 13.05.20
+ * \warning  ???
+ *  
+ * Этот класс занимается контролем инструментов взаимодействия пользователя с моделью: лазерного указателя для управления меню,
+ * сканера показаний визуализаторов и наручного меню. Для корректной работы скрипт требуется разместить на том же объекте, где находится скрипт руки виртуального аватара. 
+ * 
+ */
+
 [RequireComponent(typeof(SteamVR_LaserPointer))]
 public class LaserPointerController : MonoBehaviour
 {
-    private SteamVR_LaserPointer target;
-    private SteamVR_Input_Sources handType;
-    public SteamVR_Action_Boolean input;
+    private SteamVR_LaserPointer target; 		///< Ссылка на скрипт SteamVR_LaserPointer на данной руке
+    private SteamVR_Input_Sources handType;		///< Ссылка на текущую руку
 
-    private string visType, dataType, topic;
-    private float data;
-
+    public SteamVR_Action_Boolean laserInput;	///< Действие, включающее лазер
     [SerializeField]
-    private Canvas targetCanvas = null;
-    private TextMeshProUGUI[] text = null;
-    private int n = 4;
-    
+    private Canvas scanerCanvas = null;			///< -Ссылка на канвас сканера на данной руке. Должна быть задана в редакторе. 
+
+    public SteamVR_Action_Boolean menuInput;	///< Действие, включающее меню
+    [SerializeField]
+    private Canvas menuCanvas = null;			///< Ссылка на канвас меню на данной руке. Должна быть задана в редакторе. 
+
+    private string visType, dataType, topic;	///< Переменыне для временного хранения данных сканера. 
+    private float data;							///< Переменыне для временного хранения данных сканера. 
+
+   
+    private TextMeshProUGUI[] text = null;		///< Массив ссылок на блоки интерфейса сканера.
+    private int n = 4;							///< Размер массива ссылок
+	
+	/** \brief Метод инициализации объекта
+     * В методе получется ссылка на SteamVR_LaserPointer, на скрипт VR-руки Hand и на текстовые блоки интерфейса сканера.
+     */
     void Awake()
     {
         target = this.GetComponent<SteamVR_LaserPointer>();
@@ -34,7 +55,7 @@ public class LaserPointerController : MonoBehaviour
             Debug.LogError("На объекте не обнаружено Руки O_o");
         handType = hand.handType;
         
-        if (targetCanvas.transform.childCount < n)
+        if (scanerCanvas.transform.childCount < n)
         {
             Debug.LogError("Наручный канвас не имеет достаточного количества текстовых блоков");
             text = null;
@@ -45,7 +66,7 @@ public class LaserPointerController : MonoBehaviour
             
             for (int i = 0; i < n; i++)
             {
-                text[i] = targetCanvas.transform.GetChild(i).GetComponent<TextMeshProUGUI>();
+                text[i] = scanerCanvas.transform.GetChild(i).GetComponent<TextMeshProUGUI>();
                 if (text[i] == null)
                 {
                     Debug.LogError("В блоках наручного канваса не обнаружены компоненты TextMeshProUGUI");
@@ -56,11 +77,14 @@ public class LaserPointerController : MonoBehaviour
             }
             
         }
-
-        targetCanvas.gameObject.SetActive(false);
-
+        scanerCanvas.gameObject.SetActive(false);
     }
 
+	/** \brief Метод сканирования визуализаторов
+     * Метод производит проекцию луча вдоль отображаемого SteamVR_LaserPointer луча, 
+	 * вычленяет из объекта, пересеченного лучом компонент, наследованный от Visualiser. 
+	 * После чего производится вызов метода Scan и вывод полученных данных на интерфейс сканера.
+     */
     private void Scan()
         {
         Ray raycast = new Ray(transform.position, transform.forward);
@@ -95,14 +119,16 @@ public class LaserPointerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+	/** \brief Метод основного цикла
+     * Производит включение лазера и меню при нажатии на кнопки и выключение при отпускании.
+     */
     void Update()
     {
-        if (input.GetState(handType))
+        if (laserInput.GetState(handType))
         {
             target.active = true;
             //Debug.Log("Включаю лазер");
-            targetCanvas.gameObject.SetActive(true);
+            scanerCanvas.gameObject.SetActive(true);
             Scan();
             
         }
@@ -112,6 +138,17 @@ public class LaserPointerController : MonoBehaviour
             //targetCanvas.gameObject.SetActive(false);
             //Debug.Log("Выключаю лазер");
         }
+
+        if (menuInput.GetState(handType))
+        {
+            menuCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            menuCanvas.gameObject.SetActive(false);
+        }
+
+
 
     }
 }

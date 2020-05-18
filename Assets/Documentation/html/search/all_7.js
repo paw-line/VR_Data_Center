@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['material_37',['material',['../class_color_changer.html#a2f537bdbafed5e12d76a1b6e65a22ced',1,'ColorChanger.material()'],['../class_node_visualisator.html#a542fd2beb2bc1d82cf5b1801baf176e5',1,'NodeVisualisator.material()']]],
-  ['maxtransp_38',['maxTransp',['../class_color_changer.html#a7fe0dc2780c9c845830dc7f8e59be965',1,'ColorChanger']]],
-  ['model_39',['model',['../class_callout.html#a125dedefbfd2bb076eae4b1545ee02b3',1,'Callout']]]
+  ['initialize_50',['Initialize',['../interface_i_pool_creator.html#a9d483622555df7d718ed8d570fa48af6',1,'IPoolCreator']]],
+  ['ipoolcreator_51',['IPoolCreator',['../interface_i_pool_creator.html',1,'']]],
+  ['iscontrolledbysources_52',['isControlledBySources',['../class_stream_visualiser.html#ace34e10739448f79b89084a42f399e5c',1,'StreamVisualiser']]],
+  ['isscrollingdown_53',['isScrollingDown',['../class_scroll_bar_button.html#a73d0430406e3d490db3423caf687a156',1,'ScrollBarButton']]]
 ];

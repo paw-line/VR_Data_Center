@@ -1,0 +1,73 @@
+\hypertarget{class_bar_visualiser}{}\doxysection{Bar\+Visualiser Class Reference}
+\label{class_bar_visualiser}\index{BarVisualiser@{BarVisualiser}}
+Inheritance diagram for Bar\+Visualiser\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_bar_visualiser}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override float \mbox{\hyperlink{class_bar_visualiser_a7f142503c8bd1a6ddd773c64528b53d9}{Scan}} (out string vis\+Type, out string data\+Type, out string topic)
+\begin{DoxyCompactList}\small\item\em Универсальный метод снятия показаний с визуализатора \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}{Set\+Height}} (float \+\_\+h, float \+\_\+time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_source}{Data\+Source}} \mbox{\hyperlink{class_bar_visualiser_a2d8e05f34cce8b7f8937f4db6b0ec3a9}{source}}
+\begin{DoxyCompactList}\small\item\em Источник данных, контролирующий цвет. Присваевается в сцене до начала работы скрипта. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bar_visualiser_a7f142503c8bd1a6ddd773c64528b53d9}\label{class_bar_visualiser_a7f142503c8bd1a6ddd773c64528b53d9}} 
+\index{BarVisualiser@{BarVisualiser}!Scan@{Scan}}
+\index{Scan@{Scan}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{Scan()}{Scan()}}
+{\footnotesize\ttfamily override float Bar\+Visualiser.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Универсальный метод снятия показаний с визуализатора 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
+\hline
+{\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
+\hline
+{\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Визуализируемые данные в формате float
+\end{DoxyReturn}
+Унаследованные реализации функции обязаны будут возвращать 4 параметра\+: опорные данные визуализатора, тип визуализатора, тип данных, M\+Q\+T\+T-\/топик данных. 
+
+Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{Visualiser}}.
+
+\mbox{\Hypertarget{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}\label{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}} 
+\index{BarVisualiser@{BarVisualiser}!SetHeight@{SetHeight}}
+\index{SetHeight@{SetHeight}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{SetHeight()}{SetHeight()}}
+{\footnotesize\ttfamily void Bar\+Visualiser.\+Set\+Height (\begin{DoxyParamCaption}\item[{float}]{\+\_\+h,  }\item[{float}]{\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_bar_visualiser_a2d8e05f34cce8b7f8937f4db6b0ec3a9}\label{class_bar_visualiser_a2d8e05f34cce8b7f8937f4db6b0ec3a9}} 
+\index{BarVisualiser@{BarVisualiser}!source@{source}}
+\index{source@{source}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{source}{source}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_source}{Data\+Source}} Bar\+Visualiser.\+source}
+
+
+
+Источник данных, контролирующий цвет. Присваевается в сцене до начала работы скрипта. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_bar_visualiser_8cs}{Bar\+Visualiser.\+cs}}\end{DoxyCompactItemize}
