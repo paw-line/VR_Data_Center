@@ -9,6 +9,7 @@ using uPLibrary.Networking.M2Mqtt.Utility;
 using uPLibrary.Networking.M2Mqtt.Exceptions;
 using System;
 
+
 /**
  * \brief Класс для получения данных с сервера через MQTT
  * \authors Пивко Артём, Стрельцов Григорий
@@ -80,10 +81,10 @@ public class RecieverJR : MonoBehaviour
         client1 = new MqttClient(IPAddress.Parse(brocker_ip), 1883, false, null);
         client1.MqttMsgPublishReceived += client_MqttMsgPublishReceivedData;
         clientId = "qwerty";
-        username = "collector";
-        password = "qwerty123456";
+        string username = "collector";
+        string password = "qwerty123456";
         client1.Connect(clientId, username, password);
-        client1.Subscribe(topic, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+        client1.Subscribe(new string[] { topic }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
 
     }
 
@@ -106,6 +107,6 @@ public class RecieverJR : MonoBehaviour
             hostId = (string)p["result"]["hostid"]
         }).ToList();
 
-        Debug.Log(data[0].hostName)
+        Debug.Log(data[0].hostName);
     }
 }
