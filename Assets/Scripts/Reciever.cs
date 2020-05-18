@@ -70,15 +70,19 @@ public class Reciever : MonoBehaviour
             c++;
         }
 
+        Connect();
+    }
+
+    private void Connect()
+    {
         client1 = new MqttClient(IPAddress.Parse(brocker_ip), 1883, false, null);
         client1.MqttMsgPublishReceived += client_MqttMsgPublishReceivedData;
         clientId = "qwerty";
         client1.Connect(clientId);
-        for (int i  = 1; i <= 10; i++)
+        for (int i = 1; i <= 10; i++)
         {
-            client1.Subscribe(new string[] { topic+i.ToString()+"/+"}, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client1.Subscribe(new string[] { topic + i.ToString() + "/+" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
         }
-        
     }
 
     /** \brief Метод-обработчик события получения
@@ -109,12 +113,17 @@ public class Reciever : MonoBehaviour
                 break;
         }
 
+
+        SourceSet(topc, data, name);
+    }
+
+    private void SourceSet(string topic, float data, string name)
+    {
         int c = 0;
-        int gotcha = 0;
         foreach (string i in sourcesnames)
         {
-            
-            if (i == topc)
+
+            if (i == topic)
             {
                 //Debug.Log(topc + " ?=" + i);
                 //gotcha = c;
@@ -123,6 +132,5 @@ public class Reciever : MonoBehaviour
             }
             c++;
         }
-        
     }
 }

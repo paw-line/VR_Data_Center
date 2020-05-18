@@ -7820,6 +7820,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9173253451775043313}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &447812668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447812667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a28d1f2e0361e4aba95be4a42dbcc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brocker_ip: 134.209.224.248
+  clientId: qwerty
 --- !u!114 &447812671
 MonoBehaviour:
   m_ObjectHideFlags: 0
