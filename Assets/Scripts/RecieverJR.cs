@@ -22,6 +22,13 @@ using System;
  * 
  */
 
+public class MqttData
+{
+    public string result { get; set; }
+    public string hostName { get; set; }
+    public string hostId { get; set; }
+}
+
 public class RecieverJR : MonoBehaviour
 {
 
@@ -89,6 +96,16 @@ public class RecieverJR : MonoBehaviour
     {
         //Debug.Log("Received Data: [" + System.Text.Encoding.UTF8.GetString(e.Message) + "]");
         string mes = System.Text.Encoding.UTF8.GetString(e.Message);
-        Debug.Log(mes)
+
+        JArray mqttDataArray = JArray.Parse(mes);
+
+        IList<MqttData> data = mqttDataArray.Select(p => new MqttData
+        {
+            result = (string)p["result"],
+            hostName = (string)p["result"]["hostname"],
+            hostId = (string)p["result"]["hostid"]
+        }).ToList();
+
+        Debug.Log(data[0].hostName)
     }
 }
