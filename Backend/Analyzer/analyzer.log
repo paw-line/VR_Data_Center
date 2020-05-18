@@ -1,0 +1,6 @@
+INFO:daemons.daemonize.simple:Succesfully daemonized process 4653.
+INFO:daemons.startstop.simple:Beginning run loop for process.
+INFO:daemons.startstop.simple:Succesfully stopped the process.
+INFO:daemons.daemonize.simple:Succesfully daemonized process 4673.
+INFO:daemons.startstop.simple:Beginning run loop for process.
+INFO:daemons.startstop.simple:Succesfully stopped the process.
