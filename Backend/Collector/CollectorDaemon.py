@@ -26,7 +26,7 @@ if __name__ == '__main__':
         logfile = os.path.join(os.getcwd(), "collector.log")
         pidfile = os.path.join(os.getcwd(), "collector.pid")
 
-        logging.basicConfig(filename=logfile, level=logging.DEBUG)
+        logging.basicConfig(filename=logfile, level=logging.INFO)
         d = ColDaemon(pidfile=pidfile)
 
         if action == "start":
