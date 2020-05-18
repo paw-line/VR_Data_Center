@@ -30,7 +30,7 @@ public class RecieverJR : MonoBehaviour
     public string brocker_ip = "134.209.224.248";   ///< IP-адрес MQTT брокера. Может задаваться через редактор.
     private string topic1 = "/dc/serv1/+";          ///< ???
     private string topic2 = "/dc/serv2/+";          ///< ???
-    private string topic = "/dc/serv";              ///< Корневой топик MQTT
+    private string topic = "/analyzer_data";              ///< Корневой топик MQTT
     public string clientId = "qwerty";              ///< ID MQTT клиента.  Может задаваться через редактор.
 
     private string name;                            ///< Переменная для временного хранения типа данных???
@@ -73,11 +73,10 @@ public class RecieverJR : MonoBehaviour
         client1 = new MqttClient(IPAddress.Parse(brocker_ip), 1883, false, null);
         client1.MqttMsgPublishReceived += client_MqttMsgPublishReceivedData;
         clientId = "qwerty";
-        client1.Connect(clientId);
-        for (int i = 1; i <= 10; i++)
-        {
-            client1.Subscribe(new string[] { topic + i.ToString() + "/+" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
-        }
+        username = "collector";
+        password = "qwerty123456";
+        client1.Connect(clientId, username, password);
+        client1.Subscribe(topic, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
 
     }
 
@@ -90,39 +89,6 @@ public class RecieverJR : MonoBehaviour
     {
         //Debug.Log("Received Data: [" + System.Text.Encoding.UTF8.GetString(e.Message) + "]");
         string mes = System.Text.Encoding.UTF8.GetString(e.Message);
-        string topc = e.Topic;
-
-        //data = mes;
-        string[] temp = topc.Split('/');
-        name = temp[3];
-        switch (name)
-        {
-            case "servt":
-                data = float.Parse(mes, CultureInfo.InvariantCulture.NumberFormat);
-                break;
-            case "hum":
-                data = float.Parse(mes, CultureInfo.InvariantCulture.NumberFormat);
-                data = data / 10 * 3 + 10;
-                break;
-            case "overallAlarm":
-                data = float.Parse(mes, CultureInfo.InvariantCulture.NumberFormat);
-                break;
-        }
-
-        int c = 0;
-        int gotcha = 0;
-        foreach (string i in sourcesnames)
-        {
-
-            if (i == topc)
-            {
-                //Debug.Log(topc + " ?=" + i);
-                //gotcha = c;
-                sources[c].Set(data, name);
-                break;
-            }
-            c++;
-        }
-
+        Debug.Log(mes)
     }
 }
