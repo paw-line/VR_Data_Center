@@ -82,7 +82,7 @@ public class Trigger
  */
 public class Reciever : MonoBehaviour
 {
-
+    private Distributor distributor;                ///< Ссылка на глобальный дистрибутор данных
     private MqttClient client1;                     ///< Объект клиента MQTT
 
     public string brocker_ip = "134.209.224.248";   ///< IP-адрес MQTT брокера. Может задаваться через редактор.
@@ -92,10 +92,8 @@ public class Reciever : MonoBehaviour
     public string password = "qwerty123456";        ///< Пароль MQTT клиента.  Может задаваться через редактор.
     public string keyword = "Python";               ///< Ключевое слово, которое идентифицирует датчики, которые необходимо визуализировать. Может задаваться через редактор.
 
-    //private string name;                            ///< Переменная для временного хранения типа данных???
-
-    private List<DataSource> sources;               ///< Список источников на сцене
-    private List<string> sourcesnames = new List<string>(); ///< Список топиков источников на сцене
+    //private List<DataSource> sources;               ///< Список источников на сцене
+    //private List<string> sourcesnames = new List<string>(); ///< Список топиков источников на сцене
 
 
     /** \brief Метод инициализаии объекта
@@ -110,24 +108,24 @@ public class Reciever : MonoBehaviour
 
 
     /** \brief Сопрограмма отложенной инициализаии объекта
-     * Получает от глобального дистрибутора список источников и по нему формирует список MQTT-топиков этих источников. MQTT-топик источника это его имя. 
-     * После этого подключается к MQTT брокеру по заданному в объекте IP-адресу с заданным в объекте идентификатором. Привязывает событие получения данных к обработчику. Затем подписывается на топики. \n
-     * Задержка в инициализации требуется для дистрибутора чтобы тот успел собрать все источники на сцене. 
+     * Получает ссылку на глобальный дистрибутор данных и запускает подключение к серверу по MQTT.
+     * Задержка в инициализации требуется чтобы а) Дистрибутор успел инициализироваться и б) чтобы тот успел собрать все источники на сцене. 
      */
     IEnumerator DelayedInit()
     {
-        yield return new WaitForSeconds(3f); //Без этой задержки дистрибутор не успевает найти сурсы
+        yield return new WaitForSeconds(1f); //Без этой задержки дистрибутор не успевает найти сурсы
         //distributor = GameObject.Find("Distributor228").GetComponent<Distributor>();
-        //distributor = Distributor.GetInstance();
+        distributor = Distributor.GetInstance();
         //sources = distributor.sources;
-        sources = Distributor.GetInstance().GetSources();
-
+        //ources = Distributor.GetInstance().GetSources();
+        /*
         int c = 0;
         foreach (DataSource i in sources)
         {
             sourcesnames.Add(i.gameObject.name);
             c++;
         }
+        */
 
         Connect();
     }
@@ -154,7 +152,7 @@ public class Reciever : MonoBehaviour
      */
     void OnMessage(object sender, MqttMsgPublishEventArgs e)
     {
-        //Debug.Log("Received Data: [" + System.Text.Encoding.UTF8.GetString(e.Message) + "]");
+        Debug.Log("Server Online, Reciever got data.");
         string mes = System.Text.Encoding.UTF8.GetString(e.Message);
         Data data = JsonUtility.FromJson<Data>(mes);
 
@@ -169,20 +167,19 @@ public class Reciever : MonoBehaviour
                     if ((valType == 0) || (valType == 3))                       /// Если тип сообщения цифровой
                     {
                         float floatVal = float.Parse(sensor.value, CultureInfo.InvariantCulture.NumberFormat);
-                        //float floatVal = 24f;
-                        SourceSet(device.hostname + "/" + sensor.itemname, floatVal, sensor.itemname);
+                        distributor.SourceSet(device.hostname + "/" + sensor.itemname, floatVal);
                     }
                     if (sensor.trigger != null)                                  /// Если к датчику привязан триггер
                     {
-                        float floatVal = sensor.trigger.value;              //float.Parse(sensor.trigger.value);
+                        float floatVal = sensor.trigger.value;             
                         string alarmName = sensor.itemname + "_alarm";
-                        SourceSet(device.hostname + "/" + alarmName, floatVal, alarmName);
+                        distributor.SourceSet(device.hostname + "/" + alarmName, floatVal);
                     }
                 }
             }
         }
     }
-
+    /*
     private void SourceSet(string topic, float data, string name)
     {
         int c = 0;
@@ -199,4 +196,5 @@ public class Reciever : MonoBehaviour
             c++;
         }
     }
+    */
 }

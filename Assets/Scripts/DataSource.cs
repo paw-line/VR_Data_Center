@@ -5,8 +5,8 @@ using UnityEngine;
 /**
  * \brief Класс источника данных для визуализаторов.
  * \authors Пивко Артём
- * \version 1.0
- * \date 13.05.20
+ * \version 1.1
+ * \date 19.05.20
  * \warning Для работы объекта на сцене требуется объект Distributor
  *  
  * Класс, хранящий текущие данные с сервера. По сути является интерфейсом ко всей системе получения данных для визуализаторов. \n
@@ -24,15 +24,25 @@ public class DataSource : MonoBehaviour
     private float radius = 0; ///< Доверительный радиус источника
     [SerializeField]
     private string type = null; ///< Тип данных источника
+    [SerializeField]
+    private bool isAutonomous = false; ///< Если истинна, то объект не пытается переименоваться в Awake
 
     /** \brief Метод установки значения и типа источника.
-     * \param [float] _data Тип визуализатора
+     * \param [float] _data Данные
      * \param [string] _type Тип данных
      */
     public void Set(float _data, string _type)
     {
         data = _data;
         type = _type;
+    }
+
+    /** \brief Метод установки значения источника.
+     * \param [float] _data Устанавливаемые данные
+     */
+    public void SetData(float _data)
+    {
+        data = _data;
     }
 
     /** \brief Метод получения текущих данных источника
@@ -64,10 +74,19 @@ public class DataSource : MonoBehaviour
      */
     private void Awake()
     {
-        if (transform.parent != null)
+        if (!isAutonomous)
         {
-            this.gameObject.name = Distributor.rootTopic + "/" + transform.parent.gameObject.name + "/" + this.name;
+            if (transform.parent != null)
+            {
+                //this.gameObject.name = Distributor.rootTopic + "/" + transform.parent.gameObject.name + "/" + this.name;
+                this.gameObject.name = transform.parent.gameObject.name + "/" + this.name;
+            }
+            else
+            {
+                Debug.LogError("Object" + this.name + " isn't marked as autonomous, but dont have a parent.");
+            }
         }
+        
         //StartCoroutine(DelayedInit(3f));
     }
 
@@ -77,7 +96,7 @@ public class DataSource : MonoBehaviour
     IEnumerator DelayedInit(float _time)
     {
         yield return new WaitForSeconds(_time);
-        this.gameObject.name = Distributor.rootTopic + "/" + transform.parent.gameObject.name + "/" + this.name;
+        this.gameObject.name = transform.parent.gameObject.name + "/" + this.name;
     }
 
     /** \brief Служебная функция, рисующая каркас сферы действия источника. */
