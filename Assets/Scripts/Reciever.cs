@@ -92,7 +92,7 @@ public class Reciever : MonoBehaviour
     public string password = "qwerty123456";        ///< Пароль MQTT клиента.  Может задаваться через редактор.
     public string keyword = "Python";               ///< Ключевое слово, которое идентифицирует датчики, которые необходимо визуализировать. Может задаваться через редактор.
 
-    private string name;                            ///< Переменная для временного хранения типа данных???
+    //private string name;                            ///< Переменная для временного хранения типа данных???
 
     private List<DataSource> sources;               ///< Список источников на сцене
     private List<string> sourcesnames = new List<string>(); ///< Список топиков источников на сцене
@@ -158,9 +158,9 @@ public class Reciever : MonoBehaviour
         string mes = System.Text.Encoding.UTF8.GetString(e.Message);
         Data data = JsonUtility.FromJson<Data>(mes);
 
-        foreach (string device in data.result)
+        foreach(Result device in data.result)
         {
-            foreach (string sensor in device.items)
+            foreach (Items sensor in device.items)
             {
                 if (sensor.itemname.Contains(keyword))                            /// Если имя датчика содержит ключевое слово
                 {
@@ -168,14 +168,15 @@ public class Reciever : MonoBehaviour
 
                     if ((valType == 0) || (valType == 3))                       /// Если тип сообщения цифровой
                     {
-                        float floatVal = float.Parse(sensor.value);
-                        SourceSet(device.hostname, floatVal, sensor.itemname);
+                        float floatVal = float.Parse(sensor.value, CultureInfo.InvariantCulture.NumberFormat);
+                        //float floatVal = 24f;
+                        SourceSet(device.hostname + "/" + sensor.itemname, floatVal, sensor.itemname);
                     }
                     if (sensor.trigger != null)                                  /// Если к датчику привязан триггер
                     {
-                        float floatVal = float.Parse(sensor.trigger.value);
-                        string alarmName = sensor.itemname + "_alarm"
-                        SourceSet(device.hostname, floatVal, alarmName);
+                        float floatVal = sensor.trigger.value;              //float.Parse(sensor.trigger.value);
+                        string alarmName = sensor.itemname + "_alarm";
+                        SourceSet(device.hostname + "/" + alarmName, floatVal, alarmName);
                     }
                 }
             }

@@ -4718,7 +4718,7 @@ GameObject:
   - component: {fileID: 255812766}
   - component: {fileID: 255812765}
   m_Layer: 0
-  m_Name: /dc/serv10/hum
+  m_Name: Server04/PythonsTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5353,7 +5353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000773515}
+  m_AnchoredPosition: {x: 0.4500001, y: -0.000773515}
   m_SizeDelta: {x: -0.9, y: 1377}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &275997872
@@ -7832,8 +7832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a28d1f2e0361e4aba95be4a42dbcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brocker_ip: 134.209.224.248
-  clientId: qwerty
 --- !u!114 &447812671
 MonoBehaviour:
   m_ObjectHideFlags: 0
