@@ -40,12 +40,13 @@ public class BarVisualiser : Visualiser
      * \param [string] topic MQTT-топик данных
      * \return Визуализируемые данные в формате float
      */
-    public override float Scan(out string visType, out string dataType, out string topic)
+    public override string Scan(out string visType, out string dataType, out string topic)
     {
         visType = this.GetType().ToString();
         dataType = source.GetType();
         topic = source.name;
-        return curData;
+        UniversalTranslator tr = UniversalTranslator.GetInstance();
+        return curData.ToString() + tr.TransGeneralTypeToUnit(tr.TransTypeToGeneralType(source.GetType()));
     }
 
     /** \brief Метод задания абсолютной высоты объекта в локальных координатах.

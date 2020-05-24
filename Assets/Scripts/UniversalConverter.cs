@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /**
  * \brief Синглтон-конвертер входных данных в настройки визуализаторов
@@ -15,6 +16,52 @@ using UnityEngine;
  * 
  */
 
+[Serializable] public class MyDictionary1 : SerializableDictionary<string, float> { }
+
+[Serializable]
+public struct Pairs
+{
+    public float threshold;           ///< Т
+    public Color col;
+}
+
+[Serializable]
+public struct TempSettings
+{
+    public string name;           ///< Т
+    public List<Pairs> set;
+    public Gradient grad;
+}
+
+/*
+[Serializable]
+public struct TempSettingsOld
+{
+    public string name;           ///< Т
+
+    public float absCold;         ///< Температура, ниже которой не отслеживается
+    public float allowedStart;    ///< Граница нижней недопустимой температуры
+    public float optimalStart;    ///< Нижняя граница оптимальной температуры
+    //---------------------MIDDLE LINE----------------
+    public float optimalFinish;   ///< Верхняя граница оптимальной температуры
+    public float allowedFinish;   ///< Граница верхней недопустимой температуры
+    public float absHeat;         ///< Температура, выше которой не отслеживается
+}
+
+[Serializable]
+public struct Pairs
+{
+    public float threshold;           ///< Т
+    public Color col;
+}
+
+[Serializable]
+public struct TempSettings
+{
+    public string name;           ///< Т
+    public List<Pairs> set;
+}
+*/
 
 public class UniversalConverter : MonoBehaviour
 {
@@ -51,6 +98,7 @@ public class UniversalConverter : MonoBehaviour
                 "It will be destroyed. Try using singleton from gameObject" + instance.gameObject.name);
             Destroy(this);
         }
+        ValidateSettings();
     }
 
     /** \brief Функция, возвращающая строку с локацией синглтона. 
@@ -62,24 +110,32 @@ public class UniversalConverter : MonoBehaviour
         return ("Singleton is located at " + instance.gameObject.name + "on coordinates: " + instance.transform.position.ToString());
     }
 
+    //Конец шаблона для синглтона
 
-    //Настройки цветов. Текущие - для теплого периода.
-    [SerializeField]
-    private float absCold = 11f;         ///< Температура, ниже которой не отслеживается
-    [SerializeField]
-    private float allowedStart = 21f;    ///< Граница нижней недопустимой температуры
-    [SerializeField]
-    private float optimalStart = 23f;    ///< Нижняя граница оптимальной температуры
-    //---------------------MIDDLE LINE = 24--
-    [SerializeField]
-    private float optimalFinish = 25f;   ///< Верхняя граница оптимальной температуры
-    [SerializeField]
-    private float allowedFinish = 28f;   ///< Граница верхней недопустимой температуры
-    [SerializeField]
-    private float absHeat = 38f;         ///< Температура, выше которой не отслеживается
-
-    [SerializeField]
+    //public MyDictionary1 coefficients;
+    //public List<TempSettings> settings; 
+    //public TempSettingsOld[] settings;
+    public TempSettings[] tSettings;
+    ///*
+    //Настройки цветов. 
+    //[SerializeField]
+    private float absCold = 20f;         ///< Температура, ниже которой не отслеживается
+    //[SerializeField]
+    private float allowedStart = 35f;    ///< Граница нижней недопустимой температуры
+    //[SerializeField]
+    private float optimalStart = 50f;    ///< Нижняя граница оптимальной температуры
+    //---------------------MIDDLE LINE = 60--
+    //[SerializeField]
+    private float optimalFinish = 70f;   ///< Верхняя граница оптимальной температуры
+    //[SerializeField]
+    private float allowedFinish = 85f;   ///< Граница верхней недопустимой температуры
+    //[SerializeField]
+    private float absHeat = 100f;         ///< Температура, выше которой не отслеживается
+    //*/
+    //[SerializeField]
     private float maxTransp = 0.4f;      ///< Максимальное значение прозрачности объекта
+
+
 
 
     /** \brief Конвертер значения температуры в цвет. 
@@ -95,9 +151,35 @@ public class UniversalConverter : MonoBehaviour
      * • Если температура > absCold, то цвет будет чистым красным с обычной прозрачностью \n 
      * 
      * */
-    public Color TempToColor(float _temp)
+    public Color TempToColorOld(float _temp/*, string generalType*/)
     {
+       
         Color newColor = new Color();
+        /*
+        TempSettingsOld actset = new TempSettingsOld();
+        actset.name = "NULL";
+        foreach (TempSettingsOld set in settings)
+        {
+            if (set.name == generalType)
+            {
+                actset = set;
+            }
+        }
+        if (actset.name == "NULL")
+        {
+            Debug.LogError("Tried to use invalid generalType.");
+            return newColor;
+        }
+
+        
+        float absCold = actset.absCold;
+        float allowedStart = actset.allowedStart;
+        float optimalStart = actset.optimalStart;
+        float optimalFinish = actset.optimalFinish;
+        float allowedFinish = actset.allowedFinish;
+        float absHeat = actset.absHeat;
+        */
+
 
         if (_temp <= absCold) //Ниже предела
         {
@@ -162,8 +244,73 @@ public class UniversalConverter : MonoBehaviour
         return (newColor);
     }
 
-    
+    public Color TempToColor(float _temp)
+    {
+        return TempToColor(_temp, "servt");
+    }
 
+    /*
+    public float Convert (float data, string dataType)
+    {
+        return data * coefficients[dataType];
+        /*
+        foreach (KeyValuePair<string, float> keyValue in coefficients)
+        {
+            
+            Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
+        }
+        
+    }
+    */
+
+    public void ValidateSettings()
+    {
+        for (int j = 0; j < tSettings.Length; j++)
+        {
+            List<Pairs> set = tSettings[j].set;
+            GradientColorKey[] colorKey = new GradientColorKey[set.Capacity];
+            GradientAlphaKey[] alphaKey = new GradientAlphaKey[set.Capacity];
+            
+            for (int i = 0; i < set.Capacity; i++)
+            {
+                Pairs t = set[i];
+                t.threshold -= set[0].threshold;
+                t.threshold /= set[set.Capacity - 1].threshold - set[0].threshold;
+                if (t.threshold < 0f)
+                    t.threshold = 0f;
+                if (t.threshold > 1.0f)
+                    t.threshold = 1.0f;
+                colorKey[i].color = t.col;
+                colorKey[i].time = t.threshold;
+                alphaKey[i].alpha = t.col.a;
+                alphaKey[i].time = t.threshold;
+            }
+            tSettings[j].grad.SetKeys(colorKey, alphaKey);
+        }
+    }
+
+    public Color TempToColor(float _temp, string generalType)
+    {
+        TempSettings foundSettings =  new TempSettings();
+        foundSettings.name = "NULL";
+        foreach (TempSettings ts in tSettings)
+        {
+            if (ts.name == generalType)
+            {
+                foundSettings = ts;
+                break;
+            }
+        }
+        if (foundSettings.name == "NULL")
+        {
+            Debug.LogError("Can't find settings named "+ generalType + ". Using default " + tSettings[0].name);
+            foundSettings = tSettings[0];
+        }
+
+        List<Pairs> set = foundSettings.set;
+        float f = (_temp - set[0].threshold) / (set[set.Capacity - 1].threshold - set[0].threshold);
+        //Debug.Log(_temp.ToString() + "-" + set[0].threshold.ToString() + ")/(" + set[set.Capacity - 1].threshold.ToString() + "-" + set[0].threshold.ToString() + ") = " + f);
+        return foundSettings.grad.Evaluate(f);
+    }
 
 }
- 

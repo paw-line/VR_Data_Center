@@ -1085,7 +1085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &61839774
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2115,7 +2115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &112550467
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2572,7 +2572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &125000644
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2998,7 +2998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &155904725
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3178,7 +3178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &156513210
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3254,6 +3254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: type
       value: perc
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: data
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
@@ -3439,7 +3444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &178675689
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3806,7 +3811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &201795090
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5029,7 +5034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: 27
   radius: 5
-  type: temp
+  type: PythonRoomT0
   isAutonomous: 0
 --- !u!23 &255812766
 MeshRenderer:
@@ -5381,7 +5386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &260222166
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5757,7 +5762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &283326563
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5871,7 +5876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &290813961
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6623,7 +6628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &367832928
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7557,7 +7562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &416190728
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8149,7 +8154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &437986116
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8215,18 +8220,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9173253451775043313}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &447812668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447812667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1a28d1f2e0361e4aba95be4a42dbcc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &447812671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8239,13 +8232,198 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8688b262e3cb09d4c8b270ddd96eb4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  absCold: 11
-  allowedStart: 21
-  optimalStart: 23
-  optimalFinish: 25
-  allowedFinish: 28
-  absHeat: 38
-  maxTransp: 0.4
+  tSettings:
+  - name: servt
+    set:
+    - threshold: 20
+      col: {r: 0, g: 1, b: 1, a: 0.39215687}
+    - threshold: 35
+      col: {r: 0, g: 0, b: 1, a: 0.39215687}
+    - threshold: 50
+      col: {r: 0, g: 1, b: 0, a: 0}
+    - threshold: 70
+      col: {r: 0, g: 1, b: 0, a: 0}
+    - threshold: 85
+      col: {r: 1, g: 1, b: 0, a: 0.39215687}
+    - threshold: 100
+      col: {r: 1, g: 0, b: 0, a: 0.39215687}
+    grad:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  - name: roomtemp
+    set:
+    - threshold: 13
+      col: {r: 0, g: 1, b: 1, a: 0.39215687}
+    - threshold: 18
+      col: {r: 0, g: 0, b: 1, a: 0.39215687}
+    - threshold: 19
+      col: {r: 0, g: 1, b: 0, a: 0}
+    - threshold: 21
+      col: {r: 0, g: 1, b: 0, a: 0}
+    - threshold: 22
+      col: {r: 1, g: 1, b: 0, a: 0.39215687}
+    - threshold: 27
+      col: {r: 1, g: 0, b: 0, a: 0.39215687}
+    grad:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  - name: watertemp
+    set:
+    - threshold: 5
+      col: {r: 0, g: 1, b: 1, a: 1}
+    - threshold: 10
+      col: {r: 0, g: 0, b: 1, a: 1}
+    - threshold: 15
+      col: {r: 1, g: 0, b: 0, a: 1}
+    grad:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+--- !u!114 &447812672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447812667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e3370ff517410c44b09186a47562aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeToRussianDictionary:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - 
+    - 
+    - 
+  generalTypeToUnitDictionary:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - 
+    - 
+    - 
+  typeToGeneraTypeDictionary:
+    _Buckets: 0100000000000000ffffffffffffffff020000000500000004000000
+    _HashCodes: ea52c648c0d06221e33577760081b77d0d351c0c169c633900000000
+    _Next: ffffffffffffffffffffffffffffffff03000000ffffffff00000000
+    _Count: 6
+    _Version: 131
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - ?PythonRoomT
+    - PythonFluidInC
+    - PythonFluidOutC
+    - PythonSupplyC
+    - PythonReturnC
+    - PythonHum
+    - 
+    _Values:
+    - roomtemp
+    - watertemp
+    - watertemp
+    - airtemp
+    - airtemp
+    - hum
+    - 
 --- !u!1 &448834705
 GameObject:
   m_ObjectHideFlags: 0
@@ -8901,7 +9079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &483586005
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9009,7 +9187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &500117309
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9985,7 +10163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &544003435
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10753,7 +10931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &555486437
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10922,6 +11100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: type
       value: flow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: data
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
@@ -11372,7 +11555,12 @@ PrefabInstance:
     - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
       propertyPath: type
-      value: temp
+      value: PythonFluidOutC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: data
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
@@ -12613,7 +12801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &712941785
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12721,7 +12909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &729268209
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12829,7 +13017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &731124182
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13319,7 +13507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &753886679
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13685,7 +13873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &765636955
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14485,7 +14673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &831754137
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14970,7 +15158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &886395151
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15107,6 +15295,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888205718}
   m_CullTransparentMesh: 0
+--- !u!4 &895762483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+    type: 3}
+  m_PrefabInstance: {fileID: 1816701749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &898578004
 GameObject:
   m_ObjectHideFlags: 0
@@ -15463,7 +15657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &914245302
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16213,7 +16407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &964491261
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16924,7 +17118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1049219449
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17032,7 +17226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1060777156
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17140,7 +17334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1060989513
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19064,7 +19258,7 @@ PrefabInstance:
     - target: {fileID: 2220327314336623289, guid: e839e27e67a039f4c9b8ed36b9f53f2c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2220778406795852237, guid: e839e27e67a039f4c9b8ed36b9f53f2c,
         type: 3}
@@ -20602,7 +20796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1255283267
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20712,7 +20906,12 @@ PrefabInstance:
     - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
       propertyPath: type
-      value: temp
+      value: PythonFluidInC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: data
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
@@ -20926,6 +21125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: type
       value: perc
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: data
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
@@ -21279,7 +21483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1332341100
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23027,7 +23231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1392388802
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23223,7 +23427,7 @@ PrefabInstance:
     - target: {fileID: 2220327314336623289, guid: e839e27e67a039f4c9b8ed36b9f53f2c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2220327314336623289, guid: e839e27e67a039f4c9b8ed36b9f53f2c,
         type: 3}
@@ -23773,7 +23977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1439267473
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24068,7 +24272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1458984913
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24128,6 +24332,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Center: {x: -0.0000009536743, y: 0, z: 0}
+--- !u!114 &1478817860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+    type: 3}
+  m_PrefabInstance: {fileID: 630535463}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bcf513bb32aaf49a6a3cd1f1c194e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1492276885
 GameObject:
   m_ObjectHideFlags: 0
@@ -24845,7 +25061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1536538482
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25188,7 +25404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1548329965
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25833,7 +26049,7 @@ PrefabInstance:
     - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
       propertyPath: type
-      value: temp
+      value: PythonRoomT2
       objectReference: {fileID: 0}
     - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
@@ -25929,6 +26145,12 @@ MonoBehaviour:
     needsReinit: 0
   speed: 10
   allowFlight: 0
+--- !u!4 &1630747526 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936231450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1651935045
 GameObject:
   m_ObjectHideFlags: 0
@@ -26600,7 +26822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1716011845
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26708,7 +26930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1719339477
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27151,7 +27373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1744189459
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27658,7 +27880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1788093486
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28065,6 +28287,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815139009}
   m_CullTransparentMesh: 0
+--- !u!1001 &1816701749
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2128655159}
+    m_Modifications:
+    - target: {fileID: 2112286358578233569, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_Name
+      value: PythonSupplyC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: data
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f067b645270d7949a93b8476ca6aa38, type: 3}
 --- !u!1 &1818278680
 GameObject:
   m_ObjectHideFlags: 0
@@ -28347,6 +28643,7 @@ GameObject:
   - component: {fileID: 1848312048}
   - component: {fileID: 1848312047}
   - component: {fileID: 1848312046}
+  - component: {fileID: 1848312052}
   m_Layer: 0
   m_Name: "\u041A\u0438\u0434\u0430\u0431\u0435\u043B\u044C\u043D\u044B\u0439 \u043A\u0443\u0431"
   m_TagString: Untagged
@@ -28549,6 +28846,174 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848312044}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1848312052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848312044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ff182d3a2ae2a4aa1d8b500adb66f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  wololo:
+    threshold: 0
+    col: {r: 0, g: 0, b: 0, a: 0}
+  set:
+  - threshold: 20
+    col: {r: 0, g: 1, b: 1, a: 0.5019608}
+  - threshold: 35
+    col: {r: 0, g: 0, b: 1, a: 0.5019608}
+  - threshold: 50
+    col: {r: 0, g: 1, b: 0, a: 0}
+  - threshold: 70
+    col: {r: 0, g: 1, b: 0, a: 0}
+  - threshold: 85
+    col: {r: 1, g: 1, b: 0, a: 0.5019608}
+  - threshold: 100
+    col: {r: 1, g: 0, b: 0, a: 0.5019608}
+  seton:
+    name: 
+    set:
+    - threshold: 0
+      col: {r: 0, g: 0, b: 0, a: 0}
+    - threshold: 0
+      col: {r: 0, g: 0, b: 0, a: 0}
+    - threshold: 0
+      col: {r: 0, g: 0, b: 0, a: 0}
+    - threshold: 0
+      col: {r: 0, g: 0, b: 0, a: 0}
+    - threshold: 0
+      col: {r: 0, g: 0, b: 0, a: 0}
+    - threshold: 0
+      col: {r: 0, g: 0, b: 0, a: 0}
+    grad:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  setonist:
+  - name: temp
+    set:
+    - threshold: 0
+      col: {r: 0, g: 0, b: 0, a: 0}
+    - threshold: 0
+      col: {r: 0, g: 0, b: 0, a: 0}
+    grad:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  - name: 
+    set: []
+    grad:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
 --- !u!1 &1851693211
 GameObject:
   m_ObjectHideFlags: 0
@@ -29143,7 +29608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1908686056
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29561,7 +30026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1920854954
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29654,7 +30119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: 15
   radius: 5
-  type: temp
+  type: PythonRoomT1
   isAutonomous: 0
 --- !u!23 &1921574812
 MeshRenderer:
@@ -29765,7 +30230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1923140764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29873,7 +30338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1927218227
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29933,6 +30398,80 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Center: {x: -0.00000047683716, y: 0, z: 0}
+--- !u!1001 &1936231450
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2128655159}
+    m_Modifications:
+    - target: {fileID: 2112286358578233569, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_Name
+      value: PythonReturnC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: data
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f067b645270d7949a93b8476ca6aa38, type: 3}
 --- !u!1 &1942842801
 GameObject:
   m_ObjectHideFlags: 0
@@ -30307,7 +30846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1951094459
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30738,6 +31277,11 @@ PrefabInstance:
       propertyPath: type
       value: flow
       objectReference: {fileID: 0}
+    - target: {fileID: 2705859355376922228, guid: 5f067b645270d7949a93b8476ca6aa38,
+        type: 3}
+      propertyPath: data
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2859671075117061501, guid: 5f067b645270d7949a93b8476ca6aa38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30926,7 +31470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &1968860571
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32582,7 +33126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &2072614898
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32762,7 +33306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refreshTime: 5
   curData: 0
-  dataType: temp
+  dataType: roomtemp
 --- !u!23 &2113590062
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33012,6 +33556,8 @@ Transform:
   - {fileID: 1954244552}
   - {fileID: 166092434}
   - {fileID: 925690767}
+  - {fileID: 895762483}
+  - {fileID: 1630747526}
   m_Father: {fileID: 1579181855}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35639,12 +36185,12 @@ PrefabInstance:
     - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: Infinity
+      value: 0.94331443
       objectReference: {fileID: 0}
     - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
         type: 3}
@@ -35654,6 +36200,61 @@ PrefabInstance:
     - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: TrailModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077107992556673, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: prewarm
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8750077109449365856, guid: 9fd290625808a774d80cc29829254144,
@@ -35690,6 +36291,61 @@ PrefabInstance:
         type: 3}
       propertyPath: particleDencityMultiplier
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: isControlledBySources
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: startColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: startColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: startColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: finishColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: finishColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: finishColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: trails
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: startColorSource
+      value: 
+      objectReference: {fileID: 702656225}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: finishColorSource
+      value: 
+      objectReference: {fileID: 1478817860}
+    - target: {fileID: 8750077109449365857, guid: 9fd290625808a774d80cc29829254144,
+        type: 3}
+      propertyPath: finishColor.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8750077109449365862, guid: 9fd290625808a774d80cc29829254144,
         type: 3}

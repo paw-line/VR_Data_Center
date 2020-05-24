@@ -47,7 +47,7 @@ public class NodeVisualisator : Visualiser
      * В случае если визуализатор слушает только один источник, будет передан его топик. В случае если несколько, будет передано сообщение о смешанных топиках.\n
      * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
      */
-    public override float Scan(out string visType, out string dataType1, out string topic)
+    public override string Scan(out string visType, out string dataType1, out string topic)
     {
         visType = this.GetType().ToString();
         if (validSources.Count == 0)
@@ -64,9 +64,9 @@ public class NodeVisualisator : Visualiser
                 topic = "Mixed topic";
         }
 
-         
 
-        return curData;
+        UniversalTranslator tr = UniversalTranslator.GetInstance();
+        return curData.ToString() + tr.TransGeneralTypeToUnit(dataType);
     }
 
     /** \brief Функция обновления списка актуальных источников
@@ -96,7 +96,9 @@ public class NodeVisualisator : Visualiser
                 //Debug.Log("Source.Radius= " + source.GetRadius().ToString());
                 //Debug.Log("Distance= " + Vector3.Distance(source.transform.position, myCoord));
                 //Debug.Log("Node " + this.gameObject.name.ToString() + " : pos= " + source.transform.position.magnitude.ToString());
-                if ((source.GetRadius() >= Vector3.Distance(source.transform.position, myCoord)) && (source.GetType() == dataType))
+                string generalType = UniversalTranslator.GetInstance().TransTypeToGeneralType(source.GetType());
+                //Debug.Log(source.GetType() + "=>" + generalType + "?=" + dataType);
+                if ((source.GetRadius() >= Vector3.Distance(source.transform.position, myCoord)) && (generalType == dataType))
                 {//valid source
                     validSources.Add(source);
                 }
@@ -149,7 +151,7 @@ public class NodeVisualisator : Visualiser
          //Debug.Log("Node " + this.gameObject.name.ToString() + ": Found one valid source");
          //material.color = ColorChanger.TempToColor(validSources[0].GetData()); //Старый код
             curData = validSources[0].GetData();
-            material.color = UniversalConverter.GetInstance().TempToColor(curData);
+            material.color = UniversalConverter.GetInstance().TempToColor(curData, dataType);
         }
         else
         {
@@ -172,7 +174,7 @@ public class NodeVisualisator : Visualiser
             //Debug.Log("Overall sum:" + sum.ToString());
             //material.color = ColorChanger.TempToColor(sum); //Старый код
 
-            material.color = UniversalConverter.GetInstance().TempToColor(sum);
+            material.color = UniversalConverter.GetInstance().TempToColor(sum, dataType);
             curData = sum;
         }
     }

@@ -33,8 +33,7 @@ public class LaserPointerController : MonoBehaviour
     [SerializeField]
     private Canvas menuCanvas = null;			///< Ссылка на канвас меню на данной руке. Должна быть задана в редакторе. 
 
-    private string visType, dataType, topic;	///< Переменыне для временного хранения данных сканера. 
-    private float data;							///< Переменыне для временного хранения данных сканера. 
+    private string visType, dataType, topic, data;	///< Переменыне для временного хранения данных сканера. 
 
    
     private TextMeshProUGUI[] text = null;		///< Массив ссылок на блоки интерфейса сканера.
@@ -86,7 +85,7 @@ public class LaserPointerController : MonoBehaviour
 	 * После чего производится вызов метода Scan и вывод полученных данных на интерфейс сканера.
      */
     private void Scan()
-        {
+    {
         Ray raycast = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         bool bHit = Physics.Raycast(raycast, out hit);

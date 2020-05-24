@@ -167,13 +167,13 @@ public class Reciever : MonoBehaviour
                     if ((valType == 0) || (valType == 3))                       /// Если тип сообщения цифровой
                     {
                         float floatVal = float.Parse(sensor.value, CultureInfo.InvariantCulture.NumberFormat);
-                        distributor.SourceSet(device.hostname + "/" + sensor.itemname, floatVal);
+                        distributor.SourceSet(device.hostname + "/" + sensor.itemname, floatVal, sensor.itemname);
                     }
                     if (sensor.trigger != null)                                  /// Если к датчику привязан триггер
                     {
                         float floatVal = sensor.trigger.value;             
                         string alarmName = sensor.itemname + "_alarm";
-                        distributor.SourceSet(device.hostname + "/" + alarmName, floatVal);
+                        distributor.SourceSet(device.hostname + "/" + alarmName, floatVal, alarmName);
                     }
                 }
             }

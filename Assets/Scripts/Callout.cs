@@ -39,15 +39,15 @@ public class Callout : Visualiser
      * \return 1 в случае если объект активен, 0 в случае если нет. 
      * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
      */
-    public override float Scan(out string visType, out string dataType, out string topic)
+    public override string Scan(out string visType, out string dataType, out string topic)
     {
         visType = this.GetType().ToString();
         dataType = source.GetType();
         topic = source.name;
         if (model.active)
-            return 1;
+            return "Active";
         else
-            return 0;
+            return "Off";
 
     }
 

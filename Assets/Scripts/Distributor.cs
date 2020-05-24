@@ -64,7 +64,7 @@ public class Distributor : MonoBehaviour
         {
             sourcesnames.Add(i.gameObject.name);
         }
-        StartCoroutine(DelayedRefresh(5f));
+        StartCoroutine(DelayedRefresh(1f));
     }
 
     IEnumerator DelayedRefresh(float _time)
@@ -112,7 +112,14 @@ public class Distributor : MonoBehaviour
         {
             if (i == topic)
             {
-                sources[c].Set(data, type);
+                if (type == "NULL")
+                {
+                    sources[c].SetData(data);
+                }
+                else
+                {
+                    sources[c].Set(data, type);
+                }
                 //break;
                 return true;
             }
@@ -127,21 +134,12 @@ public class Distributor : MonoBehaviour
      * Производит линейный поиск по списку имен источников и при нахождении устанавливает значение источника.
      * Если источник был найден, возвращает истину, иначе ложь. 
      */
+     /*
     public bool SourceSet(string topic, float data)
     {
-        int c = 0;
-        foreach (string i in sourcesnames)
-        {
-            if (i == topic)
-            {
-                sources[c].SetData(data);
-                //break;
-                return true;
-            }
-            c++;
-        }
-        return false;
+        return SourceSet(topic, data, "NULL");
     }
+    */
 
 }
 

@@ -43,12 +43,13 @@ public class ColorChanger : Visualiser//MonoBehaviour
      * \return Визуализируемые данные в формате float
      * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
      */
-    public override float Scan(out string visType, out string dataType, out string topic)
+    public override string Scan(out string visType, out string dataType, out string topic)
     {
         visType = this.GetType().ToString();
         dataType = source.GetType();
         topic = source.name;
-        return temp;
+        UniversalTranslator tr = UniversalTranslator.GetInstance();
+        return temp.ToString() + tr.TransGeneralTypeToUnit(tr.TransTypeToGeneralType(source.GetType()));
     }
 
     /** \brief Метод, устанавливающий температуру и, соотвественно, цвет на объекте
@@ -60,7 +61,7 @@ public class ColorChanger : Visualiser//MonoBehaviour
         Color newColor;
         Color oldColor = material.color;
         //newColor = TempToColor(temp);
-        newColor = UniversalConverter.GetInstance().TempToColor(temp);
+        newColor = UniversalConverter.GetInstance().TempToColor(temp, "servt");
         oldColor.r = newColor.r;
         oldColor.g = newColor.g;
         oldColor.b = newColor.b;

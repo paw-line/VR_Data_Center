@@ -24,6 +24,6 @@ public abstract class Visualiser : MonoBehaviour
      * Функция необходима для работы сканера визуализаторов.
      * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
      */
-    public abstract float Scan(out string visType, out string dataType, out string topic);
+    public abstract string Scan(out string visType, out string dataType, out string topic);
 
 }

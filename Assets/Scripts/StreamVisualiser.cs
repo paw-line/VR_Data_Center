@@ -14,6 +14,20 @@ using UnityEngine;
  * Рекомеднуется использовать только как часть префаба SteamVisualiser
  */
 
+/*
+ В случае водяного охлаждения:
+1)	Скорость частиц - VlvPos% 
+2)	Плотность частиц - FluidFlowL/s 
+3)	Начальный цвет частиц - FluidInC 
+4)	Конечный цвет частиц - FluidOutC 
+В случае вентиляции:
+1)	Скорость частиц - FanSpd% 
+2)	Плотность частиц - AirFlwL/s 
+3)	Начальный цвет частиц - SupplyC 
+4)	Конечный цвет частиц - ReturnC 
+
+ */
+
 [ExecuteAlways]
 public class StreamVisualiser : Visualiser
 {
@@ -29,10 +43,13 @@ public class StreamVisualiser : Visualiser
     private GameObject collObj = null;      ///<Ссылка на объект, служащий коллайдером визуализатора для сканера. Задается в редакторе.
 
     private float speedData;                ///< Текущая скорость потока
-    private float colorData;                ///< Текущие данные, определяющие цвет потока
+    private float startColorData;           ///< Текущие данные, определяющие цвет начала потока
+    private float finishColorData;          ///< Текущие данные, определяющие цвет конца потока
     private float dencData;                 ///< Текущая плотность потока
+
     public float speed = 5f;                ///< Скорость потока по-умолчанию. Задается в редакторе.
-    public Color color;                     ///< Цвет потока по-умолчанию. Задается в редакторе.
+    public Color startColor;                ///< Цвет начала потока по-умолчанию. Задается в редакторе.
+    public Color finishColor;               ///< Цвет конца потока по-умолчанию. Задается в редакторе.
     public float particleDencityMultiplier = 2f;    ///< Множитель плотности потока по-умолчанию. Задается в редакторе.
     public float radius = 2f;               ///< Радиус потока
     public bool trails = false;             ///< Оставляют ли частицы хвосты?
@@ -43,7 +60,9 @@ public class StreamVisualiser : Visualiser
     [SerializeField]
     private DataSource speedSource = null;  ///< Ссылка на источник данных о скорости потока
     [SerializeField]
-    private DataSource colorSource = null;  ///< Ссылка на источник данных о цвете потока
+    private DataSource startColorSource = null;  ///< Ссылка на источник данных о цвете потока
+    [SerializeField]
+    private DataSource finishColorSource = null;  ///< Ссылка на источник данных о цвете потока
     [SerializeField]
     private DataSource dencitySource = null;///< Ссылка на источник данных о плотности потока
 
@@ -58,36 +77,53 @@ public class StreamVisualiser : Visualiser
      * для отображения нескольких данных. \n
      * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
      */
-    public override float Scan(out string visType, out string dataType, out string topic)
+    public override string Scan(out string visType, out string dataType, out string topic)
     {
         //Очень костыльный метод, так как у нас сразу 3 сурса.
-        if (speedSource != null)
+        if ((startColorSource != null)&&(finishColorSource != null))
         {
-            visType = speedSource.GetType() + ":" + speedData;
+            //visType = speedSource.GetType() + ":" + speedData;
+            //visType = startColorSource.GetType() + "(start col) =" + startColorSource.GetData().ToString() + "|" + finishColorSource.GetType() + "(fin col) =" + finishColorSource.GetData().ToString();
+            visType = startColorSource.GetType() + "(start col) =" + startColorData.ToString() + "|" + finishColorSource.GetType() + "(fin col) =" + finishColorData.ToString();
         }
         else
         {
-            visType = "";
+            if (startColorSource != null)
+            {
+                visType = startColorSource.GetType() + "(Color) =" + startColorData.ToString();
+            }
+            else
+            {
+                if (finishColorSource != null)
+                {
+                    visType = finishColorSource.GetType() + "(Color) =" + finishColorData.ToString();
+                }
+                else
+                {
+                    visType = "";
+                }
+            }
         }
 
         if (dencitySource != null)
         {
-            topic = dencitySource.GetType() + ":" + dencData; ;
+            topic = dencitySource.GetType() + "(Color) =" + dencData.ToString();
         }
         else
         {
             topic = "";
         }
 
-        if (colorSource != null)
+        if (speedSource != null)
         {
-            dataType = colorSource.GetType() + ":";
-            return colorData;
+            dataType = speedSource.GetType() + "(speed):";
+            UniversalTranslator tr = UniversalTranslator.GetInstance();
+            return speedData.ToString() + tr.TransGeneralTypeToUnit(tr.TransTypeToGeneralType(speedSource.GetType()));
         }
         else
         {
             dataType = "";
-            return 0;
+            return "-";
         }
         
     }
@@ -130,17 +166,31 @@ public class StreamVisualiser : Visualiser
             if (speedSource != null)
             {
                 speedData = speedSource.GetData();
-                speed = DataToSpeed(speedData);
+                //speed = DataToSpeed(speedData);
+                speed = speedData;// UniversalConverter.GetInstance().Convert(speedData, speedSource.GetType());
             }
-            if (colorSource != null)
+            if (startColorSource != null)
             {
-                colorData = colorSource.GetData();
-                color = DataToColor(colorData);
+                startColorData = startColorSource.GetData();
+                string gentype = UniversalTranslator.GetInstance().TransTypeToGeneralType(startColorSource.GetType());
+                //Debug.Log(gentype);
+                finishColor = UniversalConverter.GetInstance().TempToColor(startColorData, gentype);
+                finishColor.a = 1f;
+                //startColor = DataToColor(startColorData);       
+            }
+            if (finishColorSource != null)
+            {
+                finishColorData = finishColorSource.GetData();
+                string gentype = UniversalTranslator.GetInstance().TransTypeToGeneralType(finishColorSource.GetType());
+                finishColor = UniversalConverter.GetInstance().TempToColor(finishColorData, gentype);
+                finishColor.a = 1f;
+                //finishColor = DataToColor(finishColorData); 
             }
             if (dencitySource != null)
             {
                 dencData = dencitySource.GetData();
-                particleDencityMultiplier = DataToDencity(dencData);
+                //particleDencityMultiplier = DataToDencity(dencData);
+                particleDencityMultiplier = dencData;// UniversalConverter.GetInstance().Convert(dencData, dencitySource.GetType());
             }
         }
     }
@@ -171,10 +221,30 @@ public class StreamVisualiser : Visualiser
         var em = ps.emission;
         em.rateOverTime = ps.main.startSpeed.constant * particleDencityMultiplier;
 
-        //Цвет
+        //Цвет 
+        var color = ps.colorOverLifetime;
+        ParticleSystem.MinMaxGradient grad = color.color.gradient;
+        GradientColorKey[] colorKey;
+        GradientAlphaKey[] alphaKey;
+        colorKey = new GradientColorKey[2];
+        colorKey[0].color = startColor;
+        colorKey[0].time = 0.0f;
+        colorKey[1].color = finishColor;
+        colorKey[1].time = 1.0f;
+        alphaKey = new GradientAlphaKey[2];
+        alphaKey[0].alpha = 1.0f;
+        alphaKey[0].time = 0.0f;
+        alphaKey[1].alpha = 1.0f;
+        alphaKey[1].time = 1.0f;
+        grad.gradient.SetKeys(colorKey, alphaKey);
+
+        color.color = grad;
+        /*
         ParticleSystem.MinMaxGradient grad = mn.startColor;
         grad.color = color;
         mn.startColor = grad;
+        */
+
 
         //Радиус
         var sh = ps.shape;
@@ -206,6 +276,10 @@ public class StreamVisualiser : Visualiser
         while (true)
         {
             RefreshFromSources();
+            //Debug.Log("Refreshing");
+            var mn = ps.main;
+            mn.prewarm = true;
+            ps.Play();
             yield return new WaitForSeconds(_time);
         }
 
@@ -217,20 +291,15 @@ public class StreamVisualiser : Visualiser
     void Awake()
     {
         ps = this.GetComponentInChildren<ParticleSystem>();
+        ps.Stop();
+        var mn = ps.main;
+        mn.prewarm = false;
         collObj = this.GetComponentInChildren<Collider>().gameObject;
         if (collObj == null)
             Debug.LogError("В потоковом визуализаторе не обнаружен коллайдер.");
         StartCoroutine(DelayedUpdate(refreshTime));
     }
     
-    /*
-    void Start()
-    {
-        ps = this.GetComponentInChildren<ParticleSystem>();
-        StartCoroutine(DelayedUpdate(refreshTime));
-    }
-    */
-
      /** \brief Служебная функция, необходимая для отображения границ системы частиц и координат начала и конца в редакторе  */
     void OnDrawGizmos()
     {
