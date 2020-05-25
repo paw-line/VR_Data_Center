@@ -64,7 +64,7 @@ public class Distributor : MonoBehaviour
         {
             sourcesnames.Add(i.gameObject.name);
         }
-        StartCoroutine(DelayedRefresh(1f));
+        StartCoroutine(DelayedRefresh(0.5f));
     }
 
     IEnumerator DelayedRefresh(float _time)
