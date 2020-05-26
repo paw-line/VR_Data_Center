@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5976000686196665735}
   - component: {fileID: 5976000686196665734}
   m_Layer: 16
-  m_Name: BarRound
+  m_Name: BarRoundModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 8197293834773570785}
   - component: {fileID: 8197293834773570798}
   m_Layer: 16
-  m_Name: Image
+  m_Name: Scale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

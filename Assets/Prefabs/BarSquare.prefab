@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 2084914007138793803}
   - component: {fileID: 2084914007138793802}
   m_Layer: 16
-  m_Name: Image
+  m_Name: Scale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 5775904545966955128}
   - component: {fileID: 3999484362397859140}
   m_Layer: 16
-  m_Name: BarSquare
+  m_Name: BarSquareModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
