@@ -1,58 +1,128 @@
-\hypertarget{class_node_visualisator}{}\doxysection{Node\+Visualisator Class Reference}
+\hypertarget{class_node_visualisator}{}\doxysection{Класс Node\+Visualisator}
 \label{class_node_visualisator}\index{NodeVisualisator@{NodeVisualisator}}
 
 
 Класс экземпляров объемных визуализаторов  
 
 
-Inheritance diagram for Node\+Visualisator\+:\begin{figure}[H]
+Граф наследования\+:Node\+Visualisator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=3.000000cm]{class_node_visualisator}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
-override float \mbox{\hyperlink{class_node_visualisator_a832d6f7331895c320059a21ac1cf081b}{Scan}} (out string vis\+Type, out string data\+Type1, out string topic)
-\begin{DoxyCompactList}\small\item\em Универсальный метод снятия показаний с визуализатора \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+override string \mbox{\hyperlink{class_node_visualisator_afcf62a38d6b4fdfe655e8d70ab2a1475}{Scan}} (out string vis\+Type, out string data\+Type1, out string topic)
+\begin{DoxyCompactList}\small\item\em Метод снятия показаний с визуализатора сканером \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые атрибуты}
 \begin{DoxyCompactItemize}
 \item 
 string \mbox{\hyperlink{class_node_visualisator_ab9ab68021128357ac3054791182828c4}{data\+Type}} = null
 \begin{DoxyCompactList}\small\item\em Тип данных, визуализируемых данным объектов (какой параметр запрашивать у источника) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_node_visualisator_a3f64c9773f27a6c0150718ccc77cda66}{Update\+Valid\+Sources}} ()
+\begin{DoxyCompactList}\small\item\em Функция обновления списка актуальных источников Обнуляет текущий список актуальных источников, получает из дистрибутора список из ВСЕХ источников. Затем, в случае если этот список не пуст, сравнивает доверительный радиус источников с расстоянием до этого источника. Если источник покрывает этот объект, то он считается для него актуальным и заносится в список valid\+Sources. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_visualisator_ae5fde2dfc72eb4092c99987e6b473726}{Update\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Функция обновления отображаемого значения объекта Функция использует данные из валидных источников для обновления значения отображаемых данных. ~\newline
+• Если подходящих источников источников нет, то объект окрашивается в серый цвет и Log выводится сообщение \char`\"{}\+Node \mbox{[}\+X,\+Y,\+Z\mbox{]}\+: No valid sources detected\char`\"{}, где X, Y, Z -\/ номера объекта в матрице, созданной скриптом \mbox{\hyperlink{_cube_creator_8cs}{Cube\+Creator.\+cs}}. ~\newline
+• Если подходдящий источник один, то визуализатор отображает данный с него. ~\newline
+• Если подходящих источников несколько, то значение, отображаемое объектом вычисляется на основе удаленности от источников следующим образом\+: ~\newline
+ L -\/ расстояние между объектом и источником ~\newline
+ R -\/ Доверительный радиус источника ~\newline
+ X -\/ Данные на источнике ~\newline
+ b = 1 -\/ (L / R) -\/ Ненормализованный вес источника для данного объекта ~\newline
+ a = b $\ast$ Х -\/ взвешенные ненормализованные данные с источника ~\newline
+ sumk -\/ сумма b всех источников ~\newline
+ sum -\/ сумма всех а ~\newline
+ k = 1 / sumk -\/ коэфициент нормализации ~\newline
+ y = sum $\ast$ k -\/ Итоговое значение данных на источнике ~\newline
+ ~\newline
+. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_visualisator_a7be2e767f7459f6df5e8d3d025246f36}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Установочная функция, вызываемая в момент активации объекта на сцене. Вызывает сопрограмму Delayed\+Init ввиду необходимости инициализации с задержкой. Подробнее в описании Delayed\+Init. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_node_visualisator_ab322bc8a62dc93a570c85dfa70af8b5d}{Delayed\+Init}} ()
+\begin{DoxyCompactList}\small\item\em Установочная сопрограмма. Выполняет получение ссылки на материал данного объекта, получает ссылку на экземпляр глобального дистрибутора данных и запускает бесконечную сопрограмму Delayed\+Refresh. Перед выполнением всех вышеописанных действий ожидает 3 секунды для того чтобы дистрибутор успел собрать сведения об источниках на сцене. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_node_visualisator_a6daee719df614bdcaf7707df42dbee25}{Delayed\+Refresh}} ()
+\begin{DoxyCompactList}\small\item\em Сопрограмма-\/таймер основного цикла. Отвечает за регулярное обновление отображаемых данных в соотвествии с данными источника. ~\newline
+В бесконечном цикле внутри сопрограммы вызывается функция Init, после чего производится ожидание на время обновления до повторения цикла. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_data_source}{Data\+Source}} $>$ \mbox{\hyperlink{class_node_visualisator_a6c289b912e6e5bc90bd0259ef5f486f0}{valid\+Sources}}
+\begin{DoxyCompactList}\small\item\em Актуальный список источников, влияющих на данный визуализатор. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_node_visualisator_abd9607df459c8a49d5199097ee789ed0}{refresh\+Time}} = 10f
+\begin{DoxyCompactList}\small\item\em Время обновления визуализатора \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_node_visualisator_a8a1c23573b874d41926a5bb101c8f70e}{cur\+Data}} = 0
+\begin{DoxyCompactList}\small\item\em Текущее значение визуализируемой информации на этом визуализаторе \end{DoxyCompactList}\item 
+Material \mbox{\hyperlink{class_node_visualisator_a542fd2beb2bc1d82cf5b1801baf176e5}{material}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на текущий материал данного визуализатора. Устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Подробное описание}
 Класс экземпляров объемных визуализаторов 
 
-\begin{DoxyAuthor}{Authors}
+\begin{DoxyAuthor}{Авторы}
 Пивко Артём 
 \end{DoxyAuthor}
-\begin{DoxyVersion}{Version}
-1.\+0 
+\begin{DoxyVersion}{Версия}
+1.\+1 
 \end{DoxyVersion}
-\begin{DoxyDate}{Date}
-7.\+04.\+20 
+\begin{DoxyDate}{Дата}
+14.\+05.\+20 
 \end{DoxyDate}
-\begin{DoxyWarning}{Warning}
+\begin{DoxyWarning}{Предупреждения}
 В случае если на сцене будет отсутствовать дистрибутор данных, объект не будет функционировать.
 \end{DoxyWarning}
 Этот класс занимается динамическим изменением цвета родительского объекта в соотвествии с данными из источника данных \mbox{\hyperlink{class_data_source}{Data\+Source}} source и настроек конвертации температуры из данного файла. 
 
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_node_visualisator_a832d6f7331895c320059a21ac1cf081b}\label{class_node_visualisator_a832d6f7331895c320059a21ac1cf081b}} 
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_node_visualisator_a7be2e767f7459f6df5e8d3d025246f36}\label{class_node_visualisator_a7be2e767f7459f6df5e8d3d025246f36}} 
+\index{NodeVisualisator@{NodeVisualisator}!Awake@{Awake}}
+\index{Awake@{Awake}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Node\+Visualisator.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установочная функция, вызываемая в момент активации объекта на сцене. Вызывает сопрограмму Delayed\+Init ввиду необходимости инициализации с задержкой. Подробнее в описании Delayed\+Init. 
+
+\mbox{\Hypertarget{class_node_visualisator_ab322bc8a62dc93a570c85dfa70af8b5d}\label{class_node_visualisator_ab322bc8a62dc93a570c85dfa70af8b5d}} 
+\index{NodeVisualisator@{NodeVisualisator}!DelayedInit@{DelayedInit}}
+\index{DelayedInit@{DelayedInit}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{DelayedInit()}{DelayedInit()}}
+{\footnotesize\ttfamily I\+Enumerator Node\+Visualisator.\+Delayed\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установочная сопрограмма. Выполняет получение ссылки на материал данного объекта, получает ссылку на экземпляр глобального дистрибутора данных и запускает бесконечную сопрограмму Delayed\+Refresh. Перед выполнением всех вышеописанных действий ожидает 3 секунды для того чтобы дистрибутор успел собрать сведения об источниках на сцене. 
+
+\mbox{\Hypertarget{class_node_visualisator_a6daee719df614bdcaf7707df42dbee25}\label{class_node_visualisator_a6daee719df614bdcaf7707df42dbee25}} 
+\index{NodeVisualisator@{NodeVisualisator}!DelayedRefresh@{DelayedRefresh}}
+\index{DelayedRefresh@{DelayedRefresh}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{DelayedRefresh()}{DelayedRefresh()}}
+{\footnotesize\ttfamily I\+Enumerator Node\+Visualisator.\+Delayed\+Refresh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сопрограмма-\/таймер основного цикла. Отвечает за регулярное обновление отображаемых данных в соотвествии с данными источника. ~\newline
+В бесконечном цикле внутри сопрограммы вызывается функция Init, после чего производится ожидание на время обновления до повторения цикла. 
+
+\mbox{\Hypertarget{class_node_visualisator_afcf62a38d6b4fdfe655e8d70ab2a1475}\label{class_node_visualisator_afcf62a38d6b4fdfe655e8d70ab2a1475}} 
 \index{NodeVisualisator@{NodeVisualisator}!Scan@{Scan}}
 \index{Scan@{Scan}!NodeVisualisator@{NodeVisualisator}}
 \doxysubsubsection{\texorpdfstring{Scan()}{Scan()}}
-{\footnotesize\ttfamily override float Node\+Visualisator.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily override string Node\+Visualisator.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type1,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Универсальный метод снятия показаний с визуализатора 
+Метод снятия показаний с визуализатора сканером 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
 \hline
 {\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
@@ -60,16 +130,72 @@ string \mbox{\hyperlink{class_node_visualisator_ab9ab68021128357ac3054791182828c
 {\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Визуализируемые данные в формате float
+\begin{DoxyReturn}{Возвращает}
+Визуализируемые данные в формате float В случае если визуализатор находится вне зоны дейстия источников, в качестве типа данных будет передано сообщение об этом, а топик передан не будет. В случае если визуализатор слушает только один источник, будет передан его топик. В случае если несколько, будет передано сообщение о смешанных топиках.~\newline
+Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
 \end{DoxyReturn}
-Унаследованные реализации функции обязаны будут возвращать 4 параметра\+: опорные данные визуализатора, тип визуализатора, тип данных, M\+Q\+T\+T-\/топик данных. 
-
-Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{Visualiser}}.
 
 
+Замещает \mbox{\hyperlink{class_visualiser_a099db2954c72f856a269f09803a33fc7}{Visualiser}}.
 
-\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_node_visualisator_ae5fde2dfc72eb4092c99987e6b473726}\label{class_node_visualisator_ae5fde2dfc72eb4092c99987e6b473726}} 
+\index{NodeVisualisator@{NodeVisualisator}!UpdateObject@{UpdateObject}}
+\index{UpdateObject@{UpdateObject}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{UpdateObject()}{UpdateObject()}}
+{\footnotesize\ttfamily void Node\+Visualisator.\+Update\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Функция обновления отображаемого значения объекта Функция использует данные из валидных источников для обновления значения отображаемых данных. ~\newline
+• Если подходящих источников источников нет, то объект окрашивается в серый цвет и Log выводится сообщение \char`\"{}\+Node \mbox{[}\+X,\+Y,\+Z\mbox{]}\+: No valid sources detected\char`\"{}, где X, Y, Z -\/ номера объекта в матрице, созданной скриптом \mbox{\hyperlink{_cube_creator_8cs}{Cube\+Creator.\+cs}}. ~\newline
+• Если подходдящий источник один, то визуализатор отображает данный с него. ~\newline
+• Если подходящих источников несколько, то значение, отображаемое объектом вычисляется на основе удаленности от источников следующим образом\+: ~\newline
+ L -\/ расстояние между объектом и источником ~\newline
+ R -\/ Доверительный радиус источника ~\newline
+ X -\/ Данные на источнике ~\newline
+ b = 1 -\/ (L / R) -\/ Ненормализованный вес источника для данного объекта ~\newline
+ a = b $\ast$ Х -\/ взвешенные ненормализованные данные с источника ~\newline
+ sumk -\/ сумма b всех источников ~\newline
+ sum -\/ сумма всех а ~\newline
+ k = 1 / sumk -\/ коэфициент нормализации ~\newline
+ y = sum $\ast$ k -\/ Итоговое значение данных на источнике ~\newline
+ ~\newline
+. 
+
+Пример\+: есть 2 источника с радиусами R1 = R2 = 7. Источник 1 показывает X1 = 10, источник 2 показывает X2 = 20. Куб находится на расстоянии a1=4 от источника 1 и на расстоянии a2=6 от источника 2. ~\newline
+ 1) Считаем долю от радиуса каждого куба. ~\newline
+ A1 = a1/\+R1 = 4/7 = 0.\+57 ~\newline
+ A2 = a2/\+R2 = 6/7 = 0.\+86 ~\newline
+ 2) Вычитаем их из единицы ~\newline
+ B1 = 1-\/A1 = 1-\/0.\+57 = 0.\+43 ~\newline
+ B2 = 1-\/A2 = 1-\/0.\+86 = 0.\+14 ~\newline
+ 3) Ищем коэффициент нормализации\+: ~\newline
+ K = 1/(B1+\+B2) = 1/(0.\+14+0.\+43) = 1/0.\+57 = 1.\+75 ~\newline
+ 4) Считаем финальное значение\+: ~\newline
+ Y = (X1$\ast$\+B1 + X2$\ast$\+B2)$\ast$K = (10$\ast$0.43 + 20$\ast$0.14)$\ast$1.75 = 12.\+4. ~\newline
+\mbox{\Hypertarget{class_node_visualisator_a3f64c9773f27a6c0150718ccc77cda66}\label{class_node_visualisator_a3f64c9773f27a6c0150718ccc77cda66}} 
+\index{NodeVisualisator@{NodeVisualisator}!UpdateValidSources@{UpdateValidSources}}
+\index{UpdateValidSources@{UpdateValidSources}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{UpdateValidSources()}{UpdateValidSources()}}
+{\footnotesize\ttfamily void Node\+Visualisator.\+Update\+Valid\+Sources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Функция обновления списка актуальных источников Обнуляет текущий список актуальных источников, получает из дистрибутора список из ВСЕХ источников. Затем, в случае если этот список не пуст, сравнивает доверительный радиус источников с расстоянием до этого источника. Если источник покрывает этот объект, то он считается для него актуальным и заносится в список valid\+Sources. 
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_node_visualisator_a8a1c23573b874d41926a5bb101c8f70e}\label{class_node_visualisator_a8a1c23573b874d41926a5bb101c8f70e}} 
+\index{NodeVisualisator@{NodeVisualisator}!curData@{curData}}
+\index{curData@{curData}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{curData}{curData}}
+{\footnotesize\ttfamily float Node\+Visualisator.\+cur\+Data = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущее значение визуализируемой информации на этом визуализаторе 
+
 \mbox{\Hypertarget{class_node_visualisator_ab9ab68021128357ac3054791182828c4}\label{class_node_visualisator_ab9ab68021128357ac3054791182828c4}} 
 \index{NodeVisualisator@{NodeVisualisator}!dataType@{dataType}}
 \index{dataType@{dataType}!NodeVisualisator@{NodeVisualisator}}
@@ -80,8 +206,38 @@ Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{
 
 Тип данных, визуализируемых данным объектов (какой параметр запрашивать у источника) 
 
+\mbox{\Hypertarget{class_node_visualisator_a542fd2beb2bc1d82cf5b1801baf176e5}\label{class_node_visualisator_a542fd2beb2bc1d82cf5b1801baf176e5}} 
+\index{NodeVisualisator@{NodeVisualisator}!material@{material}}
+\index{material@{material}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{material}{material}}
+{\footnotesize\ttfamily Material Node\+Visualisator.\+material = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+
+Ссылка на текущий материал данного визуализатора. Устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал. 
+
+\mbox{\Hypertarget{class_node_visualisator_abd9607df459c8a49d5199097ee789ed0}\label{class_node_visualisator_abd9607df459c8a49d5199097ee789ed0}} 
+\index{NodeVisualisator@{NodeVisualisator}!refreshTime@{refreshTime}}
+\index{refreshTime@{refreshTime}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{refreshTime}{refreshTime}}
+{\footnotesize\ttfamily float Node\+Visualisator.\+refresh\+Time = 10f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время обновления визуализатора 
+
+\mbox{\Hypertarget{class_node_visualisator_a6c289b912e6e5bc90bd0259ef5f486f0}\label{class_node_visualisator_a6c289b912e6e5bc90bd0259ef5f486f0}} 
+\index{NodeVisualisator@{NodeVisualisator}!validSources@{validSources}}
+\index{validSources@{validSources}!NodeVisualisator@{NodeVisualisator}}
+\doxysubsubsection{\texorpdfstring{validSources}{validSources}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_data_source}{Data\+Source}}$>$ Node\+Visualisator.\+valid\+Sources\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Актуальный список источников, влияющих на данный визуализатор. 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_node_visualisator_8cs}{Node\+Visualisator.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_node_visualisator_8cs}{Node\+Visualisator.\+cs}}\end{DoxyCompactItemize}

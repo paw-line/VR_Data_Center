@@ -1,19 +1,58 @@
-\hypertarget{class_camera_layer_control}{}\doxysection{Camera\+Layer\+Control Class Reference}
+\hypertarget{class_camera_layer_control}{}\doxysection{Класс Camera\+Layer\+Control}
 \label{class_camera_layer_control}\index{CameraLayerControl@{CameraLayerControl}}
-Inheritance diagram for Camera\+Layer\+Control\+:\begin{figure}[H]
+
+
+Класс, регулирующий отображение слоев на картинке с главной камеры.  
+
+
+Граф наследования\+:Camera\+Layer\+Control\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_camera_layer_control}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_camera_layer_control_a994857060e3fc2af6d13eeeeb45f65dd}{Not\+Render}} (int n)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Метод для включения/выключения отображения слоев на основной камере. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_camera_layer_control_a6dee23a92f94a0cd7acebed075d22941}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Метод, выполняющийся на старте программы. Устанавливает основную камеру сцены как текущую камеру. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Camera \mbox{\hyperlink{class_camera_layer_control_ad609454eeeb9c97048f3e9f4e09e27b2}{current}} = null
+\begin{DoxyCompactList}\small\item\em Камера, с которой работает объект. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsection{Подробное описание}
+Класс, регулирующий отображение слоев на картинке с главной камеры. 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+13.\+05.\+20
+\end{DoxyDate}
+Этот визуализатор занимается динамическим изменением цвета родительского объекта в соотвествии с данными из источника данных \mbox{\hyperlink{class_data_source}{Data\+Source}} source. Для конверсии используется синглтон Universal\+Controller 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_camera_layer_control_a6dee23a92f94a0cd7acebed075d22941}\label{class_camera_layer_control_a6dee23a92f94a0cd7acebed075d22941}} 
+\index{CameraLayerControl@{CameraLayerControl}!Awake@{Awake}}
+\index{Awake@{Awake}!CameraLayerControl@{CameraLayerControl}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Camera\+Layer\+Control.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод, выполняющийся на старте программы. Устанавливает основную камеру сцены как текущую камеру. 
+
 \mbox{\Hypertarget{class_camera_layer_control_a994857060e3fc2af6d13eeeeb45f65dd}\label{class_camera_layer_control_a994857060e3fc2af6d13eeeeb45f65dd}} 
 \index{CameraLayerControl@{CameraLayerControl}!NotRender@{NotRender}}
 \index{NotRender@{NotRender}!CameraLayerControl@{CameraLayerControl}}
@@ -22,6 +61,28 @@ void \mbox{\hyperlink{class_camera_layer_control_a994857060e3fc2af6d13eeeeb45f65
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Метод для включения/выключения отображения слоев на основной камере. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}int\mbox{]}} & n Номер переключаемого слоя. n должен принадлежать промежутку \mbox{[}0,31\mbox{]}. Если n -\/ корректный номер слоя, включает его отображение если тот был выключен, и выключает если тот был включен. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_camera_layer_control_ad609454eeeb9c97048f3e9f4e09e27b2}\label{class_camera_layer_control_ad609454eeeb9c97048f3e9f4e09e27b2}} 
+\index{CameraLayerControl@{CameraLayerControl}!current@{current}}
+\index{current@{current}!CameraLayerControl@{CameraLayerControl}}
+\doxysubsubsection{\texorpdfstring{current}{current}}
+{\footnotesize\ttfamily Camera Camera\+Layer\+Control.\+current = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Камера, с которой работает объект. 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_camera_layer_control_8cs}{Camera\+Layer\+Control.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_camera_layer_control_8cs}{Camera\+Layer\+Control.\+cs}}\end{DoxyCompactItemize}

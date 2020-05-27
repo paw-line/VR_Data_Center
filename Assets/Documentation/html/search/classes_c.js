@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['reciever_133',['Reciever',['../class_reciever.html',1,'']]]
+  ['tempsettings_258',['TempSettings',['../struct_temp_settings.html',1,'']]],
+  ['trigger_259',['Trigger',['../class_trigger.html',1,'']]]
 ];

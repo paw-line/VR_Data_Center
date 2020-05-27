@@ -1,21 +1,58 @@
-\hypertarget{class_element_controller}{}\doxysection{Element\+Controller Class Reference}
+\hypertarget{class_element_controller}{}\doxysection{Класс Element\+Controller}
 \label{class_element_controller}\index{ElementController@{ElementController}}
-Inheritance diagram for Element\+Controller\+:\begin{figure}[H]
+
+
+Класс для контроля элементов интерфейса, отображающих данные  
+
+
+Граф наследования\+:Element\+Controller\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_element_controller}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_element_controller_a18b3f9fe074caa64f0f9b18ba789e30a}{Set}} (string type, string name, string data)
-\item 
+\begin{DoxyCompactList}\small\item\em Метод установки элемента \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_element_controller_acf9212ca106a0a712b556620e826e90e}{Set}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Image \mbox{\hyperlink{class_element_controller_a8e26367afaf486f6dd4e3cf1508bae23}{icon}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на контролируемую иконку. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Text\+Mesh\+Pro\+U\+G\+UI \mbox{\hyperlink{class_element_controller_a60f3ccdb81d15c1cdfd635393b9296ff}{name\+Text}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на текстовый объект Text Mesh Pro, отображающий название. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Text\+Mesh\+Pro\+U\+G\+UI \mbox{\hyperlink{class_element_controller_a8f32a82c83ab59b9abdb3bab86b14a85}{data\+Text}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на текстовый объект Text Mesh Pro, отображающий значение. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Sprite \mbox{\hyperlink{class_element_controller_a003a8e6958877bf210d4e52f82e71f1d}{temp\+Icon}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на иконку температуры. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Sprite \mbox{\hyperlink{class_element_controller_a88008c5850d91d8f79ec24ada9560ba9}{hum\+Icon}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на иконку влажности. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Sprite \mbox{\hyperlink{class_element_controller_a6f8ab4eae0ff0be7218c80d43fe46d9e}{alarm\+Icon}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на иконку тревоги. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Sprite \mbox{\hyperlink{class_element_controller_a29e6f68f87baaf17cee4f4832e2b3ab1}{default\+Icon}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на иконку по-\/умолчанию. Должна быть задана в редакторе. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsection{Подробное описание}
+Класс для контроля элементов интерфейса, отображающих данные 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+13.\+05.\+20
+\end{DoxyDate}
+Интерфейс для установки параметров элементов интерфейса. ~\newline
+В случае, если требуется добавление типа даных, это делается в switch\textquotesingle{}e функции set и добавлением новой иконки в блоке Icon. 
+
+\doxysubsection{Методы}
 \mbox{\Hypertarget{class_element_controller_acf9212ca106a0a712b556620e826e90e}\label{class_element_controller_acf9212ca106a0a712b556620e826e90e}} 
 \index{ElementController@{ElementController}!Set@{Set}}
 \index{Set@{Set}!ElementController@{ElementController}}
@@ -30,6 +67,92 @@ void \mbox{\hyperlink{class_element_controller_acf9212ca106a0a712b556620e826e90e
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Метод установки элемента 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}string\mbox{]}} & type Тип данных, определяющий иконку. \\
+\hline
+{\em \mbox{[}string\mbox{]}} & name Отображаемое название данных \\
+\hline
+{\em \mbox{[}string\mbox{]}} & data Отображаемые данные \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_element_controller_a6f8ab4eae0ff0be7218c80d43fe46d9e}\label{class_element_controller_a6f8ab4eae0ff0be7218c80d43fe46d9e}} 
+\index{ElementController@{ElementController}!alarmIcon@{alarmIcon}}
+\index{alarmIcon@{alarmIcon}!ElementController@{ElementController}}
+\doxysubsubsection{\texorpdfstring{alarmIcon}{alarmIcon}}
+{\footnotesize\ttfamily Sprite Element\+Controller.\+alarm\+Icon = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на иконку тревоги. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_element_controller_a8f32a82c83ab59b9abdb3bab86b14a85}\label{class_element_controller_a8f32a82c83ab59b9abdb3bab86b14a85}} 
+\index{ElementController@{ElementController}!dataText@{dataText}}
+\index{dataText@{dataText}!ElementController@{ElementController}}
+\doxysubsubsection{\texorpdfstring{dataText}{dataText}}
+{\footnotesize\ttfamily Text\+Mesh\+Pro\+U\+G\+UI Element\+Controller.\+data\+Text = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на текстовый объект Text Mesh Pro, отображающий значение. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_element_controller_a29e6f68f87baaf17cee4f4832e2b3ab1}\label{class_element_controller_a29e6f68f87baaf17cee4f4832e2b3ab1}} 
+\index{ElementController@{ElementController}!defaultIcon@{defaultIcon}}
+\index{defaultIcon@{defaultIcon}!ElementController@{ElementController}}
+\doxysubsubsection{\texorpdfstring{defaultIcon}{defaultIcon}}
+{\footnotesize\ttfamily Sprite Element\+Controller.\+default\+Icon = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на иконку по-\/умолчанию. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_element_controller_a88008c5850d91d8f79ec24ada9560ba9}\label{class_element_controller_a88008c5850d91d8f79ec24ada9560ba9}} 
+\index{ElementController@{ElementController}!humIcon@{humIcon}}
+\index{humIcon@{humIcon}!ElementController@{ElementController}}
+\doxysubsubsection{\texorpdfstring{humIcon}{humIcon}}
+{\footnotesize\ttfamily Sprite Element\+Controller.\+hum\+Icon = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на иконку влажности. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_element_controller_a8e26367afaf486f6dd4e3cf1508bae23}\label{class_element_controller_a8e26367afaf486f6dd4e3cf1508bae23}} 
+\index{ElementController@{ElementController}!icon@{icon}}
+\index{icon@{icon}!ElementController@{ElementController}}
+\doxysubsubsection{\texorpdfstring{icon}{icon}}
+{\footnotesize\ttfamily Image Element\+Controller.\+icon = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на контролируемую иконку. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_element_controller_a60f3ccdb81d15c1cdfd635393b9296ff}\label{class_element_controller_a60f3ccdb81d15c1cdfd635393b9296ff}} 
+\index{ElementController@{ElementController}!nameText@{nameText}}
+\index{nameText@{nameText}!ElementController@{ElementController}}
+\doxysubsubsection{\texorpdfstring{nameText}{nameText}}
+{\footnotesize\ttfamily Text\+Mesh\+Pro\+U\+G\+UI Element\+Controller.\+name\+Text = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на текстовый объект Text Mesh Pro, отображающий название. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_element_controller_a003a8e6958877bf210d4e52f82e71f1d}\label{class_element_controller_a003a8e6958877bf210d4e52f82e71f1d}} 
+\index{ElementController@{ElementController}!tempIcon@{tempIcon}}
+\index{tempIcon@{tempIcon}!ElementController@{ElementController}}
+\doxysubsubsection{\texorpdfstring{tempIcon}{tempIcon}}
+{\footnotesize\ttfamily Sprite Element\+Controller.\+temp\+Icon = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на иконку температуры. Должна быть задана в редакторе. 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_element_controller_8cs}{Element\+Controller.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_element_controller_8cs}{Element\+Controller.\+cs}}\end{DoxyCompactItemize}

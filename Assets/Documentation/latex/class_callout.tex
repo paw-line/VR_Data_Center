@@ -1,31 +1,75 @@
-\hypertarget{class_callout}{}\doxysection{Callout Class Reference}
+\hypertarget{class_callout}{}\doxysection{Класс Callout}
 \label{class_callout}\index{Callout@{Callout}}
-Inheritance diagram for Callout\+:\begin{figure}[H]
+
+
+Класс для контроля визуализаторов сигналов тревоги.  
+
+
+Граф наследования\+:Callout\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=3.000000cm]{class_callout}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
-override float \mbox{\hyperlink{class_callout_abebf4830ba123c04299126135ff957e9}{Scan}} (out string vis\+Type, out string data\+Type, out string topic)
-\begin{DoxyCompactList}\small\item\em Универсальный метод снятия показаний с визуализатора \end{DoxyCompactList}\end{DoxyCompactItemize}
+override string \mbox{\hyperlink{class_callout_aa53130e8b4061a37777a25e24d6dab05}{Scan}} (out string vis\+Type, out string data\+Type, out string topic)
+\begin{DoxyCompactList}\small\item\em Метод снятия показаний с визуализатора сканером \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_callout_a6c7fc131be980ee99b8b1698f86ab23b}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Функция основного цикла. Отвечает за покадровое обновление позиции цилиндра, а так же за включение и выключение объекта в зависимости от данных с источника. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_callout_a51c6de0404a4e22ae930f20a0df1f283}{Update\+Cylinder\+Position}} (Game\+Object \mbox{\hyperlink{class_callout_a8c39cae2014ccb208decec5ebf7364ec}{cylinder}}, Vector3 begin\+Point, Vector3 end\+Point)
+\begin{DoxyCompactList}\small\item\em Метод установки позиции цилиндра между начальной и конечной точкой. ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Transform \mbox{\hyperlink{class_callout_ac399161e59f0bab65e74fb84039db75c}{start}} = null
+\begin{DoxyCompactList}\small\item\em Точка начала выноски (обычно утапливается в объект, к которому применена выноска). \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_callout_a9dc2171d2cc2f0815f0dbed895bfb772}{finish}} = null
+\begin{DoxyCompactList}\small\item\em Точка конца выноски. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_callout_a8c39cae2014ccb208decec5ebf7364ec}{cylinder}} = null
+\begin{DoxyCompactList}\small\item\em Цилиндр, соединяющий начало и конец выноски. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_callout_a125dedefbfd2bb076eae4b1545ee02b3}{model}} = null
+\begin{DoxyCompactList}\small\item\em Компонент, который выключается и включается в зависимости от данных источника. Рекоммендуется задавать здесь сам корневой объект выноски. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_source}{Data\+Source}} \mbox{\hyperlink{class_callout_a403d601498e7619e6e55c1409bb957c8}{source}} = null
+\begin{DoxyCompactList}\small\item\em Источник данных, в соответствии с которым работает визуализатор. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_callout_abebf4830ba123c04299126135ff957e9}\label{class_callout_abebf4830ba123c04299126135ff957e9}} 
+\doxysubsection{Подробное описание}
+Класс для контроля визуализаторов сигналов тревоги. 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+13.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+Если source не присвоить в сцене, объект не будет функционировать!
+\end{DoxyWarning}
+Этот визуализатор занимается активацией и деактивацией объекта сигнала тревоги в соотвествии с данными из источника данных \mbox{\hyperlink{class_data_source}{Data\+Source}} source. Так же осуществляет динамичное расположение цилиндра-\/тела выноски между начальной и конечной её точками, что избавляет от необходимости выставлять его позицию вручную.~\newline
+Важно\+: работает не только во время работы приложения, но и в редакторе. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_callout_aa53130e8b4061a37777a25e24d6dab05}\label{class_callout_aa53130e8b4061a37777a25e24d6dab05}} 
 \index{Callout@{Callout}!Scan@{Scan}}
 \index{Scan@{Scan}!Callout@{Callout}}
 \doxysubsubsection{\texorpdfstring{Scan()}{Scan()}}
-{\footnotesize\ttfamily override float Callout.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily override string Callout.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Универсальный метод снятия показаний с визуализатора 
+Метод снятия показаний с визуализатора сканером 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
 \hline
 {\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
@@ -33,15 +77,98 @@ override float \mbox{\hyperlink{class_callout_abebf4830ba123c04299126135ff957e9}
 {\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Визуализируемые данные в формате float
+\begin{DoxyReturn}{Возвращает}
+1 в случае если объект активен, 0 в случае если нет. Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
 \end{DoxyReturn}
-Унаследованные реализации функции обязаны будут возвращать 4 параметра\+: опорные данные визуализатора, тип визуализатора, тип данных, M\+Q\+T\+T-\/топик данных. 
-
-Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{Visualiser}}.
 
 
+Замещает \mbox{\hyperlink{class_visualiser_a099db2954c72f856a269f09803a33fc7}{Visualiser}}.
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\mbox{\Hypertarget{class_callout_a6c7fc131be980ee99b8b1698f86ab23b}\label{class_callout_a6c7fc131be980ee99b8b1698f86ab23b}} 
+\index{Callout@{Callout}!Update@{Update}}
+\index{Update@{Update}!Callout@{Callout}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Callout.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Функция основного цикла. Отвечает за покадровое обновление позиции цилиндра, а так же за включение и выключение объекта в зависимости от данных с источника. 
+
+\mbox{\Hypertarget{class_callout_a51c6de0404a4e22ae930f20a0df1f283}\label{class_callout_a51c6de0404a4e22ae930f20a0df1f283}} 
+\index{Callout@{Callout}!UpdateCylinderPosition@{UpdateCylinderPosition}}
+\index{UpdateCylinderPosition@{UpdateCylinderPosition}!Callout@{Callout}}
+\doxysubsubsection{\texorpdfstring{UpdateCylinderPosition()}{UpdateCylinderPosition()}}
+{\footnotesize\ttfamily void Callout.\+Update\+Cylinder\+Position (\begin{DoxyParamCaption}\item[{Game\+Object}]{cylinder,  }\item[{Vector3}]{begin\+Point,  }\item[{Vector3}]{end\+Point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод установки позиции цилиндра между начальной и конечной точкой. ~\newline
+ 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}\+Game\+Object\mbox{]}} & cylinder Устанавливаемый цилиндр. \\
+\hline
+{\em \mbox{[}\+Vector3\mbox{]}} & begin\+Point Координаты начала \\
+\hline
+{\em \mbox{[}\+Vector3\mbox{]}} & end\+Point Координаты конца\\
+\hline
+\end{DoxyParams}
+Устанавливает объект cylinder на середину между точкой начала и конца, затем поворачивает его, чтобы его ось Y совпала с линией между точками, затем растягивает его так, чтобы основания объекта касались начальной и конечной точек. 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_callout_a8c39cae2014ccb208decec5ebf7364ec}\label{class_callout_a8c39cae2014ccb208decec5ebf7364ec}} 
+\index{Callout@{Callout}!cylinder@{cylinder}}
+\index{cylinder@{cylinder}!Callout@{Callout}}
+\doxysubsubsection{\texorpdfstring{cylinder}{cylinder}}
+{\footnotesize\ttfamily Game\+Object Callout.\+cylinder = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Цилиндр, соединяющий начало и конец выноски. 
+
+\mbox{\Hypertarget{class_callout_a9dc2171d2cc2f0815f0dbed895bfb772}\label{class_callout_a9dc2171d2cc2f0815f0dbed895bfb772}} 
+\index{Callout@{Callout}!finish@{finish}}
+\index{finish@{finish}!Callout@{Callout}}
+\doxysubsubsection{\texorpdfstring{finish}{finish}}
+{\footnotesize\ttfamily Transform Callout.\+finish = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Точка конца выноски. 
+
+\mbox{\Hypertarget{class_callout_a125dedefbfd2bb076eae4b1545ee02b3}\label{class_callout_a125dedefbfd2bb076eae4b1545ee02b3}} 
+\index{Callout@{Callout}!model@{model}}
+\index{model@{model}!Callout@{Callout}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily Game\+Object Callout.\+model = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Компонент, который выключается и включается в зависимости от данных источника. Рекоммендуется задавать здесь сам корневой объект выноски. 
+
+\mbox{\Hypertarget{class_callout_a403d601498e7619e6e55c1409bb957c8}\label{class_callout_a403d601498e7619e6e55c1409bb957c8}} 
+\index{Callout@{Callout}!source@{source}}
+\index{source@{source}!Callout@{Callout}}
+\doxysubsubsection{\texorpdfstring{source}{source}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_source}{Data\+Source}} Callout.\+source = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Источник данных, в соответствии с которым работает визуализатор. 
+
+\mbox{\Hypertarget{class_callout_ac399161e59f0bab65e74fb84039db75c}\label{class_callout_ac399161e59f0bab65e74fb84039db75c}} 
+\index{Callout@{Callout}!start@{start}}
+\index{start@{start}!Callout@{Callout}}
+\doxysubsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily Transform Callout.\+start = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Точка начала выноски (обычно утапливается в объект, к которому применена выноска). 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_callout_8cs}{Callout.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_callout_8cs}{Callout.\+cs}}\end{DoxyCompactItemize}

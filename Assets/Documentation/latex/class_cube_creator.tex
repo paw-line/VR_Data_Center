@@ -1,26 +1,77 @@
-\hypertarget{class_cube_creator}{}\doxysection{Cube\+Creator Class Reference}
+\hypertarget{class_cube_creator}{}\doxysection{Класс Cube\+Creator}
 \label{class_cube_creator}\index{CubeCreator@{CubeCreator}}
-Inheritance diagram for Cube\+Creator\+:\begin{figure}[H]
+
+
+Класс-\/конструктор элементов объемного визуализатора.  
+
+
+Граф наследования\+:Cube\+Creator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_cube_creator}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_cube_creator_a4944f806618fa3fa1ab167954c917b32}{Generate\+Cubes}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Метод создания объемной сетки объектов Метод рассчитывает количество генерируемых объектов по каждой оси на основании размеров зоны и плотности. После этого вычисляется смещение offset, необходимое чтобы объекты находились внутри зоны, не пересекая её границ. Далее объекты инициируются на узлах 3D сетки и становятся по иерархии детьми данного объекта. Их названия меняются на Node\mbox{[}x,y,z\mbox{]}, где x,y,z -\/ его номер в объемной матрице. Если объект -\/ элемент объемного визуализатора с компонентом \mbox{\hyperlink{class_node_visualisator}{Node\+Visualisator}}, то его тип слушаемых данных устанавливается равным data\+Type. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_cube_creator_a47f7e290fe131b7ec2d148907c71f17b}{Destroy\+Cubes}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Метод уничтожения объемной сетки объектов Метод уничтожает уже созданную в текущем выполнении программы сетку. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_cube_creator_adb8a2f00d8292a1164f301fef352953c}{On\+Draw\+Gizmos\+Selected}} ()
+\begin{DoxyCompactList}\small\item\em Служебная функция, отображающая размеры границы в редакторе. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_cube_creator_a0f50c076beccde28c761c9af02b4d9ee}{node}} = null
+\begin{DoxyCompactList}\small\item\em Размножаемый объект. Предпочтительно префаб. Задается из редактора. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_cube_creator_a661c4ad061f8669989bad32feb2c3000}{zone\+Size}}
+\begin{DoxyCompactList}\small\item\em Размер зоны по трём измерениям. Задается из редактора. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_cube_creator_a1840643564081d3b417c907361c182ad}{density}}
+\begin{DoxyCompactList}\small\item\em Плотность размещения объектов по трём измерениям. Задается из редактора. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_cube_creator_ac2f49944dcce7e46b29b9411791a28b2}{data\+Type}} = null
+\begin{DoxyCompactList}\small\item\em Тип данных, которые будут слушать размещаемые элементы объемного визуализатора. \end{DoxyCompactList}\item 
+Game\+Object\mbox{[},,\mbox{]} \mbox{\hyperlink{class_cube_creator_a50cfb6176f63be0220633174129db780}{nodes}} = null
+\begin{DoxyCompactList}\small\item\em Трёхмерная матрица, хранящая ссылки на созданные объекты. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cube_creator_a711bdb3a08d1d64780d4ec1fa1e1c496}{xn}}
+\item 
+int \mbox{\hyperlink{class_cube_creator_ad7c6e72a56234d209f75eb9775b8a930}{yn}}
+\item 
+int \mbox{\hyperlink{class_cube_creator_ad1de89e0f89c576231f877cbdb42c25b}{zn}} = 0
+\begin{DoxyCompactList}\small\item\em Текущие размеры матрицы объектов. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsection{Подробное описание}
+Класс-\/конструктор элементов объемного визуализатора. 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+13.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+Методы этого класса очень медленные и не предназначены для исполнения во время работы программы. Только в режиме редактирования.
+\end{DoxyWarning}
+Скрипт занимается созданием и размещением объектов node на ребрах объемной сетки размера zone\+Size и плотности density. ~\newline
+Рассчётное применение класса -\/ создание элементов объемного визуализатора и задание им общего типа данных. 
+
+\doxysubsection{Методы}
 \mbox{\Hypertarget{class_cube_creator_a47f7e290fe131b7ec2d148907c71f17b}\label{class_cube_creator_a47f7e290fe131b7ec2d148907c71f17b}} 
 \index{CubeCreator@{CubeCreator}!DestroyCubes@{DestroyCubes}}
 \index{DestroyCubes@{DestroyCubes}!CubeCreator@{CubeCreator}}
 \doxysubsubsection{\texorpdfstring{DestroyCubes()}{DestroyCubes()}}
 {\footnotesize\ttfamily void Cube\+Creator.\+Destroy\+Cubes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод уничтожения объемной сетки объектов Метод уничтожает уже созданную в текущем выполнении программы сетку. 
 
 \mbox{\Hypertarget{class_cube_creator_a4944f806618fa3fa1ab167954c917b32}\label{class_cube_creator_a4944f806618fa3fa1ab167954c917b32}} 
 \index{CubeCreator@{CubeCreator}!GenerateCubes@{GenerateCubes}}
@@ -30,6 +81,95 @@ void \mbox{\hyperlink{class_cube_creator_a47f7e290fe131b7ec2d148907c71f17b}{Dest
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Метод создания объемной сетки объектов Метод рассчитывает количество генерируемых объектов по каждой оси на основании размеров зоны и плотности. После этого вычисляется смещение offset, необходимое чтобы объекты находились внутри зоны, не пересекая её границ. Далее объекты инициируются на узлах 3D сетки и становятся по иерархии детьми данного объекта. Их названия меняются на Node\mbox{[}x,y,z\mbox{]}, где x,y,z -\/ его номер в объемной матрице. Если объект -\/ элемент объемного визуализатора с компонентом \mbox{\hyperlink{class_node_visualisator}{Node\+Visualisator}}, то его тип слушаемых данных устанавливается равным data\+Type. 
+
+\mbox{\Hypertarget{class_cube_creator_adb8a2f00d8292a1164f301fef352953c}\label{class_cube_creator_adb8a2f00d8292a1164f301fef352953c}} 
+\index{CubeCreator@{CubeCreator}!OnDrawGizmosSelected@{OnDrawGizmosSelected}}
+\index{OnDrawGizmosSelected@{OnDrawGizmosSelected}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{OnDrawGizmosSelected()}{OnDrawGizmosSelected()}}
+{\footnotesize\ttfamily void Cube\+Creator.\+On\+Draw\+Gizmos\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Служебная функция, отображающая размеры границы в редакторе. 
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_cube_creator_ac2f49944dcce7e46b29b9411791a28b2}\label{class_cube_creator_ac2f49944dcce7e46b29b9411791a28b2}} 
+\index{CubeCreator@{CubeCreator}!dataType@{dataType}}
+\index{dataType@{dataType}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{dataType}{dataType}}
+{\footnotesize\ttfamily string Cube\+Creator.\+data\+Type = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Тип данных, которые будут слушать размещаемые элементы объемного визуализатора. 
+
+\mbox{\Hypertarget{class_cube_creator_a1840643564081d3b417c907361c182ad}\label{class_cube_creator_a1840643564081d3b417c907361c182ad}} 
+\index{CubeCreator@{CubeCreator}!density@{density}}
+\index{density@{density}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{density}{density}}
+{\footnotesize\ttfamily Vector3 Cube\+Creator.\+density\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Плотность размещения объектов по трём измерениям. Задается из редактора. 
+
+\mbox{\Hypertarget{class_cube_creator_a0f50c076beccde28c761c9af02b4d9ee}\label{class_cube_creator_a0f50c076beccde28c761c9af02b4d9ee}} 
+\index{CubeCreator@{CubeCreator}!node@{node}}
+\index{node@{node}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{node}{node}}
+{\footnotesize\ttfamily Game\+Object Cube\+Creator.\+node = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Размножаемый объект. Предпочтительно префаб. Задается из редактора. 
+
+\mbox{\Hypertarget{class_cube_creator_a50cfb6176f63be0220633174129db780}\label{class_cube_creator_a50cfb6176f63be0220633174129db780}} 
+\index{CubeCreator@{CubeCreator}!nodes@{nodes}}
+\index{nodes@{nodes}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{nodes}{nodes}}
+{\footnotesize\ttfamily Game\+Object \mbox{[},,\mbox{]} Cube\+Creator.\+nodes = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Трёхмерная матрица, хранящая ссылки на созданные объекты. 
+
+\mbox{\Hypertarget{class_cube_creator_a711bdb3a08d1d64780d4ec1fa1e1c496}\label{class_cube_creator_a711bdb3a08d1d64780d4ec1fa1e1c496}} 
+\index{CubeCreator@{CubeCreator}!xn@{xn}}
+\index{xn@{xn}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{xn}{xn}}
+{\footnotesize\ttfamily int Cube\+Creator.\+xn\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cube_creator_ad7c6e72a56234d209f75eb9775b8a930}\label{class_cube_creator_ad7c6e72a56234d209f75eb9775b8a930}} 
+\index{CubeCreator@{CubeCreator}!yn@{yn}}
+\index{yn@{yn}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{yn}{yn}}
+{\footnotesize\ttfamily int Cube\+Creator.\+yn\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_cube_creator_ad1de89e0f89c576231f877cbdb42c25b}\label{class_cube_creator_ad1de89e0f89c576231f877cbdb42c25b}} 
+\index{CubeCreator@{CubeCreator}!zn@{zn}}
+\index{zn@{zn}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{zn}{zn}}
+{\footnotesize\ttfamily int Cube\+Creator.\+zn = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущие размеры матрицы объектов. 
+
+\mbox{\Hypertarget{class_cube_creator_a661c4ad061f8669989bad32feb2c3000}\label{class_cube_creator_a661c4ad061f8669989bad32feb2c3000}} 
+\index{CubeCreator@{CubeCreator}!zoneSize@{zoneSize}}
+\index{zoneSize@{zoneSize}!CubeCreator@{CubeCreator}}
+\doxysubsubsection{\texorpdfstring{zoneSize}{zoneSize}}
+{\footnotesize\ttfamily Vector3 Cube\+Creator.\+zone\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Размер зоны по трём измерениям. Задается из редактора. 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_cube_creator_8cs}{Cube\+Creator.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_cube_creator_8cs}{Cube\+Creator.\+cs}}\end{DoxyCompactItemize}

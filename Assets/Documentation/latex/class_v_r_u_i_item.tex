@@ -1,13 +1,107 @@
-\hypertarget{class_v_r_u_i_item}{}\doxysection{V\+R\+U\+I\+Item Class Reference}
+\hypertarget{class_v_r_u_i_item}{}\doxysection{Класс V\+R\+U\+I\+Item}
 \label{class_v_r_u_i_item}\index{VRUIItem@{VRUIItem}}
-Inheritance diagram for V\+R\+U\+I\+Item\+:\begin{figure}[H]
+
+
+Класс для автоматизированного создания коллайдеров на элементах интерфейса  
+
+
+Граф наследования\+:V\+R\+U\+I\+Item\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_v_r_u_i_item}
 \end{center}
 \end{figure}
-
-
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_v_r_u_i_item_8cs}{V\+R\+U\+I\+Item.\+cs}}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_v_r_u_i_item_a18d66d4a77cef7eff4170a805d6782bd}{On\+Enable}} ()
+\begin{DoxyCompactList}\small\item\em Установочная функция \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_r_u_i_item_affc118f9db54c7e08daf5d4bdaa98d60}{On\+Validate}} ()
+\begin{DoxyCompactList}\small\item\em Установочная функция при обновлении объекта \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_r_u_i_item_a426091b287875bbed8563755a2de0faa}{Validate\+Collider}} ()
+\begin{DoxyCompactList}\small\item\em Установочная функция создания или проверки правильности коллайдера. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Box\+Collider \mbox{\hyperlink{class_v_r_u_i_item_ad27d004f5ced114d2edf064435e5a642}{box\+Collider}}
+\begin{DoxyCompactList}\small\item\em Ссылка на создаваемый коллайдер \end{DoxyCompactList}\item 
+Rect\+Transform \mbox{\hyperlink{class_v_r_u_i_item_ac6201f875c2fa808f7bb36532e47d0df}{rect\+Transform}}
+\begin{DoxyCompactList}\small\item\em Ссылка на Rect\+Transform объекта, к которому создается коллайдер \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для автоматизированного создания коллайдеров на элементах интерфейса 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+14.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+Требует компонента Rect\+Transform на объекте для работы
+\end{DoxyWarning}
+Коллайдеры требуются для управления интерфейсом VR контроллерами. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_v_r_u_i_item_a18d66d4a77cef7eff4170a805d6782bd}\label{class_v_r_u_i_item_a18d66d4a77cef7eff4170a805d6782bd}} 
+\index{VRUIItem@{VRUIItem}!OnEnable@{OnEnable}}
+\index{OnEnable@{OnEnable}!VRUIItem@{VRUIItem}}
+\doxysubsubsection{\texorpdfstring{OnEnable()}{OnEnable()}}
+{\footnotesize\ttfamily void V\+R\+U\+I\+Item.\+On\+Enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установочная функция 
+
+\mbox{\Hypertarget{class_v_r_u_i_item_affc118f9db54c7e08daf5d4bdaa98d60}\label{class_v_r_u_i_item_affc118f9db54c7e08daf5d4bdaa98d60}} 
+\index{VRUIItem@{VRUIItem}!OnValidate@{OnValidate}}
+\index{OnValidate@{OnValidate}!VRUIItem@{VRUIItem}}
+\doxysubsubsection{\texorpdfstring{OnValidate()}{OnValidate()}}
+{\footnotesize\ttfamily void V\+R\+U\+I\+Item.\+On\+Validate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установочная функция при обновлении объекта 
+
+\mbox{\Hypertarget{class_v_r_u_i_item_a426091b287875bbed8563755a2de0faa}\label{class_v_r_u_i_item_a426091b287875bbed8563755a2de0faa}} 
+\index{VRUIItem@{VRUIItem}!ValidateCollider@{ValidateCollider}}
+\index{ValidateCollider@{ValidateCollider}!VRUIItem@{VRUIItem}}
+\doxysubsubsection{\texorpdfstring{ValidateCollider()}{ValidateCollider()}}
+{\footnotesize\ttfamily void V\+R\+U\+I\+Item.\+Validate\+Collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установочная функция создания или проверки правильности коллайдера. 
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_v_r_u_i_item_ad27d004f5ced114d2edf064435e5a642}\label{class_v_r_u_i_item_ad27d004f5ced114d2edf064435e5a642}} 
+\index{VRUIItem@{VRUIItem}!boxCollider@{boxCollider}}
+\index{boxCollider@{boxCollider}!VRUIItem@{VRUIItem}}
+\doxysubsubsection{\texorpdfstring{boxCollider}{boxCollider}}
+{\footnotesize\ttfamily Box\+Collider V\+R\+U\+I\+Item.\+box\+Collider\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на создаваемый коллайдер 
+
+\mbox{\Hypertarget{class_v_r_u_i_item_ac6201f875c2fa808f7bb36532e47d0df}\label{class_v_r_u_i_item_ac6201f875c2fa808f7bb36532e47d0df}} 
+\index{VRUIItem@{VRUIItem}!rectTransform@{rectTransform}}
+\index{rectTransform@{rectTransform}!VRUIItem@{VRUIItem}}
+\doxysubsubsection{\texorpdfstring{rectTransform}{rectTransform}}
+{\footnotesize\ttfamily Rect\+Transform V\+R\+U\+I\+Item.\+rect\+Transform\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на Rect\+Transform объекта, к которому создается коллайдер 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_v_r_u_i_item_8cs}{V\+R\+U\+I\+Item.\+cs}}\end{DoxyCompactItemize}

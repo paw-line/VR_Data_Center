@@ -1,30 +1,165 @@
-\hypertarget{class_monitor_controller}{}\doxysection{Monitor\+Controller Class Reference}
+\hypertarget{class_monitor_controller}{}\doxysection{Класс Monitor\+Controller}
 \label{class_monitor_controller}\index{MonitorController@{MonitorController}}
-Inheritance diagram for Monitor\+Controller\+:\begin{figure}[H]
+
+
+Класс для контроля интерфейса монитора оборудования  
+
+
+Граф наследования\+:Monitor\+Controller\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_monitor_controller}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_monitor_controller_a212ca3ab96fe288c086960c9c1b0b1f2}{Turn\+Alarms}} (bool on)
-\item 
+\begin{DoxyCompactList}\small\item\em Метод включения/выключения тревог в поддереве \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_monitor_controller_a5ff98595ae05e9c4a90157dfba77139a}{Turn\+TV}} (bool on)
-\item 
+\begin{DoxyCompactList}\small\item\em Метод включения/выключения экрана монитора оборудования \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_monitor_controller_ab1cd3665097dd786e590f3dc286ddcd4}{Create\+Element}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Метод создания и инициализации элемента интерфейса заданными данными \end{DoxyCompactList}\item 
 List$<$ \mbox{\hyperlink{class_callout}{Callout}} $>$ \mbox{\hyperlink{class_monitor_controller_aef2d60276c7a914301631d01a55fdb84}{Get\+Alarms}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Метод получения списка визуализаторов тревог данного объекта Используется дочерними мониторами. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_monitor_controller_a9f0448cfca23362869db06f743d1c29f}{Collect\+Sources}} ()
+\begin{DoxyCompactList}\small\item\em Метод получения списка источников в поддереве ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_controller_ad3c43e5495c88b33d1e0d0800be343a2}{Collect\+Alarms}} ()
+\begin{DoxyCompactList}\small\item\em Метод получения списка тревог в поддереве ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_controller_a2906459111e500bc1011d49f640e3304}{Create\+Element}} (string type, string name, string data)
+\begin{DoxyCompactList}\small\item\em Метод создания и начальной инициализации элемента интерфейса на экране \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_controller_a0808340ac71b3e384db481e893b973f7}{Clear\+Elements}} ()
+\begin{DoxyCompactList}\small\item\em Метод очистки всех подъобъектов списка элементов интерфейса. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_controller_a33d1e5d7bbcf462f75c8c8b8df22f072}{Update\+List}} ()
+\begin{DoxyCompactList}\small\item\em Метод полного обновления элементов интерфейса. Полностью уничтожает и реинициализирует все элементы интерфейса монитора. Применяется для инициализации монитора. Не рекомендуется использовать во время работы программы из-\/за медлительности, используйте \mbox{\hyperlink{class_monitor_controller_ab3822f161d6057b270ba4b25d7cefefd}{Refresh\+U\+I()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_controller_ab3822f161d6057b270ba4b25d7cefefd}{Refresh\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Метод обновления элементов интерфейса. В отличии \mbox{\hyperlink{class_monitor_controller_a33d1e5d7bbcf462f75c8c8b8df22f072}{Update\+List()}} не уничтожает элементы перед реинициализацией, а только обновляет их значения. Осторожно, не добавляет новых элементов, но может удалять старые. Можно использовать в процессе работы программы. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_monitor_controller_aaa4073ad4c3791fb7fc1eb0ffc6cbe84}{Delayed\+Alarm\+Collect}} ()
+\begin{DoxyCompactList}\small\item\em Сопрограмма отложенного сбора списка тревог Используется дочерними мониторами для получения полного списка тревог, перекрывающих монитор. Задержка нужна для того чтобы вышестоящий объект успел собрать свой список тревог. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_controller_a7871086e1ddc10dd6f212d88e8ca34a9}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Метод инициализации объекта. Собирает списки источников и тревог, ищет в поддереве подконтрольный Scroll\+Rect и запоминает ссылку на него, затем запускает метод обновления интерфеса. В случае если объект дочерний, запускает сопрограмму отложенного сбора списка тревог. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_controller_a5ef8caea2c1b0237063e7440c773292f}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Метод основного цикла. Каждый кадр обновляет значения элементов интерфейса. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Canvas \mbox{\hyperlink{class_monitor_controller_aa3916303d7ebef86d2e015d8714ec810}{tv}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на канвас монитора. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_monitor_controller_a09fe2b8cf4b00721bc62363597102b45}{element}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на префаб элемента интерфейса. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Scroll\+Rect \mbox{\hyperlink{class_monitor_controller_a5e3f8c684ab2d2818429f2c1d9757274}{target}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка Scroll\+Rect, в котором размещены элементы интерфейса. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_data_source}{Data\+Source}} $>$ \mbox{\hyperlink{class_monitor_controller_a4fb3b0dffe6e859ab5c61de959667fbc}{sources}}
+\begin{DoxyCompactList}\small\item\em Список источников в поддереве этого объекта \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_element_controller}{Element\+Controller}} $>$ \mbox{\hyperlink{class_monitor_controller_ab91e318824ea447b940ca0160b1e11e9}{elements}}
+\begin{DoxyCompactList}\small\item\em Список элементов интерфейса, подконтрольных объекту. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_callout}{Callout}} $>$ \mbox{\hyperlink{class_monitor_controller_af6695687eb70f2459b57014100d09001}{alarms}}
+\begin{DoxyCompactList}\small\item\em Список сигналов тревоги, которые могут перекрывать монитор \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_monitor_controller_ac712cdd827e8d20819ebfa40b70e36d3}{is\+Child}} = false
+\begin{DoxyCompactList}\small\item\em Отметка является ли данный монитор подчиненным другому монитору \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsection{Подробное описание}
+Класс для контроля интерфейса монитора оборудования 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+14.\+05.\+20
+\end{DoxyDate}
+Этот класс занимается контролем текстового интерфейса, отображающего все данные, имеющиеся о единице оборудования. ~\newline
+Для включения/выключения интерфейса используйте метод Turn\+TV через кнопки на оборудовании. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_monitor_controller_a7871086e1ddc10dd6f212d88e8ca34a9}\label{class_monitor_controller_a7871086e1ddc10dd6f212d88e8ca34a9}} 
+\index{MonitorController@{MonitorController}!Awake@{Awake}}
+\index{Awake@{Awake}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Monitor\+Controller.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод инициализации объекта. Собирает списки источников и тревог, ищет в поддереве подконтрольный Scroll\+Rect и запоминает ссылку на него, затем запускает метод обновления интерфеса. В случае если объект дочерний, запускает сопрограмму отложенного сбора списка тревог. 
+
+\mbox{\Hypertarget{class_monitor_controller_a0808340ac71b3e384db481e893b973f7}\label{class_monitor_controller_a0808340ac71b3e384db481e893b973f7}} 
+\index{MonitorController@{MonitorController}!ClearElements@{ClearElements}}
+\index{ClearElements@{ClearElements}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{ClearElements()}{ClearElements()}}
+{\footnotesize\ttfamily void Monitor\+Controller.\+Clear\+Elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод очистки всех подъобъектов списка элементов интерфейса. 
+
+\mbox{\Hypertarget{class_monitor_controller_ad3c43e5495c88b33d1e0d0800be343a2}\label{class_monitor_controller_ad3c43e5495c88b33d1e0d0800be343a2}} 
+\index{MonitorController@{MonitorController}!CollectAlarms@{CollectAlarms}}
+\index{CollectAlarms@{CollectAlarms}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{CollectAlarms()}{CollectAlarms()}}
+{\footnotesize\ttfamily void Monitor\+Controller.\+Collect\+Alarms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод получения списка тревог в поддереве ~\newline
+ 
+
+\mbox{\Hypertarget{class_monitor_controller_a9f0448cfca23362869db06f743d1c29f}\label{class_monitor_controller_a9f0448cfca23362869db06f743d1c29f}} 
+\index{MonitorController@{MonitorController}!CollectSources@{CollectSources}}
+\index{CollectSources@{CollectSources}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{CollectSources()}{CollectSources()}}
+{\footnotesize\ttfamily void Monitor\+Controller.\+Collect\+Sources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод получения списка источников в поддереве ~\newline
+ 
+
 \mbox{\Hypertarget{class_monitor_controller_ab1cd3665097dd786e590f3dc286ddcd4}\label{class_monitor_controller_ab1cd3665097dd786e590f3dc286ddcd4}} 
 \index{MonitorController@{MonitorController}!CreateElement@{CreateElement}}
 \index{CreateElement@{CreateElement}!MonitorController@{MonitorController}}
-\doxysubsubsection{\texorpdfstring{CreateElement()}{CreateElement()}}
+\doxysubsubsection{\texorpdfstring{CreateElement()}{CreateElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Monitor\+Controller.\+Create\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод создания и инициализации элемента интерфейса заданными данными 
+
+\mbox{\Hypertarget{class_monitor_controller_a2906459111e500bc1011d49f640e3304}\label{class_monitor_controller_a2906459111e500bc1011d49f640e3304}} 
+\index{MonitorController@{MonitorController}!CreateElement@{CreateElement}}
+\index{CreateElement@{CreateElement}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{CreateElement()}{CreateElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Monitor\+Controller.\+Create\+Element (\begin{DoxyParamCaption}\item[{string}]{type,  }\item[{string}]{name,  }\item[{string}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод создания и начальной инициализации элемента интерфейса на экране 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}string\mbox{]}} & type Начальный отображаемый тип данных \\
+\hline
+{\em \mbox{[}string\mbox{]}} & name Начальное отображаемое название измерения \\
+\hline
+{\em \mbox{[}string\mbox{]}} & data Начальные отображаемые данные Создает элемент интерфейса на экране, установка его полей переданными в функцию параметрами и регулировка высоты зоны, в которой элемент размещается. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monitor_controller_aaa4073ad4c3791fb7fc1eb0ffc6cbe84}\label{class_monitor_controller_aaa4073ad4c3791fb7fc1eb0ffc6cbe84}} 
+\index{MonitorController@{MonitorController}!DelayedAlarmCollect@{DelayedAlarmCollect}}
+\index{DelayedAlarmCollect@{DelayedAlarmCollect}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{DelayedAlarmCollect()}{DelayedAlarmCollect()}}
+{\footnotesize\ttfamily I\+Enumerator Monitor\+Controller.\+Delayed\+Alarm\+Collect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сопрограмма отложенного сбора списка тревог Используется дочерними мониторами для получения полного списка тревог, перекрывающих монитор. Задержка нужна для того чтобы вышестоящий объект успел собрать свой список тревог. 
 
 \mbox{\Hypertarget{class_monitor_controller_aef2d60276c7a914301631d01a55fdb84}\label{class_monitor_controller_aef2d60276c7a914301631d01a55fdb84}} 
 \index{MonitorController@{MonitorController}!GetAlarms@{GetAlarms}}
@@ -32,12 +167,35 @@ List$<$ \mbox{\hyperlink{class_callout}{Callout}} $>$ \mbox{\hyperlink{class_mon
 \doxysubsubsection{\texorpdfstring{GetAlarms()}{GetAlarms()}}
 {\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_callout}{Callout}}$>$ Monitor\+Controller.\+Get\+Alarms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Метод получения списка визуализаторов тревог данного объекта Используется дочерними мониторами. 
+
+\mbox{\Hypertarget{class_monitor_controller_ab3822f161d6057b270ba4b25d7cefefd}\label{class_monitor_controller_ab3822f161d6057b270ba4b25d7cefefd}} 
+\index{MonitorController@{MonitorController}!RefreshUI@{RefreshUI}}
+\index{RefreshUI@{RefreshUI}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{RefreshUI()}{RefreshUI()}}
+{\footnotesize\ttfamily void Monitor\+Controller.\+Refresh\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод обновления элементов интерфейса. В отличии \mbox{\hyperlink{class_monitor_controller_a33d1e5d7bbcf462f75c8c8b8df22f072}{Update\+List()}} не уничтожает элементы перед реинициализацией, а только обновляет их значения. Осторожно, не добавляет новых элементов, но может удалять старые. Можно использовать в процессе работы программы. 
+
 \mbox{\Hypertarget{class_monitor_controller_a212ca3ab96fe288c086960c9c1b0b1f2}\label{class_monitor_controller_a212ca3ab96fe288c086960c9c1b0b1f2}} 
 \index{MonitorController@{MonitorController}!TurnAlarms@{TurnAlarms}}
 \index{TurnAlarms@{TurnAlarms}!MonitorController@{MonitorController}}
 \doxysubsubsection{\texorpdfstring{TurnAlarms()}{TurnAlarms()}}
 {\footnotesize\ttfamily void Monitor\+Controller.\+Turn\+Alarms (\begin{DoxyParamCaption}\item[{bool}]{on }\end{DoxyParamCaption})}
 
+
+
+Метод включения/выключения тревог в поддереве 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}bool\mbox{]}} & on Включить (True) или выключить (False) \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_monitor_controller_a5ff98595ae05e9c4a90157dfba77139a}\label{class_monitor_controller_a5ff98595ae05e9c4a90157dfba77139a}} 
 \index{MonitorController@{MonitorController}!TurnTV@{TurnTV}}
 \index{TurnTV@{TurnTV}!MonitorController@{MonitorController}}
@@ -46,6 +204,108 @@ List$<$ \mbox{\hyperlink{class_callout}{Callout}} $>$ \mbox{\hyperlink{class_mon
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Метод включения/выключения экрана монитора оборудования 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}bool\mbox{]}} & on Включить (True) или выключить (False) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monitor_controller_a5ef8caea2c1b0237063e7440c773292f}\label{class_monitor_controller_a5ef8caea2c1b0237063e7440c773292f}} 
+\index{MonitorController@{MonitorController}!Update@{Update}}
+\index{Update@{Update}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Monitor\+Controller.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод основного цикла. Каждый кадр обновляет значения элементов интерфейса. 
+
+\mbox{\Hypertarget{class_monitor_controller_a33d1e5d7bbcf462f75c8c8b8df22f072}\label{class_monitor_controller_a33d1e5d7bbcf462f75c8c8b8df22f072}} 
+\index{MonitorController@{MonitorController}!UpdateList@{UpdateList}}
+\index{UpdateList@{UpdateList}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{UpdateList()}{UpdateList()}}
+{\footnotesize\ttfamily void Monitor\+Controller.\+Update\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод полного обновления элементов интерфейса. Полностью уничтожает и реинициализирует все элементы интерфейса монитора. Применяется для инициализации монитора. Не рекомендуется использовать во время работы программы из-\/за медлительности, используйте \mbox{\hyperlink{class_monitor_controller_ab3822f161d6057b270ba4b25d7cefefd}{Refresh\+U\+I()}} 
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_monitor_controller_af6695687eb70f2459b57014100d09001}\label{class_monitor_controller_af6695687eb70f2459b57014100d09001}} 
+\index{MonitorController@{MonitorController}!alarms@{alarms}}
+\index{alarms@{alarms}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{alarms}{alarms}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_callout}{Callout}}$>$ Monitor\+Controller.\+alarms\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Список сигналов тревоги, которые могут перекрывать монитор 
+
+\mbox{\Hypertarget{class_monitor_controller_a09fe2b8cf4b00721bc62363597102b45}\label{class_monitor_controller_a09fe2b8cf4b00721bc62363597102b45}} 
+\index{MonitorController@{MonitorController}!element@{element}}
+\index{element@{element}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{element}{element}}
+{\footnotesize\ttfamily Game\+Object Monitor\+Controller.\+element = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на префаб элемента интерфейса. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_monitor_controller_ab91e318824ea447b940ca0160b1e11e9}\label{class_monitor_controller_ab91e318824ea447b940ca0160b1e11e9}} 
+\index{MonitorController@{MonitorController}!elements@{elements}}
+\index{elements@{elements}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{elements}{elements}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_element_controller}{Element\+Controller}}$>$ Monitor\+Controller.\+elements\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Список элементов интерфейса, подконтрольных объекту. 
+
+\mbox{\Hypertarget{class_monitor_controller_ac712cdd827e8d20819ebfa40b70e36d3}\label{class_monitor_controller_ac712cdd827e8d20819ebfa40b70e36d3}} 
+\index{MonitorController@{MonitorController}!isChild@{isChild}}
+\index{isChild@{isChild}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{isChild}{isChild}}
+{\footnotesize\ttfamily bool Monitor\+Controller.\+is\+Child = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Отметка является ли данный монитор подчиненным другому монитору 
+
+\mbox{\Hypertarget{class_monitor_controller_a4fb3b0dffe6e859ab5c61de959667fbc}\label{class_monitor_controller_a4fb3b0dffe6e859ab5c61de959667fbc}} 
+\index{MonitorController@{MonitorController}!sources@{sources}}
+\index{sources@{sources}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{sources}{sources}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_data_source}{Data\+Source}}$>$ Monitor\+Controller.\+sources\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Список источников в поддереве этого объекта 
+
+\mbox{\Hypertarget{class_monitor_controller_a5e3f8c684ab2d2818429f2c1d9757274}\label{class_monitor_controller_a5e3f8c684ab2d2818429f2c1d9757274}} 
+\index{MonitorController@{MonitorController}!target@{target}}
+\index{target@{target}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily Scroll\+Rect Monitor\+Controller.\+target = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка Scroll\+Rect, в котором размещены элементы интерфейса. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_monitor_controller_aa3916303d7ebef86d2e015d8714ec810}\label{class_monitor_controller_aa3916303d7ebef86d2e015d8714ec810}} 
+\index{MonitorController@{MonitorController}!tv@{tv}}
+\index{tv@{tv}!MonitorController@{MonitorController}}
+\doxysubsubsection{\texorpdfstring{tv}{tv}}
+{\footnotesize\ttfamily Canvas Monitor\+Controller.\+tv = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на канвас монитора. Должна быть задана в редакторе. 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_monitor_controller_8cs}{Monitor\+Controller.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_monitor_controller_8cs}{Monitor\+Controller.\+cs}}\end{DoxyCompactItemize}

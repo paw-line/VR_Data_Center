@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['poolobjecttemplate_132',['PoolObjectTemplate',['../class_magic_chain_1_1_pool_object_template.html',1,'MagicChain']]]
+  ['scrollbarbutton_255',['ScrollBarButton',['../class_scroll_bar_button.html',1,'']]],
+  ['steamvrlaserwrapper_256',['SteamVRLaserWrapper',['../class_steam_v_r_laser_wrapper.html',1,'']]],
+  ['streamvisualiser_257',['StreamVisualiser',['../class_stream_visualiser.html',1,'']]]
 ];

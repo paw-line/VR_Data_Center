@@ -1,26 +1,135 @@
-\hypertarget{class_reciever}{}\doxysection{Reciever Class Reference}
+\hypertarget{class_reciever}{}\doxysection{Класс Reciever}
 \label{class_reciever}\index{Reciever@{Reciever}}
-Inheritance diagram for Reciever\+:\begin{figure}[H]
+
+
+Класс для получения данных с сервера через M\+Q\+TT.  
+
+
+Граф наследования\+:Reciever\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_reciever}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Открытые атрибуты}
 \begin{DoxyCompactItemize}
 \item 
 string \mbox{\hyperlink{class_reciever_ac82624ee69c662aa56d05986772f9486}{brocker\+\_\+ip}} = \char`\"{}134.\+209.\+224.\+248\char`\"{}
-\item 
+\begin{DoxyCompactList}\small\item\em I\+P-\/адрес M\+Q\+TT брокера. Может задаваться через редактор. \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_reciever_a6bc57b2f763ee6f6dc3e14101217810c}{client\+Id}} = \char`\"{}qwerty\char`\"{}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em ID M\+Q\+TT клиента. Может задаваться через редактор. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_reciever_a0e34c3eee10e6ff3af0759e847343179}{username}} = \char`\"{}collector\char`\"{}
+\begin{DoxyCompactList}\small\item\em Логин M\+Q\+TT клиента. Может задаваться через редактор. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_reciever_ab09b00cb80e528e0d3a6bfe0b682a39a}{password}} = \char`\"{}qwerty123456\char`\"{}
+\begin{DoxyCompactList}\small\item\em Пароль M\+Q\+TT клиента. Может задаваться через редактор. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_reciever_a209912e1f7078bd3ad43f61cce0dc660}{keyword}} = \char`\"{}Python\char`\"{}
+\begin{DoxyCompactList}\small\item\em Ключевое слово, которое идентифицирует датчики, которые необходимо визуализировать. Может задаваться через редактор. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_reciever_a3dd219440d92ee05d5448972eebc4f41}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Метод инициализаии объекта Вызывает сопрограмму отложенной инициализации. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_reciever_a924b011226036bf8ba5b973c4aa39780}{Delayed\+Init}} ()
+\begin{DoxyCompactList}\small\item\em Сопрограмма отложенной инициализаии объекта Получает ссылку на глобальный дистрибутор данных и запускает подключение к серверу по M\+Q\+TT. Задержка в инициализации требуется чтобы а) Дистрибутор успел инициализироваться и б) чтобы тот успел собрать все источники на сцене. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_reciever_a9b6ea87b2d8d2f8962a5b358e71e9bd4}{Connect}} ()
+\begin{DoxyCompactList}\small\item\em Функция создания клиента M\+Q\+TT и подключения его к брокеру Задает такие параметры подключения, как IP адрес M\+Q\+TT брокера, порт, ID клиента, его догин и пароль, а также топик, на которых необходимо подписаться. Далее по заданным параметрам создает M\+Q\+TT клиента, привязывает Callback функцию получения сообщений к функции On\+Message, затем производит подключение клиента к брокеру и подписывается на необходимый топик. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_reciever_ad9a6fea8cc9a1bdbb2188bb5e3107af4}{On\+Message}} (object sender, Mqtt\+Msg\+Publish\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Функция обработки полученных сообщений По приходу нового J\+S\+ON сообщения парсит его, а затем производит поиск по датчикам, имена которых содержат специальное ключевое слово, которое позволяет идентифицировать те датчики, которые необходимо визуализировать. Если имя датчика содержит данное слово, то, значение с этого датчика, имя устроства, на котором стоит датчик, а также имя самого датчика передаются в функцию Source\+Set(). Затем происходит проверка наличия триггера у датчика и, при наличии триггера, передает в функцию Source\+Set() значение триггера, а также его имя и имя устройства, на котором возникла ошибка. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_distributor}{Distributor}} \mbox{\hyperlink{class_reciever_aa7a3b701a01cf6b7f348ab52da849daa}{distributor}}
+\begin{DoxyCompactList}\small\item\em Ссылка на глобальный дистрибутор данных \end{DoxyCompactList}\item 
+Mqtt\+Client \mbox{\hyperlink{class_reciever_acff0aabfbbb5ac02b794612b73641da5}{client1}}
+\begin{DoxyCompactList}\small\item\em Объект клиента M\+Q\+TT. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_reciever_acff75fe3e8775fe390ce03f3389f6e11}{topic}} = \char`\"{}/analyzer\+\_\+data\char`\"{}
+\begin{DoxyCompactList}\small\item\em Топик данных, поступающих в реальном времени \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Data Documentation}
+\doxysubsection{Подробное описание}
+Класс для получения данных с сервера через M\+Q\+TT. 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём, Стрельцов Григорий 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+14.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+???
+\end{DoxyWarning}
+Этот визуализатор занимается динамическим изменением цвета родительского объекта в соотвествии с данными из источника данных \mbox{\hyperlink{class_data_source}{Data\+Source}} source. Для конверсии используется синглтон Universal\+Controller 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_reciever_a3dd219440d92ee05d5448972eebc4f41}\label{class_reciever_a3dd219440d92ee05d5448972eebc4f41}} 
+\index{Reciever@{Reciever}!Awake@{Awake}}
+\index{Awake@{Awake}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Reciever.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод инициализаии объекта Вызывает сопрограмму отложенной инициализации. 
+
+\mbox{\Hypertarget{class_reciever_a9b6ea87b2d8d2f8962a5b358e71e9bd4}\label{class_reciever_a9b6ea87b2d8d2f8962a5b358e71e9bd4}} 
+\index{Reciever@{Reciever}!Connect@{Connect}}
+\index{Connect@{Connect}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}}
+{\footnotesize\ttfamily void Reciever.\+Connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Функция создания клиента M\+Q\+TT и подключения его к брокеру Задает такие параметры подключения, как IP адрес M\+Q\+TT брокера, порт, ID клиента, его догин и пароль, а также топик, на которых необходимо подписаться. Далее по заданным параметрам создает M\+Q\+TT клиента, привязывает Callback функцию получения сообщений к функции On\+Message, затем производит подключение клиента к брокеру и подписывается на необходимый топик. 
+
+\mbox{\Hypertarget{class_reciever_a924b011226036bf8ba5b973c4aa39780}\label{class_reciever_a924b011226036bf8ba5b973c4aa39780}} 
+\index{Reciever@{Reciever}!DelayedInit@{DelayedInit}}
+\index{DelayedInit@{DelayedInit}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{DelayedInit()}{DelayedInit()}}
+{\footnotesize\ttfamily I\+Enumerator Reciever.\+Delayed\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сопрограмма отложенной инициализаии объекта Получает ссылку на глобальный дистрибутор данных и запускает подключение к серверу по M\+Q\+TT. Задержка в инициализации требуется чтобы а) Дистрибутор успел инициализироваться и б) чтобы тот успел собрать все источники на сцене. 
+
+\mbox{\Hypertarget{class_reciever_ad9a6fea8cc9a1bdbb2188bb5e3107af4}\label{class_reciever_ad9a6fea8cc9a1bdbb2188bb5e3107af4}} 
+\index{Reciever@{Reciever}!OnMessage@{OnMessage}}
+\index{OnMessage@{OnMessage}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{OnMessage()}{OnMessage()}}
+{\footnotesize\ttfamily void Reciever.\+On\+Message (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Mqtt\+Msg\+Publish\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Функция обработки полученных сообщений По приходу нового J\+S\+ON сообщения парсит его, а затем производит поиск по датчикам, имена которых содержат специальное ключевое слово, которое позволяет идентифицировать те датчики, которые необходимо визуализировать. Если имя датчика содержит данное слово, то, значение с этого датчика, имя устроства, на котором стоит датчик, а также имя самого датчика передаются в функцию Source\+Set(). Затем происходит проверка наличия триггера у датчика и, при наличии триггера, передает в функцию Source\+Set() значение триггера, а также его имя и имя устройства, на котором возникла ошибка. 
+
+Если имя датчика содержит ключевое слово
+
+Если тип сообщения цифровой
+
+Если к датчику привязан триггер
+
+\doxysubsection{Данные класса}
 \mbox{\Hypertarget{class_reciever_ac82624ee69c662aa56d05986772f9486}\label{class_reciever_ac82624ee69c662aa56d05986772f9486}} 
 \index{Reciever@{Reciever}!brocker\_ip@{brocker\_ip}}
 \index{brocker\_ip@{brocker\_ip}!Reciever@{Reciever}}
 \doxysubsubsection{\texorpdfstring{brocker\_ip}{brocker\_ip}}
 {\footnotesize\ttfamily string Reciever.\+brocker\+\_\+ip = \char`\"{}134.\+209.\+224.\+248\char`\"{}}
+
+
+
+I\+P-\/адрес M\+Q\+TT брокера. Может задаваться через редактор. 
+
+\mbox{\Hypertarget{class_reciever_acff0aabfbbb5ac02b794612b73641da5}\label{class_reciever_acff0aabfbbb5ac02b794612b73641da5}} 
+\index{Reciever@{Reciever}!client1@{client1}}
+\index{client1@{client1}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{client1}{client1}}
+{\footnotesize\ttfamily Mqtt\+Client Reciever.\+client1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Объект клиента M\+Q\+TT. 
 
 \mbox{\Hypertarget{class_reciever_a6bc57b2f763ee6f6dc3e14101217810c}\label{class_reciever_a6bc57b2f763ee6f6dc3e14101217810c}} 
 \index{Reciever@{Reciever}!clientId@{clientId}}
@@ -30,6 +139,60 @@ string \mbox{\hyperlink{class_reciever_a6bc57b2f763ee6f6dc3e14101217810c}{client
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+ID M\+Q\+TT клиента. Может задаваться через редактор. 
+
+\mbox{\Hypertarget{class_reciever_aa7a3b701a01cf6b7f348ab52da849daa}\label{class_reciever_aa7a3b701a01cf6b7f348ab52da849daa}} 
+\index{Reciever@{Reciever}!distributor@{distributor}}
+\index{distributor@{distributor}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{distributor}{distributor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_distributor}{Distributor}} Reciever.\+distributor\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на глобальный дистрибутор данных 
+
+\mbox{\Hypertarget{class_reciever_a209912e1f7078bd3ad43f61cce0dc660}\label{class_reciever_a209912e1f7078bd3ad43f61cce0dc660}} 
+\index{Reciever@{Reciever}!keyword@{keyword}}
+\index{keyword@{keyword}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{keyword}{keyword}}
+{\footnotesize\ttfamily string Reciever.\+keyword = \char`\"{}Python\char`\"{}}
+
+
+
+Ключевое слово, которое идентифицирует датчики, которые необходимо визуализировать. Может задаваться через редактор. 
+
+\mbox{\Hypertarget{class_reciever_ab09b00cb80e528e0d3a6bfe0b682a39a}\label{class_reciever_ab09b00cb80e528e0d3a6bfe0b682a39a}} 
+\index{Reciever@{Reciever}!password@{password}}
+\index{password@{password}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily string Reciever.\+password = \char`\"{}qwerty123456\char`\"{}}
+
+
+
+Пароль M\+Q\+TT клиента. Может задаваться через редактор. 
+
+\mbox{\Hypertarget{class_reciever_acff75fe3e8775fe390ce03f3389f6e11}\label{class_reciever_acff75fe3e8775fe390ce03f3389f6e11}} 
+\index{Reciever@{Reciever}!topic@{topic}}
+\index{topic@{topic}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{topic}{topic}}
+{\footnotesize\ttfamily string Reciever.\+topic = \char`\"{}/analyzer\+\_\+data\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Топик данных, поступающих в реальном времени 
+
+\mbox{\Hypertarget{class_reciever_a0e34c3eee10e6ff3af0759e847343179}\label{class_reciever_a0e34c3eee10e6ff3af0759e847343179}} 
+\index{Reciever@{Reciever}!username@{username}}
+\index{username@{username}!Reciever@{Reciever}}
+\doxysubsubsection{\texorpdfstring{username}{username}}
+{\footnotesize\ttfamily string Reciever.\+username = \char`\"{}collector\char`\"{}}
+
+
+
+Логин M\+Q\+TT клиента. Может задаваться через редактор. 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_reciever_8cs}{Reciever.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_reciever_8cs}{Reciever.\+cs}}\end{DoxyCompactItemize}

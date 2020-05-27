@@ -1,70 +1,334 @@
-\hypertarget{class_stream_visualiser}{}\doxysection{Stream\+Visualiser Class Reference}
+\hypertarget{class_stream_visualiser}{}\doxysection{Класс Stream\+Visualiser}
 \label{class_stream_visualiser}\index{StreamVisualiser@{StreamVisualiser}}
-Inheritance diagram for Stream\+Visualiser\+:\begin{figure}[H]
+
+
+Класс для контроля потоковых визуализаторов  
+
+
+Граф наследования\+:Stream\+Visualiser\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=3.000000cm]{class_stream_visualiser}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
-override float \mbox{\hyperlink{class_stream_visualiser_af3eda84abc96a8952e0484d968ff5f52}{Scan}} (out string vis\+Type, out string data\+Type, out string topic)
-\begin{DoxyCompactList}\small\item\em Универсальный метод снятия показаний с визуализатора \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+override string \mbox{\hyperlink{class_stream_visualiser_aa6fa68d9644078c94eecb1dc30cbc3e3}{Scan}} (out string vis\+Type, out string data\+Type, out string topic)
+\begin{DoxyCompactList}\small\item\em Метод снятия показаний с визуализатора сканером \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые атрибуты}
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{class_stream_visualiser_ade2c7de9f08279e03ff17b7c270549d4}{speed}} = 5f
-\item 
-Color \mbox{\hyperlink{class_stream_visualiser_a5e95b8ebbab886339d11bddadc9afa1d}{color}}
-\item 
+\begin{DoxyCompactList}\small\item\em Скорость потока по-\/умолчанию. Задается в редакторе. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_stream_visualiser_a12d12d7eaa6bc27632ed8b64ba3997c8}{start\+Color}}
+\begin{DoxyCompactList}\small\item\em Цвет начала потока по-\/умолчанию. Задается в редакторе. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_stream_visualiser_a7c9c2cd6e700eba9ab8868afb3a50d2b}{finish\+Color}}
+\begin{DoxyCompactList}\small\item\em Цвет конца потока по-\/умолчанию. Задается в редакторе. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_stream_visualiser_a4e3c379b4ec5be29720f6f35b6d69b91}{particle\+Dencity\+Multiplier}} = 2f
-\item 
+\begin{DoxyCompactList}\small\item\em Множитель плотности потока по-\/умолчанию. Задается в редакторе. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_stream_visualiser_ae08cd7fadeecb96902fa5cedc21b8499}{radius}} = 2f
-\item 
+\begin{DoxyCompactList}\small\item\em Радиус потока \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_stream_visualiser_a98c139c984f2f434dda81c4f10442a77}{trails}} = false
-\item 
+\begin{DoxyCompactList}\small\item\em Оставляют ли частицы хвосты? \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_stream_visualiser_ace34e10739448f79b89084a42f399e5c}{is\+Controlled\+By\+Sources}} = true
-\item 
+\begin{DoxyCompactList}\small\item\em Контролируется ли поток источниками данных? \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_stream_visualiser_a8935a502e76dc70fa1605bb04a2df5e8}{refresh\+Time}} = 1f
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Время обновления данных с источников \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_stream_visualiser_accfb8c90d62582c2058eccfd9241e374}{Data\+To\+Speed}} (float data)
+\begin{DoxyCompactList}\small\item\em Метод преобразования данных в скорость потока \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_stream_visualiser_a5ee866aad58b6cfa774f5eebc1805a4a}{Data\+To\+Color}} (float data)
+\begin{DoxyCompactList}\small\item\em Метод преобразования данных в цвет потока \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_stream_visualiser_ace09a94cfe59057ed7321d2a009300ca}{Data\+To\+Dencity}} (float data)
+\begin{DoxyCompactList}\small\item\em Метод преобразования данных в плотность потока \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_stream_visualiser_aa2e55aaf71a3f31aa455530b901acbad}{Refresh\+From\+Sources}} ()
+\begin{DoxyCompactList}\small\item\em Метод обновления данных на основе источников ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_stream_visualiser_a318547fbc5ebc87b9154759436de9e92}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Функция основного цикла. 1) Размещает систему частиц на точке начала и направляет её в точку конца ~\newline
+2) Рассчитывает время жизни частиц так, чтобы они долетали от начала до конца потока ~\newline
+3) Устанавливает частоту испускания частиц так, чтобы соблюдалась необходимая плотность потока ~\newline
+4) Устанавливает цвет выпущенных частиц так, чтобы соблюдался необходимый цвет потока ~\newline
+5) Устанавливает радиус основания излучателя частиц так, чтобы соблюдался необходимый радиус потока ~\newline
+6) Устанавливает цвет выпущенных частиц так, чтобы соблюдался необходимый цвет потока ~\newline
+7) Устанавливает хвосты у выпущенных частиц, если это опция активирована в настройках потока ~\newline
+8) Устанавливает положение коллайдера вдоль потока~\newline
+. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_stream_visualiser_a7a00a8be3083958375e337ff496ccc43}{Delayed\+Update}} (float \+\_\+time)
+\begin{DoxyCompactList}\small\item\em Сопрограмма-\/таймер основного цикла. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_stream_visualiser_a99bedf9b74bf2fc64dfe13e9befba200}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Метод инициализации объекта Находит в поддереве объекта систему частиц и коллайдер, затем запускает сопрограмму основного цикла. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_stream_visualiser_af22d5442d7b607030aff90c303b55d6a}{On\+Draw\+Gizmos}} ()
+\begin{DoxyCompactList}\small\item\em Служебная функция, необходимая для отображения границ системы частиц и координат начала и конца в редакторе ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Particle\+System \mbox{\hyperlink{class_stream_visualiser_a1bea4d7bf268d664c4dbce48eddeebb2}{ps}}
+\begin{DoxyCompactList}\small\item\em Ссылка на контролируемую систему частиц. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_stream_visualiser_af11b1968279007ca565a3872342c0d6d}{start}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на точку начала потока. Задается в редакторе. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_stream_visualiser_a296fb21ddb0be407d94a1d1072287a40}{finish}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на точку окончания потока. Задается в редакторе. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_stream_visualiser_af291ffaa2a7d3b523f4fbf92bd720c25}{coll\+Obj}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на объект, служащий коллайдером визуализатора для сканера. Задается в редакторе. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_stream_visualiser_a895b40c95ac086088d162ff728b16faf}{speed\+Data}}
+\begin{DoxyCompactList}\small\item\em Текущая скорость потока \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_stream_visualiser_a4cc585487cff8128bcf1421af237f2ac}{start\+Color\+Data}}
+\begin{DoxyCompactList}\small\item\em Текущие данные, определяющие цвет начала потока \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_stream_visualiser_a9909c71a642791056aaaa123226d1b27}{finish\+Color\+Data}}
+\begin{DoxyCompactList}\small\item\em Текущие данные, определяющие цвет конца потока \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_stream_visualiser_ae1aca25ebbb57296b90f95b417ca33a3}{denc\+Data}}
+\begin{DoxyCompactList}\small\item\em Текущая плотность потока \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_source}{Data\+Source}} \mbox{\hyperlink{class_stream_visualiser_ad3b9f20c8d16e5bdc1877e16af62ae92}{speed\+Source}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на источник данных о скорости потока \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_source}{Data\+Source}} \mbox{\hyperlink{class_stream_visualiser_a817b4a3fd84ab7d91a9c8f1159ba5cfe}{start\+Color\+Source}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на источник данных о цвете потока \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_source}{Data\+Source}} \mbox{\hyperlink{class_stream_visualiser_a6ca943840d2fb2417eba3612aba7bb31}{finish\+Color\+Source}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на источник данных о цвете потока \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_source}{Data\+Source}} \mbox{\hyperlink{class_stream_visualiser_a2d4c9c1df3688f912456afa591f002b3}{dencity\+Source}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на источник данных о плотности потока \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_stream_visualiser_af3eda84abc96a8952e0484d968ff5f52}\label{class_stream_visualiser_af3eda84abc96a8952e0484d968ff5f52}} 
+\doxysubsection{Подробное описание}
+Класс для контроля потоковых визуализаторов 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+14.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+Функционирует постоянно. Не только во время работы программы, но и в редакторе.
+\end{DoxyWarning}
+Этот класс визуализатор использует систему частиц для визуализации \char`\"{}потоковых\char`\"{} данных, таких как параметры электропроводки, водяного или воздушного охлаждения. Система частиц должна иметь включенными модули Emission, Shape, Trails и Renderer. Рекомеднуется использовать только как часть префаба Steam\+Visualiser 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_stream_visualiser_a99bedf9b74bf2fc64dfe13e9befba200}\label{class_stream_visualiser_a99bedf9b74bf2fc64dfe13e9befba200}} 
+\index{StreamVisualiser@{StreamVisualiser}!Awake@{Awake}}
+\index{Awake@{Awake}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Stream\+Visualiser.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод инициализации объекта Находит в поддереве объекта систему частиц и коллайдер, затем запускает сопрограмму основного цикла. 
+
+\mbox{\Hypertarget{class_stream_visualiser_a5ee866aad58b6cfa774f5eebc1805a4a}\label{class_stream_visualiser_a5ee866aad58b6cfa774f5eebc1805a4a}} 
+\index{StreamVisualiser@{StreamVisualiser}!DataToColor@{DataToColor}}
+\index{DataToColor@{DataToColor}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{DataToColor()}{DataToColor()}}
+{\footnotesize\ttfamily Color Stream\+Visualiser.\+Data\+To\+Color (\begin{DoxyParamCaption}\item[{float}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод преобразования данных в цвет потока 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}float\mbox{]}} & data Входные данные \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Выходные данные Используется преобразование с помощью \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stream_visualiser_ace09a94cfe59057ed7321d2a009300ca}\label{class_stream_visualiser_ace09a94cfe59057ed7321d2a009300ca}} 
+\index{StreamVisualiser@{StreamVisualiser}!DataToDencity@{DataToDencity}}
+\index{DataToDencity@{DataToDencity}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{DataToDencity()}{DataToDencity()}}
+{\footnotesize\ttfamily float Stream\+Visualiser.\+Data\+To\+Dencity (\begin{DoxyParamCaption}\item[{float}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод преобразования данных в плотность потока 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}float\mbox{]}} & data Входные данные \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Выходные данные 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stream_visualiser_accfb8c90d62582c2058eccfd9241e374}\label{class_stream_visualiser_accfb8c90d62582c2058eccfd9241e374}} 
+\index{StreamVisualiser@{StreamVisualiser}!DataToSpeed@{DataToSpeed}}
+\index{DataToSpeed@{DataToSpeed}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{DataToSpeed()}{DataToSpeed()}}
+{\footnotesize\ttfamily float Stream\+Visualiser.\+Data\+To\+Speed (\begin{DoxyParamCaption}\item[{float}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод преобразования данных в скорость потока 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}float\mbox{]}} & data Входные данные \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Выходные данные 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stream_visualiser_a7a00a8be3083958375e337ff496ccc43}\label{class_stream_visualiser_a7a00a8be3083958375e337ff496ccc43}} 
+\index{StreamVisualiser@{StreamVisualiser}!DelayedUpdate@{DelayedUpdate}}
+\index{DelayedUpdate@{DelayedUpdate}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{DelayedUpdate()}{DelayedUpdate()}}
+{\footnotesize\ttfamily I\+Enumerator Stream\+Visualiser.\+Delayed\+Update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сопрограмма-\/таймер основного цикла. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время обновления Отвечает за регулярное обновление данных потока с источников \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_stream_visualiser_af22d5442d7b607030aff90c303b55d6a}\label{class_stream_visualiser_af22d5442d7b607030aff90c303b55d6a}} 
+\index{StreamVisualiser@{StreamVisualiser}!OnDrawGizmos@{OnDrawGizmos}}
+\index{OnDrawGizmos@{OnDrawGizmos}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{OnDrawGizmos()}{OnDrawGizmos()}}
+{\footnotesize\ttfamily void Stream\+Visualiser.\+On\+Draw\+Gizmos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Служебная функция, необходимая для отображения границ системы частиц и координат начала и конца в редакторе ~\newline
+ 
+
+\mbox{\Hypertarget{class_stream_visualiser_aa2e55aaf71a3f31aa455530b901acbad}\label{class_stream_visualiser_aa2e55aaf71a3f31aa455530b901acbad}} 
+\index{StreamVisualiser@{StreamVisualiser}!RefreshFromSources@{RefreshFromSources}}
+\index{RefreshFromSources@{RefreshFromSources}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{RefreshFromSources()}{RefreshFromSources()}}
+{\footnotesize\ttfamily void Stream\+Visualiser.\+Refresh\+From\+Sources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод обновления данных на основе источников ~\newline
+ 
+
+\mbox{\Hypertarget{class_stream_visualiser_aa6fa68d9644078c94eecb1dc30cbc3e3}\label{class_stream_visualiser_aa6fa68d9644078c94eecb1dc30cbc3e3}} 
 \index{StreamVisualiser@{StreamVisualiser}!Scan@{Scan}}
 \index{Scan@{Scan}!StreamVisualiser@{StreamVisualiser}}
 \doxysubsubsection{\texorpdfstring{Scan()}{Scan()}}
-{\footnotesize\ttfamily override float Stream\+Visualiser.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily override string Stream\+Visualiser.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Универсальный метод снятия показаний с визуализатора 
+Метод снятия показаний с визуализатора сканером 
 
 
-\begin{DoxyParams}{Parameters}
-{\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}string\mbox{]}} & vis\+Type Возвращается конструкция вида Тип\+\_\+источника\+\_\+скорости\+:Значение \\
 \hline
-{\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
+{\em \mbox{[}string\mbox{]}} & data\+Type Тип данных источника цвета \\
 \hline
-{\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
+{\em \mbox{[}string\mbox{]}} & topic Возвращается конструкция вида Тип\+\_\+источника\+\_\+плотности\+:Значение \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Визуализируемые данные в формате float
+\begin{DoxyReturn}{Возвращает}
+Визуализируемые данные цвета в формате float Так как потоковый визуализатор это единстенный визуализатор, использующий несколько разных источников с разными независимыми данными, его сканирование отличается от сканирования остальных визуализаторов. Из-\/за ограниченности сканера его текстовые строки приходится использовать для отображения нескольких данных. ~\newline
+Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
 \end{DoxyReturn}
-Унаследованные реализации функции обязаны будут возвращать 4 параметра\+: опорные данные визуализатора, тип визуализатора, тип данных, M\+Q\+T\+T-\/топик данных. 
-
-Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{Visualiser}}.
 
 
+Замещает \mbox{\hyperlink{class_visualiser_a099db2954c72f856a269f09803a33fc7}{Visualiser}}.
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_stream_visualiser_a5e95b8ebbab886339d11bddadc9afa1d}\label{class_stream_visualiser_a5e95b8ebbab886339d11bddadc9afa1d}} 
-\index{StreamVisualiser@{StreamVisualiser}!color@{color}}
-\index{color@{color}!StreamVisualiser@{StreamVisualiser}}
-\doxysubsubsection{\texorpdfstring{color}{color}}
-{\footnotesize\ttfamily Color Stream\+Visualiser.\+color}
+\mbox{\Hypertarget{class_stream_visualiser_a318547fbc5ebc87b9154759436de9e92}\label{class_stream_visualiser_a318547fbc5ebc87b9154759436de9e92}} 
+\index{StreamVisualiser@{StreamVisualiser}!Update@{Update}}
+\index{Update@{Update}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Stream\+Visualiser.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Функция основного цикла. 1) Размещает систему частиц на точке начала и направляет её в точку конца ~\newline
+2) Рассчитывает время жизни частиц так, чтобы они долетали от начала до конца потока ~\newline
+3) Устанавливает частоту испускания частиц так, чтобы соблюдалась необходимая плотность потока ~\newline
+4) Устанавливает цвет выпущенных частиц так, чтобы соблюдался необходимый цвет потока ~\newline
+5) Устанавливает радиус основания излучателя частиц так, чтобы соблюдался необходимый радиус потока ~\newline
+6) Устанавливает цвет выпущенных частиц так, чтобы соблюдался необходимый цвет потока ~\newline
+7) Устанавливает хвосты у выпущенных частиц, если это опция активирована в настройках потока ~\newline
+8) Устанавливает положение коллайдера вдоль потока~\newline
+. 
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_stream_visualiser_af291ffaa2a7d3b523f4fbf92bd720c25}\label{class_stream_visualiser_af291ffaa2a7d3b523f4fbf92bd720c25}} 
+\index{StreamVisualiser@{StreamVisualiser}!collObj@{collObj}}
+\index{collObj@{collObj}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{collObj}{collObj}}
+{\footnotesize\ttfamily Game\+Object Stream\+Visualiser.\+coll\+Obj = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на объект, служащий коллайдером визуализатора для сканера. Задается в редакторе. 
+
+\mbox{\Hypertarget{class_stream_visualiser_ae1aca25ebbb57296b90f95b417ca33a3}\label{class_stream_visualiser_ae1aca25ebbb57296b90f95b417ca33a3}} 
+\index{StreamVisualiser@{StreamVisualiser}!dencData@{dencData}}
+\index{dencData@{dencData}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{dencData}{dencData}}
+{\footnotesize\ttfamily float Stream\+Visualiser.\+denc\+Data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая плотность потока 
+
+\mbox{\Hypertarget{class_stream_visualiser_a2d4c9c1df3688f912456afa591f002b3}\label{class_stream_visualiser_a2d4c9c1df3688f912456afa591f002b3}} 
+\index{StreamVisualiser@{StreamVisualiser}!dencitySource@{dencitySource}}
+\index{dencitySource@{dencitySource}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{dencitySource}{dencitySource}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_source}{Data\+Source}} Stream\+Visualiser.\+dencity\+Source = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на источник данных о плотности потока 
+
+\mbox{\Hypertarget{class_stream_visualiser_a296fb21ddb0be407d94a1d1072287a40}\label{class_stream_visualiser_a296fb21ddb0be407d94a1d1072287a40}} 
+\index{StreamVisualiser@{StreamVisualiser}!finish@{finish}}
+\index{finish@{finish}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{finish}{finish}}
+{\footnotesize\ttfamily Transform Stream\+Visualiser.\+finish = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на точку окончания потока. Задается в редакторе. 
+
+\mbox{\Hypertarget{class_stream_visualiser_a7c9c2cd6e700eba9ab8868afb3a50d2b}\label{class_stream_visualiser_a7c9c2cd6e700eba9ab8868afb3a50d2b}} 
+\index{StreamVisualiser@{StreamVisualiser}!finishColor@{finishColor}}
+\index{finishColor@{finishColor}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{finishColor}{finishColor}}
+{\footnotesize\ttfamily Color Stream\+Visualiser.\+finish\+Color}
+
+
+
+Цвет конца потока по-\/умолчанию. Задается в редакторе. 
+
+\mbox{\Hypertarget{class_stream_visualiser_a9909c71a642791056aaaa123226d1b27}\label{class_stream_visualiser_a9909c71a642791056aaaa123226d1b27}} 
+\index{StreamVisualiser@{StreamVisualiser}!finishColorData@{finishColorData}}
+\index{finishColorData@{finishColorData}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{finishColorData}{finishColorData}}
+{\footnotesize\ttfamily float Stream\+Visualiser.\+finish\+Color\+Data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущие данные, определяющие цвет конца потока 
+
+\mbox{\Hypertarget{class_stream_visualiser_a6ca943840d2fb2417eba3612aba7bb31}\label{class_stream_visualiser_a6ca943840d2fb2417eba3612aba7bb31}} 
+\index{StreamVisualiser@{StreamVisualiser}!finishColorSource@{finishColorSource}}
+\index{finishColorSource@{finishColorSource}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{finishColorSource}{finishColorSource}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_source}{Data\+Source}} Stream\+Visualiser.\+finish\+Color\+Source = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на источник данных о цвете потока 
 
 \mbox{\Hypertarget{class_stream_visualiser_ace34e10739448f79b89084a42f399e5c}\label{class_stream_visualiser_ace34e10739448f79b89084a42f399e5c}} 
 \index{StreamVisualiser@{StreamVisualiser}!isControlledBySources@{isControlledBySources}}
@@ -72,11 +336,29 @@ Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{
 \doxysubsubsection{\texorpdfstring{isControlledBySources}{isControlledBySources}}
 {\footnotesize\ttfamily bool Stream\+Visualiser.\+is\+Controlled\+By\+Sources = true}
 
+
+
+Контролируется ли поток источниками данных? 
+
 \mbox{\Hypertarget{class_stream_visualiser_a4e3c379b4ec5be29720f6f35b6d69b91}\label{class_stream_visualiser_a4e3c379b4ec5be29720f6f35b6d69b91}} 
 \index{StreamVisualiser@{StreamVisualiser}!particleDencityMultiplier@{particleDencityMultiplier}}
 \index{particleDencityMultiplier@{particleDencityMultiplier}!StreamVisualiser@{StreamVisualiser}}
 \doxysubsubsection{\texorpdfstring{particleDencityMultiplier}{particleDencityMultiplier}}
 {\footnotesize\ttfamily float Stream\+Visualiser.\+particle\+Dencity\+Multiplier = 2f}
+
+
+
+Множитель плотности потока по-\/умолчанию. Задается в редакторе. 
+
+\mbox{\Hypertarget{class_stream_visualiser_a1bea4d7bf268d664c4dbce48eddeebb2}\label{class_stream_visualiser_a1bea4d7bf268d664c4dbce48eddeebb2}} 
+\index{StreamVisualiser@{StreamVisualiser}!ps@{ps}}
+\index{ps@{ps}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{ps}{ps}}
+{\footnotesize\ttfamily Particle\+System Stream\+Visualiser.\+ps\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на контролируемую систему частиц. 
 
 \mbox{\Hypertarget{class_stream_visualiser_ae08cd7fadeecb96902fa5cedc21b8499}\label{class_stream_visualiser_ae08cd7fadeecb96902fa5cedc21b8499}} 
 \index{StreamVisualiser@{StreamVisualiser}!radius@{radius}}
@@ -84,17 +366,89 @@ Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{
 \doxysubsubsection{\texorpdfstring{radius}{radius}}
 {\footnotesize\ttfamily float Stream\+Visualiser.\+radius = 2f}
 
+
+
+Радиус потока 
+
 \mbox{\Hypertarget{class_stream_visualiser_a8935a502e76dc70fa1605bb04a2df5e8}\label{class_stream_visualiser_a8935a502e76dc70fa1605bb04a2df5e8}} 
 \index{StreamVisualiser@{StreamVisualiser}!refreshTime@{refreshTime}}
 \index{refreshTime@{refreshTime}!StreamVisualiser@{StreamVisualiser}}
 \doxysubsubsection{\texorpdfstring{refreshTime}{refreshTime}}
 {\footnotesize\ttfamily float Stream\+Visualiser.\+refresh\+Time = 1f}
 
+
+
+Время обновления данных с источников 
+
 \mbox{\Hypertarget{class_stream_visualiser_ade2c7de9f08279e03ff17b7c270549d4}\label{class_stream_visualiser_ade2c7de9f08279e03ff17b7c270549d4}} 
 \index{StreamVisualiser@{StreamVisualiser}!speed@{speed}}
 \index{speed@{speed}!StreamVisualiser@{StreamVisualiser}}
 \doxysubsubsection{\texorpdfstring{speed}{speed}}
 {\footnotesize\ttfamily float Stream\+Visualiser.\+speed = 5f}
+
+
+
+Скорость потока по-\/умолчанию. Задается в редакторе. 
+
+\mbox{\Hypertarget{class_stream_visualiser_a895b40c95ac086088d162ff728b16faf}\label{class_stream_visualiser_a895b40c95ac086088d162ff728b16faf}} 
+\index{StreamVisualiser@{StreamVisualiser}!speedData@{speedData}}
+\index{speedData@{speedData}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{speedData}{speedData}}
+{\footnotesize\ttfamily float Stream\+Visualiser.\+speed\+Data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущая скорость потока 
+
+\mbox{\Hypertarget{class_stream_visualiser_ad3b9f20c8d16e5bdc1877e16af62ae92}\label{class_stream_visualiser_ad3b9f20c8d16e5bdc1877e16af62ae92}} 
+\index{StreamVisualiser@{StreamVisualiser}!speedSource@{speedSource}}
+\index{speedSource@{speedSource}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{speedSource}{speedSource}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_source}{Data\+Source}} Stream\+Visualiser.\+speed\+Source = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на источник данных о скорости потока 
+
+\mbox{\Hypertarget{class_stream_visualiser_af11b1968279007ca565a3872342c0d6d}\label{class_stream_visualiser_af11b1968279007ca565a3872342c0d6d}} 
+\index{StreamVisualiser@{StreamVisualiser}!start@{start}}
+\index{start@{start}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily Transform Stream\+Visualiser.\+start = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на точку начала потока. Задается в редакторе. 
+
+\mbox{\Hypertarget{class_stream_visualiser_a12d12d7eaa6bc27632ed8b64ba3997c8}\label{class_stream_visualiser_a12d12d7eaa6bc27632ed8b64ba3997c8}} 
+\index{StreamVisualiser@{StreamVisualiser}!startColor@{startColor}}
+\index{startColor@{startColor}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{startColor}{startColor}}
+{\footnotesize\ttfamily Color Stream\+Visualiser.\+start\+Color}
+
+
+
+Цвет начала потока по-\/умолчанию. Задается в редакторе. 
+
+\mbox{\Hypertarget{class_stream_visualiser_a4cc585487cff8128bcf1421af237f2ac}\label{class_stream_visualiser_a4cc585487cff8128bcf1421af237f2ac}} 
+\index{StreamVisualiser@{StreamVisualiser}!startColorData@{startColorData}}
+\index{startColorData@{startColorData}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{startColorData}{startColorData}}
+{\footnotesize\ttfamily float Stream\+Visualiser.\+start\+Color\+Data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущие данные, определяющие цвет начала потока 
+
+\mbox{\Hypertarget{class_stream_visualiser_a817b4a3fd84ab7d91a9c8f1159ba5cfe}\label{class_stream_visualiser_a817b4a3fd84ab7d91a9c8f1159ba5cfe}} 
+\index{StreamVisualiser@{StreamVisualiser}!startColorSource@{startColorSource}}
+\index{startColorSource@{startColorSource}!StreamVisualiser@{StreamVisualiser}}
+\doxysubsubsection{\texorpdfstring{startColorSource}{startColorSource}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_source}{Data\+Source}} Stream\+Visualiser.\+start\+Color\+Source = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на источник данных о цвете потока 
 
 \mbox{\Hypertarget{class_stream_visualiser_a98c139c984f2f434dda81c4f10442a77}\label{class_stream_visualiser_a98c139c984f2f434dda81c4f10442a77}} 
 \index{StreamVisualiser@{StreamVisualiser}!trails@{trails}}
@@ -104,6 +458,10 @@ Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Оставляют ли частицы хвосты? 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_stream_visualiser_8cs}{Stream\+Visualiser.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_stream_visualiser_8cs}{Stream\+Visualiser.\+cs}}\end{DoxyCompactItemize}

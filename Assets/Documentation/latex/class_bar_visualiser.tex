@@ -1,38 +1,127 @@
-\hypertarget{class_bar_visualiser}{}\doxysection{Bar\+Visualiser Class Reference}
+\hypertarget{class_bar_visualiser}{}\doxysection{Класс Bar\+Visualiser}
 \label{class_bar_visualiser}\index{BarVisualiser@{BarVisualiser}}
-Inheritance diagram for Bar\+Visualiser\+:\begin{figure}[H]
+
+
+Класс для контроля столбчатых визуализаторов  
+
+
+Граф наследования\+:Bar\+Visualiser\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=3.000000cm]{class_bar_visualiser}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
-override float \mbox{\hyperlink{class_bar_visualiser_a7f142503c8bd1a6ddd773c64528b53d9}{Scan}} (out string vis\+Type, out string data\+Type, out string topic)
-\begin{DoxyCompactList}\small\item\em Универсальный метод снятия показаний с визуализатора \end{DoxyCompactList}\item 
+override string \mbox{\hyperlink{class_bar_visualiser_a9aea7555b62964fef1d5b4ad6c69fd30}{Scan}} (out string vis\+Type, out string data\+Type, out string topic)
+\begin{DoxyCompactList}\small\item\em Метод снятия показаний с визуализатора сканером \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}{Set\+Height}} (float \+\_\+h, float \+\_\+time)
-\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\begin{DoxyCompactList}\small\item\em Метод плавного задания высоты объекта по данным в локальных координатах. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые атрибуты}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_data_source}{Data\+Source}} \mbox{\hyperlink{class_bar_visualiser_a2d8e05f34cce8b7f8937f4db6b0ec3a9}{source}}
 \begin{DoxyCompactList}\small\item\em Источник данных, контролирующий цвет. Присваевается в сцене до начала работы скрипта. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_bar_visualiser_ae5d1058dc7b474d2ff8c0fa4d1920459}{Set\+Hard\+Height}} (float h)
+\begin{DoxyCompactList}\small\item\em Метод задания абсолютной высоты объекта в локальных координатах. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bar_visualiser_a91a492633f9c8994fd1ef5b30004675f}{Set\+Height}} (float data)
+\begin{DoxyCompactList}\small\item\em Метод задания высоты объекта по данным в локальных координатах. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_bar_visualiser_ac8cd13795396f18bb2e804e63fbb0f35}{Smooth\+Change}} (float \+\_\+h, float \+\_\+time)
+\begin{DoxyCompactList}\small\item\em Сопрограмма, для плавного изменения высоты объекта. ~\newline
+ \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_bar_visualiser_afec6931e48b8d0ccff939d4d46b10e73}{Delayed\+Update}} (float \+\_\+time)
+\begin{DoxyCompactList}\small\item\em Сопрограмма-\/таймер основного цикла. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bar_visualiser_a0e236189be269d105bc4effb3bac9759}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Установочная функция, вызываемая в момент активации объекта на сцене. ~\newline
+В первую очередь в ней устанавливается ссылка на материал рендерера родительского объекта. Если это делать более традиционным путем -\/ префабной связью -\/ скриптом изменяется глобальный материал всех визуализаторов данного типа. ~\newline
+После этого стандартный цвет приравнивается цвету, которым обладает объект на начало исполнения программы. ~\newline
+Так же задается целевой объект изменения высоты, который в данной версии является объектом, к которому прикреплен скрипт, а так же максимальная высота объекта, равная высоте объекта до начала выполнения программы После всех описанных действия начинается исполнение сопрограммы Delayed\+Update с частотой обновлений в update\+Time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_bar_visualiser_ae096ea21ccb1f9986f1d1f15420b20b7}{target}} = null
+\begin{DoxyCompactList}\small\item\em Изменяемый объект \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_bar_visualiser_ab710fee6294a8aec6c0e967568f10f8e}{min\+Height}} = 0.\+1f
+\begin{DoxyCompactList}\small\item\em Минимальная высота столбца в локальных единицах измерения. Регулируется из редактора. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_bar_visualiser_a21798af5e3ceab5a3759db20047a83ae}{max\+Height}} = 1f
+\begin{DoxyCompactList}\small\item\em Максимальная высота столбца в локальных единицах измерения. Регулируется из редактора. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_bar_visualiser_a525e6cdee416e312ec8e49b49e261009}{min\+Data}} = 10f
+\begin{DoxyCompactList}\small\item\em Значение данных, при которых высота столбца будет минимальной. Регулируется из редактора. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_bar_visualiser_a3dc1fd00fb6f75d4dfb64d91634482e4}{max\+Data}} = 100f
+\begin{DoxyCompactList}\small\item\em Значение данных, при которых высота столбца будет максимальной. Регулируется из редактора. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_bar_visualiser_ae706191423162f4e1eb042fb7334a83e}{cur\+Data}}
+\begin{DoxyCompactList}\small\item\em Текущее значение отображаемых данных. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_bar_visualiser_aa2e4f4b350855e91c313bf9af6a84eee}{def\+Color}}
+\begin{DoxyCompactList}\small\item\em Цвет столбца в обычном состоянии. Берется из изначального цвета столбца в редакторе. \end{DoxyCompactList}\item 
+Material \mbox{\hyperlink{class_bar_visualiser_af232efc51d800ceed26d9412873b6bbf}{material}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на материал изменяемого объекта. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_bar_visualiser_a9455562f57945485b766a393a04563ff}{update\+Time}} = 1f
+\begin{DoxyCompactList}\small\item\em Время обновления объекта \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_bar_visualiser_a7f142503c8bd1a6ddd773c64528b53d9}\label{class_bar_visualiser_a7f142503c8bd1a6ddd773c64528b53d9}} 
+\doxysubsection{Подробное описание}
+Класс для контроля столбчатых визуализаторов 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+13.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+Если source не присвоить в сцене, объект не будет функционировать!
+\end{DoxyWarning}
+Этот класс занимается контролем высоты и цвета столбца-\/визуализатора, которым должен являться объект, к которому прикремлен скрипт. Контроль происходит в соотвествии с данными из источника данных \mbox{\hyperlink{class_data_source}{Data\+Source}} source и внутренних настроек объекта. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_bar_visualiser_a0e236189be269d105bc4effb3bac9759}\label{class_bar_visualiser_a0e236189be269d105bc4effb3bac9759}} 
+\index{BarVisualiser@{BarVisualiser}!Awake@{Awake}}
+\index{Awake@{Awake}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Bar\+Visualiser.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установочная функция, вызываемая в момент активации объекта на сцене. ~\newline
+В первую очередь в ней устанавливается ссылка на материал рендерера родительского объекта. Если это делать более традиционным путем -\/ префабной связью -\/ скриптом изменяется глобальный материал всех визуализаторов данного типа. ~\newline
+После этого стандартный цвет приравнивается цвету, которым обладает объект на начало исполнения программы. ~\newline
+Так же задается целевой объект изменения высоты, который в данной версии является объектом, к которому прикреплен скрипт, а так же максимальная высота объекта, равная высоте объекта до начала выполнения программы После всех описанных действия начинается исполнение сопрограммы Delayed\+Update с частотой обновлений в update\+Time. 
+
+\mbox{\Hypertarget{class_bar_visualiser_afec6931e48b8d0ccff939d4d46b10e73}\label{class_bar_visualiser_afec6931e48b8d0ccff939d4d46b10e73}} 
+\index{BarVisualiser@{BarVisualiser}!DelayedUpdate@{DelayedUpdate}}
+\index{DelayedUpdate@{DelayedUpdate}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{DelayedUpdate()}{DelayedUpdate()}}
+{\footnotesize\ttfamily I\+Enumerator Bar\+Visualiser.\+Delayed\+Update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сопрограмма-\/таймер основного цикла. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время обновления\\
+\hline
+\end{DoxyParams}
+Отвечает за регулярное обновление высоты объекта в соотвествии с данными источника. ~\newline
+В бесконечном цикле внутри сопрограммы из источника данных source берется значение данных, после чего вызываетася метод Set\+Height. После этого производится ожидание на время обновления до повторения цикла. \mbox{\Hypertarget{class_bar_visualiser_a9aea7555b62964fef1d5b4ad6c69fd30}\label{class_bar_visualiser_a9aea7555b62964fef1d5b4ad6c69fd30}} 
 \index{BarVisualiser@{BarVisualiser}!Scan@{Scan}}
 \index{Scan@{Scan}!BarVisualiser@{BarVisualiser}}
 \doxysubsubsection{\texorpdfstring{Scan()}{Scan()}}
-{\footnotesize\ttfamily override float Bar\+Visualiser.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily override string Bar\+Visualiser.\+Scan (\begin{DoxyParamCaption}\item[{out string}]{vis\+Type,  }\item[{out string}]{data\+Type,  }\item[{out string}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Универсальный метод снятия показаний с визуализатора 
+Метод снятия показаний с визуализатора сканером 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
 \hline
 {\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
@@ -40,22 +129,154 @@ void \mbox{\hyperlink{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}{Se
 {\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Визуализируемые данные в формате float
+\begin{DoxyReturn}{Возвращает}
+Визуализируемые данные в формате float 
 \end{DoxyReturn}
-Унаследованные реализации функции обязаны будут возвращать 4 параметра\+: опорные данные визуализатора, тип визуализатора, тип данных, M\+Q\+T\+T-\/топик данных. 
 
-Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{Visualiser}}.
 
+Замещает \mbox{\hyperlink{class_visualiser_a099db2954c72f856a269f09803a33fc7}{Visualiser}}.
+
+\mbox{\Hypertarget{class_bar_visualiser_ae5d1058dc7b474d2ff8c0fa4d1920459}\label{class_bar_visualiser_ae5d1058dc7b474d2ff8c0fa4d1920459}} 
+\index{BarVisualiser@{BarVisualiser}!SetHardHeight@{SetHardHeight}}
+\index{SetHardHeight@{SetHardHeight}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{SetHardHeight()}{SetHardHeight()}}
+{\footnotesize\ttfamily void Bar\+Visualiser.\+Set\+Hard\+Height (\begin{DoxyParamCaption}\item[{float}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод задания абсолютной высоты объекта в локальных координатах. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}float\mbox{]}} & h -\/ Абсолютная высота Используется только после предварительной обработки данных. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}\label{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}} 
 \index{BarVisualiser@{BarVisualiser}!SetHeight@{SetHeight}}
 \index{SetHeight@{SetHeight}!BarVisualiser@{BarVisualiser}}
-\doxysubsubsection{\texorpdfstring{SetHeight()}{SetHeight()}}
+\doxysubsubsection{\texorpdfstring{SetHeight()}{SetHeight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Bar\+Visualiser.\+Set\+Height (\begin{DoxyParamCaption}\item[{float}]{\+\_\+h,  }\item[{float}]{\+\_\+time }\end{DoxyParamCaption})}
 
 
 
-\doxysubsection{Member Data Documentation}
+Метод плавного задания высоты объекта по данным в локальных координатах. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}float\mbox{]}} & \+\_\+h -\/ Входные данные \\
+\hline
+{\em \mbox{[}float\mbox{]}} & \+\_\+time -\/ Время смены в секундах Запускает сопрограмму плавной смены высоты Smooth\+Change. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bar_visualiser_a91a492633f9c8994fd1ef5b30004675f}\label{class_bar_visualiser_a91a492633f9c8994fd1ef5b30004675f}} 
+\index{BarVisualiser@{BarVisualiser}!SetHeight@{SetHeight}}
+\index{SetHeight@{SetHeight}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{SetHeight()}{SetHeight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Bar\+Visualiser.\+Set\+Height (\begin{DoxyParamCaption}\item[{float}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод задания высоты объекта по данным в локальных координатах. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}float\mbox{]}} & h -\/ Входные данные В случае если входные данные меньше или равны порогу min\+Data, задается минимальная высота объекта и ему задается синий цвет. ~\newline
+В случае если входные данные находятся между min\+Data и max\+Data, данные нормализуются относительно порогов и высот, и по получивнемуся значению задается высота объекта. Цвет объекта устанавливается равным стандартному. ~\newline
+В случае если входные данные больше или равны порогу max\+Data, задается максимальная высота объекта и ему задается красный цвет. ~\newline
+По окончанию метода задается текущее показание визуализатора, равное входным данным. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bar_visualiser_ac8cd13795396f18bb2e804e63fbb0f35}\label{class_bar_visualiser_ac8cd13795396f18bb2e804e63fbb0f35}} 
+\index{BarVisualiser@{BarVisualiser}!SmoothChange@{SmoothChange}}
+\index{SmoothChange@{SmoothChange}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{SmoothChange()}{SmoothChange()}}
+{\footnotesize\ttfamily I\+Enumerator Bar\+Visualiser.\+Smooth\+Change (\begin{DoxyParamCaption}\item[{float}]{\+\_\+h,  }\item[{float}]{\+\_\+time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сопрограмма, для плавного изменения высоты объекта. ~\newline
+ 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}float\mbox{]}} & \+\_\+h -\/ Входные данные \\
+\hline
+{\em \mbox{[}float\mbox{]}} & \+\_\+time -\/ Время смены в секундах\\
+\hline
+\end{DoxyParams}
+Изменяет высоту диаграммы с начального до \+\_\+h за \+\_\+time секунд 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_bar_visualiser_ae706191423162f4e1eb042fb7334a83e}\label{class_bar_visualiser_ae706191423162f4e1eb042fb7334a83e}} 
+\index{BarVisualiser@{BarVisualiser}!curData@{curData}}
+\index{curData@{curData}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{curData}{curData}}
+{\footnotesize\ttfamily float Bar\+Visualiser.\+cur\+Data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Текущее значение отображаемых данных. 
+
+\mbox{\Hypertarget{class_bar_visualiser_aa2e4f4b350855e91c313bf9af6a84eee}\label{class_bar_visualiser_aa2e4f4b350855e91c313bf9af6a84eee}} 
+\index{BarVisualiser@{BarVisualiser}!defColor@{defColor}}
+\index{defColor@{defColor}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{defColor}{defColor}}
+{\footnotesize\ttfamily Color Bar\+Visualiser.\+def\+Color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Цвет столбца в обычном состоянии. Берется из изначального цвета столбца в редакторе. 
+
+\mbox{\Hypertarget{class_bar_visualiser_af232efc51d800ceed26d9412873b6bbf}\label{class_bar_visualiser_af232efc51d800ceed26d9412873b6bbf}} 
+\index{BarVisualiser@{BarVisualiser}!material@{material}}
+\index{material@{material}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{material}{material}}
+{\footnotesize\ttfamily Material Bar\+Visualiser.\+material = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на материал изменяемого объекта. 
+
+\mbox{\Hypertarget{class_bar_visualiser_a3dc1fd00fb6f75d4dfb64d91634482e4}\label{class_bar_visualiser_a3dc1fd00fb6f75d4dfb64d91634482e4}} 
+\index{BarVisualiser@{BarVisualiser}!maxData@{maxData}}
+\index{maxData@{maxData}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{maxData}{maxData}}
+{\footnotesize\ttfamily float Bar\+Visualiser.\+max\+Data = 100f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Значение данных, при которых высота столбца будет максимальной. Регулируется из редактора. 
+
+\mbox{\Hypertarget{class_bar_visualiser_a21798af5e3ceab5a3759db20047a83ae}\label{class_bar_visualiser_a21798af5e3ceab5a3759db20047a83ae}} 
+\index{BarVisualiser@{BarVisualiser}!maxHeight@{maxHeight}}
+\index{maxHeight@{maxHeight}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{maxHeight}{maxHeight}}
+{\footnotesize\ttfamily float Bar\+Visualiser.\+max\+Height = 1f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Максимальная высота столбца в локальных единицах измерения. Регулируется из редактора. 
+
+\mbox{\Hypertarget{class_bar_visualiser_a525e6cdee416e312ec8e49b49e261009}\label{class_bar_visualiser_a525e6cdee416e312ec8e49b49e261009}} 
+\index{BarVisualiser@{BarVisualiser}!minData@{minData}}
+\index{minData@{minData}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{minData}{minData}}
+{\footnotesize\ttfamily float Bar\+Visualiser.\+min\+Data = 10f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Значение данных, при которых высота столбца будет минимальной. Регулируется из редактора. 
+
+\mbox{\Hypertarget{class_bar_visualiser_ab710fee6294a8aec6c0e967568f10f8e}\label{class_bar_visualiser_ab710fee6294a8aec6c0e967568f10f8e}} 
+\index{BarVisualiser@{BarVisualiser}!minHeight@{minHeight}}
+\index{minHeight@{minHeight}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{minHeight}{minHeight}}
+{\footnotesize\ttfamily float Bar\+Visualiser.\+min\+Height = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Минимальная высота столбца в локальных единицах измерения. Регулируется из редактора. 
+
 \mbox{\Hypertarget{class_bar_visualiser_a2d8e05f34cce8b7f8937f4db6b0ec3a9}\label{class_bar_visualiser_a2d8e05f34cce8b7f8937f4db6b0ec3a9}} 
 \index{BarVisualiser@{BarVisualiser}!source@{source}}
 \index{source@{source}!BarVisualiser@{BarVisualiser}}
@@ -66,8 +287,28 @@ Implements \mbox{\hyperlink{class_visualiser_aee71a2277423aae47e6608f6cb125f48}{
 
 Источник данных, контролирующий цвет. Присваевается в сцене до начала работы скрипта. 
 
+\mbox{\Hypertarget{class_bar_visualiser_ae096ea21ccb1f9986f1d1f15420b20b7}\label{class_bar_visualiser_ae096ea21ccb1f9986f1d1f15420b20b7}} 
+\index{BarVisualiser@{BarVisualiser}!target@{target}}
+\index{target@{target}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily Game\+Object Bar\+Visualiser.\+target = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+
+Изменяемый объект 
+
+\mbox{\Hypertarget{class_bar_visualiser_a9455562f57945485b766a393a04563ff}\label{class_bar_visualiser_a9455562f57945485b766a393a04563ff}} 
+\index{BarVisualiser@{BarVisualiser}!updateTime@{updateTime}}
+\index{updateTime@{updateTime}!BarVisualiser@{BarVisualiser}}
+\doxysubsubsection{\texorpdfstring{updateTime}{updateTime}}
+{\footnotesize\ttfamily float Bar\+Visualiser.\+update\+Time = 1f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Время обновления объекта 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_bar_visualiser_8cs}{Bar\+Visualiser.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_bar_visualiser_8cs}{Bar\+Visualiser.\+cs}}\end{DoxyCompactItemize}

@@ -1,26 +1,153 @@
-\hypertarget{class_laser_pointer_controller}{}\doxysection{Laser\+Pointer\+Controller Class Reference}
+\hypertarget{class_laser_pointer_controller}{}\doxysection{Класс Laser\+Pointer\+Controller}
 \label{class_laser_pointer_controller}\index{LaserPointerController@{LaserPointerController}}
-Inheritance diagram for Laser\+Pointer\+Controller\+:\begin{figure}[H]
+
+
+Класс для контроля лазерного указателя, сканера и меню.  
+
+
+Граф наследования\+:Laser\+Pointer\+Controller\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_laser_pointer_controller}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Открытые атрибуты}
 \begin{DoxyCompactItemize}
 \item 
 Steam\+V\+R\+\_\+\+Action\+\_\+\+Boolean \mbox{\hyperlink{class_laser_pointer_controller_a384cf29e4a9a4c1463259352c3fb76cf}{laser\+Input}}
-\item 
+\begin{DoxyCompactList}\small\item\em Действие, включающее лазер \end{DoxyCompactList}\item 
 Steam\+V\+R\+\_\+\+Action\+\_\+\+Boolean \mbox{\hyperlink{class_laser_pointer_controller_a8648c3c291c517d671790570c3963775}{menu\+Input}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Действие, включающее меню \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_laser_pointer_controller_a5919f63ea0992a54eefc560048d87bd7}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Метод инициализации объекта В методе получется ссылка на Steam\+V\+R\+\_\+\+Laser\+Pointer, на скрипт V\+R-\/руки Hand и на текстовые блоки интерфейса сканера. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_laser_pointer_controller_a749acf0f0d88ff08fdc8c337c7c1581d}{Scan}} ()
+\begin{DoxyCompactList}\small\item\em Метод сканирования визуализаторов Метод производит проекцию луча вдоль отображаемого Steam\+V\+R\+\_\+\+Laser\+Pointer луча, вычленяет из объекта, пересеченного лучом компонент, наследованный от \mbox{\hyperlink{class_visualiser}{Visualiser}}. После чего производится вызов метода Scan и вывод полученных данных на интерфейс сканера. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_laser_pointer_controller_a9f8935f45620c166f6a82ccf07dfafc3}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Метод основного цикла Производит включение лазера и меню при нажатии на кнопки и выключение при отпускании. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Steam\+V\+R\+\_\+\+Laser\+Pointer \mbox{\hyperlink{class_laser_pointer_controller_ae699d745019cd6e8018b70c530897df5}{target}}
+\begin{DoxyCompactList}\small\item\em Ссылка на скрипт Steam\+V\+R\+\_\+\+Laser\+Pointer на данной руке \end{DoxyCompactList}\item 
+Steam\+V\+R\+\_\+\+Input\+\_\+\+Sources \mbox{\hyperlink{class_laser_pointer_controller_ab41f99e85b0a545d9773ac68befeb006}{hand\+Type}}
+\begin{DoxyCompactList}\small\item\em Ссылка на текущую руку \end{DoxyCompactList}\item 
+Canvas \mbox{\hyperlink{class_laser_pointer_controller_a30a43c34d215b9bd105d196415d6e1d8}{scaner\+Canvas}} = null
+\begin{DoxyCompactList}\small\item\em -\/Ссылка на канвас сканера на данной руке. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+Canvas \mbox{\hyperlink{class_laser_pointer_controller_a5fbf7c89ee58074fd87e50f087e4048d}{menu\+Canvas}} = null
+\begin{DoxyCompactList}\small\item\em Ссылка на канвас меню на данной руке. Должна быть задана в редакторе. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_laser_pointer_controller_a44a923deae430a76b4f49675930b60db}{vis\+Type}}
+\item 
+string \mbox{\hyperlink{class_laser_pointer_controller_ad7176cb6b13436d52bc4e9f3c278b17e}{data\+Type}}
+\item 
+string \mbox{\hyperlink{class_laser_pointer_controller_a6f73277205992c38a4a44bb59f6e092a}{topic}}
+\item 
+string \mbox{\hyperlink{class_laser_pointer_controller_adb15f571f496bf3b40f16107bf12471c}{data}}
+\begin{DoxyCompactList}\small\item\em Переменыне для временного хранения данных сканера. \end{DoxyCompactList}\item 
+Text\+Mesh\+Pro\+U\+G\+UI\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_laser_pointer_controller_a8fb42a0fb8f080b3365899699506ea00}{text}} = null
+\begin{DoxyCompactList}\small\item\em Массив ссылок на блоки интерфейса сканера. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_laser_pointer_controller_abc22b38a3cbda823a946d82277ad98d7}{n}} = 4
+\begin{DoxyCompactList}\small\item\em Размер массива ссылок \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Data Documentation}
+\doxysubsection{Подробное описание}
+Класс для контроля лазерного указателя, сканера и меню. 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+13.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+???
+\end{DoxyWarning}
+Этот класс занимается контролем инструментов взаимодействия пользователя с моделью\+: лазерного указателя для управления меню, сканера показаний визуализаторов и наручного меню. Для корректной работы скрипт требуется разместить на том же объекте, где находится скрипт руки виртуального аватара. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_laser_pointer_controller_a5919f63ea0992a54eefc560048d87bd7}\label{class_laser_pointer_controller_a5919f63ea0992a54eefc560048d87bd7}} 
+\index{LaserPointerController@{LaserPointerController}!Awake@{Awake}}
+\index{Awake@{Awake}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Laser\+Pointer\+Controller.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод инициализации объекта В методе получется ссылка на Steam\+V\+R\+\_\+\+Laser\+Pointer, на скрипт V\+R-\/руки Hand и на текстовые блоки интерфейса сканера. 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_a749acf0f0d88ff08fdc8c337c7c1581d}\label{class_laser_pointer_controller_a749acf0f0d88ff08fdc8c337c7c1581d}} 
+\index{LaserPointerController@{LaserPointerController}!Scan@{Scan}}
+\index{Scan@{Scan}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{Scan()}{Scan()}}
+{\footnotesize\ttfamily void Laser\+Pointer\+Controller.\+Scan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод сканирования визуализаторов Метод производит проекцию луча вдоль отображаемого Steam\+V\+R\+\_\+\+Laser\+Pointer луча, вычленяет из объекта, пересеченного лучом компонент, наследованный от \mbox{\hyperlink{class_visualiser}{Visualiser}}. После чего производится вызов метода Scan и вывод полученных данных на интерфейс сканера. 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_a9f8935f45620c166f6a82ccf07dfafc3}\label{class_laser_pointer_controller_a9f8935f45620c166f6a82ccf07dfafc3}} 
+\index{LaserPointerController@{LaserPointerController}!Update@{Update}}
+\index{Update@{Update}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Laser\+Pointer\+Controller.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод основного цикла Производит включение лазера и меню при нажатии на кнопки и выключение при отпускании. 
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_laser_pointer_controller_adb15f571f496bf3b40f16107bf12471c}\label{class_laser_pointer_controller_adb15f571f496bf3b40f16107bf12471c}} 
+\index{LaserPointerController@{LaserPointerController}!data@{data}}
+\index{data@{data}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily string Laser\+Pointer\+Controller.\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Переменыне для временного хранения данных сканера. 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_ad7176cb6b13436d52bc4e9f3c278b17e}\label{class_laser_pointer_controller_ad7176cb6b13436d52bc4e9f3c278b17e}} 
+\index{LaserPointerController@{LaserPointerController}!dataType@{dataType}}
+\index{dataType@{dataType}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{dataType}{dataType}}
+{\footnotesize\ttfamily string Laser\+Pointer\+Controller.\+data\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_laser_pointer_controller_ab41f99e85b0a545d9773ac68befeb006}\label{class_laser_pointer_controller_ab41f99e85b0a545d9773ac68befeb006}} 
+\index{LaserPointerController@{LaserPointerController}!handType@{handType}}
+\index{handType@{handType}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{handType}{handType}}
+{\footnotesize\ttfamily Steam\+V\+R\+\_\+\+Input\+\_\+\+Sources Laser\+Pointer\+Controller.\+hand\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на текущую руку 
+
 \mbox{\Hypertarget{class_laser_pointer_controller_a384cf29e4a9a4c1463259352c3fb76cf}\label{class_laser_pointer_controller_a384cf29e4a9a4c1463259352c3fb76cf}} 
 \index{LaserPointerController@{LaserPointerController}!laserInput@{laserInput}}
 \index{laserInput@{laserInput}!LaserPointerController@{LaserPointerController}}
 \doxysubsubsection{\texorpdfstring{laserInput}{laserInput}}
 {\footnotesize\ttfamily Steam\+V\+R\+\_\+\+Action\+\_\+\+Boolean Laser\+Pointer\+Controller.\+laser\+Input}
+
+
+
+Действие, включающее лазер 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_a5fbf7c89ee58074fd87e50f087e4048d}\label{class_laser_pointer_controller_a5fbf7c89ee58074fd87e50f087e4048d}} 
+\index{LaserPointerController@{LaserPointerController}!menuCanvas@{menuCanvas}}
+\index{menuCanvas@{menuCanvas}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{menuCanvas}{menuCanvas}}
+{\footnotesize\ttfamily Canvas Laser\+Pointer\+Controller.\+menu\+Canvas = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на канвас меню на данной руке. Должна быть задана в редакторе. 
 
 \mbox{\Hypertarget{class_laser_pointer_controller_a8648c3c291c517d671790570c3963775}\label{class_laser_pointer_controller_a8648c3c291c517d671790570c3963775}} 
 \index{LaserPointerController@{LaserPointerController}!menuInput@{menuInput}}
@@ -30,6 +157,62 @@ Steam\+V\+R\+\_\+\+Action\+\_\+\+Boolean \mbox{\hyperlink{class_laser_pointer_co
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Действие, включающее меню 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_abc22b38a3cbda823a946d82277ad98d7}\label{class_laser_pointer_controller_abc22b38a3cbda823a946d82277ad98d7}} 
+\index{LaserPointerController@{LaserPointerController}!n@{n}}
+\index{n@{n}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily int Laser\+Pointer\+Controller.\+n = 4\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Размер массива ссылок 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_a30a43c34d215b9bd105d196415d6e1d8}\label{class_laser_pointer_controller_a30a43c34d215b9bd105d196415d6e1d8}} 
+\index{LaserPointerController@{LaserPointerController}!scanerCanvas@{scanerCanvas}}
+\index{scanerCanvas@{scanerCanvas}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{scanerCanvas}{scanerCanvas}}
+{\footnotesize\ttfamily Canvas Laser\+Pointer\+Controller.\+scaner\+Canvas = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+-\/Ссылка на канвас сканера на данной руке. Должна быть задана в редакторе. 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_ae699d745019cd6e8018b70c530897df5}\label{class_laser_pointer_controller_ae699d745019cd6e8018b70c530897df5}} 
+\index{LaserPointerController@{LaserPointerController}!target@{target}}
+\index{target@{target}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily Steam\+V\+R\+\_\+\+Laser\+Pointer Laser\+Pointer\+Controller.\+target\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на скрипт Steam\+V\+R\+\_\+\+Laser\+Pointer на данной руке 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_a8fb42a0fb8f080b3365899699506ea00}\label{class_laser_pointer_controller_a8fb42a0fb8f080b3365899699506ea00}} 
+\index{LaserPointerController@{LaserPointerController}!text@{text}}
+\index{text@{text}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily Text\+Mesh\+Pro\+U\+G\+UI \mbox{[}$\,$\mbox{]} Laser\+Pointer\+Controller.\+text = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Массив ссылок на блоки интерфейса сканера. 
+
+\mbox{\Hypertarget{class_laser_pointer_controller_a6f73277205992c38a4a44bb59f6e092a}\label{class_laser_pointer_controller_a6f73277205992c38a4a44bb59f6e092a}} 
+\index{LaserPointerController@{LaserPointerController}!topic@{topic}}
+\index{topic@{topic}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{topic}{topic}}
+{\footnotesize\ttfamily string Laser\+Pointer\+Controller.\+topic\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_laser_pointer_controller_a44a923deae430a76b4f49675930b60db}\label{class_laser_pointer_controller_a44a923deae430a76b4f49675930b60db}} 
+\index{LaserPointerController@{LaserPointerController}!visType@{visType}}
+\index{visType@{visType}!LaserPointerController@{LaserPointerController}}
+\doxysubsubsection{\texorpdfstring{visType}{visType}}
+{\footnotesize\ttfamily string Laser\+Pointer\+Controller.\+vis\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_laser_pointer_controller_8cs}{Laser\+Pointer\+Controller.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_laser_pointer_controller_8cs}{Laser\+Pointer\+Controller.\+cs}}\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ipoolcreator_126',['IPoolCreator',['../interface_i_pool_creator.html',1,'']]]
+  ['laserpointercontroller_247',['LaserPointerController',['../class_laser_pointer_controller.html',1,'']]]
 ];

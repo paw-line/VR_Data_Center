@@ -1,34 +1,111 @@
-\hypertarget{class_flymode}{}\doxysection{Flymode Class Reference}
+\hypertarget{class_flymode}{}\doxysection{Класс Flymode}
 \label{class_flymode}\index{Flymode@{Flymode}}
-Inheritance diagram for Flymode\+:\begin{figure}[H]
+
+
+Класс для перемещения аватара игрока полётом  
+
+
+Граф наследования\+:Flymode\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_flymode}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Открытые атрибуты}
 \begin{DoxyCompactItemize}
 \item 
 Steam\+V\+R\+\_\+\+Action\+\_\+\+Boolean \mbox{\hyperlink{class_flymode_ae09085d3e3c62482689aa60fd91a36af}{fly\+Action}}
-\item 
+\begin{DoxyCompactList}\small\item\em Действие Steam\+VR, отвечающее за полет. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_flymode_a02e55513ca335aaa63e8ebac06cc1542}{speed}} = 10f
-\item 
+\begin{DoxyCompactList}\small\item\em Скорость полёта \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_flymode_a394619d806fd3f358f32418fbf6a1a1d}{allow\+Flight}} = true
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Разрешить/запретить передвижение полётом \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_flymode_a8d66abf313b21fc0c82c0b75a7ca4665}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Функция основного цикла. Если полёт разрешен, то по активации действия лететь в сторону от шлема к руке. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Hand \mbox{\hyperlink{class_flymode_ab05186e8be312fa95fddbceed1ebd7ef}{left\+Hand}}
+\begin{DoxyCompactList}\small\item\em Ссылка на левую руку аватара \end{DoxyCompactList}\item 
+Hand \mbox{\hyperlink{class_flymode_a7e12cf2232aaa24283dadf988c7d1a46}{right\+Hand}}
+\begin{DoxyCompactList}\small\item\em Ссылка на правую руку аватара \end{DoxyCompactList}\item 
+Camera \mbox{\hyperlink{class_flymode_a748bd561912c8f11b542d94a1d4a9a40}{V\+R\+Camera}}
+\begin{DoxyCompactList}\small\item\em Ссылка камеру виртуальной реальности \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Data Documentation}
+\doxysubsection{Подробное описание}
+Класс для перемещения аватара игрока полётом 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+13.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+???
+\end{DoxyWarning}
+Перемещение осуществляется нажатием на заданную кнопку. При её нажатии аватар игрока начинает перемещаться по направлению от шлема к руке, на которой нажата кнопка. Чем дальше рука от шлема, тем быстрее летит аватар. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_flymode_a8d66abf313b21fc0c82c0b75a7ca4665}\label{class_flymode_a8d66abf313b21fc0c82c0b75a7ca4665}} 
+\index{Flymode@{Flymode}!Update@{Update}}
+\index{Update@{Update}!Flymode@{Flymode}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Flymode.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Функция основного цикла. Если полёт разрешен, то по активации действия лететь в сторону от шлема к руке. 
+
+
+
+\doxysubsection{Данные класса}
 \mbox{\Hypertarget{class_flymode_a394619d806fd3f358f32418fbf6a1a1d}\label{class_flymode_a394619d806fd3f358f32418fbf6a1a1d}} 
 \index{Flymode@{Flymode}!allowFlight@{allowFlight}}
 \index{allowFlight@{allowFlight}!Flymode@{Flymode}}
 \doxysubsubsection{\texorpdfstring{allowFlight}{allowFlight}}
 {\footnotesize\ttfamily bool Flymode.\+allow\+Flight = true}
 
+
+
+Разрешить/запретить передвижение полётом 
+
 \mbox{\Hypertarget{class_flymode_ae09085d3e3c62482689aa60fd91a36af}\label{class_flymode_ae09085d3e3c62482689aa60fd91a36af}} 
 \index{Flymode@{Flymode}!flyAction@{flyAction}}
 \index{flyAction@{flyAction}!Flymode@{Flymode}}
 \doxysubsubsection{\texorpdfstring{flyAction}{flyAction}}
 {\footnotesize\ttfamily Steam\+V\+R\+\_\+\+Action\+\_\+\+Boolean Flymode.\+fly\+Action}
+
+
+
+Действие Steam\+VR, отвечающее за полет. 
+
+\mbox{\Hypertarget{class_flymode_ab05186e8be312fa95fddbceed1ebd7ef}\label{class_flymode_ab05186e8be312fa95fddbceed1ebd7ef}} 
+\index{Flymode@{Flymode}!leftHand@{leftHand}}
+\index{leftHand@{leftHand}!Flymode@{Flymode}}
+\doxysubsubsection{\texorpdfstring{leftHand}{leftHand}}
+{\footnotesize\ttfamily Hand Flymode.\+left\+Hand\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на левую руку аватара 
+
+\mbox{\Hypertarget{class_flymode_a7e12cf2232aaa24283dadf988c7d1a46}\label{class_flymode_a7e12cf2232aaa24283dadf988c7d1a46}} 
+\index{Flymode@{Flymode}!rightHand@{rightHand}}
+\index{rightHand@{rightHand}!Flymode@{Flymode}}
+\doxysubsubsection{\texorpdfstring{rightHand}{rightHand}}
+{\footnotesize\ttfamily Hand Flymode.\+right\+Hand\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на правую руку аватара 
 
 \mbox{\Hypertarget{class_flymode_a02e55513ca335aaa63e8ebac06cc1542}\label{class_flymode_a02e55513ca335aaa63e8ebac06cc1542}} 
 \index{Flymode@{Flymode}!speed@{speed}}
@@ -38,6 +115,20 @@ bool \mbox{\hyperlink{class_flymode_a394619d806fd3f358f32418fbf6a1a1d}{allow\+Fl
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Скорость полёта 
+
+\mbox{\Hypertarget{class_flymode_a748bd561912c8f11b542d94a1d4a9a40}\label{class_flymode_a748bd561912c8f11b542d94a1d4a9a40}} 
+\index{Flymode@{Flymode}!VRCamera@{VRCamera}}
+\index{VRCamera@{VRCamera}!Flymode@{Flymode}}
+\doxysubsubsection{\texorpdfstring{VRCamera}{VRCamera}}
+{\footnotesize\ttfamily Camera Flymode.\+V\+R\+Camera\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка камеру виртуальной реальности 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_flymode_8cs}{Flymode.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_flymode_8cs}{Flymode.\+cs}}\end{DoxyCompactItemize}

@@ -1,13 +1,108 @@
-\hypertarget{class_steam_v_r_laser_wrapper}{}\doxysection{Steam\+V\+R\+Laser\+Wrapper Class Reference}
+\hypertarget{class_steam_v_r_laser_wrapper}{}\doxysection{Класс Steam\+V\+R\+Laser\+Wrapper}
 \label{class_steam_v_r_laser_wrapper}\index{SteamVRLaserWrapper@{SteamVRLaserWrapper}}
-Inheritance diagram for Steam\+V\+R\+Laser\+Wrapper\+:\begin{figure}[H]
+
+
+Класс, исправляющий работу Steam\+V\+R\+\_\+\+Laser\+Pointer.  
+
+
+Граф наследования\+:Steam\+V\+R\+Laser\+Wrapper\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_steam_v_r_laser_wrapper}
 \end{center}
 \end{figure}
-
-
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
 \item 
-D\+:/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_steam_v_r_laser_wrapper_8cs}{Steam\+V\+R\+Laser\+Wrapper.\+cs}}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_steam_v_r_laser_wrapper_a9f15618a650625d3fd215b2343b43d91}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em Установочная функция, вызываемая в момент активации объекта на сцене. ~\newline
+Получает ссылку на Steam\+V\+R\+\_\+\+Laser\+Pointer и привязывает кастомные обработчики событий. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_steam_v_r_laser_wrapper_a7f1e7c136e46961243e8f8ecbe7551e7}{On\+Pointer\+Click}} (object sender, Pointer\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Обработчик события клика лазером ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_steam_v_r_laser_wrapper_a9fb465ed33e376a876ca5d56cd18d73e}{On\+Pointer\+Out}} (object sender, Pointer\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Обработчик события окончания касания интерактивного элемента и лазера \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_steam_v_r_laser_wrapper_ae7a763758bf2952127a3647bc27f7159}{On\+Pointer\+In}} (object sender, Pointer\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Обработчик события начала касания интерактивного элемента и лазера \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Steam\+V\+R\+\_\+\+Laser\+Pointer \mbox{\hyperlink{class_steam_v_r_laser_wrapper_a6707f4bfef2320eb3c960338fc3ba324}{steam\+Vr\+Laser\+Pointer}}
+\begin{DoxyCompactList}\small\item\em Ссылка на Steam\+V\+R\+\_\+\+Laser\+Pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс, исправляющий работу Steam\+V\+R\+\_\+\+Laser\+Pointer. 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+14.\+05.\+20
+\end{DoxyDate}
+Этот класс используется для исправления не полностью функционирующего лазерного указателя Steam\+VR. Должен быть размещен на том же объекте что и Steam\+V\+R\+\_\+\+Laser\+Pointer. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_steam_v_r_laser_wrapper_a9f15618a650625d3fd215b2343b43d91}\label{class_steam_v_r_laser_wrapper_a9f15618a650625d3fd215b2343b43d91}} 
+\index{SteamVRLaserWrapper@{SteamVRLaserWrapper}!Awake@{Awake}}
+\index{Awake@{Awake}!SteamVRLaserWrapper@{SteamVRLaserWrapper}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Steam\+V\+R\+Laser\+Wrapper.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Установочная функция, вызываемая в момент активации объекта на сцене. ~\newline
+Получает ссылку на Steam\+V\+R\+\_\+\+Laser\+Pointer и привязывает кастомные обработчики событий. 
+
+\mbox{\Hypertarget{class_steam_v_r_laser_wrapper_a7f1e7c136e46961243e8f8ecbe7551e7}\label{class_steam_v_r_laser_wrapper_a7f1e7c136e46961243e8f8ecbe7551e7}} 
+\index{SteamVRLaserWrapper@{SteamVRLaserWrapper}!OnPointerClick@{OnPointerClick}}
+\index{OnPointerClick@{OnPointerClick}!SteamVRLaserWrapper@{SteamVRLaserWrapper}}
+\doxysubsubsection{\texorpdfstring{OnPointerClick()}{OnPointerClick()}}
+{\footnotesize\ttfamily void Steam\+V\+R\+Laser\+Wrapper.\+On\+Pointer\+Click (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Pointer\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Обработчик события клика лазером ~\newline
+ 
+
+\mbox{\Hypertarget{class_steam_v_r_laser_wrapper_ae7a763758bf2952127a3647bc27f7159}\label{class_steam_v_r_laser_wrapper_ae7a763758bf2952127a3647bc27f7159}} 
+\index{SteamVRLaserWrapper@{SteamVRLaserWrapper}!OnPointerIn@{OnPointerIn}}
+\index{OnPointerIn@{OnPointerIn}!SteamVRLaserWrapper@{SteamVRLaserWrapper}}
+\doxysubsubsection{\texorpdfstring{OnPointerIn()}{OnPointerIn()}}
+{\footnotesize\ttfamily void Steam\+V\+R\+Laser\+Wrapper.\+On\+Pointer\+In (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Pointer\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Обработчик события начала касания интерактивного элемента и лазера 
+
+\mbox{\Hypertarget{class_steam_v_r_laser_wrapper_a9fb465ed33e376a876ca5d56cd18d73e}\label{class_steam_v_r_laser_wrapper_a9fb465ed33e376a876ca5d56cd18d73e}} 
+\index{SteamVRLaserWrapper@{SteamVRLaserWrapper}!OnPointerOut@{OnPointerOut}}
+\index{OnPointerOut@{OnPointerOut}!SteamVRLaserWrapper@{SteamVRLaserWrapper}}
+\doxysubsubsection{\texorpdfstring{OnPointerOut()}{OnPointerOut()}}
+{\footnotesize\ttfamily void Steam\+V\+R\+Laser\+Wrapper.\+On\+Pointer\+Out (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Pointer\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Обработчик события окончания касания интерактивного элемента и лазера 
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{class_steam_v_r_laser_wrapper_a6707f4bfef2320eb3c960338fc3ba324}\label{class_steam_v_r_laser_wrapper_a6707f4bfef2320eb3c960338fc3ba324}} 
+\index{SteamVRLaserWrapper@{SteamVRLaserWrapper}!steamVrLaserPointer@{steamVrLaserPointer}}
+\index{steamVrLaserPointer@{steamVrLaserPointer}!SteamVRLaserWrapper@{SteamVRLaserWrapper}}
+\doxysubsubsection{\texorpdfstring{steamVrLaserPointer}{steamVrLaserPointer}}
+{\footnotesize\ttfamily Steam\+V\+R\+\_\+\+Laser\+Pointer Steam\+V\+R\+Laser\+Wrapper.\+steam\+Vr\+Laser\+Pointer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на Steam\+V\+R\+\_\+\+Laser\+Pointer. 
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Git\+Projects/\+V\+R\+\_\+\+Data\+\_\+\+Center/\+Assets/\+Scripts/\mbox{\hyperlink{_steam_v_r_laser_wrapper_8cs}{Steam\+V\+R\+Laser\+Wrapper.\+cs}}\end{DoxyCompactItemize}
