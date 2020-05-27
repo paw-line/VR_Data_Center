@@ -1,5 +1,10 @@
 \hypertarget{class_universal_translator}{}\doxysection{Класс Universal\+Translator}
 \label{class_universal_translator}\index{UniversalTranslator@{UniversalTranslator}}
+
+
+Класс для преобразования типов, получения единиц измерения и переводов.  
+
+
 Граф наследования\+:Universal\+Translator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,9 +15,11 @@
 \begin{DoxyCompactItemize}
 \item 
 string \mbox{\hyperlink{class_universal_translator_abc8bd01fbaff926dbfbdf546bdf434b8}{Trans\+Type\+To\+General\+Type}} (string type)
-\item 
+\begin{DoxyCompactList}\small\item\em Метод преобразования имени датчика в тип \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_universal_translator_a1e2f9991545531dbec8a1cb1b6f0fbe2}{Trans\+General\+Type\+To\+Unit}} (string type)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Метод преобразования типа в единицу измерения \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_universal_translator_af45a1ea07c0f26c65fac4e96e78f3f6c}{Transtype\+To\+Russian}} (string type)
+\begin{DoxyCompactList}\small\item\em Метод преобразования типа в единицу измерения \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Открытые статические члены}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,26 +29,49 @@ static \mbox{\hyperlink{class_universal_translator}{Universal\+Translator}} \mbo
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_my_dictionary2}{My\+Dictionary2}} \mbox{\hyperlink{class_universal_translator_ae3698759ca31064078d78d678d6045ce}{type\+To\+Russian\+Dictionary}}
-\item 
+\begin{DoxyCompactList}\small\item\em Словарь перевода названия датчика в описание. Заполняется в редакторе \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_my_dictionary2}{My\+Dictionary2}} \mbox{\hyperlink{class_universal_translator_adf6117a56d758544bfebcfcd3b9d4cba}{general\+Type\+To\+Unit\+Dictionary}}
-\item 
+\begin{DoxyCompactList}\small\item\em Словарь перевода типа в символ единицы измерения. Заполняется в редакторе \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_my_dictionary2}{My\+Dictionary2}} \mbox{\hyperlink{class_universal_translator_a854a663284df0e086aaf14e78be83ec0}{type\+To\+Genera\+Type\+Dictionary}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Словарь перевода названия датчика в его тип. Заполняется в редакторе \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Закрытые члены}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_universal_translator_a7b016573eab854d44483a6093e68d574}{Universal\+Translator}} ()
 \item 
 void \mbox{\hyperlink{class_universal_translator_a5965853a6e2d47d22904e24ea53eacf9}{Awake}} ()
-\begin{DoxyCompactList}\small\item\em Функция, инициализурующая статическую ссылку на данный объект. Если ссылка ещё не была инициализированна, то инициализирует её этим объектом. Если же она уже не пуста, то это значит что синглтор уже иницализирован. Тогда функция уничтожает данный объект и выводит предупреждение. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_universal_translator_a0548defaacc36dc2e8a93dc764213578}{Start}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Функция, инициализурующая статическую ссылку на данный объект. Если ссылка ещё не была инициализированна, то инициализирует её этим объектом. Если же она уже не пуста, то это значит что синглтор уже иницализирован. Тогда функция уничтожает данный объект и выводит предупреждение. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Закрытые статические данные}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{class_universal_translator}{Universal\+Translator}} \mbox{\hyperlink{class_universal_translator_a45787c0b6dd2b12b628124cb75b7b953}{instance}}
 \begin{DoxyCompactList}\small\item\em Статичная ссылка на единственный экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Подробное описание}
+Класс для преобразования типов, получения единиц измерения и переводов. 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+27.\+05.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+Этот скрипт должен быть размещен на сцене в ЕДИНСТВЕННОМ экземпляре. Если его не будет, не будут работать никакие визуализаторы. Если их будет много, останется только один. ~\newline
+ Для корректной работы компонента требутеся заполнить словари в редакторе. 4 
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Необходимо сделать}
+\item[\mbox{\hyperlink{todo__todo000001}{Необходимо сделать}}]Сделать Transtype\+To\+Russian\end{DoxyRefDesc}
+
+
+Этот класс-\/синглтон используется как глобальный сервис, выполняющий 3 функции\+: ~\newline
+1) Преобразование имени датчика в имя типа ~\newline
+2) Преобразование имени типа в символ, отражающий единицу измерения (например, символ процента \char`\"{}\%\char`\"{})~\newline
+3) Перевод имени датчика в понятное название 
 
 \doxysubsection{Конструктор(ы)}
 \mbox{\Hypertarget{class_universal_translator_a7b016573eab854d44483a6093e68d574}\label{class_universal_translator_a7b016573eab854d44483a6093e68d574}} 
@@ -73,18 +103,25 @@ static \mbox{\hyperlink{class_universal_translator}{Universal\+Translator}} \mbo
 
 Функция-\/интерфейс для получения синглтона Возвращает ссылку на синглтон. 
 
-\mbox{\Hypertarget{class_universal_translator_a0548defaacc36dc2e8a93dc764213578}\label{class_universal_translator_a0548defaacc36dc2e8a93dc764213578}} 
-\index{UniversalTranslator@{UniversalTranslator}!Start@{Start}}
-\index{Start@{Start}!UniversalTranslator@{UniversalTranslator}}
-\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
-{\footnotesize\ttfamily void Universal\+Translator.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
 \mbox{\Hypertarget{class_universal_translator_a1e2f9991545531dbec8a1cb1b6f0fbe2}\label{class_universal_translator_a1e2f9991545531dbec8a1cb1b6f0fbe2}} 
 \index{UniversalTranslator@{UniversalTranslator}!TransGeneralTypeToUnit@{TransGeneralTypeToUnit}}
 \index{TransGeneralTypeToUnit@{TransGeneralTypeToUnit}!UniversalTranslator@{UniversalTranslator}}
 \doxysubsubsection{\texorpdfstring{TransGeneralTypeToUnit()}{TransGeneralTypeToUnit()}}
 {\footnotesize\ttfamily string Universal\+Translator.\+Trans\+General\+Type\+To\+Unit (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})}
 
+
+
+Метод преобразования типа в единицу измерения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em type} & Тип данных \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+символ(ы) единицы измерения в формате string Ищет в словаре general\+Type\+To\+Unit\+Dictionary ключ, полученный в аргументе type и возвращает его значение.~\newline
+В случае, если ключ не был найден, выводит ошибку в консоль и возвращает пустую строку, что позволяет оторбражать величину просто как числовое значение. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_universal_translator_abc8bd01fbaff926dbfbdf546bdf434b8}\label{class_universal_translator_abc8bd01fbaff926dbfbdf546bdf434b8}} 
 \index{UniversalTranslator@{UniversalTranslator}!TransTypeToGeneralType@{TransTypeToGeneralType}}
 \index{TransTypeToGeneralType@{TransTypeToGeneralType}!UniversalTranslator@{UniversalTranslator}}
@@ -93,12 +130,49 @@ static \mbox{\hyperlink{class_universal_translator}{Universal\+Translator}} \mbo
 
 
 
+Метод преобразования имени датчика в тип 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em type} & Имя датчика \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Общий тип данных датчика string Ищет в словаре type\+To\+Genera\+Type\+Dictionary ключ, полученный в аргументе type и возвращает его значение.~\newline
+При заполнении словаря можно использовать специальный синтаксис\+: если ключ словаря начинается с символа вопросительного знака \char`\"{}?\char`\"{}, всё что находится после него испольщуется не как ключ, а как строка для поиска. Если она присутствует в полученном в метод типе, возвращается значение этой пары. ~\newline
+Например, если как ключ поставить \char`\"{}?\+Python\+Room\+T\char`\"{}, а как значение roomtemp, то при принятии аргумента \char`\"{}\+Python\+Room\+T5\char`\"{} будет возвращено roomtemp. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_universal_translator_af45a1ea07c0f26c65fac4e96e78f3f6c}\label{class_universal_translator_af45a1ea07c0f26c65fac4e96e78f3f6c}} 
+\index{UniversalTranslator@{UniversalTranslator}!TranstypeToRussian@{TranstypeToRussian}}
+\index{TranstypeToRussian@{TranstypeToRussian}!UniversalTranslator@{UniversalTranslator}}
+\doxysubsubsection{\texorpdfstring{TranstypeToRussian()}{TranstypeToRussian()}}
+{\footnotesize\ttfamily string Universal\+Translator.\+Transtype\+To\+Russian (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})}
+
+
+
+Метод преобразования типа в единицу измерения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em type} & Имя датчика \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Переведенная строка в формате string Ищет в словаре type\+To\+Russian\+Dictionary ключ, полученный в аргументе type и возвращает его значение.~\newline
+В случае, если ключ не был найден, выводит ошибку в консоль и возвращает входную строку, что позволяет оторбражать имя датчика без перевода. 
+\end{DoxyReturn}
+
+
 \doxysubsection{Данные класса}
 \mbox{\Hypertarget{class_universal_translator_adf6117a56d758544bfebcfcd3b9d4cba}\label{class_universal_translator_adf6117a56d758544bfebcfcd3b9d4cba}} 
 \index{UniversalTranslator@{UniversalTranslator}!generalTypeToUnitDictionary@{generalTypeToUnitDictionary}}
 \index{generalTypeToUnitDictionary@{generalTypeToUnitDictionary}!UniversalTranslator@{UniversalTranslator}}
 \doxysubsubsection{\texorpdfstring{generalTypeToUnitDictionary}{generalTypeToUnitDictionary}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_my_dictionary2}{My\+Dictionary2}} Universal\+Translator.\+general\+Type\+To\+Unit\+Dictionary}
+
+
+
+Словарь перевода типа в символ единицы измерения. Заполняется в редакторе 
 
 \mbox{\Hypertarget{class_universal_translator_a45787c0b6dd2b12b628124cb75b7b953}\label{class_universal_translator_a45787c0b6dd2b12b628124cb75b7b953}} 
 \index{UniversalTranslator@{UniversalTranslator}!instance@{instance}}
@@ -116,11 +190,19 @@ static \mbox{\hyperlink{class_universal_translator}{Universal\+Translator}} \mbo
 \doxysubsubsection{\texorpdfstring{typeToGeneraTypeDictionary}{typeToGeneraTypeDictionary}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_my_dictionary2}{My\+Dictionary2}} Universal\+Translator.\+type\+To\+Genera\+Type\+Dictionary}
 
+
+
+Словарь перевода названия датчика в его тип. Заполняется в редакторе 
+
 \mbox{\Hypertarget{class_universal_translator_ae3698759ca31064078d78d678d6045ce}\label{class_universal_translator_ae3698759ca31064078d78d678d6045ce}} 
 \index{UniversalTranslator@{UniversalTranslator}!typeToRussianDictionary@{typeToRussianDictionary}}
 \index{typeToRussianDictionary@{typeToRussianDictionary}!UniversalTranslator@{UniversalTranslator}}
 \doxysubsubsection{\texorpdfstring{typeToRussianDictionary}{typeToRussianDictionary}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_my_dictionary2}{My\+Dictionary2}} Universal\+Translator.\+type\+To\+Russian\+Dictionary}
+
+
+
+Словарь перевода названия датчика в описание. Заполняется в редакторе 
 
 
 

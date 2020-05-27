@@ -75,6 +75,9 @@ $(function() {
 <div class="title">Класс UniversalConverter</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Синглтон-конвертер входных данных в настройки визуализаторов  
+ <a href="class_universal_converter.html#details">Подробнее...</a></p>
 <div class="dynheader">
 Граф наследования:UniversalConverter:</div>
 <div class="dyncontent">
@@ -88,13 +91,17 @@ $(function() {
 <tr class="memdesc:a426d6b8c85f0678a1c8d00b873712dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция, возвращающая строку с локацией синглтона. Требуется для обнаружения несанкционированных экземпляров синглтона в случае если самоуничтожился неправильный синглтон.  <a href="class_universal_converter.html#a426d6b8c85f0678a1c8d00b873712dd3">Подробнее...</a><br /></td></tr>
 <tr class="separator:a426d6b8c85f0678a1c8d00b873712dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3df94aabaa5703756f132fc4ab43a0f2"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a3df94aabaa5703756f132fc4ab43a0f2">TempToColorOld</a> (float _temp)</td></tr>
-<tr class="memdesc:a3df94aabaa5703756f132fc4ab43a0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конвертер значения температуры в цвет.  <a href="class_universal_converter.html#a3df94aabaa5703756f132fc4ab43a0f2">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:a3df94aabaa5703756f132fc4ab43a0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устаревиший конвертер значения температуры в цвет.  <a href="class_universal_converter.html#a3df94aabaa5703756f132fc4ab43a0f2">Подробнее...</a><br /></td></tr>
 <tr class="separator:a3df94aabaa5703756f132fc4ab43a0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a061d2607647652674e88bcc63511d6c3"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a061d2607647652674e88bcc63511d6c3">TempToColor</a> (float _temp)</td></tr>
+<tr class="memdesc:a061d2607647652674e88bcc63511d6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Интерфейс к конвертеру значения температуры в цвет, использующий настройки по-умолчанию.  <a href="class_universal_converter.html#a061d2607647652674e88bcc63511d6c3">Подробнее...</a><br /></td></tr>
 <tr class="separator:a061d2607647652674e88bcc63511d6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a971ab62d30564a853b4077998a130fa4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a971ab62d30564a853b4077998a130fa4">ValidateSettings</a> ()</td></tr>
+<tr class="memdesc:a971ab62d30564a853b4077998a130fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод, инициализирующий все текущие настройки преобразования цветов Задача этого метода - превратить настройки преобразования цветов в цветовой градиент, по которому потом будет происходить преобразование. <br  />
+Метод проходит по массиву настроек температуры и для каждого набора настроек нормализует значения границ относительно интервала [0, 1]. После этого каждый цвет из настроек устанавливается в соответствующее место в градиенте.  <a href="class_universal_converter.html#a971ab62d30564a853b4077998a130fa4">Подробнее...</a><br /></td></tr>
 <tr class="separator:a971ab62d30564a853b4077998a130fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f4af195ee803109dd42b8ff5d859547"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a5f4af195ee803109dd42b8ff5d859547">TempToColor</a> (float _temp, string generalType)</td></tr>
+<tr class="memdesc:a5f4af195ee803109dd42b8ff5d859547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конвертер значения float в цвет в соответствии с выбранными настройками.  <a href="class_universal_converter.html#a5f4af195ee803109dd42b8ff5d859547">Подробнее...</a><br /></td></tr>
 <tr class="separator:a5f4af195ee803109dd42b8ff5d859547"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -106,6 +113,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Открытые атрибуты</h2></td></tr>
 <tr class="memitem:acec22df18df4d5074cdb1b8f5cb2960d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_temp_settings.html">TempSettings</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#acec22df18df4d5074cdb1b8f5cb2960d">tSettings</a></td></tr>
+<tr class="memdesc:acec22df18df4d5074cdb1b8f5cb2960d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Массив различных настроек преобразования цветов. Внимание, настройки цветов должны располагаться в порядке возрастания границ.  <a href="class_universal_converter.html#acec22df18df4d5074cdb1b8f5cb2960d">Подробнее...</a><br /></td></tr>
 <tr class="separator:acec22df18df4d5074cdb1b8f5cb2960d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -119,28 +127,25 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Закрытые данные</h2></td></tr>
 <tr class="memitem:afcdfc8eab9f90f924f4c1495301df738"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#afcdfc8eab9f90f924f4c1495301df738">absCold</a> = 20f</td></tr>
-<tr class="memdesc:afcdfc8eab9f90f924f4c1495301df738"><td class="mdescLeft">&#160;</td><td class="mdescRight"><ul>
-<li></li>
-</ul>
- <a href="class_universal_converter.html#afcdfc8eab9f90f924f4c1495301df738">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:afcdfc8eab9f90f924f4c1495301df738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Температура, ниже которой не отслеживается. Устарело.  <a href="class_universal_converter.html#afcdfc8eab9f90f924f4c1495301df738">Подробнее...</a><br /></td></tr>
 <tr class="separator:afcdfc8eab9f90f924f4c1495301df738"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1999aff08415e97c029bd1577d1e69d5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a1999aff08415e97c029bd1577d1e69d5">allowedStart</a> = 35f</td></tr>
-<tr class="memdesc:a1999aff08415e97c029bd1577d1e69d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Граница нижней недопустимой температуры  <a href="class_universal_converter.html#a1999aff08415e97c029bd1577d1e69d5">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:a1999aff08415e97c029bd1577d1e69d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Граница нижней недопустимой температуры. Устарело.  <a href="class_universal_converter.html#a1999aff08415e97c029bd1577d1e69d5">Подробнее...</a><br /></td></tr>
 <tr class="separator:a1999aff08415e97c029bd1577d1e69d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1200f0d21c8aa36f48319c83785c8217"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a1200f0d21c8aa36f48319c83785c8217">optimalStart</a> = 50f</td></tr>
-<tr class="memdesc:a1200f0d21c8aa36f48319c83785c8217"><td class="mdescLeft">&#160;</td><td class="mdescRight">Нижняя граница оптимальной температуры  <a href="class_universal_converter.html#a1200f0d21c8aa36f48319c83785c8217">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:a1200f0d21c8aa36f48319c83785c8217"><td class="mdescLeft">&#160;</td><td class="mdescRight">Нижняя граница оптимальной температуры. Устарело.  <a href="class_universal_converter.html#a1200f0d21c8aa36f48319c83785c8217">Подробнее...</a><br /></td></tr>
 <tr class="separator:a1200f0d21c8aa36f48319c83785c8217"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a531a79608d46fc5e1bcc3ce4cdbcaa7b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a531a79608d46fc5e1bcc3ce4cdbcaa7b">optimalFinish</a> = 70f</td></tr>
-<tr class="memdesc:a531a79608d46fc5e1bcc3ce4cdbcaa7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Верхняя граница оптимальной температуры  <a href="class_universal_converter.html#a531a79608d46fc5e1bcc3ce4cdbcaa7b">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:a531a79608d46fc5e1bcc3ce4cdbcaa7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Верхняя граница оптимальной температуры. Устарело.  <a href="class_universal_converter.html#a531a79608d46fc5e1bcc3ce4cdbcaa7b">Подробнее...</a><br /></td></tr>
 <tr class="separator:a531a79608d46fc5e1bcc3ce4cdbcaa7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a8812b3feb705c1d70e055b297639c4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a3a8812b3feb705c1d70e055b297639c4">allowedFinish</a> = 85f</td></tr>
-<tr class="memdesc:a3a8812b3feb705c1d70e055b297639c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Граница верхней недопустимой температуры  <a href="class_universal_converter.html#a3a8812b3feb705c1d70e055b297639c4">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:a3a8812b3feb705c1d70e055b297639c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Граница верхней недопустимой температуры. Устарело.  <a href="class_universal_converter.html#a3a8812b3feb705c1d70e055b297639c4">Подробнее...</a><br /></td></tr>
 <tr class="separator:a3a8812b3feb705c1d70e055b297639c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af918711da23290ec87c6cb926b81bc7d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#af918711da23290ec87c6cb926b81bc7d">absHeat</a> = 100f</td></tr>
-<tr class="memdesc:af918711da23290ec87c6cb926b81bc7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Температура, выше которой не отслеживается  <a href="class_universal_converter.html#af918711da23290ec87c6cb926b81bc7d">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:af918711da23290ec87c6cb926b81bc7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Температура, выше которой не отслеживается. Устарело.  <a href="class_universal_converter.html#af918711da23290ec87c6cb926b81bc7d">Подробнее...</a><br /></td></tr>
 <tr class="separator:af918711da23290ec87c6cb926b81bc7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18f58d1de3c2d3f10aa3ab8cbb86886a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_universal_converter.html#a18f58d1de3c2d3f10aa3ab8cbb86886a">maxTransp</a> = 0.4f</td></tr>
-<tr class="memdesc:a18f58d1de3c2d3f10aa3ab8cbb86886a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимальное значение прозрачности объекта  <a href="class_universal_converter.html#a18f58d1de3c2d3f10aa3ab8cbb86886a">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:a18f58d1de3c2d3f10aa3ab8cbb86886a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимальное значение прозрачности объекта. Устарело.  <a href="class_universal_converter.html#a18f58d1de3c2d3f10aa3ab8cbb86886a">Подробнее...</a><br /></td></tr>
 <tr class="separator:a18f58d1de3c2d3f10aa3ab8cbb86886a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
@@ -149,7 +154,15 @@ $(function() {
 <tr class="memdesc:a6f4d1365d8eddbf1569e073d19231930"><td class="mdescLeft">&#160;</td><td class="mdescRight">Статичная ссылка на единственный экземпляр класса  <a href="class_universal_converter.html#a6f4d1365d8eddbf1569e073d19231930">Подробнее...</a><br /></td></tr>
 <tr class="separator:a6f4d1365d8eddbf1569e073d19231930"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Конструктор(ы)</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Синглтон-конвертер входных данных в настройки визуализаторов </p>
+<dl class="section author"><dt>Авторы</dt><dd>Пивко Артём </dd></dl>
+<dl class="section version"><dt>Версия</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>8.04.20 </dd></dl>
+<dl class="section warning"><dt>Предупреждения</dt><dd>Этот скрипт должен быть размещен на сцене в ЕДИНСТВЕННОМ экземпляре. Если его не будет, не будут работать никакие визуализаторы. Если их будет много, останется только один. <br  />
+ Для работы скрипта требуется заполнение в инспекторе настроек преобразовнаия цветов.</dd></dl>
+<p>Этот класс занимается превращением цифровых данных с источников (температуры, влажности и т. д.) в параметры для визуализатров в Unity (Материалы различных цветов, ... ). </p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
 <a id="a6985ad4dabb1b953029c8e1f34ff5703"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6985ad4dabb1b953029c8e1f34ff5703">&#9670;&nbsp;</a></span>UniversalConverter()</h2>
 
@@ -265,6 +278,15 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
+<p>Интерфейс к конвертеру значения температуры в цвет, использующий настройки по-умолчанию. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_temp</td><td>Конвертируемая температура </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Конвертированный в соответствии с температурой цвет </dd></dl>
+
 </div>
 </div>
 <a id="a5f4af195ee803109dd42b8ff5d859547"></a>
@@ -293,6 +315,16 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
+<p>Конвертер значения float в цвет в соответствии с выбранными настройками. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_temp</td><td>Конвертируемые данные </td></tr>
+    <tr><td class="paramname">generalType</td><td>название используемых при конвертации настроек (обычно - имя типа данных) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Конвертированный цвет Метод использует значения настроек цветов из массива tSettings. Если настройки с именем не generalType найдены, используются первые настойки из массиваtSettings и в консоль выводится сообщение об ошибке. Далее входные данные _temp нормализуются и нормализованное число аппроксимируется по градиенту настроек, получая нужный цвет. </dd></dl>
+
 </div>
 </div>
 <a id="a3df94aabaa5703756f132fc4ab43a0f2"></a>
@@ -311,22 +343,22 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p>Конвертер значения температуры в цвет. </p>
+<p>Устаревиший конвертер значения температуры в цвет. </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_temp</td><td>Конвертируемая температура </td></tr>
+    <tr><td class="paramname">_temp</td><td>Конвертируемая температура </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Возвращает</dt><dd>Конвертированный в соответствии с температурой цвет Метод использует значения настроек цветов из интерфейса Unity как границы перехода цветов: <br  />
+<dl class="section return"><dt>Возвращает</dt><dd>Конвертированный в соответствии с температурой цвет Рекомендуется использовать вместо этого метода TempToColor<br  />
+ Метод использует значения настроек цветов из этого файла как границы перехода цветов: <br  />
  • Если температура &lt;= absCold, то цвет будет чистым синим с обычной прозрачностью <br  />
  • Если absCold &lt;= температура &lt; allowedStart, то цвет будет голубым и приблежаться к бирюзовому с ростом температуры. Прозрачность нормальная <br  />
  • Если allowedStart &lt;= температура &lt; optimalStart, то цвет будет бирюзовым и приблежаться к зеленому с ростом температуры. Прозрачность тоже будет расти до полного исчезновения <br  />
  • Если optimalStart &lt;= температура &lt; optimalFinish, Объект полностью прозрачен<br  />
  • Если optimalFinish &lt;= температура &lt; allowedFinish, то цвет будет желтым и приблежаться к оранжевому с ростом температуры. Прозрачность тоже будет падать до нормального значения <br  />
  • Если allowedFinish &lt;= температура &lt; absHeat, то цвет будет оранжевым и приблежаться к красному с ростом температуры. Прозрачность нормальная <br  />
- • Если температура &gt; absCold, то цвет будет чистым красным с обычной прозрачностью <br  />
- </dd></dl>
+ • Если температура &gt; absCold, то цвет будет чистым красным с обычной прозрачностью </dd></dl>
 <ul>
 <li></li>
 <li></li>
@@ -349,6 +381,9 @@ $(function() {
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Метод, инициализирующий все текущие настройки преобразования цветов Задача этого метода - превратить настройки преобразования цветов в цветовой градиент, по которому потом будет происходить преобразование. <br  />
+Метод проходит по массиву настроек температуры и для каждого набора настроек нормализует значения границ относительно интервала [0, 1]. После этого каждый цвет из настроек устанавливается в соответствующее место в градиенте. </p>
 
 </div>
 </div>
@@ -373,11 +408,7 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p><ul>
-<li></li>
-</ul>
-</p>
-<p>Температура, ниже которой не отслеживается </p>
+<p>Температура, ниже которой не отслеживается. Устарело. </p>
 
 </div>
 </div>
@@ -401,7 +432,7 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p>Температура, выше которой не отслеживается </p>
+<p>Температура, выше которой не отслеживается. Устарело. </p>
 
 </div>
 </div>
@@ -425,7 +456,7 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p>Граница верхней недопустимой температуры </p>
+<p>Граница верхней недопустимой температуры. Устарело. </p>
 
 </div>
 </div>
@@ -449,7 +480,7 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p>Граница нижней недопустимой температуры </p>
+<p>Граница нижней недопустимой температуры. Устарело. </p>
 
 </div>
 </div>
@@ -497,7 +528,7 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p>Максимальное значение прозрачности объекта </p>
+<p>Максимальное значение прозрачности объекта. Устарело. </p>
 
 </div>
 </div>
@@ -521,7 +552,7 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p>Верхняя граница оптимальной температуры </p>
+<p>Верхняя граница оптимальной температуры. Устарело. </p>
 
 </div>
 </div>
@@ -545,7 +576,7 @@ $(function() {
 </table>
 </div><div class="memdoc">
 
-<p>Нижняя граница оптимальной температуры </p>
+<p>Нижняя граница оптимальной температуры. Устарело. </p>
 
 </div>
 </div>
@@ -560,6 +591,8 @@ $(function() {
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Массив различных настроек преобразования цветов. Внимание, настройки цветов должны располагаться в порядке возрастания границ. </p>
 
 </div>
 </div>

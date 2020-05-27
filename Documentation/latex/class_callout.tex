@@ -70,15 +70,15 @@ Game\+Object \mbox{\hyperlink{class_callout_a125dedefbfd2bb076eae4b1545ee02b3}{m
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
+{\em vis\+Type} & Тип визуализатора \\
 \hline
-{\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
+{\em data\+Type} & Тип данных \\
 \hline
-{\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
+{\em topic} & M\+Q\+T\+T-\/топик данных \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-1 в случае если объект активен, 0 в случае если нет. Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
+\char`\"{}\+Active\char`\"{} в случае если объект активен, \char`\"{}\+Off\char`\"{} в случае если нет. Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
 \end{DoxyReturn}
 
 
@@ -107,11 +107,11 @@ Game\+Object \mbox{\hyperlink{class_callout_a125dedefbfd2bb076eae4b1545ee02b3}{m
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}\+Game\+Object\mbox{]}} & cylinder Устанавливаемый цилиндр. \\
+{\em cylinder} & Устанавливаемый цилиндр. \\
 \hline
-{\em \mbox{[}\+Vector3\mbox{]}} & begin\+Point Координаты начала \\
+{\em begin\+Point} & Координаты начала \\
 \hline
-{\em \mbox{[}\+Vector3\mbox{]}} & end\+Point Координаты конца\\
+{\em end\+Point} & Координаты конца\\
 \hline
 \end{DoxyParams}
 Устанавливает объект cylinder на середину между точкой начала и конца, затем поворачивает его, чтобы его ось Y совпала с линией между точками, затем растягивает его так, чтобы основания объекта касались начальной и конечной точек. 

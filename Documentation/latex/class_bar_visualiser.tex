@@ -37,9 +37,7 @@ I\+Enumerator \mbox{\hyperlink{class_bar_visualiser_afec6931e48b8d0ccff939d4d46b
 \begin{DoxyCompactList}\small\item\em Сопрограмма-\/таймер основного цикла. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_bar_visualiser_a0e236189be269d105bc4effb3bac9759}{Awake}} ()
 \begin{DoxyCompactList}\small\item\em Установочная функция, вызываемая в момент активации объекта на сцене. ~\newline
-В первую очередь в ней устанавливается ссылка на материал рендерера родительского объекта. Если это делать более традиционным путем -\/ префабной связью -\/ скриптом изменяется глобальный материал всех визуализаторов данного типа. ~\newline
-После этого стандартный цвет приравнивается цвету, которым обладает объект на начало исполнения программы. ~\newline
-Так же задается целевой объект изменения высоты, который в данной версии является объектом, к которому прикреплен скрипт, а так же максимальная высота объекта, равная высоте объекта до начала выполнения программы После всех описанных действия начинается исполнение сопрограммы Delayed\+Update с частотой обновлений в update\+Time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Закрытые данные}
 \begin{DoxyCompactItemize}
 \item 
@@ -90,11 +88,11 @@ float \mbox{\hyperlink{class_bar_visualiser_a9455562f57945485b766a393a04563ff}{u
 
 
 Установочная функция, вызываемая в момент активации объекта на сцене. ~\newline
+. 
+
 В первую очередь в ней устанавливается ссылка на материал рендерера родительского объекта. Если это делать более традиционным путем -\/ префабной связью -\/ скриптом изменяется глобальный материал всех визуализаторов данного типа. ~\newline
 После этого стандартный цвет приравнивается цвету, которым обладает объект на начало исполнения программы. ~\newline
-Так же задается целевой объект изменения высоты, который в данной версии является объектом, к которому прикреплен скрипт, а так же максимальная высота объекта, равная высоте объекта до начала выполнения программы После всех описанных действия начинается исполнение сопрограммы Delayed\+Update с частотой обновлений в update\+Time. 
-
-\mbox{\Hypertarget{class_bar_visualiser_afec6931e48b8d0ccff939d4d46b10e73}\label{class_bar_visualiser_afec6931e48b8d0ccff939d4d46b10e73}} 
+Так же задается целевой объект изменения высоты, который в данной версии является объектом, к которому прикреплен скрипт, а так же максимальная высота объекта, равная высоте объекта до начала выполнения программы После всех описанных действия начинается исполнение сопрограммы Delayed\+Update с частотой обновлений в update\+Time. \mbox{\Hypertarget{class_bar_visualiser_afec6931e48b8d0ccff939d4d46b10e73}\label{class_bar_visualiser_afec6931e48b8d0ccff939d4d46b10e73}} 
 \index{BarVisualiser@{BarVisualiser}!DelayedUpdate@{DelayedUpdate}}
 \index{DelayedUpdate@{DelayedUpdate}!BarVisualiser@{BarVisualiser}}
 \doxysubsubsection{\texorpdfstring{DelayedUpdate()}{DelayedUpdate()}}
@@ -105,8 +103,8 @@ float \mbox{\hyperlink{class_bar_visualiser_a9455562f57945485b766a393a04563ff}{u
 Сопрограмма-\/таймер основного цикла. 
 
 
-\begin{DoxyParams}[1]{Аргументы}
-\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время обновления\\
+\begin{DoxyParams}{Аргументы}
+{\em \+\_\+time} & Время обновления\\
 \hline
 \end{DoxyParams}
 Отвечает за регулярное обновление высоты объекта в соотвествии с данными источника. ~\newline
@@ -122,15 +120,15 @@ float \mbox{\hyperlink{class_bar_visualiser_a9455562f57945485b766a393a04563ff}{u
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
+{\em vis\+Type} & Тип визуализатора \\
 \hline
-{\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
+{\em data\+Type} & Тип данных \\
 \hline
-{\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
+{\em topic} & M\+Q\+T\+T-\/топик данных \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-Визуализируемые данные в формате float 
+Визуализируемые данные в формате string 
 \end{DoxyReturn}
 
 
@@ -148,7 +146,7 @@ float \mbox{\hyperlink{class_bar_visualiser_a9455562f57945485b766a393a04563ff}{u
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}float\mbox{]}} & h -\/ Абсолютная высота Используется только после предварительной обработки данных. \\
+{\em h} & Абсолютная высота Используется только после предварительной обработки данных. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}\label{class_bar_visualiser_aa991b8e18af84da4097a1250aa1e71e8}} 
@@ -163,9 +161,9 @@ float \mbox{\hyperlink{class_bar_visualiser_a9455562f57945485b766a393a04563ff}{u
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}float\mbox{]}} & \+\_\+h -\/ Входные данные \\
+{\em \+\_\+h} & Входные данные \\
 \hline
-{\em \mbox{[}float\mbox{]}} & \+\_\+time -\/ Время смены в секундах Запускает сопрограмму плавной смены высоты Smooth\+Change. \\
+{\em \+\_\+time} & Время смены в секундах Запускает сопрограмму плавной смены высоты Smooth\+Change. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_bar_visualiser_a91a492633f9c8994fd1ef5b30004675f}\label{class_bar_visualiser_a91a492633f9c8994fd1ef5b30004675f}} 
@@ -180,7 +178,7 @@ float \mbox{\hyperlink{class_bar_visualiser_a9455562f57945485b766a393a04563ff}{u
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}float\mbox{]}} & h -\/ Входные данные В случае если входные данные меньше или равны порогу min\+Data, задается минимальная высота объекта и ему задается синий цвет. ~\newline
+{\em h} & Входные данные В случае если входные данные меньше или равны порогу min\+Data, задается минимальная высота объекта и ему задается синий цвет. ~\newline
 В случае если входные данные находятся между min\+Data и max\+Data, данные нормализуются относительно порогов и высот, и по получивнемуся значению задается высота объекта. Цвет объекта устанавливается равным стандартному. ~\newline
 В случае если входные данные больше или равны порогу max\+Data, задается максимальная высота объекта и ему задается красный цвет. ~\newline
 По окончанию метода задается текущее показание визуализатора, равное входным данным. \\
@@ -199,9 +197,9 @@ float \mbox{\hyperlink{class_bar_visualiser_a9455562f57945485b766a393a04563ff}{u
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}float\mbox{]}} & \+\_\+h -\/ Входные данные \\
+{\em \+\_\+h} & Входные данные \\
 \hline
-{\em \mbox{[}float\mbox{]}} & \+\_\+time -\/ Время смены в секундах\\
+{\em \+\_\+time} & Время смены в секундах\\
 \hline
 \end{DoxyParams}
 Изменяет высоту диаграммы с начального до \+\_\+h за \+\_\+time секунд 

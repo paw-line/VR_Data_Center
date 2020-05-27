@@ -1,5 +1,10 @@
 \hypertarget{class_universal_converter}{}\doxysection{Класс Universal\+Converter}
 \label{class_universal_converter}\index{UniversalConverter@{UniversalConverter}}
+
+
+Синглтон-\/конвертер входных данных в настройки визуализаторов  
+
+
 Граф наследования\+:Universal\+Converter\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,13 +17,14 @@
 string \mbox{\hyperlink{class_universal_converter_a426d6b8c85f0678a1c8d00b873712dd3}{Get\+Location}} ()
 \begin{DoxyCompactList}\small\item\em Функция, возвращающая строку с локацией синглтона. Требуется для обнаружения несанкционированных экземпляров синглтона в случае если самоуничтожился неправильный синглтон. \end{DoxyCompactList}\item 
 Color \mbox{\hyperlink{class_universal_converter_a3df94aabaa5703756f132fc4ab43a0f2}{Temp\+To\+Color\+Old}} (float \+\_\+temp)
-\begin{DoxyCompactList}\small\item\em Конвертер значения температуры в цвет. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Устаревиший конвертер значения температуры в цвет. \end{DoxyCompactList}\item 
 Color \mbox{\hyperlink{class_universal_converter_a061d2607647652674e88bcc63511d6c3}{Temp\+To\+Color}} (float \+\_\+temp)
-\item 
+\begin{DoxyCompactList}\small\item\em Интерфейс к конвертеру значения температуры в цвет, использующий настройки по-\/умолчанию. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_universal_converter_a971ab62d30564a853b4077998a130fa4}{Validate\+Settings}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Метод, инициализирующий все текущие настройки преобразования цветов Задача этого метода -\/ превратить настройки преобразования цветов в цветовой градиент, по которому потом будет происходить преобразование. ~\newline
+Метод проходит по массиву настроек температуры и для каждого набора настроек нормализует значения границ относительно интервала \mbox{[}0, 1\mbox{]}. После этого каждый цвет из настроек устанавливается в соответствующее место в градиенте. \end{DoxyCompactList}\item 
 Color \mbox{\hyperlink{class_universal_converter_a5f4af195ee803109dd42b8ff5d859547}{Temp\+To\+Color}} (float \+\_\+temp, string general\+Type)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Конвертер значения float в цвет в соответствии с выбранными настройками. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Открытые статические члены}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,7 +34,7 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{struct_temp_settings}{Temp\+Settings}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_universal_converter_acec22df18df4d5074cdb1b8f5cb2960d}{t\+Settings}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Массив различных настроек преобразования цветов. Внимание, настройки цветов должны располагаться в порядке возрастания границ. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Закрытые члены}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,28 +46,43 @@ void \mbox{\hyperlink{class_universal_converter_a0cddabf4b57bc4c8c1b06c9d7f527c8
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{class_universal_converter_afcdfc8eab9f90f924f4c1495301df738}{abs\+Cold}} = 20f
-\begin{DoxyCompactList}\small\item\em 
-\begin{DoxyItemize}
-\item 
-\end{DoxyItemize}\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Температура, ниже которой не отслеживается. Устарело. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_universal_converter_a1999aff08415e97c029bd1577d1e69d5}{allowed\+Start}} = 35f
-\begin{DoxyCompactList}\small\item\em Граница нижней недопустимой температуры \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Граница нижней недопустимой температуры. Устарело. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_universal_converter_a1200f0d21c8aa36f48319c83785c8217}{optimal\+Start}} = 50f
-\begin{DoxyCompactList}\small\item\em Нижняя граница оптимальной температуры \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Нижняя граница оптимальной температуры. Устарело. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_universal_converter_a531a79608d46fc5e1bcc3ce4cdbcaa7b}{optimal\+Finish}} = 70f
-\begin{DoxyCompactList}\small\item\em Верхняя граница оптимальной температуры \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Верхняя граница оптимальной температуры. Устарело. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_universal_converter_a3a8812b3feb705c1d70e055b297639c4}{allowed\+Finish}} = 85f
-\begin{DoxyCompactList}\small\item\em Граница верхней недопустимой температуры \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Граница верхней недопустимой температуры. Устарело. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_universal_converter_af918711da23290ec87c6cb926b81bc7d}{abs\+Heat}} = 100f
-\begin{DoxyCompactList}\small\item\em Температура, выше которой не отслеживается \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Температура, выше которой не отслеживается. Устарело. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_universal_converter_a18f58d1de3c2d3f10aa3ab8cbb86886a}{max\+Transp}} = 0.\+4f
-\begin{DoxyCompactList}\small\item\em Максимальное значение прозрачности объекта \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Максимальное значение прозрачности объекта. Устарело. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Закрытые статические данные}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{\hyperlink{class_universal_converter_a6f4d1365d8eddbf1569e073d19231930}{instance}}
 \begin{DoxyCompactList}\small\item\em Статичная ссылка на единственный экземпляр класса \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Подробное описание}
+Синглтон-\/конвертер входных данных в настройки визуализаторов 
+
+\begin{DoxyAuthor}{Авторы}
+Пивко Артём 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+8.\+04.\+20 
+\end{DoxyDate}
+\begin{DoxyWarning}{Предупреждения}
+Этот скрипт должен быть размещен на сцене в ЕДИНСТВЕННОМ экземпляре. Если его не будет, не будут работать никакие визуализаторы. Если их будет много, останется только один. ~\newline
+ Для работы скрипта требуется заполнение в инспекторе настроек преобразовнаия цветов.
+\end{DoxyWarning}
+Этот класс занимается превращением цифровых данных с источников (температуры, влажности и т. д.) в параметры для визуализатров в Unity (Материалы различных цветов, ... ). 
 
 \doxysubsection{Конструктор(ы)}
 \mbox{\Hypertarget{class_universal_converter_a6985ad4dabb1b953029c8e1f34ff5703}\label{class_universal_converter_a6985ad4dabb1b953029c8e1f34ff5703}} 
@@ -109,12 +130,38 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 \doxysubsubsection{\texorpdfstring{TempToColor()}{TempToColor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Color Universal\+Converter.\+Temp\+To\+Color (\begin{DoxyParamCaption}\item[{float}]{\+\_\+temp }\end{DoxyParamCaption})}
 
+
+
+Интерфейс к конвертеру значения температуры в цвет, использующий настройки по-\/умолчанию. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \+\_\+temp} & Конвертируемая температура \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Конвертированный в соответствии с температурой цвет 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_universal_converter_a5f4af195ee803109dd42b8ff5d859547}\label{class_universal_converter_a5f4af195ee803109dd42b8ff5d859547}} 
 \index{UniversalConverter@{UniversalConverter}!TempToColor@{TempToColor}}
 \index{TempToColor@{TempToColor}!UniversalConverter@{UniversalConverter}}
 \doxysubsubsection{\texorpdfstring{TempToColor()}{TempToColor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Color Universal\+Converter.\+Temp\+To\+Color (\begin{DoxyParamCaption}\item[{float}]{\+\_\+temp,  }\item[{string}]{general\+Type }\end{DoxyParamCaption})}
 
+
+
+Конвертер значения float в цвет в соответствии с выбранными настройками. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \+\_\+temp} & Конвертируемые данные \\
+\hline
+{\em general\+Type} & название используемых при конвертации настроек (обычно -\/ имя типа данных) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Конвертированный цвет Метод использует значения настроек цветов из массива t\+Settings. Если настройки с именем не general\+Type найдены, используются первые настойки из массиваt\+Settings и в консоль выводится сообщение об ошибке. Далее входные данные \+\_\+temp нормализуются и нормализованное число аппроксимируется по градиенту настроек, получая нужный цвет. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_universal_converter_a3df94aabaa5703756f132fc4ab43a0f2}\label{class_universal_converter_a3df94aabaa5703756f132fc4ab43a0f2}} 
 \index{UniversalConverter@{UniversalConverter}!TempToColorOld@{TempToColorOld}}
 \index{TempToColorOld@{TempToColorOld}!UniversalConverter@{UniversalConverter}}
@@ -123,23 +170,23 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
-Конвертер значения температуры в цвет. 
+Устаревиший конвертер значения температуры в цвет. 
 
 
-\begin{DoxyParams}[1]{Аргументы}
-\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Конвертируемая температура \\
+\begin{DoxyParams}{Аргументы}
+{\em \+\_\+temp} & Конвертируемая температура \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-Конвертированный в соответствии с температурой цвет Метод использует значения настроек цветов из интерфейса Unity как границы перехода цветов\+: ~\newline
+Конвертированный в соответствии с температурой цвет Рекомендуется использовать вместо этого метода Temp\+To\+Color~\newline
+ Метод использует значения настроек цветов из этого файла как границы перехода цветов\+: ~\newline
  • Если температура $<$= abs\+Cold, то цвет будет чистым синим с обычной прозрачностью ~\newline
  • Если abs\+Cold $<$= температура $<$ allowed\+Start, то цвет будет голубым и приблежаться к бирюзовому с ростом температуры. Прозрачность нормальная ~\newline
  • Если allowed\+Start $<$= температура $<$ optimal\+Start, то цвет будет бирюзовым и приблежаться к зеленому с ростом температуры. Прозрачность тоже будет расти до полного исчезновения ~\newline
  • Если optimal\+Start $<$= температура $<$ optimal\+Finish, Объект полностью прозрачен~\newline
  • Если optimal\+Finish $<$= температура $<$ allowed\+Finish, то цвет будет желтым и приблежаться к оранжевому с ростом температуры. Прозрачность тоже будет падать до нормального значения ~\newline
  • Если allowed\+Finish $<$= температура $<$ abs\+Heat, то цвет будет оранжевым и приблежаться к красному с ростом температуры. Прозрачность нормальная ~\newline
- • Если температура $>$ abs\+Cold, то цвет будет чистым красным с обычной прозрачностью ~\newline
- 
+ • Если температура $>$ abs\+Cold, то цвет будет чистым красным с обычной прозрачностью 
 \end{DoxyReturn}
 
 \begin{DoxyItemize}
@@ -154,6 +201,11 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
+Метод, инициализирующий все текущие настройки преобразования цветов Задача этого метода -\/ превратить настройки преобразования цветов в цветовой градиент, по которому потом будет происходить преобразование. ~\newline
+Метод проходит по массиву настроек температуры и для каждого набора настроек нормализует значения границ относительно интервала \mbox{[}0, 1\mbox{]}. После этого каждый цвет из настроек устанавливается в соответствующее место в градиенте. 
+
+
+
 \doxysubsection{Данные класса}
 \mbox{\Hypertarget{class_universal_converter_afcdfc8eab9f90f924f4c1495301df738}\label{class_universal_converter_afcdfc8eab9f90f924f4c1495301df738}} 
 \index{UniversalConverter@{UniversalConverter}!absCold@{absCold}}
@@ -163,12 +215,9 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
+Температура, ниже которой не отслеживается. Устарело. 
 
-\begin{DoxyItemize}
-\item 
-\end{DoxyItemize}
-
-Температура, ниже которой не отслеживается \mbox{\Hypertarget{class_universal_converter_af918711da23290ec87c6cb926b81bc7d}\label{class_universal_converter_af918711da23290ec87c6cb926b81bc7d}} 
+\mbox{\Hypertarget{class_universal_converter_af918711da23290ec87c6cb926b81bc7d}\label{class_universal_converter_af918711da23290ec87c6cb926b81bc7d}} 
 \index{UniversalConverter@{UniversalConverter}!absHeat@{absHeat}}
 \index{absHeat@{absHeat}!UniversalConverter@{UniversalConverter}}
 \doxysubsubsection{\texorpdfstring{absHeat}{absHeat}}
@@ -176,7 +225,7 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
-Температура, выше которой не отслеживается 
+Температура, выше которой не отслеживается. Устарело. 
 
 \mbox{\Hypertarget{class_universal_converter_a3a8812b3feb705c1d70e055b297639c4}\label{class_universal_converter_a3a8812b3feb705c1d70e055b297639c4}} 
 \index{UniversalConverter@{UniversalConverter}!allowedFinish@{allowedFinish}}
@@ -186,7 +235,7 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
-Граница верхней недопустимой температуры 
+Граница верхней недопустимой температуры. Устарело. 
 
 \mbox{\Hypertarget{class_universal_converter_a1999aff08415e97c029bd1577d1e69d5}\label{class_universal_converter_a1999aff08415e97c029bd1577d1e69d5}} 
 \index{UniversalConverter@{UniversalConverter}!allowedStart@{allowedStart}}
@@ -196,7 +245,7 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
-Граница нижней недопустимой температуры 
+Граница нижней недопустимой температуры. Устарело. 
 
 \mbox{\Hypertarget{class_universal_converter_a6f4d1365d8eddbf1569e073d19231930}\label{class_universal_converter_a6f4d1365d8eddbf1569e073d19231930}} 
 \index{UniversalConverter@{UniversalConverter}!instance@{instance}}
@@ -216,7 +265,7 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
-Максимальное значение прозрачности объекта 
+Максимальное значение прозрачности объекта. Устарело. 
 
 \mbox{\Hypertarget{class_universal_converter_a531a79608d46fc5e1bcc3ce4cdbcaa7b}\label{class_universal_converter_a531a79608d46fc5e1bcc3ce4cdbcaa7b}} 
 \index{UniversalConverter@{UniversalConverter}!optimalFinish@{optimalFinish}}
@@ -226,7 +275,7 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
-Верхняя граница оптимальной температуры 
+Верхняя граница оптимальной температуры. Устарело. 
 
 \mbox{\Hypertarget{class_universal_converter_a1200f0d21c8aa36f48319c83785c8217}\label{class_universal_converter_a1200f0d21c8aa36f48319c83785c8217}} 
 \index{UniversalConverter@{UniversalConverter}!optimalStart@{optimalStart}}
@@ -236,13 +285,17 @@ static \mbox{\hyperlink{class_universal_converter}{Universal\+Converter}} \mbox{
 
 
 
-Нижняя граница оптимальной температуры 
+Нижняя граница оптимальной температуры. Устарело. 
 
 \mbox{\Hypertarget{class_universal_converter_acec22df18df4d5074cdb1b8f5cb2960d}\label{class_universal_converter_acec22df18df4d5074cdb1b8f5cb2960d}} 
 \index{UniversalConverter@{UniversalConverter}!tSettings@{tSettings}}
 \index{tSettings@{tSettings}!UniversalConverter@{UniversalConverter}}
 \doxysubsubsection{\texorpdfstring{tSettings}{tSettings}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_temp_settings}{Temp\+Settings}} \mbox{[}$\,$\mbox{]} Universal\+Converter.\+t\+Settings}
+
+
+
+Массив различных настроек преобразования цветов. Внимание, настройки цветов должны располагаться в порядке возрастания границ. 
 
 
 

@@ -171,13 +171,13 @@ $(function() {
 <p>Метод снятия показаний с визуализатора сканером </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[string]</td><td>visType Тип визуализатора </td></tr>
-    <tr><td class="paramname">[string]</td><td>dataType Тип данных </td></tr>
-    <tr><td class="paramname">[string]</td><td>topic MQTT-топик данных </td></tr>
+    <tr><td class="paramname">visType</td><td>Тип визуализатора </td></tr>
+    <tr><td class="paramname">dataType</td><td>Тип данных </td></tr>
+    <tr><td class="paramname">topic</td><td>MQTT-топик данных </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Возвращает</dt><dd>1 в случае если объект активен, 0 в случае если нет. Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. </dd></dl>
+<dl class="section return"><dt>Возвращает</dt><dd>"Active" в случае если объект активен, "Off" в случае если нет. Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. </dd></dl>
 
 <p>Замещает <a class="el" href="class_visualiser.html#a099db2954c72f856a269f09803a33fc7">Visualiser</a>.</p>
 
@@ -254,9 +254,9 @@ $(function() {
  </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[GameObject]</td><td>cylinder Устанавливаемый цилиндр. </td></tr>
-    <tr><td class="paramname">[Vector3]</td><td>beginPoint Координаты начала </td></tr>
-    <tr><td class="paramname">[Vector3]</td><td>endPoint Координаты конца</td></tr>
+    <tr><td class="paramname">cylinder</td><td>Устанавливаемый цилиндр. </td></tr>
+    <tr><td class="paramname">beginPoint</td><td>Координаты начала </td></tr>
+    <tr><td class="paramname">endPoint</td><td>Координаты конца</td></tr>
   </table>
   </dd>
 </dl>

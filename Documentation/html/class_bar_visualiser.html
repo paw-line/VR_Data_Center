@@ -118,9 +118,7 @@ $(function() {
 <tr class="separator:afec6931e48b8d0ccff939d4d46b10e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e236189be269d105bc4effb3bac9759"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bar_visualiser.html#a0e236189be269d105bc4effb3bac9759">Awake</a> ()</td></tr>
 <tr class="memdesc:a0e236189be269d105bc4effb3bac9759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установочная функция, вызываемая в момент активации объекта на сцене. <br  />
-В первую очередь в ней устанавливается ссылка на материал рендерера родительского объекта. Если это делать более традиционным путем - префабной связью - скриптом изменяется глобальный материал всех визуализаторов данного типа. <br  />
-После этого стандартный цвет приравнивается цвету, которым обладает объект на начало исполнения программы. <br  />
-Так же задается целевой объект изменения высоты, который в данной версии является объектом, к которому прикреплен скрипт, а так же максимальная высота объекта, равная высоте объекта до начала выполнения программы После всех описанных действия начинается исполнение сопрограммы DelayedUpdate с частотой обновлений в updateTime.  <a href="class_bar_visualiser.html#a0e236189be269d105bc4effb3bac9759">Подробнее...</a><br /></td></tr>
+.  <a href="class_bar_visualiser.html#a0e236189be269d105bc4effb3bac9759">Подробнее...</a><br /></td></tr>
 <tr class="separator:a0e236189be269d105bc4effb3bac9759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -185,7 +183,8 @@ $(function() {
 </div><div class="memdoc">
 
 <p>Установочная функция, вызываемая в момент активации объекта на сцене. <br  />
-В первую очередь в ней устанавливается ссылка на материал рендерера родительского объекта. Если это делать более традиционным путем - префабной связью - скриптом изменяется глобальный материал всех визуализаторов данного типа. <br  />
+. </p>
+<p>В первую очередь в ней устанавливается ссылка на материал рендерера родительского объекта. Если это делать более традиционным путем - префабной связью - скриптом изменяется глобальный материал всех визуализаторов данного типа. <br  />
 После этого стандартный цвет приравнивается цвету, которым обладает объект на начало исполнения программы. <br  />
 Так же задается целевой объект изменения высоты, который в данной версии является объектом, к которому прикреплен скрипт, а так же максимальная высота объекта, равная высоте объекта до начала выполнения программы После всех описанных действия начинается исполнение сопрограммы DelayedUpdate с частотой обновлений в updateTime. </p>
 
@@ -218,7 +217,7 @@ $(function() {
 <p>Сопрограмма-таймер основного цикла. </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_time</td><td>Время обновления</td></tr>
+    <tr><td class="paramname">_time</td><td>Время обновления</td></tr>
   </table>
   </dd>
 </dl>
@@ -270,13 +269,13 @@ $(function() {
 <p>Метод снятия показаний с визуализатора сканером </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[string]</td><td>visType Тип визуализатора </td></tr>
-    <tr><td class="paramname">[string]</td><td>dataType Тип данных </td></tr>
-    <tr><td class="paramname">[string]</td><td>topic MQTT-топик данных </td></tr>
+    <tr><td class="paramname">visType</td><td>Тип визуализатора </td></tr>
+    <tr><td class="paramname">dataType</td><td>Тип данных </td></tr>
+    <tr><td class="paramname">topic</td><td>MQTT-топик данных </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Возвращает</dt><dd>Визуализируемые данные в формате float </dd></dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Визуализируемые данные в формате string </dd></dl>
 
 <p>Замещает <a class="el" href="class_visualiser.html#a099db2954c72f856a269f09803a33fc7">Visualiser</a>.</p>
 
@@ -309,7 +308,7 @@ $(function() {
 <p>Метод задания абсолютной высоты объекта в локальных координатах. </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[float]</td><td>h - Абсолютная высота Используется только после предварительной обработки данных. </td></tr>
+    <tr><td class="paramname">h</td><td>Абсолютная высота Используется только после предварительной обработки данных. </td></tr>
   </table>
   </dd>
 </dl>
@@ -345,8 +344,8 @@ $(function() {
 <p>Метод плавного задания высоты объекта по данным в локальных координатах. </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[float]</td><td>_h - Входные данные </td></tr>
-    <tr><td class="paramname">[float]</td><td>_time - Время смены в секундах Запускает сопрограмму плавной смены высоты SmoothChange. </td></tr>
+    <tr><td class="paramname">_h</td><td>Входные данные </td></tr>
+    <tr><td class="paramname">_time</td><td>Время смены в секундах Запускает сопрограмму плавной смены высоты SmoothChange. </td></tr>
   </table>
   </dd>
 </dl>
@@ -380,7 +379,7 @@ $(function() {
 <p>Метод задания высоты объекта по данным в локальных координатах. </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[float]</td><td>h - Входные данные В случае если входные данные меньше или равны порогу minData, задается минимальная высота объекта и ему задается синий цвет. <br  />
+    <tr><td class="paramname">h</td><td>Входные данные В случае если входные данные меньше или равны порогу minData, задается минимальная высота объекта и ему задается синий цвет. <br  />
 В случае если входные данные находятся между minData и maxData, данные нормализуются относительно порогов и высот, и по получивнемуся значению задается высота объекта. Цвет объекта устанавливается равным стандартному. <br  />
 В случае если входные данные больше или равны порогу maxData, задается максимальная высота объекта и ему задается красный цвет. <br  />
 По окончанию метода задается текущее показание визуализатора, равное входным данным. </td></tr>
@@ -428,8 +427,8 @@ $(function() {
  </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[float]</td><td>_h - Входные данные </td></tr>
-    <tr><td class="paramname">[float]</td><td>_time - Время смены в секундах</td></tr>
+    <tr><td class="paramname">_h</td><td>Входные данные </td></tr>
+    <tr><td class="paramname">_time</td><td>Время смены в секундах</td></tr>
   </table>
   </dd>
 </dl>

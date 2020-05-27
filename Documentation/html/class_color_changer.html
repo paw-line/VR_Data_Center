@@ -170,8 +170,7 @@ $(function() {
 <dl class="section author"><dt>Авторы</dt><dd>Пивко Артём </dd></dl>
 <dl class="section version"><dt>Версия</dt><dd>1.2 </dd></dl>
 <dl class="section date"><dt>Дата</dt><dd>13.05.20 </dd></dl>
-<dl class="section warning"><dt>Предупреждения</dt><dd>Если source не присвоить в сцене, объект не будет функционировать! </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Необходимо сделать:</a></b></dt><dd>???</dd></dl>
+<dl class="section warning"><dt>Предупреждения</dt><dd>Если source не присвоить в сцене, объект не будет функционировать!</dd></dl>
 <p>Этот визуализатор занимается динамическим изменением цвета родительского объекта в соотвествии с данными из источника данных <a class="el" href="class_data_source.html" title="Класс источника данных для визуализаторов.">DataSource</a> source. Для конверсии используется синглтон UniversalController </p>
 </div><h2 class="groupheader">Методы</h2>
 <a id="aacfae4b89b66709f7a2a5b1e4cee8433"></a>
@@ -230,7 +229,7 @@ $(function() {
 <p>Сопрограмма-таймер основного цикла. </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_time</td><td>Время обновления</td></tr>
+    <tr><td class="paramname">_time</td><td>Время обновления</td></tr>
   </table>
   </dd>
 </dl>
@@ -282,13 +281,13 @@ $(function() {
 <p>Метод снятия показаний с визуализатора сканером </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[string]</td><td>visType Тип визуализатора </td></tr>
-    <tr><td class="paramname">[string]</td><td>dataType Тип данных </td></tr>
-    <tr><td class="paramname">[string]</td><td>topic MQTT-топик данных </td></tr>
+    <tr><td class="paramname">visType</td><td>Тип визуализатора </td></tr>
+    <tr><td class="paramname">dataType</td><td>Тип данных </td></tr>
+    <tr><td class="paramname">topic</td><td>MQTT-топик данных </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Возвращает</dt><dd>Визуализируемые данные в формате float Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. </dd></dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Визуализируемые данные в формате string Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. </dd></dl>
 
 <p>Замещает <a class="el" href="class_visualiser.html#a099db2954c72f856a269f09803a33fc7">Visualiser</a>.</p>
 
@@ -313,7 +312,7 @@ $(function() {
 <p>Метод, устанавливающий температуру и, соотвественно, цвет на объекте </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_temp</td><td>Устанавливаемая температура </td></tr>
+    <tr><td class="paramname">_temp</td><td>Устанавливаемая температура </td></tr>
   </table>
   </dd>
 </dl>
@@ -349,8 +348,8 @@ $(function() {
 <p>Метод, устанавливающий температуру и, соотвественно, цвет на объекте за указанное время. Интерфейс для корутины SmoothChange. </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_temp</td><td>Устанавливаемая температура </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">_time</td><td>Время изменения </td></tr>
+    <tr><td class="paramname">_temp</td><td>Устанавливаемая температура </td></tr>
+    <tr><td class="paramname">_time</td><td>Время изменения </td></tr>
   </table>
   </dd>
 </dl>
@@ -452,8 +451,8 @@ $(function() {
  </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">_temp</td><td>Устанавливаемая температура </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">_time</td><td>Время изменения</td></tr>
+    <tr><td class="paramname">_temp</td><td>Устанавливаемая температура </td></tr>
+    <tr><td class="paramname">_time</td><td>Время изменения</td></tr>
   </table>
   </dd>
 </dl>

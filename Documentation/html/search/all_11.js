@@ -13,12 +13,13 @@ var searchData=
   ['trails_193',['trails',['../class_stream_visualiser.html#a98c139c984f2f434dda81c4f10442a77',1,'StreamVisualiser']]],
   ['transgeneraltypetounit_194',['TransGeneralTypeToUnit',['../class_universal_translator.html#a1e2f9991545531dbec8a1cb1b6f0fbe2',1,'UniversalTranslator']]],
   ['transtypetogeneraltype_195',['TransTypeToGeneralType',['../class_universal_translator.html#abc8bd01fbaff926dbfbdf546bdf434b8',1,'UniversalTranslator']]],
-  ['trigger_196',['Trigger',['../class_trigger.html',1,'Trigger'],['../class_items.html#add54923a93195b4dcadcec6b6e28736f',1,'Items.trigger()']]],
-  ['tsettings_197',['tSettings',['../class_universal_converter.html#acec22df18df4d5074cdb1b8f5cb2960d',1,'UniversalConverter']]],
-  ['turnalarms_198',['TurnAlarms',['../class_monitor_controller.html#a212ca3ab96fe288c086960c9c1b0b1f2',1,'MonitorController']]],
-  ['turntv_199',['TurnTV',['../class_monitor_controller.html#a5ff98595ae05e9c4a90157dfba77139a',1,'MonitorController']]],
-  ['tv_200',['tv',['../class_monitor_controller.html#aa3916303d7ebef86d2e015d8714ec810',1,'MonitorController']]],
-  ['type_201',['type',['../class_data_source.html#a65f95f6dd05d532e57f63dd5207071f7',1,'DataSource']]],
-  ['typetogeneratypedictionary_202',['typeToGeneraTypeDictionary',['../class_universal_translator.html#a854a663284df0e086aaf14e78be83ec0',1,'UniversalTranslator']]],
-  ['typetorussiandictionary_203',['typeToRussianDictionary',['../class_universal_translator.html#ae3698759ca31064078d78d678d6045ce',1,'UniversalTranslator']]]
+  ['transtypetorussian_196',['TranstypeToRussian',['../class_universal_translator.html#af45a1ea07c0f26c65fac4e96e78f3f6c',1,'UniversalTranslator']]],
+  ['trigger_197',['Trigger',['../class_trigger.html',1,'Trigger'],['../class_items.html#add54923a93195b4dcadcec6b6e28736f',1,'Items.trigger()']]],
+  ['tsettings_198',['tSettings',['../class_universal_converter.html#acec22df18df4d5074cdb1b8f5cb2960d',1,'UniversalConverter']]],
+  ['turnalarms_199',['TurnAlarms',['../class_monitor_controller.html#a212ca3ab96fe288c086960c9c1b0b1f2',1,'MonitorController']]],
+  ['turntv_200',['TurnTV',['../class_monitor_controller.html#a5ff98595ae05e9c4a90157dfba77139a',1,'MonitorController']]],
+  ['tv_201',['tv',['../class_monitor_controller.html#aa3916303d7ebef86d2e015d8714ec810',1,'MonitorController']]],
+  ['type_202',['type',['../class_data_source.html#a65f95f6dd05d532e57f63dd5207071f7',1,'DataSource']]],
+  ['typetogeneratypedictionary_203',['typeToGeneraTypeDictionary',['../class_universal_translator.html#a854a663284df0e086aaf14e78be83ec0',1,'UniversalTranslator']]],
+  ['typetorussiandictionary_204',['typeToRussianDictionary',['../class_universal_translator.html#ae3698759ca31064078d78d678d6045ce',1,'UniversalTranslator']]]
 ];

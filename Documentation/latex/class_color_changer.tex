@@ -84,12 +84,8 @@ static float \mbox{\hyperlink{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be
 13.\+05.\+20 
 \end{DoxyDate}
 \begin{DoxyWarning}{Предупреждения}
-Если source не присвоить в сцене, объект не будет функционировать! 
+Если source не присвоить в сцене, объект не будет функционировать!
 \end{DoxyWarning}
-\begin{DoxyRefDesc}{Необходимо сделать}
-\item[\mbox{\hyperlink{todo__todo000001}{Необходимо сделать}}]???\end{DoxyRefDesc}
-
-
 Этот визуализатор занимается динамическим изменением цвета родительского объекта в соотвествии с данными из источника данных \mbox{\hyperlink{class_data_source}{Data\+Source}} source. Для конверсии используется синглтон Universal\+Controller 
 
 \doxysubsection{Методы}
@@ -116,8 +112,8 @@ static float \mbox{\hyperlink{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be
 Сопрограмма-\/таймер основного цикла. 
 
 
-\begin{DoxyParams}[1]{Аргументы}
-\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время обновления\\
+\begin{DoxyParams}{Аргументы}
+{\em \+\_\+time} & Время обновления\\
 \hline
 \end{DoxyParams}
 Отвечает за регулярное обновление температуры и цвета объекта в соотвествии с данными источника. ~\newline
@@ -133,15 +129,15 @@ static float \mbox{\hyperlink{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be
 
 
 \begin{DoxyParams}{Аргументы}
-{\em \mbox{[}string\mbox{]}} & vis\+Type Тип визуализатора \\
+{\em vis\+Type} & Тип визуализатора \\
 \hline
-{\em \mbox{[}string\mbox{]}} & data\+Type Тип данных \\
+{\em data\+Type} & Тип данных \\
 \hline
-{\em \mbox{[}string\mbox{]}} & topic M\+Q\+T\+T-\/топик данных \\
+{\em topic} & M\+Q\+T\+T-\/топик данных \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-Визуализируемые данные в формате float Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
+Визуализируемые данные в формате string Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
 \end{DoxyReturn}
 
 
@@ -158,8 +154,8 @@ static float \mbox{\hyperlink{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be
 Метод, устанавливающий температуру и, соотвественно, цвет на объекте 
 
 
-\begin{DoxyParams}[1]{Аргументы}
-\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Устанавливаемая температура \\
+\begin{DoxyParams}{Аргументы}
+{\em \+\_\+temp} & Устанавливаемая температура \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_color_changer_a775e4039e8a3206e81bc391fa5b89b91}\label{class_color_changer_a775e4039e8a3206e81bc391fa5b89b91}} 
@@ -173,10 +169,10 @@ static float \mbox{\hyperlink{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be
 Метод, устанавливающий температуру и, соотвественно, цвет на объекте за указанное время. Интерфейс для корутины Smooth\+Change. 
 
 
-\begin{DoxyParams}[1]{Аргументы}
-\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Устанавливаемая температура \\
+\begin{DoxyParams}{Аргументы}
+{\em \+\_\+temp} & Устанавливаемая температура \\
 \hline
-\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время изменения \\
+{\em \+\_\+time} & Время изменения \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_color_changer_acdd3e4dc6d96f03837ef116523d3a1a0}\label{class_color_changer_acdd3e4dc6d96f03837ef116523d3a1a0}} 
@@ -221,10 +217,10 @@ static float \mbox{\hyperlink{class_color_changer_a7fe0dc2780c9c845830dc7f8e59be
  
 
 
-\begin{DoxyParams}[1]{Аргументы}
-\mbox{\texttt{ in}}  & {\em \+\_\+temp} & Устанавливаемая температура \\
+\begin{DoxyParams}{Аргументы}
+{\em \+\_\+temp} & Устанавливаемая температура \\
 \hline
-\mbox{\texttt{ in}}  & {\em \+\_\+time} & Время изменения\\
+{\em \+\_\+time} & Время изменения\\
 \hline
 \end{DoxyParams}
 Что у нас есть\+:~\newline
