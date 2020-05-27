@@ -68,9 +68,9 @@ public class StreamVisualiser : Visualiser
 
 
     /** \brief Метод снятия показаний с визуализатора сканером
-     * \param [string] visType Возвращается конструкция вида Тип_источника_скорости:Значение
-     * \param [string] dataType Тип данных источника цвета
-     * \param [string] topic Возвращается конструкция вида Тип_источника_плотности:Значение
+     * \param visType Возвращается конструкция вида Тип_источника_скорости:Значение
+     * \param dataType Тип данных источника цвета
+     * \param topic Возвращается конструкция вида Тип_источника_плотности:Значение
      * \return Визуализируемые данные цвета в формате float
      * Так как потоковый визуализатор это единстенный визуализатор, использующий несколько разных источников с разными независимыми данными,
      * его сканирование отличается от сканирования остальных визуализаторов. Из-за ограниченности сканера его текстовые строки приходится использовать
@@ -129,7 +129,7 @@ public class StreamVisualiser : Visualiser
     }
 
     /** \brief Метод преобразования данных в скорость потока
-     * \param [float] data Входные данные
+     * \param data Входные данные
      * \return Выходные данные
      */
     private float DataToSpeed(float data)
@@ -138,7 +138,7 @@ public class StreamVisualiser : Visualiser
     }
 
     /** \brief Метод преобразования данных в цвет потока
-     * \param [float] data Входные данные
+     * \param data Входные данные
      * \return Выходные данные
      * Используется преобразование с помощью UniversalConverter
      */
@@ -150,7 +150,7 @@ public class StreamVisualiser : Visualiser
     }
 
     /** \brief Метод преобразования данных в плотность потока
-     * \param [float] data Входные данные
+     * \param data Входные данные
      * \return Выходные данные
      */
     private float DataToDencity(float data)
@@ -267,7 +267,7 @@ public class StreamVisualiser : Visualiser
     }
 
     /** \brief Сопрограмма-таймер основного цикла.
-     * \param [in] _time Время обновления
+     * \param _time Время обновления
      * Отвечает за регулярное обновление данных потока с источников
      */
     IEnumerator DelayedUpdate(float _time)

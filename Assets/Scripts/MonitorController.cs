@@ -46,7 +46,7 @@ public class MonitorController : MonoBehaviour
     }
 
     /** \brief Метод включения/выключения тревог в поддереве 
-     *  \param [bool] on Включить (True) или выключить (False)
+     *  \param on Включить (True) или выключить (False)
      */
     public void TurnAlarms(bool on)
     {
@@ -57,7 +57,7 @@ public class MonitorController : MonoBehaviour
     }
 
     /** \brief Метод включения/выключения экрана монитора оборудования
-     *  \param [bool] on Включить (True) или выключить (False) 
+     *  \param on Включить (True) или выключить (False) 
      */
     public void TurnTV(bool on)
     {
@@ -66,9 +66,9 @@ public class MonitorController : MonoBehaviour
     }
 
     /** \brief Метод создания и начальной инициализации элемента интерфейса на экране
-     * \param [string] type Начальный отображаемый тип данных
-     * \param [string] name Начальное отображаемое название измерения
-     * \param [string] data Начальные отображаемые данные
+     * \param type Начальный отображаемый тип данных
+     * \param name Начальное отображаемое название измерения
+     * \param data Начальные отображаемые данные
      * Создает элемент интерфейса на экране, установка его полей переданными в функцию параметрами и регулировка высоты зоны, в которой элемент размещается.
      */
     private void CreateElement(string type, string name, string data)

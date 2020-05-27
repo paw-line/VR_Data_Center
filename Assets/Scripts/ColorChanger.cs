@@ -8,7 +8,6 @@ using UnityEngine;
  * \version 1.2
  * \date 13.05.20
  * \warning Если source не присвоить в сцене, объект не будет функционировать!
- * \todo ???
  *  
  * Этот визуализатор занимается динамическим изменением цвета родительского объекта 
  * в соотвествии с данными из источника данных DataSource source.
@@ -37,10 +36,10 @@ public class ColorChanger : Visualiser//MonoBehaviour
     private Material material = null; ///< Ссылка на устанавливается не префабной связью а в Awake ввиду того что иначе изменяется глобальный материал
 
     /** \brief Метод снятия показаний с визуализатора сканером
-     * \param [string] visType Тип визуализатора
-     * \param [string] dataType Тип данных
-     * \param [string] topic MQTT-топик данных
-     * \return Визуализируемые данные в формате float
+     * \param visType Тип визуализатора
+     * \param dataType Тип данных
+     * \param topic MQTT-топик данных
+     * \return Визуализируемые данные в формате string
      * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
      */
     public override string Scan(out string visType, out string dataType, out string topic)
@@ -53,7 +52,7 @@ public class ColorChanger : Visualiser//MonoBehaviour
     }
 
     /** \brief Метод, устанавливающий температуру и, соотвественно, цвет на объекте
-     * \param [in] _temp Устанавливаемая температура
+     * \param _temp Устанавливаемая температура
      */
     public void SetTemp(float _temp)
     {
@@ -90,8 +89,8 @@ public class ColorChanger : Visualiser//MonoBehaviour
     }
 
     /** \brief Метод, устанавливающий температуру и, соотвественно, цвет на объекте за указанное время. Интерфейс для корутины SmoothChange.
-     * \param [in] _temp Устанавливаемая температура
-     * \param [in] _time Время изменения
+     * \param _temp Устанавливаемая температура
+     * \param _time Время изменения
      */
     public void SetTemp(float _temp, float _time)
     {
@@ -104,8 +103,8 @@ public class ColorChanger : Visualiser//MonoBehaviour
     }
 
     /** \brief Сопрограмма, для плавного изменения цвета объекта.  
-     * \param [in] _temp Устанавливаемая температура
-     * \param [in] _time Время изменения
+     * \param _temp Устанавливаемая температура
+     * \param _time Время изменения
      * 
      * Что у нас есть:\n
      *   •	Целевой RGB цвет \n
@@ -143,7 +142,7 @@ public class ColorChanger : Visualiser//MonoBehaviour
 
 
     /** \brief Сопрограмма-таймер основного цикла.
-     * \param [in] _time Время обновления
+     * \param _time Время обновления
      * 
      * Отвечает за регулярное обновление температуры и цвета объекта в соотвествии с данными источника. \n
      * В бесконечном цикле внутри сопрограммы из источника данных source берется значение температуры, 

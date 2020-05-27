@@ -38,7 +38,7 @@ public class DataSource : MonoBehaviour
     }
 
     /** \brief Метод установки значения источника.
-     * \param [float] _data Устанавливаемые данные
+     * \param _data Устанавливаемые данные
      */
     public void SetData(float _data)
     {

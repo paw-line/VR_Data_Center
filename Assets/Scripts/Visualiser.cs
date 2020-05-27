@@ -15,9 +15,9 @@ using UnityEngine;
 public abstract class Visualiser : MonoBehaviour
 {
     /** \brief Универсальный метод снятия показаний с визуализатора 
-     * \param [string] visType Тип визуализатора
-     * \param [string] dataType Тип данных
-     * \param [string] topic MQTT-топик данных
+     * \param visType Тип визуализатора
+     * \param dataType Тип данных
+     * \param topic MQTT-топик данных
      * \return Визуализируемые данные в формате float
      * 
      * Унаследованные реализации функции обязаны будут возвращать 4 параметра: опорные данные визуализатора, тип визуализатора, тип данных, MQTT-топик данных. \n

@@ -37,9 +37,9 @@ public class ElementController : MonoBehaviour
 
 
     /** \brief Метод установки элемента
-    * \param [string] type Тип данных, определяющий иконку.
-    * \param [string] name Отображаемое название данных
-    * \param [string] data Отображаемые данные
+    * \param type Тип данных, определяющий иконку.
+    * \param name Отображаемое название данных
+    * \param data Отображаемые данные
     */
     public void Set(string type, string name, string data)
     {

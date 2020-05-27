@@ -33,10 +33,10 @@ public class Callout : Visualiser
 
 
     /** \brief Метод снятия показаний с визуализатора сканером
-     * \param [string] visType Тип визуализатора
-     * \param [string] dataType Тип данных
-     * \param [string] topic MQTT-топик данных
-     * \return 1 в случае если объект активен, 0 в случае если нет. 
+     * \param visType Тип визуализатора
+     * \param dataType Тип данных
+     * \param topic MQTT-топик данных
+     * \return "Active" в случае если объект активен, "Off" в случае если нет. 
      * Внимание, передаваемые в метод параметры при его вызове должны стоять после ключегого слова out. 
      */
     public override string Scan(out string visType, out string dataType, out string topic)
@@ -65,9 +65,9 @@ public class Callout : Visualiser
 
 
     /** \brief Метод установки позиции цилиндра между начальной и конечной точкой.  
-     * \param [GameObject] cylinder Устанавливаемый цилиндр.
-     * \param [Vector3] beginPoint Координаты начала
-     * \param [Vector3] endPoint Координаты конца
+     * \param cylinder Устанавливаемый цилиндр.
+     * \param beginPoint Координаты начала
+     * \param endPoint Координаты конца
      * 
      * Устанавливает объект cylinder на середину между точкой начала и конца, затем поворачивает его, чтобы его ось Y совпала с линией между точками, 
      * затем растягивает его так, чтобы основания объекта касались начальной и конечной точек. 
