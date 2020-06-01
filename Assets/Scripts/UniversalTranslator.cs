@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
 
 [Serializable] public class MyDictionary2 : SerializableDictionary<string, string> { }
 
@@ -60,6 +61,26 @@ public class UniversalTranslator : MonoBehaviour
     public MyDictionary2 generalTypeToUnitDictionary;   ///< Словарь перевода типа в символ единицы измерения. Заполняется в редакторе
     public MyDictionary2 typeToGeneraTypeDictionary;    ///< Словарь перевода названия датчика в его тип. Заполняется в редакторе
 
+    //То, что я не могу инициализировать в инспекторе(
+    public TextAsset importAsset = null;
+    public string exportFileName = "";
+    public bool typeToRussian = false;
+    public bool generalTypeToUnit = false;
+    public bool typeToGeneraType = false;
+
+    
+    /*
+    [SerializeField]
+    private bool readFromFiles = false;
+    public TextAsset fileTypeToRussianDictionary = null;
+    public TextAsset fileGeneralTypeToUnitDictionary = null;
+    public TextAsset fileTypeToGeneraTypeDictionary = null;
+    [SerializeField]
+    private bool writeToFiles = false;
+    public string filename1 = "typeToRussianDictionary.txt";
+    public string filename2 = "generalTypeToUnitDictionary.txt";
+    public string filename3 = "typeToGeneraTypeDictionary.txt";
+    */
 
     /** \brief Метод преобразования имени датчика в тип
      * \param type Имя датчика
@@ -90,6 +111,12 @@ public class UniversalTranslator : MonoBehaviour
                     }
                 }
             }
+            if (answer == "")
+            {
+                Debug.LogError($"General Type '{type}' not found, returning input type");
+                return type;
+            }
+
             return answer;
         }
         
@@ -110,7 +137,7 @@ public class UniversalTranslator : MonoBehaviour
         }
         else
         {
-            Debug.LogError("General Type not found");
+            Debug.LogError($"General Type '{type}' not found, returning null string");
             return "";
         }
     }
@@ -129,11 +156,75 @@ public class UniversalTranslator : MonoBehaviour
         }
         else
         {
-            Debug.LogError("General Type not found");
+            Debug.LogError($"String '{type}' not found in dictionary, returning input");
             return type;
         }
         
     }
 
-   
+
+    private void Start()
+    {
+        /*
+        string wololo = JsonUtility.ToJson(typeToGeneraTypeDictionary);
+        Debug.Log("JSON stuff:" + wololo);
+        typeToRussianDictionary = JsonUtility.FromJson<MyDictionary2>(wololo);
+        string filePath = Path.Combine(Application.dataPath, "somefilename.txt");
+        File.WriteAllText(filePath, "Hey look here is some text.");
+        Debug.Log($"Some text has been written into the file {filePath}.");
+        string contents = File.ReadAllText(filePath);
+        Debug.Log($"The file's contents are {contents}.");
+        */
+        /*
+        if (writeToFiles)
+        {
+            if (filename1 != "")
+            {
+                Debug.Log($"Writing typeToRussianDictionary into file {filename1}");
+                WriteDicConfig(typeToRussianDictionary, filename1);
+            }
+            if (filename2 != "")
+            {
+                Debug.Log($"Writing generalTypeToUnitDictionary into file {filename2}");
+                WriteDicConfig(generalTypeToUnitDictionary, filename2);
+            }
+            if (filename3 != "")
+            {
+                Debug.Log($"Writing typeToGeneraTypeDictionary into file {filename3}");
+                WriteDicConfig(typeToGeneraTypeDictionary, filename3);
+            }
+        }
+
+        if (readFromFiles)
+        {
+            if (fileTypeToRussianDictionary != null)
+            {
+                typeToRussianDictionary = ReadDicConfig(fileTypeToRussianDictionary);
+            }
+            if (fileGeneralTypeToUnitDictionary != null)
+            {
+                generalTypeToUnitDictionary = ReadDicConfig(fileGeneralTypeToUnitDictionary);
+            }
+            if (fileTypeToGeneraTypeDictionary != null)
+            {
+                typeToGeneraTypeDictionary = ReadDicConfig(fileTypeToGeneraTypeDictionary);
+            }
+        }
+        */
+    }
+
+    public void WriteDicConfig(MyDictionary2 dic, string filename)
+    {
+        string serString = JsonUtility.ToJson(dic);
+        string filePath = Path.Combine(Application.dataPath, filename);
+        File.WriteAllText(filePath, serString);
+        Debug.Log($"Dictionary has been written in file {filePath}.");
+    }
+
+    public MyDictionary2 ReadDicConfig(TextAsset inputfile)
+    {
+        return JsonUtility.FromJson<MyDictionary2>(inputfile.text); 
+    }
+
+
 }

@@ -78,9 +78,13 @@ public class MonitorController : MonoBehaviour
         temp.transform.SetParent(target.content.gameObject.transform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         Vector3 coord = temp.GetComponent<RectTransform>().anchoredPosition3D;
+        //Quaternion qua = temp.GetComponent<RectTransform>().rotation;
+        Quaternion qua1 = target.GetComponent<RectTransform>().localRotation;
         coord.z = 0;
         //Debug.Log("Wanna: " + coord.ToString());
         temp.GetComponent<RectTransform>().anchoredPosition3D = coord;
+        //temp.GetComponent<RectTransform>().rotation = qua;
+        temp.GetComponent<RectTransform>().localRotation = qua1;
         //Debug.Log("Gotta: " + temp.GetComponent<RectTransform>().position.ToString());
 
         temp.SetActive(true);
@@ -150,10 +154,28 @@ public class MonitorController : MonoBehaviour
         //Проходим по источникам и обновляем в соответствии с ними элементы интерфейса
         for (i = 0; i < cs; i++)
         {
+            ///*
+            UniversalTranslator tr = UniversalTranslator.GetInstance();
+            type = sources[i].GetType(); 
+            data = sources[i].GetData().ToString() + tr.TransGeneralTypeToUnit(tr.TransTypeToGeneralType(sources[i].GetType()));
+            name = sources[i].gameObject.name;
+            if (name.Contains("/"))
+            {
+                string[] t = name.Split('/');
+                name = t[0] + "/" + tr.TranstypeToRussian(sources[i].GetType());
+            }
+            else
+            {
+                name = tr.TranstypeToRussian(sources[i].GetType());
+            }
+            //*/
+            /*
             type = sources[i].GetType();
             name = sources[i].gameObject.name;
             data = sources[i].GetData().ToString();
-            if (i < ce) //Если элемент существует, задаем
+            */
+
+        if (i < ce) //Если элемент существует, задаем
             {
                 elements[i].Set(type, name, data);
             }
@@ -229,6 +251,8 @@ public class MonitorController : MonoBehaviour
         {
             StartCoroutine(DelayedAlarmCollect());
         }
+
+        StartCoroutine(DelayedUpdate(1f));
     }
 
     /** \brief Метод основного цикла.
@@ -236,8 +260,20 @@ public class MonitorController : MonoBehaviour
      */
     private void Update()
     {
-        RefreshUI();
+        //RefreshUI();
     }
 
+    /** \brief Сопрограмма-таймер основного цикла.
+     * \param _time Время обновления
+     */
+    IEnumerator DelayedUpdate(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        while (true)
+        {
+            RefreshUI();
+            yield return new WaitForSeconds(_time);
+        }
 
+    }
 }

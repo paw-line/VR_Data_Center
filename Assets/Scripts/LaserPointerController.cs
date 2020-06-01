@@ -100,7 +100,7 @@ public class LaserPointerController : MonoBehaviour
 
         if (targetedVis == null)
         {
-            Debug.Log("Сканируется не визуализатор");
+            //Debug.Log("Сканируется не визуализатор");
             for (int i = 0; i < n; i++)
             {
                text[i].text = "";
@@ -112,7 +112,7 @@ public class LaserPointerController : MonoBehaviour
             data = targetedVis.Scan(out visType, out dataType, out topic);
             text[0].text = visType;
             text[1].text = dataType;
-            text[2].text = data.ToString();
+            text[2].text = data;//.ToString();
             text[3].text = topic;
         }
 

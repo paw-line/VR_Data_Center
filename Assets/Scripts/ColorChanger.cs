@@ -44,10 +44,12 @@ public class ColorChanger : Visualiser//MonoBehaviour
      */
     public override string Scan(out string visType, out string dataType, out string topic)
     {
-        visType = this.GetType().ToString();
-        dataType = source.GetType();
-        topic = source.name;
         UniversalTranslator tr = UniversalTranslator.GetInstance();
+
+        visType = tr.TranstypeToRussian(this.GetType().ToString());
+        dataType = tr.TranstypeToRussian(source.GetType()); //tr.TransTypeToGeneralType(source.GetType());
+        topic = source.name;
+
         return temp.ToString() + tr.TransGeneralTypeToUnit(tr.TransTypeToGeneralType(source.GetType()));
     }
 

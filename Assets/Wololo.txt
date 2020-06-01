@@ -1,0 +1,1 @@
+{"_Buckets":[1,0,-1,-1,2,5,4],"_HashCodes":[1220956906,560124096,1987524067,2109178112,203175181,962829334,0],"_Next":[-1,-1,-1,-1,3,-1,0],"_Count":6,"_Version":131,"_FreeList":-1,"_FreeCount":0,"_Keys":["?PythonRoomT","PythonFluidInC","PythonFluidOutC","PythonSupplyC","PythonReturnC","PythonHum",""],"_Values":["roomtemp","watertemp","watertemp","airtemp","airtemp","hum",""]}

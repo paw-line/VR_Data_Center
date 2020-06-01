@@ -79,8 +79,49 @@ public class StreamVisualiser : Visualiser
      */
     public override string Scan(out string visType, out string dataType, out string topic)
     {
-        //Очень костыльный метод, так как у нас сразу 3 сурса.
-        if ((startColorSource != null)&&(finishColorSource != null))
+        UniversalTranslator tr = UniversalTranslator.GetInstance();
+
+        if (speedSource != null)
+        {
+            visType = speedSource.GetType() + "=" + speedData.ToString() + tr.TransGeneralTypeToUnit(speedSource.GetType());
+        }
+        else
+        {
+            visType = "";
+        }
+
+        if (dencitySource != null)
+        {
+            topic = dencitySource.GetType() + "=" + dencData.ToString() + tr.TransGeneralTypeToUnit(dencitySource.GetType());
+        }
+        else
+        {
+            topic = "";
+        }
+
+        if (startColorSource != null)
+        {
+            dataType = startColorSource.GetType() + "=" + startColorData.ToString() + tr.TransGeneralTypeToUnit(startColorSource.GetType());
+        }
+        else
+        {
+            dataType = "";
+        }
+
+        if (finishColorSource != null)
+        {
+            return (finishColorSource.GetType() + "=" + finishColorData.ToString() + tr.TransGeneralTypeToUnit(finishColorSource.GetType()));
+        }
+        else
+        {
+            return "";
+        }
+
+
+
+        /*
+            //Очень костыльный метод, так как у нас сразу 3 сурса.
+            if ((startColorSource != null)&&(finishColorSource != null))
         {
             //visType = speedSource.GetType() + ":" + speedData;
             //visType = startColorSource.GetType() + "(start col) =" + startColorSource.GetData().ToString() + "|" + finishColorSource.GetType() + "(fin col) =" + finishColorSource.GetData().ToString();
@@ -125,7 +166,8 @@ public class StreamVisualiser : Visualiser
             dataType = "";
             return "-";
         }
-        
+        */
+
     }
 
     /** \brief Метод преобразования данных в скорость потока

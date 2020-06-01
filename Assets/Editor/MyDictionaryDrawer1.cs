@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
+using UnityEngine.UI;
 
 public abstract class DictionaryDrawer<TK, TV> : PropertyDrawer
 {
@@ -177,3 +178,6 @@ public class MyDictionaryDrawer1 : DictionaryDrawer<string, float> { }
 
 [CustomPropertyDrawer(typeof(MyDictionary2))]
 public class MyDictionaryDrawer2 : DictionaryDrawer<string, string> { }
+
+[CustomPropertyDrawer(typeof(MyDictionary3))]
+public class MyDictionaryDrawer3 : DictionaryDrawer<string, Sprite> { }

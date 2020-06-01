@@ -41,8 +41,9 @@ public class Callout : Visualiser
      */
     public override string Scan(out string visType, out string dataType, out string topic)
     {
-        visType = this.GetType().ToString();
-        dataType = source.GetType();
+        UniversalTranslator tr = UniversalTranslator.GetInstance();
+        visType = ""; tr.TranstypeToRussian(this.GetType().ToString());
+        dataType = tr.TranstypeToRussian(source.GetType());
         topic = source.name;
         if (model.active)
             return "Active";

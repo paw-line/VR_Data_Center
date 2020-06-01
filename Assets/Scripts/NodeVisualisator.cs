@@ -49,7 +49,9 @@ public class NodeVisualisator : Visualiser
      */
     public override string Scan(out string visType, out string dataType1, out string topic)
     {
-        visType = this.GetType().ToString();
+        UniversalTranslator tr = UniversalTranslator.GetInstance();
+
+        visType = tr.TranstypeToRussian(this.GetType().ToString());
         if (validSources.Count == 0)
         {
             dataType1 = "ERROR: No data source is connected to this visualiser";
@@ -57,7 +59,7 @@ public class NodeVisualisator : Visualiser
         }
         else
         {
-            dataType1 = dataType;
+            dataType1 = tr.TranstypeToRussian(dataType);
             if (validSources.Count == 1)
                 topic = validSources[0].name;
             else
@@ -65,7 +67,7 @@ public class NodeVisualisator : Visualiser
         }
 
 
-        UniversalTranslator tr = UniversalTranslator.GetInstance();
+        
         return curData.ToString() + tr.TransGeneralTypeToUnit(dataType);
     }
 

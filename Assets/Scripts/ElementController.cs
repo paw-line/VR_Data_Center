@@ -4,6 +4,9 @@ using UnityEngine;
 //using UnityEngine.UIElements;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
+[Serializable] public class MyDictionary3 : SerializableDictionary<string, Sprite> { }
 
 /**
  * \brief Класс для контроля элементов интерфейса, отображающих данные
@@ -25,6 +28,7 @@ public class ElementController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI dataText = null; ///< Ссылка на текстовый объект Text Mesh Pro, отображающий значение. Должна быть задана в редакторе.
 
+    public MyDictionary3 icons;
 
     [SerializeField]
     private Sprite tempIcon = null; ///< Ссылка на иконку температуры. Должна быть задана в редакторе.
@@ -45,9 +49,19 @@ public class ElementController : MonoBehaviour
     {
         nameText.text = name;
         dataText.text = data;
+
+        if (icons.ContainsKey(type))
+        {
+            icon.sprite = icons[type];
+        }
+        else
+        {
+            icon.sprite = defaultIcon;
+        }
+        /*
         switch (type)
         {
-            case "servt":
+            case "servtemp":
                 if (tempIcon != null)
                     icon.sprite = tempIcon;
                 else
@@ -69,6 +83,7 @@ public class ElementController : MonoBehaviour
                  icon.sprite = defaultIcon;
                 break;
         }
+        */
     }
 
     public void Set()
