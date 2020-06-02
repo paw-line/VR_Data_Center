@@ -100,7 +100,7 @@ PrefabInstance:
     - target: {fileID: 5644881053546505853, guid: 6df5e77348e5b1d43a0dc50587114da1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.1881
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5644881053546505853, guid: 6df5e77348e5b1d43a0dc50587114da1,
         type: 3}
@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 6883484478102990721, guid: 6df5e77348e5b1d43a0dc50587114da1,
         type: 3}
       propertyPath: m_Name
-      value: (13) HP DL360 Rig
+      value: (13) HP DL360 Rig Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6883484478102990721, guid: 6df5e77348e5b1d43a0dc50587114da1,
         type: 3}
