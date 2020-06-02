@@ -11,9 +11,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ServerUnit_Cage
       objectReference: {fileID: 0}
+    - target: {fileID: 1207932866376660, guid: ea005218ffd59a44db89784f083af78a, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1600097257562272, guid: ea005218ffd59a44db89784f083af78a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600097257562272, guid: ea005218ffd59a44db89784f083af78a, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4854300070895372, guid: ea005218ffd59a44db89784f083af78a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -79,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 5750627226570106920, guid: b2179eda325c058449df29e59291e455,
         type: 3}
       propertyPath: m_Name
-      value: AssetRack
+      value: AssetRack Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5750627226570106920, guid: b2179eda325c058449df29e59291e455,
         type: 3}

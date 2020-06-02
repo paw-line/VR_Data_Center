@@ -70,7 +70,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ec59b74fb1c244230afdc5941d96b4bb,
         type: 3}
       propertyPath: m_Name
-      value: (13) HP DL360
+      value: (13) HP DL360 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ec59b74fb1c244230afdc5941d96b4bb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: ec59b74fb1c244230afdc5941d96b4bb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec59b74fb1c244230afdc5941d96b4bb, type: 3}

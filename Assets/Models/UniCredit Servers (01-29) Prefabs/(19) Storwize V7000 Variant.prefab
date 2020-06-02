@@ -75,7 +75,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e3bdc55057cc0449c92b10d0a02438fe,
         type: 3}
       propertyPath: m_Name
-      value: (19) Storwize V7000
+      value: (19) Storwize V7000 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e3bdc55057cc0449c92b10d0a02438fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: e3bdc55057cc0449c92b10d0a02438fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3bdc55057cc0449c92b10d0a02438fe, type: 3}

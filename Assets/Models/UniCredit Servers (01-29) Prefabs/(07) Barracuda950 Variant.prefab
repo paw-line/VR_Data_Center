@@ -75,7 +75,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7fbd5b8b459f04cd4ac4dcbff095f1e0,
         type: 3}
       propertyPath: m_Name
-      value: (07) Barracuda950
+      value: (07) Barracuda950 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7fbd5b8b459f04cd4ac4dcbff095f1e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: 7fbd5b8b459f04cd4ac4dcbff095f1e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fbd5b8b459f04cd4ac4dcbff095f1e0, type: 3}

@@ -70,7 +70,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 2c60fb917ae94450196b4c96e3cc118b,
         type: 3}
       propertyPath: m_Name
-      value: (17) HP DL580 Gen10
+      value: (17) HP DL580 Gen10 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2c60fb917ae94450196b4c96e3cc118b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: 2c60fb917ae94450196b4c96e3cc118b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c60fb917ae94450196b4c96e3cc118b, type: 3}

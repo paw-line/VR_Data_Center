@@ -80,7 +80,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: bf7d1e05f3fce43fc9865d6f9e8c2033,
         type: 3}
       propertyPath: m_Name
-      value: (04) BladeSSRtemc7000
+      value: (04) BladeSSRtemc7000 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bf7d1e05f3fce43fc9865d6f9e8c2033,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: bf7d1e05f3fce43fc9865d6f9e8c2033,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7d1e05f3fce43fc9865d6f9e8c2033, type: 3}

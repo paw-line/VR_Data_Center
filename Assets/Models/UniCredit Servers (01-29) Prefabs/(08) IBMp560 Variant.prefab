@@ -70,7 +70,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e6810e4c92af74bb98405a50c4dcfca3,
         type: 3}
       propertyPath: m_Name
-      value: (08) IBMp560
+      value: (08) IBMp560 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e6810e4c92af74bb98405a50c4dcfca3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: e6810e4c92af74bb98405a50c4dcfca3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6810e4c92af74bb98405a50c4dcfca3, type: 3}

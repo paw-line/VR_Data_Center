@@ -70,7 +70,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ad07c10fba9304f44bf5b14a71c27f48,
         type: 3}
       propertyPath: m_Name
-      value: (21) x3550 M3
+      value: (21) x3550 M3 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad07c10fba9304f44bf5b14a71c27f48,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: ad07c10fba9304f44bf5b14a71c27f48,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad07c10fba9304f44bf5b14a71c27f48, type: 3}

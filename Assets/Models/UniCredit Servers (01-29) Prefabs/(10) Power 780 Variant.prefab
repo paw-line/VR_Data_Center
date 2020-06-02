@@ -70,7 +70,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 2e84e3fb350f94d39880b63598ea6a6a,
         type: 3}
       propertyPath: m_Name
-      value: (10) Power 780
+      value: (10) Power 780 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2e84e3fb350f94d39880b63598ea6a6a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: 2e84e3fb350f94d39880b63598ea6a6a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e84e3fb350f94d39880b63598ea6a6a, type: 3}

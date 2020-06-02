@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5750627226570106922}
   - component: {fileID: 5750627226570106923}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RackRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
