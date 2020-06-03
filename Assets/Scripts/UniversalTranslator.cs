@@ -113,7 +113,7 @@ public class UniversalTranslator : MonoBehaviour
             }
             if (answer == "")
             {
-                Debug.LogError($"General Type '{type}' not found, returning input type");
+                Debug.LogError($"TypeToGeneral: General Type '{type}' not found, returning input type");
                 return type;
             }
 
@@ -137,7 +137,7 @@ public class UniversalTranslator : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"General Type '{type}' not found, returning null string");
+            Debug.LogError($"GeneralToUnit: General Type '{type}' not found, returning null string");
             return "";
         }
     }
@@ -156,7 +156,7 @@ public class UniversalTranslator : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"String '{type}' not found in dictionary, returning input");
+            Debug.LogError($"TypeToRussian: String '{type}' not found in dictionary, returning input");
             return type;
         }
         
