@@ -34,6 +34,7 @@ public class VRUIItem : MonoBehaviour
     private void ValidateCollider()
     {
         rectTransform = GetComponent<RectTransform>();
+        
 
         boxCollider = GetComponent<BoxCollider>();
         if (boxCollider == null)
@@ -41,6 +42,13 @@ public class VRUIItem : MonoBehaviour
             boxCollider = gameObject.AddComponent<BoxCollider>();
         }
 
-        boxCollider.size = rectTransform.sizeDelta;
+        if (this.gameObject.name == "ButtonInspect")
+        {
+            // Debug.Log(rectTransform.parent.parent.name + rectTransform.parent.GetComponent<Canvas>().ToString());
+            //Debug.Log(rectTransform.parent.GetComponent<RectTransform>().rect.width);
+            boxCollider.size = new Vector2(rectTransform.GetComponentInParent<RectTransform>().rect.width, rectTransform.GetComponentInParent<RectTransform>().rect.height);
+        }
+        else
+            boxCollider.size = rectTransform.sizeDelta;
     }
 }

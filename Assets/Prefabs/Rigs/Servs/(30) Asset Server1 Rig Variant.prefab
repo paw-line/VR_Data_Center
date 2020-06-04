@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Server_Type1
       objectReference: {fileID: 0}
+    - target: {fileID: 1492452432899934, guid: 33c9449b303ab6e47a35f5aa5174c67f, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4715576191340198, guid: 33c9449b303ab6e47a35f5aa5174c67f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0

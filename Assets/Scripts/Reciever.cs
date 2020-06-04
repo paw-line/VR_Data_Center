@@ -171,9 +171,24 @@ public class Reciever : MonoBehaviour
                     }
                     if (sensor.trigger != null)                                  /// Если к датчику привязан триггер
                     {
+                        distributor.SourceSet(device.hostname + "/" + "overallAlarm", sensor.trigger.value, "overallAlarm");
+
+                        /*
+                        if (sensor.trigger.value != 0)
+                        {
+                            distributor.SourceSet(device.hostname + "/" + "overallAlarm", sensor.trigger.value, "overallAlarm");
+                        }
+                        else
+                        {
+                            distributor.SourceSet(device.hostname + "/" + "overallAlarm", sensor.trigger.value, "overallAlarm");
+                        }
+                        */
+
+                        /*
                         float floatVal = sensor.trigger.value;             
                         string alarmName = sensor.itemname + "_alarm";
                         distributor.SourceSet(device.hostname + "/" + alarmName, floatVal, alarmName);
+                        */
                     }
                 }
             }

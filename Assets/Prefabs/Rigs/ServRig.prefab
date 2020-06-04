@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bcf513bb32aaf49a6a3cd1f1c194e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: 1
+  data: 0
   radius: 0
   type: overallAlarm
   isAutonomous: 0
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 8295637140760082259}
   - component: {fileID: 7757867944919443903}
   m_Layer: 13
-  m_Name: Button
+  m_Name: ButtonInspect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2895927939673984200}
         m_MethodName: TurnTV
         m_Mode: 6
         m_Arguments:
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8617424689816866969}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa0030d4d9a00104cb09319b3d415a64, type: 3}
   m_Name: 
@@ -772,7 +772,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0, y: 0, z: 0}
+  m_Size: {x: 15, y: 15, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7757867944919443903
 MonoBehaviour:
@@ -906,8 +906,7 @@ PrefabInstance:
         type: 3}
       propertyPath: source
       value: 
-      objectReference: {fileID: 761588617, guid: e4a013771467ea2458aab85121d5b827,
-        type: 3}
+      objectReference: {fileID: 3771292162472202007}
     - target: {fileID: 2177929426847205703, guid: b046eb52754b06e4689ec946d5c2d582,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -989,6 +988,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3771292162663528787}
     m_Modifications:
+    - target: {fileID: 2690357105012715637, guid: ac53d98371d995041bffe388f737cf2c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5265371560507875621, guid: ac53d98371d995041bffe388f737cf2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1093,8 +1097,7 @@ PrefabInstance:
         type: 3}
       propertyPath: source
       value: 
-      objectReference: {fileID: 146373153, guid: e4a013771467ea2458aab85121d5b827,
-        type: 3}
+      objectReference: {fileID: 3771292163095355071}
     - target: {fileID: 5265371562124406736, guid: ac53d98371d995041bffe388f737cf2c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

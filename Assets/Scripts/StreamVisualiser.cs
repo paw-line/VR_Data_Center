@@ -50,7 +50,7 @@ public class StreamVisualiser : Visualiser
     public float speed = 5f;                ///< Скорость потока по-умолчанию. Задается в редакторе.
     public Color startColor;                ///< Цвет начала потока по-умолчанию. Задается в редакторе.
     public Color finishColor;               ///< Цвет конца потока по-умолчанию. Задается в редакторе.
-    public float particleDencityMultiplier = 2f;    ///< Множитель плотности потока по-умолчанию. Задается в редакторе.
+    public float dencity = 2f;              ///< Множитель плотности потока по-умолчанию. Задается в редакторе.
     public float radius = 2f;               ///< Радиус потока
     public bool trails = false;             ///< Оставляют ли частицы хвосты?
 
@@ -65,6 +65,9 @@ public class StreamVisualiser : Visualiser
     private DataSource finishColorSource = null;  ///< Ссылка на источник данных о цвете потока
     [SerializeField]
     private DataSource dencitySource = null;///< Ссылка на источник данных о плотности потока
+
+    public float speedMultiplier = 1f;                ///< Скорость потока по-умолчанию. Задается в редакторе.
+    public float dencityMultiplier = 1f;              ///< Множитель плотности потока по-умолчанию. Задается в редакторе.
 
 
     /** \brief Метод снятия показаний с визуализатора сканером
@@ -232,7 +235,7 @@ public class StreamVisualiser : Visualiser
             {
                 dencData = dencitySource.GetData();
                 //particleDencityMultiplier = DataToDencity(dencData);
-                particleDencityMultiplier = dencData;// UniversalConverter.GetInstance().Convert(dencData, dencitySource.GetType());
+                dencity = dencData;// UniversalConverter.GetInstance().Convert(dencData, dencitySource.GetType());
             }
         }
     }
@@ -256,12 +259,12 @@ public class StreamVisualiser : Visualiser
         //Длинна
         float L = Vector3.Distance(start.position, finish.position);
         var mn = ps.main;
-        mn.startLifetime = L / speed / ps.transform.localScale.x ;
-        mn.startSpeed = speed;
+        mn.startLifetime = L / (speed * speedMultiplier) / ps.transform.localScale.x ;
+        mn.startSpeed = speed*speedMultiplier;
 
         //Плотность
         var em = ps.emission;
-        em.rateOverTime = ps.main.startSpeed.constant * particleDencityMultiplier;
+        em.rateOverTime = ps.main.startSpeed.constant * dencity * dencityMultiplier;
 
         //Цвет 
         var color = ps.colorOverLifetime;
